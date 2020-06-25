@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 class CreateAdminsTable extends Migration
 {
@@ -22,6 +23,11 @@ class CreateAdminsTable extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+
+        DB::table('admins')->insert([
+            'name' => 'Admin',
+            'email' => 'admin@admin.com',
+            'password' => \Illuminate\Support\Facades\Hash::make('123456')]);
     }
 
     /**
