@@ -27,5 +27,9 @@
     <!-- Bootstrap 4 RTL -->
     <link rel="stylesheet" href="https://cdn.rtlcss.com/bootstrap/v4.2.1/css/bootstrap.min.css">
     <!-- Custom style for RTL -->
+    <!-- bootstrap rtl -->
+    <link rel="stylesheet" href="{{asset('admin/dist/css/bootstrap-rtl.min.css')}}">
+    <!-- template rtl version -->
     <link rel="stylesheet" href="{{asset('admin/dist/css/custom.css')}}">
+    {{--    <link rel="stylesheet" href="{{asset('admin/dist/css/custom-style.css')}}">--}}
 </head>
