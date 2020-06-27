@@ -14,8 +14,8 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
-                <li class="nav-item has-treeview menu-open">
-                    <a href="#" class="nav-link active">
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
                         <i class="nav-icon fa fa-home"></i>
                         <p>
                             الرئيسية
@@ -24,7 +24,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{route('admin.home')}}" class="nav-link active">
+                            <a href="{{route('admin.home')}}" class="nav-link">
                                 <i class="fa fa-circle nav-icon"></i>
                                 <p>الداش بورد</p>
                             </a>
@@ -60,6 +60,15 @@
                             العملاء
                         </p>
                         <span class="btn btn-sm btn-outline-success">{{@App\Customer::all()->count()}}</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('admin.admins.index')}}" class="nav-link {{request()->routeIs('admin.admins.*') ? 'active':''}}">
+                        <i class="nav-icon fa fa-user-plus"></i>
+                        <p>
+                            المشرفين
+                        </p>
+                        <span class="btn btn-sm btn-outline-success">{{@App\Admin::all()->count()}}</span>
                     </a>
                 </li>
                 <li class="nav-item">

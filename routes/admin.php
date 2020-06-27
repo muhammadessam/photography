@@ -14,11 +14,20 @@ Route::prefix('admin')->group(function () {
         Route::namespace('Auth')->group(function () {
             Route::post('/logout', 'LoginController@logout')->name('logout');
         });
-        Route::resource('settings','SettingController');
-        Route::resource('categories', 'CategoryController');
-        Route::resource('orders', 'OrderController');
-        Route::resource('customers','CustomerController');
-        Route::resource('employees','EmployeeController');
+        Route::resource('settings','SettingController')
+            ->middleware('permission:settings');
+        Route::resource('admins','AdminController')
+            ->middleware('permission:admins');
+        Route::get('/permission/{admin}','AdminController@permissions')->name('permissions');
+        Route::post('/permission/update/{admin}','AdminController@updatePerms')->name('update_perms');
+        Route::resource('categories', 'CategoryController')
+            ->middleware('permission:categories');
+        Route::resource('orders', 'OrderController')
+            ->middleware('permission:orders');
+        Route::resource('customers','CustomerController')
+            ->middleware('permission:customers');
+        Route::resource('employees','EmployeeController')
+            ->middleware('permission:employees');
         Route::get('home', 'HomeController@index')->name('home');
     });
 });
