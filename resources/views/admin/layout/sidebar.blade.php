@@ -59,6 +59,7 @@
                         <p>
                             العملاء
                         </p>
+                        <span class="btn btn-sm btn-outline-success">{{@App\Customer::all()->count()}}</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -67,6 +68,7 @@
                         <p>
                             الموظفين
                         </p>
+                        <span class="btn btn-sm btn-outline-success">{{@App\Employee::all()->count()}}</span>
                     </a>
                 </li>
             </ul>
