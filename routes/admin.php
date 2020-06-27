@@ -15,6 +15,9 @@ Route::prefix('admin')->group(function () {
             Route::post('/logout', 'LoginController@logout')->name('logout');
         });
 
+        Route::resource('categories', 'CategoryController');
+        Route::resource('orders', 'OrderController');
+
 
         Route::get('home', 'HomeController@index')->name('home');
     });

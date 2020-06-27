@@ -39,9 +39,17 @@
                 </li>
                 <li class="nav-item">
                     <a href="" class="nav-link">
-                        <i class="nav-icon fa fa-gears"></i>
+                        <i class="nav-icon fa fa-gear"></i>
                         <p>
                             الاعدادات
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('admin.categories.index')}}" class="nav-link {{request()->routeIs('admin.categories.*') ? 'active':''}}">
+                        <i class="nav-icon fa fa-list"></i>
+                        <p>
+                            الاقسام
                         </p>
                     </a>
                 </li>
