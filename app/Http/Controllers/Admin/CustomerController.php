@@ -49,11 +49,11 @@ class CustomerController extends Controller
         ]);
         $data['password'] = Hash::make($request->get('password'));
         $user = User::create($data);
-        $user->customer()->attach([
-            'phone' => $data['phone'],
-            'city' => $data['city'],
-        ]);
-        return Redirect::route('customers.index');
+        $customer = new Customer();
+        $customer->phone = $data['phone'];
+        $customer->city = $data['city'];
+        $user->customer()->save($customer);
+        return Redirect::route('admin.customers.index');
     }
 
     /**
@@ -100,6 +100,6 @@ class CustomerController extends Controller
     public function destroy(Customer $customer)
     {
         $customer->delete();
-        return Redirect::route('customers.index');
+        return Redirect::route('admin.customers.index');
     }
 }
