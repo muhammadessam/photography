@@ -13,6 +13,7 @@
                 <td>الهاتف</td>
                 <td>البريد</td>
                 <td>الخبرة</td>
+                <td>القسم</td>
                 <td>تحكم</td>
             </thead>
             @foreach(@App\Employee::all() as $employee)
@@ -21,6 +22,7 @@
                 <td>{{$employee->phone}}</td>
                 <td>{{$employee->email}}</td>
                 <td>{{$employee->exp}}</td>
+                <td>{{$employee->category->name}}</td>
                 <td>
                     <form action="{{route('admin.employees.destroy',$employee)}}" method="post">
                         @csrf

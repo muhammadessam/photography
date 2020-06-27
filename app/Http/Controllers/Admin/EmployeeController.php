@@ -44,6 +44,7 @@ class EmployeeController extends Controller
             'email'     => 'required',
             'exp'       => 'required',
             'phone'     => 'required',
+            'cat_id'     => 'required',
         ]);
         Employee::create($data);
         alert('','تم الانشاء','success');
@@ -86,6 +87,7 @@ class EmployeeController extends Controller
             'email'     => 'required',
             'exp'       => 'required',
             'phone'     => 'required',
+            'cat_id'     => 'required',
         ]);
         $employee->update($data);
         alert('','تم التعديل','success');

@@ -31,6 +31,14 @@
                         </select>
                     </div>
                     <div class="form-group">
+                        <label for="cat_id">القسم</label>
+                        <select name="cat_id" class="form-control" id="cat_id">
+                            @foreach(@App\Category::all() as $cat)
+                                <option value="{{$cat->id}}">{{$cat->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <input type="submit" class="btn btn-outline-success btn-block" value="حفظ" name="" id="">
                     </div>
                 </form>
