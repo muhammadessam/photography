@@ -88,8 +88,8 @@
                                         <div class="form-group">
                                             <label for="is_special">نوع المناسبة خاصة / عام :</label>
                                             <select class="form-control" name="is_special" id="is_special">
-                                                <option value="1">خاصة</option>
-                                                <option value="0">عامة</option>
+                                                <option    {{$order['is_special'] ? 'selected' : ''}}     value="1">خاصة</option>
+                                                <option    {{!$order['is_special'] ? 'selected' : ''}}    value="0">عامة</option>
                                             </select>
                                             <x-error name="is_special"></x-error>
                                         </div>
@@ -101,8 +101,8 @@
                                         <div class="form-group">
                                             <label for="is_special">اضافة حقوقنا علي التصميم :</label>
                                             <select class="form-control" name="is_right_print" id="is_right_print">
-                                                <option value="1">نعم</option>
-                                                <option value="0">لا</option>
+                                                <option  {{$order['is_right_print'] ? 'selected' : ''}}  value="1">نعم</option>
+                                                <option  {{!$order['is_right_print'] ? 'selected' : ''}} value="0">لا</option>
                                             </select>
                                             <x-error name="is_right_print"></x-error>
                                         </div>
@@ -114,8 +114,8 @@
                                         <div class="form-group">
                                             <label for="is_special">عرض المناسبة علي صفحاتنا :</label>
                                             <select class="form-control" name="is_on_our_page" id="is_on_our_page">
-                                                <option value="1">نعم</option>
-                                                <option value="0">لا</option>
+                                                <option  {{$order['is_on_our_page'] ? 'selected' : ''}}  value="1">نعم</option>
+                                                <option  {{!$order['is_on_our_page'] ? 'selected' : ''}} value="0">لا</option>
                                             </select>
                                             <x-error name="is_on_our_page"></x-error>
                                         </div>
