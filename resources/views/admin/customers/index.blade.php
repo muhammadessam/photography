@@ -44,5 +44,7 @@
             @endif
         </table>
     </div>
+@endsection
+@section('javascript')
     <x-datatable id="customers"></x-datatable>
 @endsection
