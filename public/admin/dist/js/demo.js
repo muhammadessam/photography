@@ -9,37 +9,27 @@
 
   var $sidebar   = $('.control-sidebar')
   var $container = $('<div />', {
-    class: 'p-3 control-sidebar-content'
+    class: 'p-3'
   })
 
   $sidebar.append($container)
 
   var navbar_dark_skins = [
-    'navbar-primary',
-    'navbar-secondary',
-    'navbar-info',
-    'navbar-success',
-    'navbar-danger',
-    'navbar-indigo',
-    'navbar-purple',
-    'navbar-pink',
-    'navbar-teal',
-    'navbar-cyan',
-    'navbar-dark',
-    'navbar-gray-dark',
-    'navbar-gray',
+    'bg-primary',
+    'bg-info',
+    'bg-success',
+    'bg-danger'
   ]
 
   var navbar_light_skins = [
-    'navbar-light',
-    'navbar-warning',
-    'navbar-white',
-    'navbar-orange',
+    'bg-warning',
+    'bg-white',
+    'bg-gray-light'
   ]
 
   $container.append(
-    '<h5>Customize AdminLTE</h5><hr class="mb-2"/>'
-    + '<h6>Navbar Variants</h6>'
+    '<h5>تنظیمات قالب</h5><hr class="mb-2"/>'
+    + '<h6>رنگ‌های نوار ناوبری</h6>'
   )
 
   var $navbar_variants        = $('<div />', {
@@ -48,6 +38,7 @@
   var navbar_all_colors       = navbar_dark_skins.concat(navbar_light_skins)
   var $navbar_variants_colors = createSkinBlock(navbar_all_colors, function (e) {
     var color = $(this).data('color')
+    console.log('Adding ' + color)
     var $main_header = $('.main-header')
     $main_header.removeClass('navbar-dark').removeClass('navbar-light')
     navbar_all_colors.map(function (color) {
@@ -56,7 +47,9 @@
 
     if (navbar_dark_skins.indexOf(color) > -1) {
       $main_header.addClass('navbar-dark')
+      console.log('AND navbar-dark')
     } else {
+      console.log('AND navbar-light')
       $main_header.addClass('navbar-light')
     }
 
@@ -73,17 +66,17 @@
   var $navbar_border = $('<input />', {
     type   : 'checkbox',
     value  : 1,
-    checked: $('.main-header').hasClass('border-bottom-0'),
+    checked: $('.main-header').hasClass('border-bottom'),
     'class': 'mr-1'
   }).on('click', function () {
     if ($(this).is(':checked')) {
-      $('.main-header').addClass('border-bottom-0')
+      $('.main-header').addClass('border-bottom')
     } else {
-      $('.main-header').removeClass('border-bottom-0')
+      $('.main-header').removeClass('border-bottom')
     }
   })
   $checkbox_container.append($navbar_border)
-  $checkbox_container.append('<span>No Navbar border</span>')
+  $checkbox_container.append('<span>مرز نوار ناوبری</span>')
   $container.append($checkbox_container)
 
 
@@ -92,17 +85,7 @@
     'bg-warning',
     'bg-info',
     'bg-danger',
-    'bg-success',
-    'bg-indigo',
-    'bg-navy',
-    'bg-purple',
-    'bg-fuchsia',
-    'bg-pink',
-    'bg-maroon',
-    'bg-orange',
-    'bg-lime',
-    'bg-teal',
-    'bg-olive'
+    'bg-success'
   ]
 
   var sidebar_skins = [
@@ -111,34 +94,14 @@
     'sidebar-dark-info',
     'sidebar-dark-danger',
     'sidebar-dark-success',
-    'sidebar-dark-indigo',
-    'sidebar-dark-navy',
-    'sidebar-dark-purple',
-    'sidebar-dark-fuchsia',
-    'sidebar-dark-pink',
-    'sidebar-dark-maroon',
-    'sidebar-dark-orange',
-    'sidebar-dark-lime',
-    'sidebar-dark-teal',
-    'sidebar-dark-olive',
     'sidebar-light-primary',
     'sidebar-light-warning',
     'sidebar-light-info',
     'sidebar-light-danger',
-    'sidebar-light-success',
-    'sidebar-light-indigo',
-    'sidebar-light-navy',
-    'sidebar-light-purple',
-    'sidebar-light-fuchsia',
-    'sidebar-light-pink',
-    'sidebar-light-maroon',
-    'sidebar-light-orange',
-    'sidebar-light-lime',
-    'sidebar-light-teal',
-    'sidebar-light-olive'
+    'sidebar-light-success'
   ]
 
-  $container.append('<h6>Dark Sidebar Variants</h6>')
+  $container.append('<h6>نوار تیره</h6>')
   var $sidebar_variants = $('<div />', {
     'class': 'd-flex'
   })
@@ -154,7 +117,7 @@
     $sidebar.addClass(sidebar_class)
   }))
 
-  $container.append('<h6>Light Sidebar Variants</h6>')
+  $container.append('<h6>نوار روشن</h6>')
   var $sidebar_variants = $('<div />', {
     'class': 'd-flex'
   })
@@ -171,14 +134,14 @@
   }))
 
   var logo_skins = navbar_all_colors
-  $container.append('<h6>Brand Logo Variants</h6>')
+  $container.append('<h6>رنگ برند لوگو</h6>')
   var $logo_variants = $('<div />', {
     'class': 'd-flex'
   })
   $container.append($logo_variants)
   var $clear_btn = $('<a />', {
     href: 'javascript:void(0)'
-  }).text('clear').on('click', function () {
+  }).text('پاک کردن').on('click', function () {
     var $logo = $('.brand-link')
     logo_skins.map(function (skin) {
       $logo.removeClass(skin)
@@ -226,8 +189,35 @@
       if (callback) {
         $color.on('click', callback)
       }
+
     })
 
     return $block
   }
+
+  $('[data-widget="chat-pane-toggle"]').click(function() {
+      $(this).closest('.card').toggleClass('direct-chat-contacts-open')
+  });
+  $('[data-toggle="tooltip"]').tooltip();
+
+
+  function ConvertNumberToPersion() {
+        let persian = { 0: '۰', 1: '۱', 2: '۲', 3: '۳', 4: '۴', 5: '۵', 6: '۶', 7: '۷', 8: '۸', 9: '۹' };
+        function traverse(el) {
+            if (el.nodeType == 3) {
+                var list = el.data.match(/[0-9]/g);
+                if (list != null && list.length != 0) {
+                    for (var i = 0; i < list.length; i++)
+                        el.data = el.data.replace(list[i], persian[list[i]]);
+                }
+            }
+            for (var i = 0; i < el.childNodes.length; i++) {
+                traverse(el.childNodes[i]);
+            }
+        }
+        traverse(document.body);
+    }
+
+  ConvertNumberToPersion()
+
 })(jQuery)
