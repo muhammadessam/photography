@@ -21,6 +21,8 @@ Route::prefix('admin')->group(function () {
         Route::post('order-remove-employee/{order}/{employee}', 'OrderController@removeEmployee')->name('order-remove-employee');
         Route::resource('customers', 'CustomerController');
         Route::resource('employees', 'EmployeeController');
+        Route::resource('page', 'PageController');
+
         Route::get('home', 'HomeController@index')->name('home');
     });
 });

@@ -80,6 +80,15 @@
                         <span class="btn btn-sm btn-outline-success">{{@App\Employee::all()->count()}}</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{route('admin.page.index')}}" class="nav-link {{request()->routeIs('admin.page.*') ? 'active':''}}">
+                        <i class="nav-icon fa fa-file"></i>
+                        <p>
+                            الصفحات
+                            <i class="right badge badge-danger">{{\App\Page::all()->count()}}</i>
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

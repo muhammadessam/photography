@@ -24,3 +24,4 @@ Route::prefix('admin')->group(function (){
     Route::view('/','admin.statics.index')->name('statics');
 
 });
+Route::get("{pages?}", 'HomeController@pageTemplate')->name('loadPage');
