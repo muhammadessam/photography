@@ -28,7 +28,7 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        return view('admin.employees.edit');
+        return view('admin.employees.create');
     }
 
     /**
@@ -46,7 +46,8 @@ class EmployeeController extends Controller
             'phone'     => 'required',
         ]);
         Employee::create($data);
-        return Redirect::route('customers.index');
+        alert('','تم الانشاء','success');
+        return Redirect::route('admin.employees.index');
     }
 
     /**
@@ -68,7 +69,7 @@ class EmployeeController extends Controller
      */
     public function edit(Employee $employee)
     {
-        return view('admin.employees.edit'.compact('employee'));
+        return view('admin.employees.edit',compact('employee'));
     }
 
     /**
@@ -87,7 +88,8 @@ class EmployeeController extends Controller
             'phone'     => 'required',
         ]);
         $employee->update($data);
-        return Redirect::route('customers.index');
+        alert('','تم التعديل','success');
+        return Redirect::route('admin.employees.index');
     }
 
     /**
@@ -100,6 +102,6 @@ class EmployeeController extends Controller
     public function destroy(Employee $employee)
     {
         $employee->delete();
-        return Redirect::route('customers.index');
+        return Redirect::route('admin.employees.index');
     }
 }
