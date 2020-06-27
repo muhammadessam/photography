@@ -5,8 +5,10 @@
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
+
     @include('admin.layout.navbar')
     @include('admin.layout.sidebar')
+
     <div class="content-wrapper">
         <section class="content">
             <div class="container-fluid">

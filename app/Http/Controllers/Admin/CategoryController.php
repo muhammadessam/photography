@@ -65,7 +65,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('admin.categories.edit', compact('category'));
     }
 
     /**
@@ -77,7 +77,12 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+        ]);
+        $category->update($request->all());
+        toast('تم الحفظ', 'success')->position('bottom-start');
+        return redirect()->route('admin.categories.index');
     }
 
     /**
@@ -88,6 +93,8 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        toast('تم الحفظ', 'success')->position('bottom-start');
+        return redirect()->back();
     }
 }
