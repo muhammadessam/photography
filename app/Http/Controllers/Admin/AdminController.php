@@ -79,11 +79,13 @@ class AdminController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Admin  $admin
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Admin $admin)
     {
-        //
+        $admin->delete();
+        alert('','تم الحذف','success');
+        return Redirect::back();
     }
     public function permissions(Admin $admin){
         if($admin->permissions == null){

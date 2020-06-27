@@ -3,7 +3,7 @@
     <div class="container">
         <h3 class="col-12 text-center">المشرفين</h3>
         <div class="col-12 justify-content-start m-3">
-            <a href="{{route('admin.admins.create')}}" class="btn btn-success">
+            <a href="#" class="btn btn-success">
                 <i class="fa fa-plus-circle"></i>
             </a>
         </div>
@@ -21,7 +21,7 @@
                         <form action="{{route('admin.admins.destroy',$admin)}}" method="post">
                             @csrf
                             @method('DELETE')
-                            <a class="btn btn-primary" href="{{route('admin.admins.edit',$admin)}}">
+                            <a class="btn btn-primary" href="#">
                                 <i class="fa fa-edit"></i>
                             </a>
                             <a class="btn btn-warning" href="{{route('admin.permissions',$admin )}}">
