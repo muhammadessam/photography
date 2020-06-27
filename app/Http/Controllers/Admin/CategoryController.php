@@ -42,7 +42,8 @@ class CategoryController extends Controller
             'name.required' => 'الاسم مطلوب'
         ]);
         Category::create($request->all());
-        toast('تم الحفظ', 'success')->posistion('top-end');
+        toast('تم الحفظ', 'success')->position('bottom-start');
+        return redirect()->back();
     }
 
     /**

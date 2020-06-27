@@ -8,6 +8,9 @@
 </script>
 <!-- Bootstrap 4 -->
 <script src="{{asset('admin/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<!-- DataTables -->
+<script src="{{asset('admin/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('admin/plugins/datatables/dataTables.bootstrap4.js')}}"></script>
 <!-- Morris.js charts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 <script src="{{asset('admin/plugins/morris/morris.min.js')}}"></script>
@@ -36,3 +39,4 @@
 {{--<script src="dist/js/pages/dashboard.js"></script>--}}
 <!-- AdminLTE for demo purposes -->
 {{--<script src="dist/js/demo.js"></script>--}}
+@yield('javascript')

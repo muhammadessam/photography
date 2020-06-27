@@ -3,11 +3,9 @@
 <script>
     $('#{{$id}}').DataTable({
 
-        @if(session('locale')=='ar')
         "language": {
             "url": "{{asset('admin/plugins/datatables/extensions/i18n/Arabic.json')}}"
         },
-        @endif
         "info": false,
         "paging": true,
         "lengthChange": true,
