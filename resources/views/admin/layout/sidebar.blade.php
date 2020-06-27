@@ -54,6 +54,15 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{route('admin.orders.index')}}" class="nav-link {{request()->routeIs('admin.orders.*') ? 'active':''}}">
+                        <i class="nav-icon fa fa-first-order"></i>
+                        <p>
+                            الطلبات
+                            <i class="right badge badge-danger">{{\App\Order::all()->count()}}</i>
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{route('admin.customers.index')}}" class="nav-link {{request()->routeIs('admin.customers.*') ? 'active':''}}">
                         <i class="nav-icon fa fa-user-plus"></i>
                         <p>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Order;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\Rule;
 
 class OrderController extends Controller
 {
@@ -15,7 +16,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.orders.index');
     }
 
     /**
@@ -25,7 +26,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.orders.create');
     }
 
     /**
@@ -36,7 +37,28 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'customer_id' => ['required', 'exists:customers,id'],
+            'cat_id' => ['required', 'exists:categories,id'],
+            'status' => ['required', Rule::in(['waiting', 'accepted', 'billed', 'final', 'rejected'])],
+            'address' => ['required'],
+            'date' => ['required'],
+            'is_special' => ['required'],
+            'is_right_print' => ['required'],
+            'is_on_our_page' => ['required'],
+        ], [], [
+            'customer_id' => 'اسم العميل',
+            'cat_id' => 'القسم',
+            'status' => 'الحالة',
+            'address' => 'العنوان',
+            'date' => 'التاريخ والوقت',
+            'is_special' => 'هل المناسبة خاصة',
+            'is_right_print' => 'هل نضع حقوقنا علي التصميم',
+            'is_on_our_page' => 'وضع الصور علي صفحاتنا',
+        ]);
+        Order::create($request->all());
+        toast('تم', 'success')->position('bottom-start');
+        return redirect()->route('admin.orders.index');
     }
 
     /**
@@ -58,7 +80,7 @@ class OrderController extends Controller
      */
     public function edit(Order $order)
     {
-        //
+        return view('admin.orders.edit', compact('order'));
     }
 
     /**
@@ -70,7 +92,28 @@ class OrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
-        //
+        $request->validate([
+            'customer_id' => ['required', 'exists:customers,id'],
+            'cat_id' => ['required', 'exists:categories,id'],
+            'status' => ['required', Rule::in(['waiting', 'accepted', 'billed', 'final', 'rejected'])],
+            'address' => ['required'],
+            'date' => ['required'],
+            'is_special' => ['required'],
+            'is_right_print' => ['required'],
+            'is_on_our_page' => ['required'],
+        ], [], [
+            'customer_id' => 'اسم العميل',
+            'cat_id' => 'القسم',
+            'status' => 'الحالة',
+            'address' => 'العنوان',
+            'date' => 'التاريخ والوقت',
+            'is_special' => 'هل المناسبة خاصة',
+            'is_right_print' => 'هل نضع حقوقنا علي التصميم',
+            'is_on_our_page' => 'وضع الصور علي صفحاتنا',
+        ]);
+        $order->update($request->all());
+        toast('تم', 'success')->position('bottom-start');
+        return redirect()->route('admin.orders.index');
     }
 
     /**
@@ -81,6 +124,8 @@ class OrderController extends Controller
      */
     public function destroy(Order $order)
     {
-        //
+        $order->delete();
+        toast('تم الحذف', 'success')->position('bottom-start');
+        return redirect()->back();
     }
 }

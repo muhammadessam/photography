@@ -94,7 +94,7 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
-        toast('تم الحفظ', 'success')->position('bottom-start');
+        toast('تم الحذف', 'success')->position('bottom-start');
         return redirect()->back();
     }
 }

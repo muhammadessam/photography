@@ -12,4 +12,14 @@ class Order extends Model
     {
         return $this->belongsTo(Category::class, 'cat_id', 'id');
     }
+
+    public function employees()
+    {
+        return $this->belongsToMany(Employee::class, 'employee_order', 'order_id', 'employee_id');
+    }
+
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class, 'customer_id', 'id');
+    }
 }
