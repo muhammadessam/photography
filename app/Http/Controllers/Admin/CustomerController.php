@@ -53,6 +53,7 @@ class CustomerController extends Controller
         $customer->phone = $data['phone'];
         $customer->city = $data['city'];
         $user->customer()->save($customer);
+        alert('','تم الانشاء','success');
         return Redirect::route('admin.customers.index');
     }
 
@@ -83,11 +84,14 @@ class CustomerController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Customer  $customer
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, Customer $customer)
     {
-        //
+        $customer->user->update($request->only('name','email'));
+        $customer->update($request->only('city','phone'));
+        alert('','تم التعدبل','success');
+        return Redirect::route('admin.customers.index');
     }
 
     /**
@@ -97,7 +101,7 @@ class CustomerController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function destroy(Customer $customer)
+    public function destroy(User $customer)
     {
         $customer->delete();
         return Redirect::route('admin.customers.index');

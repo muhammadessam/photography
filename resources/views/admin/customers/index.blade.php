@@ -22,12 +22,12 @@
                 <td>{{$customer->user->email}}</td>
                 <td>{{$customer->city}}</td>
                 <td>
-                    <a class="btn btn-primary" href="{{route('admin.customers.edit')}}">
-                        <i class="fa fa-edit"></i>
-                    </a>
-                    <form action="{{route('admin.customers.destroy')}}" method="post">
+                    <form action="{{route('admin.customers.destroy',$customer->user)}}" method="post">
                         @csrf
                         @method('DELETE')
+                        <a class="btn btn-primary" href="{{route('admin.customers.edit',$customer)}}">
+                            <i class="fa fa-edit"></i>
+                        </a>
                         <button class="btn btn-danger" type="submit">
                             <i class="fa fa-trash"></i>
                         </button>

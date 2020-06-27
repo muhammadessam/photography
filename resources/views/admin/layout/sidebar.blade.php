@@ -59,6 +59,16 @@
                         <p>
                             العملاء
                         </p>
+                        <span class="btn btn-sm btn-outline-success">{{@App\Customer::all()->count()}}</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('admin.employees.index')}}" class="nav-link {{request()->routeIs('admin.employees.*') ? 'active':''}}">
+                        <i class="nav-icon fa fa-user-plus"></i>
+                        <p>
+                            الموظفين
+                        </p>
+                        <span class="btn btn-sm btn-outline-success">{{@App\Employee::all()->count()}}</span>
                     </a>
                 </li>
             </ul>
