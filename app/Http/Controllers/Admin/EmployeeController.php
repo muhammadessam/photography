@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Customer;
-use App\User;
+use App\Employee;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Redirect;
 
-class CustomerController extends Controller
+class EmployeeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +17,8 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $customers = Customer::all();
-        return view('admin.customers.index',$customers);
+        $employees = Employee::all();
+        return view('admin.employees.index',compact('employees'));
     }
 
     /**
@@ -28,7 +28,7 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        return view('admin.customers.create');
+        return view('admin.employees.edit');
     }
 
     /**
@@ -40,28 +40,22 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'name'      =>  'required',
-            'email'     =>  'required',
-            'password'  =>  'required',
-            'phone'     =>  'required',
-            'city'      =>  'required',
+            'name'      => 'required',
+            'email'     => 'required',
+            'exp'       => 'required',
+            'phone'     => 'required',
         ]);
-        $data['password'] = Hash::make($request->get('password'));
-        $user = User::create($data);
-        $user->customer()->attach([
-            'phone' => $data['phone'],
-            'city' => $data['city'],
-        ]);
+        Employee::create($data);
         return Redirect::route('customers.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Customer  $customer
+     * @param  \App\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function show(Customer $customer)
+    public function show(Employee $employee)
     {
         //
     }
@@ -69,36 +63,43 @@ class CustomerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Customer  $customer
+     * @param  \App\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function edit(Customer $customer)
+    public function edit(Employee $employee)
     {
-        return view('admin.customers.edit',compact('customer'));
+        return view('admin.employees.edit'.compact('employee'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Customer  $customer
-     * @return \Illuminate\Http\Response
+     * @param  \App\Employee  $employee
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, Customer $customer)
+    public function update(Request $request, Employee $employee)
     {
-        //
+        $data = $request->validate([
+            'name'      => 'required',
+            'email'     => 'required',
+            'exp'       => 'required',
+            'phone'     => 'required',
+        ]);
+        $employee->update($data);
+        return Redirect::route('customers.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Customer $customer
+     * @param \App\Employee $employee
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function destroy(Customer $customer)
+    public function destroy(Employee $employee)
     {
-        $customer->delete();
+        $employee->delete();
         return Redirect::route('customers.index');
     }
 }

@@ -17,8 +17,8 @@ Route::prefix('admin')->group(function () {
 
         Route::resource('categories', 'CategoryController');
         Route::resource('orders', 'OrderController');
-
-
+        Route::resource('customers','CustomerController');
+        Route::resource('employees','EmployeeController');
         Route::get('home', 'HomeController@index')->name('home');
     });
 });

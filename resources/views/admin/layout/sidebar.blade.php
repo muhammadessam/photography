@@ -53,6 +53,14 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{route('admin.customers.index')}}" class="nav-link {{request()->routeIs('admin.customers.*') ? 'active':''}}">
+                        <i class="nav-icon fa fa-user-plus"></i>
+                        <p>
+                            العملاء
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
