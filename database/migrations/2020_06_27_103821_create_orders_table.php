@@ -18,7 +18,7 @@ class CreateOrdersTable extends Migration
             $table->unsignedBigInteger('customer_id')->nullable()->default(null);
             $table->unsignedBigInteger('employee_id')->nullable()->default(null);
             $table->unsignedBigInteger('cat_id')->nullable()->defualt(null);
-            $table->enum('status', ['waiting', 'accepted', 'billed', 'final', 'rejected']);
+            $table->enum('status', ['waiting', 'accepted', 'billed', 'final', 'rejected'])->default('waiting');
             $table->text('address');
             $table->boolean('is_special');
             $table->boolean('is_right_print');

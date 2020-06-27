@@ -54,6 +54,15 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{route('admin.orders.index')}}" class="nav-link {{request()->routeIs('admin.orders.*') ? 'active':''}}">
+                        <i class="nav-icon fa fa-first-order"></i>
+                        <p>
+                            الطلبات
+                            <i class="right badge badge-danger">{{\App\Order::all()->count()}}</i>
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{route('admin.customers.index')}}" class="nav-link {{request()->routeIs('admin.customers.*') ? 'active':''}}">
                         <i class="nav-icon fa fa-user-plus"></i>
                         <p>
@@ -78,6 +87,15 @@
                             الموظفين
                         </p>
                         <span class="btn btn-sm btn-outline-success">{{@App\Employee::all()->count()}}</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('admin.page.index')}}" class="nav-link {{request()->routeIs('admin.page.*') ? 'active':''}}">
+                        <i class="nav-icon fa fa-file"></i>
+                        <p>
+                            الصفحات
+                            <i class="right badge badge-danger">{{\App\Page::all()->count()}}</i>
+                        </p>
                     </a>
                 </li>
             </ul>

@@ -28,6 +28,9 @@ Route::prefix('admin')->group(function () {
             ->middleware('permission:customers');
         Route::resource('employees','EmployeeController')
             ->middleware('permission:employees');
+        Route::post('order-add-employee/{order}', 'OrderController@addEmployee')->name('order-add-employee');
+        Route::post('order-remove-employee/{order}/{employee}', 'OrderController@removeEmployee')->name('order-remove-employee');
+        Route::resource('page', 'PageController');
         Route::get('home', 'HomeController@index')->name('home');
     });
 });
