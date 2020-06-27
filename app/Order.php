@@ -22,4 +22,18 @@ class Order extends Model
     {
         return $this->belongsTo(Customer::class, 'customer_id', 'id');
     }
+
+    public function get_status()
+    {
+        if ($this->status == 'waiting')
+            return 'في الانتظار';
+        if ($this->status == 'accepted')
+            return 'تم القبول';
+        if ($this->status == 'billed')
+            return 'تم اصدار فاتورة غير مسددة';
+        if ($this->status == 'final')
+            return 'تم القبول نهائيا';
+        if ($this->status == 'rejected')
+            return 'تم الرفض';
+    }
 }

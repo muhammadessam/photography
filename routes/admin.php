@@ -14,11 +14,13 @@ Route::prefix('admin')->group(function () {
         Route::namespace('Auth')->group(function () {
             Route::post('/logout', 'LoginController@logout')->name('logout');
         });
-        Route::resource('settings','SettingController');
+        Route::resource('settings', 'SettingController');
         Route::resource('categories', 'CategoryController');
         Route::resource('orders', 'OrderController');
-        Route::resource('customers','CustomerController');
-        Route::resource('employees','EmployeeController');
+        Route::post('order-add-employee/{order}', 'OrderController@addEmployee')->name('order-add-employee');
+        Route::post('order-remove-employee/{order}/{employee}', 'OrderController@removeEmployee')->name('order-remove-employee');
+        Route::resource('customers', 'CustomerController');
+        Route::resource('employees', 'EmployeeController');
         Route::get('home', 'HomeController@index')->name('home');
     });
 });

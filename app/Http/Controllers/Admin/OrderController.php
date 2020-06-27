@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Employee;
 use App\Order;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -69,7 +70,7 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        //
+        return view('admin.orders.show', compact('order'));
     }
 
     /**
@@ -126,6 +127,21 @@ class OrderController extends Controller
     {
         $order->delete();
         toast('تم الحذف', 'success')->position('bottom-start');
+        return redirect()->back();
+    }
+
+    public function addEmployee(Request $request, Order $order)
+    {
+        $request->validate(['employee_id' => 'required']);
+        $order->employees()->syncWithoutDetaching($request['employee_id']);
+        toast('تم', 'success')->position('bottom-start');
+        return redirect()->back();
+    }
+
+    public function removeEmployee(Request $request, Order $order, Employee $employee)
+    {
+        $order->employees()->detach($employee);
+        toast('تم', 'success')->position('bottom-start');
         return redirect()->back();
     }
 }

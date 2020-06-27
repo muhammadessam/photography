@@ -44,11 +44,12 @@
                                         <td>{{$item->category->name}}</td>
                                         <td>{{$item['address']}}</td>
                                         <td>{{$item['date']}}</td>
-                                        <td>{{$item['status']}}</td>
+                                        <td>{{$item->get_status()}}</td>
                                         <td>{{$item['is_special'] ? 'خاصة':'عامة'}}</td>
                                         <td>{{$item['is_right_print']? 'نعم':'لا'}}</td>
                                         <td>{{$item['is_on_our_page'] ? 'نعم' :'لا'}}</td>
                                         <td class="d-flex">
+                                            <a class="btn btn-secondary ml-2" href="{{route('admin.orders.show', $item)}}"><i class="fa fa-eye"></i></a>
                                             <a class="btn btn-primary ml-2" href="{{route('admin.orders.edit', $item)}}"><i class="fa fa-edit"></i></a>
                                             <form action="{{route('admin.orders.destroy', $item)}}" method="post" onsubmit="return confirm('هل انت متاكد ؟')">
                                                 @method('DELETE')
