@@ -14,7 +14,7 @@ Route::prefix('admin')->group(function () {
         Route::namespace('Auth')->group(function () {
             Route::post('/logout', 'LoginController@logout')->name('logout');
         });
-
+        Route::resource('settings','SettingController');
         Route::resource('categories', 'CategoryController');
         Route::resource('orders', 'OrderController');
         Route::resource('customers','CustomerController');
