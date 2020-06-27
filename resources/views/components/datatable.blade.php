@@ -2,7 +2,6 @@
 
 <script>
     $('#{{$id}}').DataTable({
-
         "language": {
             "url": "{{asset('admin/plugins/datatables/extensions/i18n/Arabic.json')}}"
         },
@@ -14,10 +13,8 @@
         "autoWidth": true
     });
 </script>
-@if(session('locale') == 'ar')
-    <style>
-        #{{$id}}_filter {
-            float: left;
-        }
-    </style>
-@endif
+<style>
+    #{{$id}}_filter {
+        float: left;
+    }
+</style>

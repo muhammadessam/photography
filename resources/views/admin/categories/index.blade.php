@@ -1,5 +1,15 @@
 @extends('admin.layout.layout')
 @section('content')
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
     <div class="container mt-5">
         <div class="container-fluid">
             <div class="row">
@@ -35,7 +45,9 @@
                                         <td>{{$item['name']}}</td>
                                         <td class="d-flex">
                                             <a class="btn btn-primary ml-2" href="{{route('admin.categories.edit', $item)}}"><i class="fa fa-edit"></i></a>
-                                            <form action="{{route('admin.categories.destroy', $item)}}" method="post">
+                                            <form action="{{route('admin.categories.destroy', $item)}}" method="post" onsubmit="return confirm('هل انت متاكد ؟')">
+                                                @method('DELETE')
+                                                @csrf
                                                 <button class="btn btn-danger" type="submit"><i class="fa fa-trash"></i></button>
                                             </form>
                                         </td>

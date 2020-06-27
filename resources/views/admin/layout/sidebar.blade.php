@@ -8,7 +8,7 @@
     </a>
 
     <!-- Sidebar -->
-    <div class="sidebar">
+    <div class="sidebar" dir="rtl">
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -16,22 +16,22 @@
                      with font-awesome or any other icon font library -->
                 <li class="nav-item has-treeview menu-open">
                     <a href="#" class="nav-link active">
-                        <i class="nav-icon fas fa-home"></i>
+                        <i class="nav-icon fa fa-home"></i>
                         <p>
                             الرئيسية
-                            <i class="right fas fa-angle-left"></i>
+                            <i class="right fa fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="{{route('admin.home')}}" class="nav-link active">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fa fa-circle nav-icon"></i>
                                 <p>الداش بورد</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{url('/')}}" class="nav-link" target="_blank">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fa fa-circle nav-icon"></i>
                                 <p>الواجهة الامامية</p>
                             </a>
                         </li>
@@ -77,20 +77,3 @@
     </div>
     <!-- /.sidebar -->
 </aside>
-
-
-{{--<!-- Main Sidebar Container -->--}}
-{{--<aside class="main-sidebar sidebar-dark-primary elevation-4">--}}
-{{--    <!-- Brand Logo -->--}}
-{{--    <a href="{{route('admin.home')}}" class="brand-link">--}}
-{{--        <img src="{{asset('admin/dist/img/const-tech.jpeg')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"--}}
-{{--             style="opacity: .8">--}}
-{{--        <span class="brand-text font-weight-light">Const-Tech</span>--}}
-{{--    </a>--}}
-
-{{--    <!-- Sidebar -->--}}
-{{--    <div class="sidebar">--}}
-
-{{--    </div>--}}
-{{--    <!-- /.sidebar -->--}}
-{{--</aside>--}}

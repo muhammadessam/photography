@@ -100,7 +100,7 @@ ul {
 /* sidebar */
 
 .sidebar {
-    direction: ltr;
+    direction: rtl;
 }
 
 .sidebar > div:first-child {
