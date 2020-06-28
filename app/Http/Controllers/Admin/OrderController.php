@@ -147,4 +147,16 @@ class OrderController extends Controller
         toast('تم', 'success')->position('bottom-start');
         return redirect()->back();
     }
+
+    public function starEmployee(Request $request, Order $order, Employee $employee)
+    {
+        $request->validate([
+            'star' => 'required|numeric|max:5|min:1'
+        ]);
+        $employee->orders()->find($order)->pivot->update([
+            'stars' => $request['star']
+        ]);
+        $this->actionDoneSuccessfully();
+        return redirect()->back();
+    }
 }

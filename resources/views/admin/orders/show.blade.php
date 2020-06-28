@@ -88,16 +88,25 @@
                                 <thead>
                                 <tr>
                                     <th>اسم الموظف</th>
+                                    <th>التقييم</th>
                                     <th>اجراء</th>
                                 </tr>
                                 </thead>
                                 @foreach($order->employees as $item)
                                     <tr>
                                         <td>{{$item['name']}}</td>
-                                        <td>
-                                            <form action="{{route('admin.order-remove-employee', [$order, $item])}}" method="post" onsubmit="return confirm('هل انت متاكد؟')">
+                                        <td>{{$item->orders()->find($order)->pivot->stars}}</td>
+                                        <td class="d-flex">
+                                            <form class="ml-1" action="{{route('admin.order-remove-employee', [$order, $item])}}" method="post" onsubmit="return confirm('هل انت متاكد؟')">
                                                 @csrf
                                                 <button class="btn btn-danger" type="submit"><i class="fa fa-trash"></i></button>
+                                            </form>
+                                            <form action="{{route('admin.order-employee-star', [$order, $item])}}" class="form-inline" method="post">
+                                                @csrf
+                                                <div class="form-group">
+                                                    <input type="text" name="star" id="" class="form-control @error('star') is-invalid @enderror" placeholder="اضف تقيم من 1 الي 5 ">
+                                                </div>
+                                                <button type="submit" class="mr-1 btn btn-primary"><i class="fa fa-plus-circle"></i></button>
                                             </form>
                                         </td>
                                     </tr>

@@ -30,11 +30,12 @@ Route::prefix('admin')->group(function () {
 
         Route::post('employee-remove-order/{employee}/{order}', 'EmployeeController@removeOrder')->name('employee-remove-order');
 
+        Route::post('order-star/{order}/{employee}', 'OrderController@starEmployee')->name('order-employee-star');
         Route::resource('country', 'CountryController');
         Route::resource('city', 'CityController');
-        Route::get('customer/{customer}/videos','CustomerController@videos')->name('customer_videos');
-        Route::get('customer/{customer}/images','CustomerController@images')->name('customer_images');
-        Route::resource('videos','VideoController');
-        Route::resource('images','ImageController');
+        Route::get('customer/{customer}/videos', 'CustomerController@videos')->name('customer_videos');
+        Route::get('customer/{customer}/images', 'CustomerController@images')->name('customer_images');
+        Route::resource('videos', 'VideoController');
+        Route::resource('images', 'ImageController');
     });
 });

@@ -65,6 +65,12 @@
                                             {{$employee->nationality}}
                                         </div>
                                     </div>
+                                    <div class="form-group">
+                                        <label for="name">التقييم</label>
+                                        <div class="form-control">
+                                            {{ $employee->orders->pluck('pivot')->flatten()->pluck('stars')->sum() / $employee->orders->count()}}
+                                        </div>
+                                    </div>
 
                                 </div>
                             </div>
