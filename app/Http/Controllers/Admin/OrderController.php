@@ -17,7 +17,10 @@ class OrderController extends Controller
      */
     public function index()
     {
-        return view('admin.orders.index');
+        $orders = Order::all();
+        if (\request('status'))
+            $orders = $orders->where('status', \request('status'));
+        return view('admin.orders.index', compact('orders'));
     }
 
     /**

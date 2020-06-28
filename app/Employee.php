@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Employee extends Model
 {
-    protected $fillable = ['name', 'phone', 'email', 'exp', 'cat_id'];
+    protected $guarded = [];
 
     public function category()
     {
@@ -15,7 +15,7 @@ class Employee extends Model
 
     public function orders()
     {
-        return $this->belongsToMany(Employee::class, 'employee_order', 'employee_id', 'order_id');
+        return $this->belongsToMany(Order::class, 'employee_order', 'employee_id', 'order_id')->withPivot('stars');
     }
 
 }

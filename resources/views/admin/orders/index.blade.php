@@ -2,11 +2,51 @@
 @section('content')
     <div class="content-header">
         <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                </div><!-- /.col -->
-                <div class="col-sm-6">
-                </div><!-- /.col -->
+            <div class="row mb-2 mt-5">
+                <div class="col-lg-4 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-info-gradient">
+                        <div class="inner">
+                            <h3>الطلبات</h3>
+
+                            <p>المنتظرة {{\App\Order::all()->where('status', 'waiting')->count()}}</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-bag"></i>
+                        </div>
+                        <a href="{{route('admin.orders.index')."?status=waiting"}}" class="small-box-footer">اعرض<i class="fa fa-arrow-circle-left"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-success-gradient">
+                        <div class="inner">
+                            <h3>الطلبات</h3>
+                            <p>المكتملة {{\App\Order::all()->where('status', 'final')->count()}}</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-bag"></i>
+                        </div>
+                        <a href="{{route('admin.orders.index')."?status=final"}}" class="small-box-footer">اعرض <i class="fa fa-arrow-circle-left"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-danger-gradient">
+                        <div class="inner">
+                            <h3>الطلبات</h3>
+
+                            <p>المرفوضة {{\App\Order::all()->where('status', 'rejected')->count()}}</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-"></i>
+                        </div>
+                        <a href="{{route('admin.orders.index')."?status=rejected"}}" class="small-box-footer">اعرض<i class="fa fa-arrow-circle-left"></i></a>
+                    </div>
+                </div>
+
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>
@@ -38,7 +78,7 @@
                                     <th>اجراء</th>
                                 </tr>
                                 </thead>
-                                @foreach(\App\Order::all() as $item)
+                                @foreach($orders as $item)
                                     <tr>
                                         <td>{{$item->customer->user->name}}</td>
                                         <td>{{$item->category->name}}</td>

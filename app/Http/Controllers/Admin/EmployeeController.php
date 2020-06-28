@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Employee;
 use App\Http\Controllers\Controller;
+use App\Order;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Redirect;
@@ -18,7 +19,7 @@ class EmployeeController extends Controller
     public function index()
     {
         $employees = Employee::all();
-        return view('admin.employees.index',compact('employees'));
+        return view('admin.employees.index', compact('employees'));
     }
 
     /**
@@ -34,63 +35,63 @@ class EmployeeController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'name'      => 'required',
-            'email'     => 'required',
-            'exp'       => 'required',
-            'phone'     => 'required',
-            'cat_id'     => 'required',
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'exp' => 'required',
+            'phone' => 'required',
+            'cat_id' => 'required',
         ]);
-        Employee::create($data);
-        alert('','تم الانشاء','success');
+        Employee::create($request->all());
+        alert('', 'تم الانشاء', 'success');
         return Redirect::route('admin.employees.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Employee  $employee
+     * @param \App\Employee $employee
      * @return \Illuminate\Http\Response
      */
     public function show(Employee $employee)
     {
-        //
+        return view('admin.employees.show', compact('employee'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Employee  $employee
+     * @param \App\Employee $employee
      * @return \Illuminate\Http\Response
      */
     public function edit(Employee $employee)
     {
-        return view('admin.employees.edit',compact('employee'));
+        return view('admin.employees.edit', compact('employee'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Employee  $employee
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Employee $employee
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, Employee $employee)
     {
-        $data = $request->validate([
-            'name'      => 'required',
-            'email'     => 'required',
-            'exp'       => 'required',
-            'phone'     => 'required',
-            'cat_id'     => 'required',
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'exp' => 'required',
+            'phone' => 'required',
+            'cat_id' => 'required',
         ]);
-        $employee->update($data);
-        alert('','تم التعديل','success');
+        $employee->update($request->all());
+        alert('', 'تم التعديل', 'success');
         return Redirect::route('admin.employees.index');
     }
 
@@ -105,5 +106,12 @@ class EmployeeController extends Controller
     {
         $employee->delete();
         return Redirect::route('admin.employees.index');
+    }
+
+    public function removeOrder(Request $request, Employee $employee, Order $order)
+    {
+        $employee->orders()->detach($order);
+        $this->actionDoneSuccessfully();
+        return \redirect()->back();
     }
 }

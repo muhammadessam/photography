@@ -41,8 +41,8 @@
                                     <td>{{$page->place=="header"? "الهيدر":"الفوتر"}}</td>
                                     <td class="d-flex">
                                         <a href="{{route('admin.page.edit', $page)}}" class="btn btn-warning ml-2"><i class="fa fa-edit"></i></a>
-                                        <a target="_blank" blank href="{{route('loadPage', $page->slug)}}" class="btn btn-primary ml-2"><i
-                                                class="fa fa-eye"></i></a>
+{{--                                        <a target="_blank" blank href="{{route('loadPage', $page->slug)}}" class="btn btn-primary ml-2"><i--}}
+{{--                                                class="fa fa-eye"></i></a>--}}
                                         <form action="{{route('admin.page.destroy', $page)}}" method="post">
                                             @csrf
                                             @method('DELETE')
