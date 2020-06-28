@@ -22,7 +22,12 @@ class Order extends Model
     {
         return $this->belongsTo(Customer::class, 'customer_id', 'id');
     }
-
+    public function videos(){
+        return $this->hasMany(Video::class,'order_id','id');
+    }
+    public function images(){
+        return $this->hasMany(Image::class,'order_id','id');
+    }
     public function get_status()
     {
         if ($this->status == 'waiting')

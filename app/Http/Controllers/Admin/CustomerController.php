@@ -109,4 +109,10 @@ class CustomerController extends Controller
     public function orders(Customer $customer){
         return view('admin.customers.orders',compact('customer'));
     }
+    public function videos(Customer $customer){
+        return view('admin.customers.videos',compact('customer'));
+    }
+    public function images(Customer $customer){
+        return view('admin.customers.images',compact('customer'));
+    }
 }

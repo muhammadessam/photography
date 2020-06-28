@@ -82,7 +82,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{route('admin.images.index')}}" class="nav-link">
                         <i class="nav-icon fa fa-photo"></i>
                         <p>
                             معرض الصور
@@ -91,7 +91,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link ">
+                    <a href="{{route('admin.videos.index')}}" class="nav-link ">
                         <i class="nav-icon fa fa-video-camera"></i>
                         <p>
                             معرض الفيديو
