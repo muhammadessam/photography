@@ -36,6 +36,14 @@
                             الفواتير
                             <span class="btn btn-sm btn-danger">0</span>
                         </a>
+                        <a href="#" class="btn btn-sm btn-success">
+                            الصور
+                            <span class="btn btn-sm btn-danger">0</span>
+                        </a>
+                        <a href="#" class="btn btn-sm btn-success">
+                            الفيديو
+                            <span class="btn btn-sm btn-danger">0</span>
+                        </a>
                         <button class="btn btn-danger" type="submit">
                             <i class="fa fa-trash"></i>
                         </button>
