@@ -49,7 +49,7 @@
                 </div>
                 <div class="card-body">
                     <h5 class="col-12 text-center">
-                        {{@App\Employee::all()->count()}}
+                        {{@App\Order::all()->count()}}
                     </h5>
                 </div>
             </div>

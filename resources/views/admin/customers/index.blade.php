@@ -13,6 +13,8 @@
                 <td>الهاتف</td>
                 <td>البريد</td>
                 <td>المدينة</td>
+                <td>الطلبات</td>
+                <td>الفواتير</td>
                 <td>تحكم</td>
             </thead>
             @foreach(@App\Customer::all() as $customer)
@@ -21,6 +23,8 @@
                 <td>{{$customer->phone}}</td>
                 <td>{{$customer->user->email}}</td>
                 <td>{{$customer->city}}</td>
+                <td>{{$customer->orders->count()}}</td>
+                <td>{{$customer->orders->count()}}</td>
                 <td>
                     <form action="{{route('admin.customers.destroy',$customer->user)}}" method="post">
                         @csrf
