@@ -32,5 +32,9 @@ Route::prefix('admin')->group(function () {
 
         Route::resource('country', 'CountryController');
         Route::resource('city', 'CityController');
+        Route::get('customer/{customer}/videos','CustomerController@videos')->name('customer_videos');
+        Route::get('customer/{customer}/images','CustomerController@images')->name('customer_images');
+        Route::resource('videos','VideoController');
+        Route::resource('images','ImageController');
     });
 });
