@@ -106,4 +106,7 @@ class CustomerController extends Controller
         $customer->delete();
         return Redirect::route('admin.customers.index');
     }
+    public function orders(Customer $customer){
+        return view('admin.customers.orders',compact('customer'));
+    }
 }

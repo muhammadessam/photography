@@ -13,8 +13,6 @@
                 <td>الهاتف</td>
                 <td>البريد</td>
                 <td>المدينة</td>
-                <td>الطلبات</td>
-                <td>الفواتير</td>
                 <td>تحكم</td>
             </thead>
             @foreach(@App\Customer::all() as $customer)
@@ -23,14 +21,20 @@
                 <td>{{$customer->phone}}</td>
                 <td>{{$customer->user->email}}</td>
                 <td>{{$customer->city}}</td>
-                <td>{{$customer->orders->count()}}</td>
-                <td>{{$customer->orders->count()}}</td>
                 <td>
                     <form action="{{route('admin.customers.destroy',$customer->user)}}" method="post">
                         @csrf
                         @method('DELETE')
                         <a class="btn btn-primary" href="{{route('admin.customers.edit',$customer)}}">
                             <i class="fa fa-edit"></i>
+                        </a>
+                        <a href="{{route('admin.customer_orders',$customer)}}" class="btn btn-sm btn-success">
+                            الطلبات
+                            <span class="btn btn-sm btn-danger">{{$customer->orders->count()}}</span>
+                        </a>
+                        <a href="#" class="btn btn-sm btn-success">
+                            الفواتير
+                            <span class="btn btn-sm btn-danger">0</span>
                         </a>
                         <button class="btn btn-danger" type="submit">
                             <i class="fa fa-trash"></i>
