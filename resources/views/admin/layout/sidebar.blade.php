@@ -46,32 +46,6 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{route('admin.categories.index')}}" class="nav-link {{request()->routeIs('admin.categories.*') ? 'active':''}}">
-                        <i class="nav-icon fa fa-list"></i>
-                        <p>
-                            الاقسام
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{route('admin.orders.index')}}" class="nav-link {{request()->routeIs('admin.orders.*') ? 'active':''}}">
-                        <i class="nav-icon fa fa-first-order"></i>
-                        <p>
-                            الطلبات
-                            <i class="right badge badge-danger">{{\App\Order::all()->count()}}</i>
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{route('admin.customers.index')}}" class="nav-link {{request()->routeIs('admin.customers.*') ? 'active':''}}">
-                        <i class="nav-icon fa fa-user-plus"></i>
-                        <p>
-                            العملاء
-                        </p>
-                        <span class="btn btn-sm btn-outline-success">{{@App\Customer::all()->count()}}</span>
-                    </a>
-                </li>
-                <li class="nav-item">
                     <a href="{{route('admin.admins.index')}}" class="nav-link {{request()->routeIs('admin.admins.*') ? 'active':''}}">
                         <i class="nav-icon fa fa-user-plus"></i>
                         <p>
@@ -87,6 +61,50 @@
                             الموظفين
                         </p>
                         <span class="btn btn-sm btn-outline-success">{{@App\Employee::all()->count()}}</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('admin.customers.index')}}" class="nav-link {{request()->routeIs('admin.customers.*') ? 'active':''}}">
+                        <i class="nav-icon fa fa-user-plus"></i>
+                        <p>
+                            العملاء
+                        </p>
+                        <span class="btn btn-sm btn-outline-success">{{@App\Customer::all()->count()}}</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('admin.orders.index')}}" class="nav-link {{request()->routeIs('admin.orders.*') ? 'active':''}}">
+                        <i class="nav-icon fa fa-first-order"></i>
+                        <p>
+                            الطلبات
+                            <i class="right badge badge-danger">{{\App\Order::all()->count()}}</i>
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fa fa-photo"></i>
+                        <p>
+                            معرض الصور
+                            <i class="right badge badge-danger"></i>
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link ">
+                        <i class="nav-icon fa fa-video-camera"></i>
+                        <p>
+                            معرض الفيديو
+                            <i class="right badge badge-danger"></i>
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('admin.categories.index')}}" class="nav-link {{request()->routeIs('admin.categories.*') ? 'active':''}}">
+                        <i class="nav-icon fa fa-list"></i>
+                        <p>
+                            الاقسام
+                        </p>
                     </a>
                 </li>
                 <li class="nav-item">
