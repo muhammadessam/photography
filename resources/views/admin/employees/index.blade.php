@@ -30,6 +30,11 @@
                         <a class="btn btn-primary" href="{{route('admin.employees.edit',$employee)}}">
                             <i class="fa fa-edit"></i>
                         </a>
+
+                        <a href="#" class="btn btn-sm btn-success">
+                            التغطيات
+                            <span class="btn btn-sm btn-danger">0</span>
+                        </a>
                         <button class="btn btn-danger" type="submit">
                             <i class="fa fa-trash"></i>
                         </button>
