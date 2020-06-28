@@ -8,7 +8,7 @@
             </a>
         </div>
         <table id="customers" class="table table-bordered text-center">
-            <thead>
+            <thead class="thead-light" style="background-color: white;">
                 <td>الاسم</td>
                 <td>الهاتف</td>
                 <td>البريد</td>
