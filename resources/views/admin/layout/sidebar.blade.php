@@ -98,6 +98,15 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{route('admin.country.index')}}" class="nav-link {{request()->routeIs('admin.country.*') ? 'active':''}}">
+                        <i class="nav-icon fa fa-file"></i>
+                        <p>
+                            المدن
+                            <i class="right badge badge-danger">{{\App\Country::all()->count()}}</i>
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
