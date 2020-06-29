@@ -19,25 +19,43 @@
                             @csrf
                             <div class="row">
                                 <div class="col-12">
-                                    <div class="form-group">
-                                        <label for="customer_id">اسم العميل</label>
-                                        <select name="customer_id" id="customer_id" class="form-control">
-                                            @foreach(\App\Customer::all() as $item)
-                                                <option {{old('customer_id')==$item['id'] ? 'selected' : ''}} value="{{$item['id']}}">{{$item->user['name']}}</option>
-                                            @endforeach
-                                        </select>
-                                        <x-error name="customer_id"></x-error>
-                                    </div>
+                                    @if(isset($order))
+                                        <div class="form-group">
+                                            <label for="customer_id">اسم العميل</label>
+                                            <input type="hidden" name="customer_id" class="form-control" id="customer_id"  value="{{$order->customer->id}}">
+                                            <div class="form-control">{{$order->customer->user->name}}</div>
+                                        </div>
+                                    @else
+                                        <div class="form-group">
+                                            <label for="customer_id">اسم العميل</label>
+                                            <select name="customer_id" id="customer_id" class="form-control">
+                                                @foreach(\App\Customer::all() as $item)
+                                                    <option {{old('customer_id')==$item['id'] ? 'selected' : ''}} value="{{$item['id']}}">{{$item->user['name']}}</option>
+                                                @endforeach
+                                            </select>
+                                            <x-error name="customer_id"></x-error>
+                                        </div>
+                                    @endif
 
-                                    <div class="form-group">
-                                        <label for="order_id">رقم الطلب</label>
-                                        <select name="order_id" id="order_id" class="form-control">
-                                            @foreach(\App\Order::all() as $item)
-                                                <option {{old('order_id')==$item['id'] ? 'selected' : ''}} value="{{$item['id']}}">{{$item->id}}</option>
-                                            @endforeach
-                                        </select>
-                                        <x-error name="order_id"></x-error>
-                                    </div>
+                                    @if(isset($order))
+                                        <div class="form-group">
+                                            <label for="order_id">رقم الطلب</label>
+                                            <input type="hidden" name="order_id" class="form-control" id="order_id" value="{{$order->id}}">
+                                            <div class="form-control">{{$order->id}}</div>
+                                        </div>
+                                    @else
+                                        <div class="form-group">
+                                            <label for="order_id">رقم الطلب</label>
+                                            <select name="order_id" id="order_id" class="form-control">
+                                                @foreach(\App\Order::all() as $item)
+                                                    <option {{old('order_id')==$item['id'] ? 'selected' : ''}} value="{{$item['id']}}">{{$item->id}}</option>
+                                                @endforeach
+                                            </select>
+                                            <x-error name="order_id"></x-error>
+                                        </div>
+                                    @endif
+
+
                                     <div class="form-group">
                                         <label for="cat_id">القسم</label>
                                         <select name="cat_id" id="cat_id" class="form-control">
