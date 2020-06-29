@@ -67,6 +67,7 @@
                             <table id="cats" class="table table-striped">
                                 <thead>
                                 <tr>
+                                    <th>رقم الطلب</th>
                                     <th>اسم العميل</th>
                                     <th>القسم</th>
                                     <th>العنوان</th>
@@ -80,6 +81,7 @@
                                 </thead>
                                 @foreach($orders as $item)
                                     <tr>
+                                        <td>{{$item['id']}}</td>
                                         <td>{{$item->customer->user->name}}</td>
                                         <td>{{$item->category->name}}</td>
                                         <td>{{$item['address']}}</td>

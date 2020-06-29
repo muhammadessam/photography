@@ -37,5 +37,6 @@ Route::prefix('admin')->group(function () {
         Route::get('customer/{customer}/images', 'CustomerController@images')->name('customer_images');
         Route::resource('videos', 'VideoController');
         Route::resource('images', 'ImageController');
+        Route::resource('bills', 'BillController');
     });
 });
