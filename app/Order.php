@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     protected $guarded = [];
-
     public function category()
     {
         return $this->belongsTo(Category::class, 'cat_id', 'id');
@@ -46,5 +45,11 @@ class Order extends Model
             return 'تم القبول نهائيا';
         if ($this->status == 'rejected')
             return 'تم الرفض';
+    }
+    public function city(){
+        return $this->belongsTo(City::class,'city_id','id');
+    }
+    public function country(){
+        return $this->belongsTo(Country::class,'country_id','id');
     }
 }

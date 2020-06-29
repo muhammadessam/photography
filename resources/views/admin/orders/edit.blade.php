@@ -13,7 +13,7 @@
     <div class="container mt-5">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-12">
+                <div class="col-12" id="orderApp">
                     <div class="card">
                         <div class="card-body">
                             <form action="{{route('admin.orders.update', $order)}}" method="post">
@@ -63,6 +63,25 @@
                                     </div>
                                 </div>
 
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label for="country_id">المدينة :</label>
+                                            <select required class="form-control" @change="changeCountry($event)" name="country_id" id="country_id">
+                                                <option value="">اختر ..</option>
+                                                <option v-for="country in countries" :value="country.id"  >@{{ country.name }}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label for="city_id">الحي :</label>
+                                            <select required class="form-control" name="city_id" id="city_id">
+                                                <option v-for="city in cities" :value="city.id" >@{{ city.name }}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="form-group">
@@ -137,4 +156,31 @@
 @endsection
 @section('javascript')
     <x-datatable id="cats"></x-datatable>
+    <script>
+        const order = new Vue({
+            el:'#orderApp',
+            data:{
+                countries:[],
+                cities:[],
+            },
+            methods:{
+                loadC(){
+                    axios.get('{{route('admin.api_countries')}}').then((data)=>{
+                        this.countries = data.data.data;
+                    })
+                },
+                changeCountry(country){
+                    var id = country.target.value ;
+                    for (var i = 0 ;i < this.countries.length ;i++){
+                        if(this.countries[i].id == id ){
+                            this.cities = this.countries[i].cities;
+                        }
+                    }
+                },
+            },
+            created(){
+                this.loadC();
+            }
+        });
+    </script>
 @endsection

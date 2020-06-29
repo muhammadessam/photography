@@ -73,6 +73,8 @@
                                     <th>العنوان</th>
                                     <th>الوقت</th>
                                     <th>الحالة</th>
+                                    <th>المدينة</th>
+                                    <th>الحي</th>
                                     <th>نوع المناسبة خاصة/عامة</th>
                                     <th>اضافة الختم علي الصور</th>
                                     <th>عرض المناسبة علي الصفحة</th>
@@ -87,6 +89,8 @@
                                         <td>{{$item['address']}}</td>
                                         <td>{{$item['date']}}</td>
                                         <td>{{$item->get_status()}}</td>
+                                        <td>{{$item->country->name}}</td>
+                                        <td>{{$item->city->name}}</td>
                                         <td>{{$item['is_special'] ? 'خاصة':'عامة'}}</td>
                                         <td>{{$item['is_right_print']? 'نعم':'لا'}}</td>
                                         <td>{{$item['is_on_our_page'] ? 'نعم' :'لا'}}</td>

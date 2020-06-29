@@ -1,5 +1,7 @@
 <?php
 
+use App\Country;
+use App\Http\Resources\CountryResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,3 +23,7 @@ Route::get('/customer/{id}/orders',function ($id){
     $orders = \App\Customer::find($id)->orders;
     return $orders;
 })->name('api_get_orders');
+Route::get('/countries',function (){
+    $orders = CountryResource::collection(Country::all());
+    return $orders;
+})->name('api_countries');
