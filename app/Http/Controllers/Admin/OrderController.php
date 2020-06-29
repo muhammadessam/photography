@@ -144,4 +144,8 @@ class OrderController extends Controller
         toast('تم', 'success')->position('bottom-start');
         return redirect()->back();
     }
+    public function comments(Order $order){
+        return view('admin.orders.comments',compact('order'));
+    }
+
 }
