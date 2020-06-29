@@ -115,10 +115,167 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">الفواتير</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">
+                                    <i class="fa fa-plus-circle"></i>
+                                </button>
+                                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="card">
+                                                            <div class="card-header">
+                                                                <h3 class="card-title">اضافة فاتورة جديدة</h3>
+                                                            </div>
+                                                            <div class="card-body">
+                                                                <form action="{{route('admin.bills.store')}}" method="post">
+                                                                    @csrf
+                                                                    <input type="hidden" name="customer_id" value="{{$order->customer->id}}">
+                                                                    <input type="hidden" name="order_id" value="{{$order->id}}">
+                                                                    <div class="row">
+                                                                        <div class="col-12">
+                                                                            <div class="form-group">
+                                                                                <label for="cat_id">القسم</label>
+                                                                                <select name="cat_id" id="cat_id" class="form-control">
+                                                                                    @foreach(\App\Category::all() as $item)
+                                                                                        <option {{old('cat_id')==$item['id'] ? 'selected' : ''}} value="{{$item['id']}}">{{$item->name}}</option>
+                                                                                    @endforeach
+                                                                                </select>
+                                                                                <x-error name="cat_id"></x-error>
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <label for="price">المبلغ</label>
+                                                                                <input type="number" step=".1" class="form-control" name="price" id="price" value="{{old('price')}}">
+                                                                                <x-error name="price"></x-error>
+                                                                            </div>
+
+                                                                            <div class="form-group">
+                                                                                <label for="status">حالة الفاتورة</label>
+                                                                                <select name="status" id="status" class="form-control">
+                                                                                    <option {{old('status')=='مسدد' ? 'selected':''}}value="مسدد">مسدد</option>
+                                                                                    <option {{old('status')=='غير مسدد' ? 'selected':''}}value="غير مسدد">غير مسدد</option>
+                                                                                    <option {{old('status')=='متبقي' ? 'selected':''}}value="متبقي">متبقي</option>
+                                                                                </select>
+                                                                                <x-error name="status"></x-error>
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <label for="remains">الباقي في حالة عدم سداد المبلغ كلية</label>
+                                                                                <input type="number" step=".1" class="form-control" name="remains" id="remains" value="{{old('remains')}}">
+                                                                                <x-error name="remains"></x-error>
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <button class="btn btn-primary" type="submit"><i class="fa fa-save"></i> حفظ</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-striped table-bordered table-responsive-lg" id="bills">
+                                <thead>
+                                <tr>
+                                    <th>رقم الفاتورة</th>
+                                    <th>اسم العميل</th>
+                                    <th>رقم الطلب</th>
+                                    <th>القسم</th>
+                                    <th>المبلغ</th>
+                                    <th>الحالة</th>
+                                    <th>القيمة المتبقة</th>
+                                    <th>اجراء</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($order->bills as $item)
+                                    <tr>
+                                        <td>{{$item['id']}}</td>
+                                        <td>{{$item->customer->user->name}}</td>
+                                        <td>{{$item->order->id}}</td>
+                                        <td>{{$item->category->name}}</td>
+                                        <td>{{$item->price}}</td>
+                                        <td>{{$item->status}}</td>
+                                        <td>{{$item->remains}}</td>
+                                        <td class="d-flex">
+                                            <a class="btn btn-info ml-1" href="{{route('admin.bills.show', $item)}}"><i class="fa fa-eye"></i></a>
+                                            <a class="btn btn-warning ml-1" href="{{route('admin.bills.edit', $item)}}"><i class="fa fa-edit"></i></a>
+                                            <form action="{{route('admin.bills.destroy', $item)}}" method="post" onsubmit="return confirm('هل انت متاكد ؟')">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="card col-12">
+                    <div class="card-header">
+                        <h4 class="col-12 text-right">
+                            التعليقات
+                            <span class="btn btn-danger btn-sm">{{$order->comments->count()}}</span>
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        @foreach($order->comments as $comment)
+                            <div class="card col-12 {{$comment['is_admin']?'bg-primary':'bg-secondary'}}">
+                                <div class="card-header">
+                                    <h5>
+                                        {{$comment['is_admin']?'الادارة':'العميل'}}
+                                    </h5>
+                                </div>
+                                <div class="card-body">
+                                    <p>
+                                        {{$comment['body']}}
+                                    </p>
+                                </div>
+                            </div>
+                        @endforeach
+                        @if($order->comments->count() == 0)
+                            <div class="card bg-dark-gradient p-3">
+                                <h4 class="col-12 text-center">لا يوجد تعليقات</h4>
+                            </div>
+                        @endif
+                        <div class="col-12">
+                            <form class="col-12" action="{{route('admin.comments.store')}}" method="post">
+                                @csrf
+                                <input type="hidden" name="order_id" value="{{$order->id}}">
+                                <input type="hidden" name="is_admin" value="1">
+                                <div class="form-group">
+                                    <label for="body">محتوي التعليق</label>
+                                    <textarea name="body" id="body" cols="30" class="form-control" rows="5"></textarea>
+                                </div>
+                                <button type="submit" class="btn-outline-success btn">ارسال</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 @endsection
 @section('javascript')
     <x-datatable id="employees"></x-datatable>
+    <x-datatable id="bills"></x-datatable>
 @endsection
