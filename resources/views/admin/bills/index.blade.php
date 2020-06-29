@@ -13,7 +13,6 @@
                         <div class="icon">
                             <i class="fa fa-money"></i>
                         </div>
-                        <a href="{{route('admin.orders.index')."?status=waiting"}}" class="small-box-footer">اعرض<i class="fa fa-arrow-circle-left"></i></a>
                     </div>
                 </div>
 
@@ -27,7 +26,6 @@
                         <div class="icon">
                             <i class="fa fa-dollar"></i>
                         </div>
-                        <a href="{{route('admin.orders.index')."?status=final"}}" class="small-box-footer">اعرض <i class="fa fa-arrow-circle-left"></i></a>
                     </div>
                 </div>
 
@@ -41,7 +39,6 @@
                         <div class="icon">
                             <i class="ion ion-"></i>
                         </div>
-                        <a href="{{route('admin.orders.index')."?status=rejected"}}" class="small-box-footer">اعرض<i class="fa fa-arrow-circle-left"></i></a>
                     </div>
                 </div>
 
