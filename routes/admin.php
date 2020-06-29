@@ -33,10 +33,13 @@ Route::prefix('admin')->group(function () {
         Route::post('order-star/{order}/{employee}', 'OrderController@starEmployee')->name('order-employee-star');
         Route::resource('country', 'CountryController');
         Route::resource('city', 'CityController');
-        Route::get('customer/{customer}/videos', 'CustomerController@videos')->name('customer_videos');
-        Route::get('customer/{customer}/images', 'CustomerController@images')->name('customer_images');
-        Route::resource('videos', 'VideoController');
-        Route::resource('images', 'ImageController');
+
+        Route::get('customer/{customer}/videos','CustomerController@videos')->name('customer_videos');
+        Route::get('customer/{customer}/images','CustomerController@images')->name('customer_images');
+        Route::resource('videos','AdminVideoController');
+        Route::resource('images','AdminImageController');
+        Route::resource('comments','CommentController');
+        Route::get('order/{order}/comments','OrderController@comments')->name('order_comments');
         Route::resource('bills', 'BillController');
         Route::get('add-order-bill/{order}', 'BillController@createOrderBill')->name('add-order-bill');
     });

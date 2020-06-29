@@ -94,6 +94,7 @@
                                             <a class="btn btn-secondary ml-2" href="{{route('admin.add-order-bill', $item)}}" title="اضافة فاتورة"><i class="fa fa-plus-square-o"></i></a>
                                             <a class="btn btn-secondary ml-2" href="{{route('admin.orders.show', $item)}}"><i class="fa fa-eye"></i></a>
                                             <a class="btn btn-primary ml-2" href="{{route('admin.orders.edit', $item)}}"><i class="fa fa-edit"></i></a>
+                                            <a class="btn btn-info ml-2" title="التعليقات" href="{{route('admin.order_comments', $item)}}"><i class="fa fa-comment"></i></a>
                                             <form action="{{route('admin.orders.destroy', $item)}}" method="post" onsubmit="return confirm('هل انت متاكد ؟')">
                                                 @method('DELETE')
                                                 @csrf

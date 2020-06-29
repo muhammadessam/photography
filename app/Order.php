@@ -28,6 +28,9 @@ class Order extends Model
     public function images(){
         return $this->hasMany(Image::class,'order_id','id');
     }
+    public function comments(){
+        return $this->hasMany(Comment::class,'order_id','id');
+    }
     public function get_status()
     {
         if ($this->status == 'waiting')

@@ -148,6 +148,11 @@ class OrderController extends Controller
         return redirect()->back();
     }
 
+    public function comments(Order $order){
+        return view('admin.orders.comments',compact('order'));
+    }
+
+
     public function starEmployee(Request $request, Order $order, Employee $employee)
     {
         $request->validate([
