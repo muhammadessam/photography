@@ -12,30 +12,18 @@
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <!-- Add icons to the links using the .nav-icon class
-                     with font-awesome or any other icon font library -->
-                <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fa fa-home"></i>
-                        <p>
-                            الرئيسية
-                            <i class="right fa fa-angle-left"></i>
-                        </p>
+
+                <li class="nav-item">
+                    <a href="{{route('admin.home')}}" class="nav-link">
+                        <i class="fa fa-circle nav-icon"></i>
+                        <p>الداش بورد</p>
                     </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{route('admin.home')}}" class="nav-link">
-                                <i class="fa fa-circle nav-icon"></i>
-                                <p>الداش بورد</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{url('/')}}" class="nav-link" target="_blank">
-                                <i class="fa fa-circle nav-icon"></i>
-                                <p>الواجهة الامامية</p>
-                            </a>
-                        </li>
-                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="{{url('/')}}" class="nav-link" target="_blank">
+                        <i class="fa fa-home nav-icon"></i>
+                        <p>الواجهة الامامية</p>
+                    </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{route('admin.settings.index')}}" class="nav-link">
@@ -78,6 +66,15 @@
                         <p>
                             الطلبات
                             <i class="right badge badge-danger">{{\App\Order::all()->count()}}</i>
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('admin.bills.index')}}" class="nav-link {{request()->routeIs('admin.bills.*') ? 'active':''}}">
+                        <i class="nav-icon fa fa-first-order"></i>
+                        <p>
+                            الفواتير
+                            <i class="right badge badge-danger">{{\App\Bill::all()->count()}}</i>
                         </p>
                     </a>
                 </li>

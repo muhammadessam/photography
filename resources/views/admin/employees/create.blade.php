@@ -39,6 +39,18 @@
                         </select>
                     </div>
                     <div class="form-group">
+                        <label for="nationality">الجنسية</label>
+                        <input type="text" class="form-control" name="nationality" id="nationality">
+                    </div>
+                    <div class="form-group">
+                        <label for="is_available">الحالة</label>
+                        <select name="is_available" class="form-control" id="is_available">
+                            <option value="1">نعم</option>
+                            <option value="0">لا</option>
+
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <input type="submit" class="btn btn-outline-success btn-block" value="حفظ" name="" id="">
                     </div>
                 </form>

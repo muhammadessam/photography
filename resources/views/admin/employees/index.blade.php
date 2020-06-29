@@ -13,7 +13,7 @@
                     </a>
                 </div>
             </div>
-            <div class="card-body">
+            <div class="card-body" style="overflow: auto">
                 <table id="employees" class="table table-bordered text-center">
                     <thead>
                     <td>الاسم</td>
@@ -21,6 +21,8 @@
                     <td>البريد</td>
                     <td>الخبرة</td>
                     <td>القسم</td>
+                    <td>الحالة</td>
+                    <td>الجنسية</td>
                     <td>تحكم</td>
                     </thead>
                     @foreach(@App\Employee::all() as $employee)
@@ -30,18 +32,14 @@
                             <td>{{$employee->email}}</td>
                             <td>{{$employee->exp}}</td>
                             <td>{{$employee->category->name}}</td>
-                            <td>
+                            <td>{{$employee->is_available ? 'متاح':'مشغول'}}</td>
+                            <td>{{$employee->nationality}}</td>
+                            <td class="d-flex">
+                                <a href="{{route('admin.employees.show', $employee)}}" class="btn btn-success ml-1"><i class="fa fa-eye"></i></a>
+                                <a class="btn btn-primary ml-1" href="{{route('admin.employees.edit',$employee)}}"><i class="fa fa-edit"></i></a>
                                 <form action="{{route('admin.employees.destroy',$employee)}}" method="post">
                                     @csrf
                                     @method('DELETE')
-                                    <a class="btn btn-primary" href="{{route('admin.employees.edit',$employee)}}">
-                                        <i class="fa fa-edit"></i>
-                                    </a>
-
-                                    <a href="#" class="btn btn-sm btn-success">
-                                        التغطيات
-                                        <span class="btn btn-sm btn-danger">0</span>
-                                    </a>
                                     <button class="btn btn-danger" type="submit">
                                         <i class="fa fa-trash"></i>
                                     </button>
@@ -49,13 +47,6 @@
                             </td>
                         </tr>
                     @endforeach
-                    @if(@App\Employee::all()->count() == 0)
-                        <tr>
-                            <th colspan="5">
-                                <h4 class="col-12 text-center"> لم يسجل </h4>
-                            </th>
-                        </tr>
-                    @endif
                 </table>
             </div>
         </div>

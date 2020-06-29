@@ -17,7 +17,10 @@ class OrderController extends Controller
      */
     public function index()
     {
-        return view('admin.orders.index');
+        $orders = Order::all();
+        if (\request('status'))
+            $orders = $orders->where('status', \request('status'));
+        return view('admin.orders.index', compact('orders'));
     }
 
     /**
@@ -144,8 +147,21 @@ class OrderController extends Controller
         toast('تم', 'success')->position('bottom-start');
         return redirect()->back();
     }
+
     public function comments(Order $order){
         return view('admin.orders.comments',compact('order'));
     }
 
+
+    public function starEmployee(Request $request, Order $order, Employee $employee)
+    {
+        $request->validate([
+            'star' => 'required|numeric|max:5|min:1'
+        ]);
+        $employee->orders()->find($order)->pivot->update([
+            'stars' => $request['star']
+        ]);
+        $this->actionDoneSuccessfully();
+        return redirect()->back();
+    }
 }
