@@ -2,12 +2,12 @@
 @section('content')
     <div class="content-header">
         <div class="container-fluid">
-            <div class="row mb-2 mt-5">
-                <div class="col-lg-4 col-6">
+            <div class="row mb-2 mt-5 justify-content-center">
+                <div class="col-lg-3 col-6">
                     <!-- small box -->
                     <div class="small-box bg-info-gradient">
                         <div class="inner">
-                            <h3>الطلبات</h3>
+                            <h5>الطلبات</h5>
 
                             <p>المنتظرة {{\App\Order::all()->where('status', 'waiting')->count()}}</p>
                         </div>
@@ -18,11 +18,11 @@
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-6">
+                <div class="col-lg-3 col-6">
                     <!-- small box -->
                     <div class="small-box bg-success-gradient">
                         <div class="inner">
-                            <h3>الطلبات</h3>
+                            <h5>الطلبات</h5>
                             <p>المكتملة {{\App\Order::all()->where('status', 'final')->count()}}</p>
                         </div>
                         <div class="icon">
@@ -32,11 +32,11 @@
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-6">
+                <div class="col-lg-3 col-6">
                     <!-- small box -->
                     <div class="small-box bg-danger-gradient">
                         <div class="inner">
-                            <h3>الطلبات</h3>
+                            <h5>الطلبات</h5>
 
                             <p>المرفوضة {{\App\Order::all()->where('status', 'rejected')->count()}}</p>
                         </div>
@@ -63,8 +63,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card-body overflow-auto">
-                            <table id="cats" class="table table-striped">
+                        <div class="card-body overflow-auto" style="overflow: auto">
+                            <table id="cats" class="table table-striped table-responsive-lg">
                                 <thead>
                                 <tr>
                                     <th>رقم الطلب</th>
@@ -91,6 +91,7 @@
                                         <td>{{$item['is_right_print']? 'نعم':'لا'}}</td>
                                         <td>{{$item['is_on_our_page'] ? 'نعم' :'لا'}}</td>
                                         <td class="d-flex">
+                                            <a class="btn btn-secondary ml-2" href="{{route('admin.add-order-bill', $item)}}" title="اضافة فاتورة"><i class="fa fa-plus-square-o"></i></a>
                                             <a class="btn btn-secondary ml-2" href="{{route('admin.orders.show', $item)}}"><i class="fa fa-eye"></i></a>
                                             <a class="btn btn-primary ml-2" href="{{route('admin.orders.edit', $item)}}"><i class="fa fa-edit"></i></a>
                                             <form action="{{route('admin.orders.destroy', $item)}}" method="post" onsubmit="return confirm('هل انت متاكد ؟')">

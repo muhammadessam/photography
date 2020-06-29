@@ -38,5 +38,6 @@ Route::prefix('admin')->group(function () {
         Route::resource('videos', 'VideoController');
         Route::resource('images', 'ImageController');
         Route::resource('bills', 'BillController');
+        Route::get('add-order-bill/{order}', 'BillController@createOrderBill')->name('add-order-bill');
     });
 });

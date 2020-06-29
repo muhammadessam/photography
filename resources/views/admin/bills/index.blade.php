@@ -1,8 +1,54 @@
 @extends('admin.layout.layout')
 @section('content')
-    <div class="row">
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2 mt-5 justify-content-center">
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-info-gradient">
+                        <div class="inner">
+                            <h6>اجمالي الفاتير المسددة</h6>
+                            <p>{{\App\Bill::all()->where('status', 'مسدد')->pluck('price')->sum()}}</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-money"></i>
+                        </div>
+                        <a href="{{route('admin.orders.index')."?status=waiting"}}" class="small-box-footer">اعرض<i class="fa fa-arrow-circle-left"></i></a>
+                    </div>
+                </div>
 
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-success-gradient">
+                        <div class="inner">
+                            <h6>اجمالي الفواتير الغير مسددة</h6>
+                            <p>{{\App\Bill::all()->where('status', 'غير مسدد')->pluck('price')->sum()}}</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-dollar"></i>
+                        </div>
+                        <a href="{{route('admin.orders.index')."?status=final"}}" class="small-box-footer">اعرض <i class="fa fa-arrow-circle-left"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-danger-gradient">
+                        <div class="inner">
+                            <h6>اجمالي الباقي في الفواتير</h6>
+                            <p>{{\App\Bill::all()->where('status', 'متبقي')->pluck('remains')->sum()}}</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-"></i>
+                        </div>
+                        <a href="{{route('admin.orders.index')."?status=rejected"}}" class="small-box-footer">اعرض<i class="fa fa-arrow-circle-left"></i></a>
+                    </div>
+                </div>
+
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
     </div>
+
     <div class="row mt-5">
         <div class="col-12">
             <div class="card">

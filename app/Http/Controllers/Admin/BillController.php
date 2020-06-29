@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Bill;
+use App\Order;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -119,4 +120,11 @@ class BillController extends Controller
         $this->actionDoneSuccessfully();
         return redirect()->back();
     }
+
+
+    public function createOrderBill(Request $request, Order $order)
+    {
+        return view('admin.bills.create', compact('order'));
+    }
+
 }
