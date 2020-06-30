@@ -33,6 +33,7 @@ Route::prefix('admin')->group(function () {
         Route::post('order-star/{order}/{employee}', 'OrderController@starEmployee')->name('order-employee-star');
         Route::resource('country', 'CountryController');
         Route::resource('city', 'CityController');
+        Route::resource('contact', 'ContactController');
 
         Route::get('customer/{customer}/videos','CustomerController@videos')->name('customer_videos');
         Route::get('customer/{customer}/images','CustomerController@images')->name('customer_images');
@@ -46,5 +47,7 @@ Route::prefix('admin')->group(function () {
         Route::resource('bills', 'BillController');
         Route::get('add-order-bill/{order}', 'BillController@createOrderBill')->name('add-order-bill');
         Route::get('employee/{employee}/orders','EmployeeController@orders')->name('emp_orders');
+        Route::get('contact-reply/{contact}', 'ContactController@showReply')->name('showReplyForm');
+        Route::post('contact-reply/{contact}', 'ContactController@sendReply')->name('sendReply');
     });
 });

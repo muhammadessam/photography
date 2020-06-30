@@ -43,6 +43,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{route('admin.categories.index')}}" class="nav-link {{request()->routeIs('admin.categories.*') ? 'active':''}}">
+                        <i class="nav-icon fa fa-list"></i>
+                        <p>
+                            الاقسام
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{route('admin.employees.index')}}" class="nav-link {{request()->routeIs('admin.employees.*') ? 'active':''}}">
                         <i class="nav-icon fas fa-users"></i>
                         <p>
@@ -97,14 +105,6 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{route('admin.categories.index')}}" class="nav-link {{request()->routeIs('admin.categories.*') ? 'active':''}}">
-                        <i class="nav-icon fa fa-list"></i>
-                        <p>
-                            الاقسام
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
                     <a href="{{route('admin.page.index')}}" class="nav-link {{request()->routeIs('admin.page.*') ? 'active':''}}">
                         <i class="nav-icon fa fa-file"></i>
                         <p>
@@ -119,6 +119,15 @@
                         <p>
                             المدن
                             <i class="right badge badge-danger">{{\App\Country::all()->count()}}</i>
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('admin.contact.index')}}" class="nav-link {{request()->routeIs('admin.contact.*') ? 'active':''}}">
+                        <i class="nav-icon fa fa-file"></i>
+                        <p>
+                            اتصل بنا
+                            <i class="right badge badge-danger">0</i>
                         </p>
                     </a>
                 </li>
