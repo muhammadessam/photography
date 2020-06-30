@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Admin;
 use App\Admin;
 use App\AdminImage;
 use App\Http\Controllers\Controller;
+use App\Setting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
-
+use Intervention\Image\Facades\Image;
 class AdminImageController extends Controller
 {
     /**
@@ -40,9 +42,14 @@ class AdminImageController extends Controller
     public function store(Request $request)
     {
         if ($request->hasFile('image')){
-            $img = Storage::disk('public')->putFile('images',$request->file('image'));
+            $image = Image::make($request->file('image'));
+            $logo = Image::make(public_path(Setting::first()->logo))->opacity(50)->resize(100,100);
+            $logo->save(public_path('logos/watermark.png'));
+            $image->insert(public_path('logos/watermark.png'), 'bottom-right', 10, 10);
+            $new_name = 'images/'.time().'.'.$request->file('image')->extension();
+            $image->save(public_path($new_name));
             AdminImage::create([
-                'image'     =>$img,
+                'image'     =>  $new_name,
             ]);
             alert('','تم الاضافة بنجاح','success');
             return Redirect::back();

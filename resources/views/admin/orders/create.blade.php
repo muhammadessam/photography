@@ -62,7 +62,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-6">
+                                    <div class="col-4">
                                         <div class="form-group">
                                             <label for="country_id">المدينة :</label>
                                             <select class="form-control" @change="changeCountry($event)" name="country_id" id="country_id">
@@ -71,11 +71,25 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-4">
                                         <div class="form-group">
                                             <label for="city_id">الحي :</label>
                                             <select class="form-control" name="city_id" id="city_id">
                                                 <option v-for="city in cities" :value="city.id" >@{{ city.name }}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="form-group">
+                                            <label for="day">اليوم :</label>
+                                            <select class="form-control" name="day" id="day">
+                                                <option  value="السبت" >السبت</option>
+                                                <option  value="الاحد" >الاحد</option>
+                                                <option  value="الاثنين" >الاثنين</option>
+                                                <option  value="الثلاثاء" >الثلاثاء</option>
+                                                <option  value="الاربعاء" >الاربعاء</option>
+                                                <option  value="الخميس" >الخميس</option>
+                                                <option  value="الجمعة" >الجمعة</option>
                                             </select>
                                         </div>
                                     </div>

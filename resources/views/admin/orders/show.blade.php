@@ -38,6 +38,14 @@
                                         <label for="customer_id">الوقت</label>
                                         <div class="form-control">{{$order['date']}}</div>
                                     </div>
+                                    <div class="form-group">
+                                        <label for="address">المدينة :</label>
+                                        <div class="form-control">{{$order->country->name}}</div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="is_special">الحي :</label>
+                                        <div class="form-control">{{$order->city->name}}</div>
+                                    </div>
                                 </div>
 
                                 <div class="col-6">
@@ -56,6 +64,10 @@
                                     <div class="form-group">
                                         <label for="is_special">عرض المناسبة علي صفحاتنا :</label>
                                         <div class="form-control">{{$order['is_on_our_page'] ? 'نعم':'لا'}}</div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="is_special">اليوم :</label>
+                                        <div class="form-control">{{$order->day}}</div>
                                     </div>
                                 </div>
                             </div>

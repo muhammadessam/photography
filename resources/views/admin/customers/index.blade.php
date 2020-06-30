@@ -43,9 +43,9 @@
                                                 الطلبات
                                                 <span class="btn btn-sm btn-danger">{{$customer->orders->count()}}</span>
                                             </a>
-                                            <a href="#" class="btn btn-sm btn-success">
+                                            <a href="{{route('admin.customer_bills',$customer)}}" class="btn btn-sm btn-success">
                                                 الفواتير
-                                                <span class="btn btn-sm btn-danger">0</span>
+                                                <span class="btn btn-sm btn-danger">{{$customer->bills->count()}}</span>
                                             </a>
                                             <a href="{{route('admin.customer_images',$customer)}}" class="btn btn-sm btn-success">
                                                 الصور

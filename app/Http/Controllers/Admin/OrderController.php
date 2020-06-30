@@ -136,9 +136,17 @@ class OrderController extends Controller
     public function addEmployee(Request $request, Order $order)
     {
         $request->validate(['employee_id' => 'required']);
-        $order->employees()->syncWithoutDetaching($request['employee_id']);
-        toast('تم', 'success')->position('bottom-start');
-        return redirect()->back();
+        if ($order->status == "waiting"){
+            alert('','ماذال الطلب بالنتظار','error');
+            return redirect()->back();
+        }elseif($order->status == "rejected"){
+            alert('','الطلب مرفوض','error');
+            return redirect()->back();
+        }else{
+            $order->employees()->syncWithoutDetaching($request['employee_id']);
+            toast('تم', 'success')->position('bottom-start');
+            return redirect()->back();
+        }
     }
 
     public function removeEmployee(Request $request, Order $order, Employee $employee)

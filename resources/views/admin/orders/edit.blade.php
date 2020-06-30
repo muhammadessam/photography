@@ -64,20 +64,36 @@
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-6">
+                                    <div class="col-4">
                                         <div class="form-group">
                                             <label for="country_id">المدينة :</label>
                                             <select required class="form-control" @change="changeCountry($event)" name="country_id" id="country_id">
-                                                <option value="">اختر ..</option>
+                                                <option value="{{$order->country->id}}">{{$order->country->name}}</option>
                                                 <option v-for="country in countries" :value="country.id"  >@{{ country.name }}</option>
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-4">
                                         <div class="form-group">
                                             <label for="city_id">الحي :</label>
                                             <select required class="form-control" name="city_id" id="city_id">
+                                                <option value="{{$order->city->id}}">{{$order->city->name}}</option>
                                                 <option v-for="city in cities" :value="city.id" >@{{ city.name }}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="form-group">
+                                            <label for="day">اليوم :</label>
+                                            <select class="form-control" name="day" id="day">
+                                                <option value="{{$order->day}}">{{$order->day}}</option>
+                                                <option  value="السبت" >السبت</option>
+                                                <option  value="الاحد" >الاحد</option>
+                                                <option  value="الاثنين" >الاثنين</option>
+                                                <option  value="الثلاثاء" >الثلاثاء</option>
+                                                <option  value="الاربعاء" >الاربعاء</option>
+                                                <option  value="الخميس" >الخميس</option>
+                                                <option  value="الجمعة" >الجمعة</option>
                                             </select>
                                         </div>
                                     </div>

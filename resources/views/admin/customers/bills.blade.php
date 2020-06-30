@@ -8,7 +8,7 @@
                     <div class="small-box bg-info-gradient">
                         <div class="inner">
                             <h6>اجمالي الفواتير المسددة</h6>
-                            <p>{{\App\Bill::all()->where('status', 'مسدد')->pluck('price')->sum()}}</p>
+                            <p>{{$customer->bills->where('status', 'مسدد')->pluck('price')->sum()}}</p>
                         </div>
                         <div class="icon">
                             <i class="fa fa-money"></i>
@@ -21,7 +21,7 @@
                     <div class="small-box bg-success-gradient">
                         <div class="inner">
                             <h6>اجمالي الفواتير الغير مسددة</h6>
-                            <p>{{\App\Bill::all()->where('status', 'غير مسدد')->pluck('price')->sum()}}</p>
+                            <p>{{$customer->bills->where('status', 'غير مسدد')->pluck('price')->sum()}}</p>
                         </div>
                         <div class="icon">
                             <i class="fa fa-dollar"></i>
@@ -34,7 +34,7 @@
                     <div class="small-box bg-danger-gradient">
                         <div class="inner">
                             <h6>اجمالي الباقي في الفواتير</h6>
-                            <p>{{\App\Bill::all()->where('status', 'متبقي')->pluck('remains')->sum()}}</p>
+                            <p>{{$customer->bills->where('status', 'متبقي')->pluck('remains')->sum()}}</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-"></i>
@@ -70,7 +70,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach(\App\Bill::all() as $item)
+                        @foreach($customer->bills as $item)
                             <tr>
                                 <td>{{$item['id']}}</td>
                                 <td>{{$item->customer->user->name}}</td>

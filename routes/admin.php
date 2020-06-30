@@ -36,8 +36,11 @@ Route::prefix('admin')->group(function () {
 
         Route::get('customer/{customer}/videos','CustomerController@videos')->name('customer_videos');
         Route::get('customer/{customer}/images','CustomerController@images')->name('customer_images');
+        Route::get('customer/{customer}/bills','CustomerController@bills')->name('customer_bills');
         Route::resource('videos','AdminVideoController');
         Route::resource('images','AdminImageController');
+        Route::resource('customerImage','ImageController');
+        Route::resource('customerVideo','VideoController');
         Route::resource('comments','CommentController');
         Route::get('order/{order}/comments','OrderController@comments')->name('order_comments');
         Route::resource('bills', 'BillController');
