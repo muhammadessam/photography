@@ -15,8 +15,8 @@
 
                 <li class="nav-item">
                     <a href="{{route('admin.home')}}" class="nav-link">
-                        <i class="fa fa-circle nav-icon"></i>
-                        <p>الداش بورد</p>
+                        <i class="fas fa-tools nav-icon"></i>
+                        <p>لوحة التحكم</p>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -35,7 +35,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{route('admin.admins.index')}}" class="nav-link {{request()->routeIs('admin.admins.*') ? 'active':''}}">
-                        <i class="nav-icon fa fa-user-plus"></i>
+                        <i class="nav-icon  fas fa-user-tie"></i>
                         <p>
                             المشرفين
                         </p>
@@ -44,7 +44,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{route('admin.employees.index')}}" class="nav-link {{request()->routeIs('admin.employees.*') ? 'active':''}}">
-                        <i class="nav-icon fa fa-user-plus"></i>
+                        <i class="nav-icon fas fa-users"></i>
                         <p>
                             الموظفين
                         </p>
@@ -53,7 +53,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{route('admin.customers.index')}}" class="nav-link {{request()->routeIs('admin.customers.*') ? 'active':''}}">
-                        <i class="nav-icon fa fa-user-plus"></i>
+                        <i class="nav-icon fas fa-user-friends"></i>
                         <p>
                             العملاء
                         </p>
@@ -62,7 +62,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{route('admin.orders.index')}}" class="nav-link {{request()->routeIs('admin.orders.*') ? 'active':''}}">
-                        <i class="nav-icon fa fa-first-order"></i>
+                        <i class="nav-icon fas fa-truck-loading"></i>
                         <p>
                             الطلبات
                             <i class="right badge badge-danger">{{\App\Order::all()->count()}}</i>
@@ -71,7 +71,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{route('admin.bills.index')}}" class="nav-link {{request()->routeIs('admin.bills.*') ? 'active':''}}">
-                        <i class="nav-icon fa fa-first-order"></i>
+                        <i class="nav-icon fas fa-file-invoice-dollar"></i>
                         <p>
                             الفواتير
                             <i class="right badge badge-danger">{{\App\Bill::all()->count()}}</i>

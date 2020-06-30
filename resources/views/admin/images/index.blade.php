@@ -8,7 +8,7 @@
     </style>
     <div class="container pt-3">
         <div class="card">
-            <div class="card-header row">
+            <div class="card-header row w-100 m-0">
                 <h4 class="col-11 text-right">معرض الصور</h4>
                 <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#exampleModalCenter">
                     <i class="fa fa-plus"></i>
@@ -36,26 +36,27 @@
                     </div>
                 </div>
             </div>
-            <div class="card-body">
+            <div class="card-body my-m-img">
                 <div class="row">
                     @foreach(@App\AdminImage::all() as $image)
                         <div class="col-4 p-1">
                             <div class="card bg-primary-gradient">
-                                <div class="card-header row">
+                                <div class="card-header row w-100 m-0">
                                     <form action="{{route('admin.images.destroy',$image)}}" method="post">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-outline-danger">
+                                        <button type="submit" class="btn btn-sm btn-danger delete-t">
                                             <i class="fa fa-trash"></i>
                                         </button>
                                     </form>
                                 </div>
-                                <div class="card-body">
+                                <div class="card-body p-0">
                                     <img class="img-thumbnail" width="100%" src="{{asset($image->image)}}">
                                 </div>
                             </div>
                         </div>
                     @endforeach
+
                 </div>
             </div>
         </div>

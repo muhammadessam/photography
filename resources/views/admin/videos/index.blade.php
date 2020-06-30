@@ -8,7 +8,7 @@
     </style>
     <div class="container pt-3">
         <div class="card">
-            <div class="card-header row">
+            <div class="card-header row w-100 m-0">
                 <h4 class="col-11 text-right">معرض الفيديوهات</h4>
                 <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#exampleModalCenter">
                     <i class="fa fa-plus"></i>
@@ -36,12 +36,12 @@
                     </div>
                 </div>
             </div>
-            <div class="card-body">
+            <div class="card-body my-m-img">
                 <div class="row">
                     @foreach(@App\AdminVideo::all() as $video)
                         <div class="col-4 p-1">
                             <div class="card bg-primary-gradient">
-                                <div class="card-header row">
+                                <div class="card-header row w-100 m-0">
                                     <form action="{{route('admin.videos.destroy',$video)}}" method="post">
                                         @csrf
                                         @method('DELETE')
@@ -50,7 +50,7 @@
                                         </button>
                                     </form>
                                 </div>
-                                <div class="card-body">
+                                <div class="card-body text-dark">
                                     {!! $video->video !!}
                                 </div>
                             </div>

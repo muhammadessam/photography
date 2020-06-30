@@ -3,14 +3,14 @@
 @include('admin.layout.header')
 
 <body class="hold-transition sidebar-mini layout-fixed">
-<div class="wrapper">
+<div class="wrapper admin-mr my-btns">
 
 
     @include('admin.layout.navbar')
     @include('admin.layout.sidebar')
 
     <div class="content-wrapper">
-        <section class="content">
+        <section class="content ">
             <div class="container-fluid">
                 @yield('content')
             </div>

@@ -1,7 +1,7 @@
 @extends('admin.layout.layout')
 @section('content')
     <div class="container pt-3">
-        <h4 class="col-12 text-center">
+        <h4 class="col-12 text-center my-4">
             التعليقات
             <span class="btn btn-danger btn-sm">{{$order->comments->count()}}</span>
         </h4>
