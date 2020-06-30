@@ -84,9 +84,10 @@ class AdminVideoController extends Controller
      * @param  \App\AdminVideo  $adminVideo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(AdminVideo $adminVideo)
+    public function destroy($adminVideo)
     {
-        $adminVideo->delete();
+        $ad = AdminVideo::find($adminVideo);
+        $ad->delete();
         alert('','تم الحذف بنجاح','success');
         return Redirect::back();
     }

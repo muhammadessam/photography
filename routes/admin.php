@@ -45,5 +45,6 @@ Route::prefix('admin')->group(function () {
         Route::get('order/{order}/comments','OrderController@comments')->name('order_comments');
         Route::resource('bills', 'BillController');
         Route::get('add-order-bill/{order}', 'BillController@createOrderBill')->name('add-order-bill');
+        Route::get('employee/{employee}/orders','EmployeeController@orders')->name('emp_orders');
     });
 });

@@ -99,9 +99,10 @@ class AdminImageController extends Controller
      * @param  \App\AdminImage  $adminImage
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(AdminImage $adminImage)
+    public function destroy($adminImage)
     {
-        $adminImage->delete();
+        $ai = AdminImage::find($adminImage);
+        $ai->delete();
         alert('','تم الحذف بنجاح','success');
         return Redirect::back();
     }

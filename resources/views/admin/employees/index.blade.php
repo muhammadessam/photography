@@ -37,6 +37,7 @@
                             <td class="d-flex">
                                 <a href="{{route('admin.employees.show', $employee)}}" class="btn btn-success ml-1"><i class="fa fa-eye"></i></a>
                                 <a class="btn btn-primary ml-1" href="{{route('admin.employees.edit',$employee)}}"><i class="fa fa-edit"></i></a>
+                                <a class="btn btn-warning ml-1" href="{{route('admin.emp_orders',$employee)}}"><i class="fa fa-first-order"></i></a>
                                 <form action="{{route('admin.employees.destroy',$employee)}}" method="post">
                                     @csrf
                                     @method('DELETE')

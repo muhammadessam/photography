@@ -114,4 +114,8 @@ class EmployeeController extends Controller
         $this->actionDoneSuccessfully();
         return \redirect()->back();
     }
+    public function orders(Employee $employee){
+        $orders = $employee->orders;
+        return view('admin.employees.orders',compact('orders'));
+    }
 }
