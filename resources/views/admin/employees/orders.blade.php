@@ -7,11 +7,6 @@
                     <div class="card">
                         <div class="card-header" style="text-align: right !important;">
                             <h3 class="card-title">الطلبات</h3>
-                            <div class="card-tools">
-                                <div class="my-btn">
-                                    <a class="btn btn-success" href="{{route('admin.orders.create')}}"><i class="fa fa-plus-circle"></i></a>
-                                </div>
-                            </div>
                         </div>
                         <div class="card-body overflow-auto" style="overflow: auto">
                             <table id="cats" class="table table-striped table-responsive-lg bo-gal">
