@@ -30,4 +30,6 @@ Route::middleware(['auth'])->group( function ()
 {
     Route::get('/account', 'AccountController@index')->name('account');
     Route::get('/account/orders', 'OrderController@index')->name('account.orders');
+    Route::get('/account/orders/create', 'OrderController@showOrderCreationForm')->name('account.orders.create');
+    Route::post('/account/orders/store', 'OrderController@store')->name('account.orders.store');
 });

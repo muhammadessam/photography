@@ -8,6 +8,13 @@
                 <h4 class="text-center font-weight-bold">مناسباتى</h4>
                 <span class="d-block text-center"> <img src="{{ asset('images/flower.svg') }}" alt=""></span>
             </div>
+            @if(session()->has('msg'))
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <div class="alert alert-success">{{ session()->get('msg') }}</div>
+                    </div>
+                </div>
+            @endif
             <div class="bg-white border par-tb mt-5">
                 @if($orders->count() > 0)
                     <table class="table mb-2 border-top-0">
