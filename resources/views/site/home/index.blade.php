@@ -1,4 +1,4 @@
-@extends('site.layouts.index')
+@extends('site.layouts.base')
 @section('content')
     <div class="">
         <header>
@@ -12,8 +12,7 @@
                             <div class="mt-3 mb-4 text-center tnb">
                                 <span class="d-inline-block line"></span>
                             </div>
-                            <div class="text-center"><a href="" class="text-white ml-2">التسجيل</a> | <a href=""
-                                                                                                         class="text-white mr-2">الدخول</a></div>
+                            <div class="text-center"><a href="{{ route('register') }}" class="text-white ml-2">التسجيل</a> | <a href="{{ route('login') }}" class="text-white mr-2">الدخول</a></div>
                         </div>
                     </div>
                 </div>
@@ -26,8 +25,7 @@
                             <div class="mt-3 mb-4 text-center tnb">
                                 <span class="d-inline-block line"></span>
                             </div>
-                            <div class="text-center"><a href="" class="text-white ml-2">التسجيل</a> | <a href=""
-                                                                                                         class="text-white mr-2">الدخول</a></div>
+                            <div class="text-center"><a href="{{ route('register') }}" class="text-white ml-2">التسجيل</a> | <a href="{{ route('login') }}" class="text-white mr-2">الدخول</a></div>
                         </div>
                     </div>
                 </div>
@@ -40,8 +38,7 @@
                             <div class="mt-3 mb-4 text-center tnb">
                                 <span class="d-inline-block line"></span>
                             </div>
-                            <div class="text-center"><a href="" class="text-white ml-2">التسجيل</a> | <a href=""
-                                                                                                         class="text-white mr-2">الدخول</a></div>
+                            <div class="text-center"><a href="{{ route('register') }}" class="text-white ml-2">التسجيل</a> | <a href="{{ route('login') }}" class="text-white mr-2">الدخول</a></div>
                         </div>
                     </div>
                 </div>
