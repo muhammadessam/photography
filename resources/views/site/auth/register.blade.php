@@ -1,4 +1,4 @@
-@extends('site.layouts.index')
+@extends('site.layouts.base')
 
 @section('content')
 <section class="my-5 register">

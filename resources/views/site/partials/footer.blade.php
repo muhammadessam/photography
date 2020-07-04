@@ -1,4 +1,3 @@
-
 <footer>
     <div class="bg-light-color">
         <div class=" last-footer container ">
@@ -8,19 +7,8 @@
             </div>
                 <div>
                     <a href="https://www.const-tech.com.sa/" target="_black"><img class="c-logo" src="{{asset('images/company-logo.svg')}}"
-                                                                                  alt=""></a>
+                                                                                alt=""></a>
             </div>
         </div>
     </div>
 </footer>
-
-<script src="{{asset('js/jquery-3.3.1.min.js')}}"></script>
-<script src="{{asset('js/popper.min.js')}}"></script>
-<script src="{{asset('js/bootstrap.min.js')}}"></script>
-<script src="{{asset('js/owl.carousel.min.js')}}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.js"></script>
-<script src="{{asset('js/jquery.countup.min.js')}}"></script>
-<script src="{{asset('js/main.js')}}"></script>
-</body>
-
-</html>

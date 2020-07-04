@@ -1,22 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
-    <link rel="stylesheet" href="{{asset('webProject/icofont/css/icofont.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/owl.carousel.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/owl.theme.default.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/style.css')}}">
-    <title> توثيق</title>
-</head>
-
-<body>
-
-<!-- main navbar  -->
-
 <nav class="navbar navbar-expand-lg  py-4  bg-nav-c  ">
     <div class="container">
         <a class="navbar-brand buk-29" href="#"> <img src="{{asset('images/logo.svg')}}" alt=""></a>
@@ -59,3 +40,4 @@
         </div>
     </div>
 </nav>
+    
