@@ -29,4 +29,5 @@ Route::prefix('admin')->group(function (){
 Route::middleware(['auth'])->group( function ()
 {
     Route::get('/account', 'AccountController@index')->name('account');
+    Route::get('/account/orders', 'OrderController@index')->name('account.orders');
 });

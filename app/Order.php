@@ -7,6 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     protected $guarded = [];
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = [
+        'date',
+    ];
+
     public function category()
     {
         return $this->belongsTo(Category::class, 'cat_id', 'id');
