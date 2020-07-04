@@ -25,4 +25,8 @@ class HomeController extends Controller
     {
         return view('site.home.index');
     }
+    public function bills(){
+        $bills  = auth()->user()->customer->bills;
+        return view('site.home.bills',compact('bills'));
+    }
 }
