@@ -16,6 +16,7 @@
                 <div class=" content-log">
                   <div class="mt-4">
                     <div class="row m-0 p-0">
+                      <div class="col-12">
                         @if ($errors->any())
                             <div class="alert alert-danger">
                                 <ul>
@@ -25,6 +26,7 @@
                                 </ul>
                             </div>
                         @endif
+                      </div>
                     </div>
                     <form method="POST" action="{{ route('login') }}">
                       <div class="row m-0 p-0">

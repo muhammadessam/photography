@@ -15,16 +15,18 @@
               <div class="">
                 <div class=" content-log">
                   <div class="mt-4">
-                    <div class="row m-0 p-0"">
-                        @if ($errors->any())
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
+                    <div class="row m-0 p-0">
+                      <div class="col-12">
+                          @if ($errors->any())
+                              <div class="alert alert-danger">
+                                  <ul>
+                                      @foreach ($errors->all() as $error)
+                                          <li>{{ $error }}</li>
+                                      @endforeach
+                                  </ul>
+                              </div>
+                          @endif
+                        </div>
                     </div>
                     <form method="POST" action="{{ route('register') }}">
                       <div class="row m-0 p-0">
