@@ -9,7 +9,7 @@
         <div class="collapse navbar-collapse bar-sm" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto cairo ml-2">
                 <li class="nav-item ml-1">
-                    <a class="nav-link" href="">الرئيسية</a>
+                    <a class="nav-link" href="{{ route('home') }}">الرئيسية</a>
                     <span class="d-block nav-bol"><i class="fas fa-ellipsis-h"></i></span>
                 </li>
                 <li class="nav-item mx-1">
