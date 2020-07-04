@@ -38,5 +38,7 @@ Route::prefix('galary')->group(function (){
     Route::view('videos','site.galary.videos')->name('videos');
 });
 Route::resource('opinions','Admin\OpinionController')->only('store');
+
 Route::get('/myBills','HomeController@bills')
     ->name('my_bills')->middleware('auth');
+
