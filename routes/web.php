@@ -29,4 +29,13 @@ Route::prefix('admin')->group(function (){
 Route::middleware(['auth'])->group( function ()
 {
     Route::get('/account', 'AccountController@index')->name('account');
+    Route::get('/account/orders', 'OrderController@index')->name('account.orders');
+    Route::get('/account/orders/create', 'OrderController@showOrderCreationForm')->name('account.orders.create');
+    Route::post('/account/orders/store', 'OrderController@store')->name('account.orders.store');
 });
+Route::prefix('galary')->group(function (){
+    Route::view('images','site.galary.images')->name('images');
+    Route::view('videos','site.galary.videos')->name('videos');
+});
+Route::resource('opinions','Admin\OpinionController')->only('store');
+

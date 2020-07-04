@@ -17,12 +17,12 @@
                     <span class="d-block nav-bol nav-hid"><i class="fas fa-ellipsis-h"></i></span>
                 </li>
                 <li class="nav-item mx-1">
-                    <a class="nav-link" href=" ">معرض صور</a>
+                    <a class="nav-link" href="{{route('images')}}">معرض صور</a>
                     <span class="d-block nav-bol nav-hid"><i class="fas fa-ellipsis-h"></i></span>
 
                 </li>
                 <li class="nav-item mx-1">
-                    <a class="nav-link" href=" ">معرض الفيديو</a>
+                    <a class="nav-link" href="{{route('videos')}}">معرض الفيديو</a>
                     <span class="d-block nav-bol nav-hid"><i class="fas fa-ellipsis-h"></i></span>
 
                 </li>

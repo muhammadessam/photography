@@ -276,14 +276,14 @@
             <div class="about-us text-white py-5">
                 <div class="container text-center">
                     <div id="td-car" class="owl-carousel owl-theme" dir="ltr">
+                        @foreach(@App\Opinion::all() as $op)
                         <div class=" " dir="rtl">
                             <h3 class="font-weight-bold mb-3">قالوا عنا</h3>
                             <div class="clientopp">
                                 <div class="row firsttest">
-                                    <div class=" position-relative ">
-                                        <p class="text-center client">
-                                            هنالك العديد من الأنواع المتوفرة لنصوص لوريم إيبسوم، ولكن الغالبية تم تعديلها بشكل ما عبر إدخال بعض
-                                            النوادر أو الكلمات العشوائية إلى النص. إن كنت تريد أن تستخدم نص لوريم إيبسوم ما، عليك أن تتحقق أولاً
+                                    <div class=" position-relative col-12">
+                                        <p class="text-center client col-12">
+                                            {{$op->body}}
                                         </p>
                                         <div class="arrow"></div>
                                     </div>
@@ -291,52 +291,30 @@
                             </div>
 
                             <div class="text-center lasttest mt-2 d-flex justify-content-center align-items-center">
-                                <img class="person-img" src="./images/person.png" alt="clients" />
-                                <h5 class="person_name">فيصل الحربي</h5>
+{{--                                <img class="person-img" src="./images/person.png" alt="clients" />--}}
+                                <h5 class="person_name">{{$op->customer->user->name}}</h5>
                             </div>
                         </div>
-                        <div class=" " dir="rtl">
-                            <h3 class="font-weight-bold mb-3">قالوا عنا</h3>
-                            <div class="clientopp">
-                                <div class="row firsttest">
-                                    <div class=" position-relative ">
-                                        <p class="text-center client">
-                                            هنالك العديد من الأنواع المتوفرة لنصوص لوريم إيبسوم، ولكن الغالبية تم تعديلها بشكل ما عبر إدخال بعض
-                                            النوادر أو الكلمات العشوائية إلى النص. إن كنت تريد أن تستخدم نص لوريم إيبسوم ما، عليك أن تتحقق أولاً
-                                        </p>
-                                        <div class="arrow"></div>
-                                    </div>
-                                </div>
-                            </div>
+                        @endforeach
 
-                            <div class="text-center lasttest mt-2 d-flex justify-content-center align-items-center">
-                                <img class="person-img" src="./images/person.png" alt="clients" />
-                                <h5 class="person_name">فيصل الحربي</h5>
-                            </div>
-                        </div>
-                        <div class=" " dir="rtl">
-                            <h3 class="font-weight-bold mb-3">قالوا عنا</h3>
-                            <div class="clientopp">
-                                <div class="row firsttest">
-                                    <div class=" position-relative ">
-                                        <p class="text-center client">
-                                            هنالك العديد من الأنواع المتوفرة لنصوص لوريم إيبسوم، ولكن الغالبية تم تعديلها بشكل ما عبر إدخال بعض
-                                            النوادر أو الكلمات العشوائية إلى النص. إن كنت تريد أن تستخدم نص لوريم إيبسوم ما، عليك أن تتحقق أولاً
-                                        </p>
-                                        <div class="arrow"></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="text-center lasttest mt-2 d-flex justify-content-center align-items-center">
-                                <img class="person-img" src="./images/person.png" alt="clients" />
-                                <h5 class="person_name">فيصل الحربي</h5>
-                            </div>
-                        </div>
                     </div>
                 </div>
         </section>
-
+        @auth
+            @if(auth()->user()->customer != null)
+                <section class="card">
+                    <h3 class="col-12 text-center pt-3 pb-3">اضف رأي</h3>
+                    <form class="container" action="{{route('opinions.store')}}" method="post">
+                        @csrf
+                        <div class="form-group">
+                            <label for="body">الرأي</label>
+                            <textarea class="form-control" name="body" id="body" cols="30" rows="5"></textarea>
+                        </div>
+                        <button class="btn btn-success" type="submit">ارسال</button>
+                    </form>
+                </section>
+            @endif
+        @endauth
         <section class="contact py-5 text-white">
             <div class="container">
                 <h3 class="font-weight-bold mb-5 text-center ">تواصل معنا</h3>

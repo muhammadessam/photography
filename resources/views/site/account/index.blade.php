@@ -13,7 +13,8 @@
             <div class=" control-actions">
             <div class=" dde  row ">
                 <div class="col-6">
-                <a href="" class="position-relative saad border pt-3 pb-1 px-1  ">
+                <a href="{{ route('account.orders') }}" class="position-relative saad border pt-3 pb-1 px-1  ">
+
                     <div class="">
                     <div class="text-center">
                         <i class="fas fa-birthday-cake icon-f"></i>
@@ -25,7 +26,8 @@
                 </a>
                 </div>
                 <div class="col-6">
-                <a href="" class="position-relative saad border pt-3 pb-1 px-1  ">
+
+                <a href="{{ route('account.orders.create') }}" class="position-relative saad border pt-3 pb-1 px-1  ">
                     <div class="">
                     <div class="text-center">
                         <i class="far fa-plus-square icon-f"></i>
