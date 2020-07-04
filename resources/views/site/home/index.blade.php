@@ -336,7 +336,21 @@
                     </div>
                 </div>
         </section>
-
+        @auth
+            @if(auth()->user()->customer != null)
+                <section class="card">
+                    <h3 class="col-12 text-center pt-3 pb-3">اضف رأي</h3>
+                    <form class="container" action="{{route('opinions.store')}}" method="post">
+                        @csrf
+                        <div class="form-group">
+                            <label for="body">الرأي</label>
+                            <textarea class="form-control" name="body" id="body" cols="30" rows="5"></textarea>
+                        </div>
+                        <button class="btn btn-success" type="submit">ارسال</button>
+                    </form>
+                </section>
+            @endif
+        @endauth
         <section class="contact py-5 text-white">
             <div class="container">
                 <h3 class="font-weight-bold mb-5 text-center ">تواصل معنا</h3>

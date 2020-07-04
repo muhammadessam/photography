@@ -131,6 +131,14 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{route('admin.opinions.index')}}" class="nav-link {{request()->routeIs('admin.opinions.*') ? 'active':''}}">
+                        <i class="nav-icon fa fa-file"></i>
+                        <p>
+                            ارإ العملاء
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

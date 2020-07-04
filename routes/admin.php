@@ -49,5 +49,6 @@ Route::prefix('admin')->group(function () {
         Route::get('employee/{employee}/orders','EmployeeController@orders')->name('emp_orders');
         Route::get('contact-reply/{contact}', 'ContactController@showReply')->name('showReplyForm');
         Route::post('contact-reply/{contact}', 'ContactController@sendReply')->name('sendReply');
+        Route::resource('opinions','OpinionController')->only('index','destroy');
     });
 });

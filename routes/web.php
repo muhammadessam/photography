@@ -37,3 +37,4 @@ Route::prefix('galary')->group(function (){
     Route::view('images','site.galary.images')->name('images');
     Route::view('videos','site.galary.videos')->name('videos');
 });
+Route::resource('opinions','Admin\OpinionController')->only('store');
