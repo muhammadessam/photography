@@ -34,6 +34,7 @@ Route::middleware(['auth'])->group( function ()
     Route::post('/account/orders/store', 'OrderController@store')->name('account.orders.store');
     Route::get('/account/orders/{id}', 'OrderController@show')->name('account.orders.show');
     Route::get('/account/bills','BillController@index')->name('account.bills');
+    Route::post('/account/comments/store','CommentController@store')->name('account.comments.store');
 });
 Route::prefix('galary')->group(function (){
     Route::view('images','site.galary.images')->name('images');
