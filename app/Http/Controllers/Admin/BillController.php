@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Bill;
+use App\Notification;
 use App\Order;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -51,6 +52,12 @@ class BillController extends Controller
             'cat_id' => 'القسم',
             'status' => 'الحالة',
             'remains' => 'الباقي',
+        ]);
+        $order = Order::find($request->get('order_id'));
+        $user = $order->customer->user;
+        Notification::query()->create([
+            'body'      =>  'لقد تم اصدار فاتورة جديدة علي طلب لك',
+            'user_id'   =>  $user->id,
         ]);
         Bill::create($request->all());
         $this->actionDoneSuccessfully();

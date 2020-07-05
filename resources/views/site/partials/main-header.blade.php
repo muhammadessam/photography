@@ -34,10 +34,23 @@
                 <li class="nav-item mx-1">
                     <a class="nav-link" href=" ">اتصل بنا</a>
                     <span class="d-block nav-bol nav-hid"><i class="fas fa-ellipsis-h"></i></span>
-
                 </li>
+                @auth
+                    @if(auth()->user()->customer != null)
+                        <li class="nav-item mx-1">
+                            <a class="nav-link" href="{{route('account.bills')}}">فواتيري</a>
+                            <span class="d-block nav-bol nav-hid"><i class="fas fa-ellipsis-h"></i></span>
+                        </li>
+                        <li class="nav-item mx-1">
+                            <a class="nav-link" href="{{route('nots.index')}}">
+                                الاشعارات
+                                <span class="btn btn-danger btn-sm">{{auth()->user()->nots->where('read',0)->count()}}</span>
+                            </a>
+                            <span class="d-block nav-bol nav-hid"><i class="fas fa-ellipsis-h"></i></span>
+                        </li>
+                    @endif
+                @endauth
             </ul>
         </div>
     </div>
 </nav>
-    

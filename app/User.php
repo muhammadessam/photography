@@ -45,4 +45,7 @@ class User extends Authenticatable
     {
         return $this->hasManyThrough("App\Order", "App\Customer");
     }
+    public function nots(){
+        return $this->hasMany(Notification::class,'user_id','id');
+    }
 }

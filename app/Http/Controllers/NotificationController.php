@@ -14,7 +14,12 @@ class NotificationController extends Controller
      */
     public function index()
     {
-        //
+        $nots = auth()->user()->nots;
+        foreach ($nots as $not){
+            $not->read = 1;
+            $not->save();
+        }
+        return view('site.notifications.index',compact('nots'));
     }
 
     /**
@@ -35,7 +40,7 @@ class NotificationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Notification::query()->create($request->only('user_id','body'));
     }
 
     /**
