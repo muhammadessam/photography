@@ -117,9 +117,18 @@
                                         </div>
                                         <div class="form-group col-md-6 ">
                                             <div class="row w-100 m-0 p-0">
-                                            <div class="pr-0 col-sm-12 mb-2  c-bol font-weight-bold ">التاريخ:</div>
-                                            <div class="pl-0 col-sm-12 pr-0 "> <input type="date" name="date" class="form-control" id="datepicker">
+                                                <div class="pr-0 col-sm-12 mb-2  c-bol font-weight-bold ">التاريخ:</div>
+                                                <div class="pl-0 col-sm-12 pr-0 "> 
+                                                    <input required type="date" name="date" class="form-control" id="datepicker">
+                                                </div>
                                             </div>
+                                        </div>
+                                        <div class="form-group col-md-6 ">
+                                            <div class="row w-100 m-0 p-0">
+                                                <div class="pr-0 col-sm-12 mb-2  c-bol font-weight-bold ">الوقت:</div>
+                                                <div class="pl-0 col-sm-12 pr-0 "> 
+                                                    <input required type="time" name="time" class="form-control" id="datepicker">
+                                                </div>
                                             </div>
                                         </div>
                                         {{-- <div class="form-group col-md-6 ">

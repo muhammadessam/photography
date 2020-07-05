@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\City;
 use App\Order;
 use App\Category;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -67,8 +68,13 @@ class OrderController extends Controller
             'is_on_our_page' => 'وضع الصور علي صفحاتنا',
         ]);
 
-        $data = $request->all();
+        // we'll have to merge date & time ourselves
+        // since there's no built-in datetime type html input 
+        $date = Carbon::parse($request->date . $request->time);
+
+        $data = $request->except('time');
         $data['customer_id'] = auth()->user()->customer->id;
+        $data['date'] = $date;
         Order::create($data);
 
         return redirect()->route('account.orders')->withMsg('تم تلقي طلبك بنجاح');
