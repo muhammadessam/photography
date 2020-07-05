@@ -42,6 +42,7 @@
                                     <td  class="border-bottom font-weight-bold  ">{{ $order->category->name }}</td>
                                     <td  class="border-bottom font-weight-bold  ">{{ $order->city->name }}</td>
                                     <td  class="border-bottom font-weight-bold  ">{{ $order->get_status()}}</td>
+                                    <td>
                                         <!-- Button trigger modal -->
                                         <a  class="m-2 c-bol" href="#" data-toggle="modal" data-target="#images-{{$order->id}}">
                                             <i class="fa fa-image"></i>
@@ -98,8 +99,8 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <a href="{{ route('account.orders.show', ['id' => $order->id]) }}" class="c-bol" >  <i class="fas fa-eye"></i> مشاعدة</a>
                                     </td>
-                                    <td  class="border-bottom font-weight-bold  "><a href="{{ route('account.orders.show', ['id' => $order->id]) }}" class="c-bol" >  <i class="fas fa-eye"></i> مشاعدة</a></td>
                                 </tr>
                             @endforeach
                         </tbody>
