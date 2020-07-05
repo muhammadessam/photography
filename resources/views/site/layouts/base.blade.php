@@ -27,6 +27,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.js"></script>
         <script src="{{asset('js/jquery.countup.min.js')}}"></script>
         <script src="{{asset('js/main.js')}}"></script>
+        @yield('js')
     </body>
     
 </html>

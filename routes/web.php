@@ -32,13 +32,16 @@ Route::middleware(['auth'])->group( function ()
     Route::get('/account/orders', 'OrderController@index')->name('account.orders');
     Route::get('/account/orders/create', 'OrderController@showOrderCreationForm')->name('account.orders.create');
     Route::post('/account/orders/store', 'OrderController@store')->name('account.orders.store');
+    Route::get('/account/orders/{id}', 'OrderController@show')->name('account.orders.show');
+    Route::get('/account/bills','BillController@index')->name('account.bills');
+    Route::post('/account/comments/store','CommentController@store')->name('account.comments.store');
 });
 Route::prefix('galary')->group(function (){
     Route::view('images','site.galary.images')->name('images');
     Route::view('videos','site.galary.videos')->name('videos');
 });
 Route::resource('opinions','Admin\OpinionController')->only('store');
-
 Route::get('/myBills','HomeController@bills')
     ->name('my_bills')->middleware('auth');
 Route::view('/terms','site.account.terms')->name('terms');
+

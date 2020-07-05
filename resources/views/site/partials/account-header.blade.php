@@ -22,8 +22,8 @@
             </li>
             @auth
                 @if(auth()->user()->customer != null)
-                    1                       <li class="nav-item mx-1">
-                        <a class="nav-link" href="{{route('my_bills')}}">فواتيري</a>
+                    <li class="nav-item mx-1">
+                        <a class="nav-link" href="{{route('account.bills')}}">فواتيري</a>
                         <span class="d-block nav-bol nav-hid"><i class="fas fa-ellipsis-h"></i></span>
                     </li>
                 @endif
