@@ -1,4 +1,4 @@
-@extends('site.layouts.base')
+@extends('site.layouts.base', ['isAccount' => true])
 @section('content')
     <div class="row mt-5">
         <div class="col-12">

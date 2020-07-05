@@ -32,6 +32,7 @@ Route::middleware(['auth'])->group( function ()
     Route::get('/account/orders', 'OrderController@index')->name('account.orders');
     Route::get('/account/orders/create', 'OrderController@showOrderCreationForm')->name('account.orders.create');
     Route::post('/account/orders/store', 'OrderController@store')->name('account.orders.store');
+    Route::get('/account/bills','BillController@index')->name('account.bills');
 });
 Route::prefix('galary')->group(function (){
     Route::view('images','site.galary.images')->name('images');
@@ -39,6 +40,4 @@ Route::prefix('galary')->group(function (){
 });
 Route::resource('opinions','Admin\OpinionController')->only('store');
 
-Route::get('/myBills','HomeController@bills')
-    ->name('my_bills')->middleware('auth');
 
