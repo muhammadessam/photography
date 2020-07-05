@@ -119,24 +119,22 @@
                                             <div class="row w-100 m-0 p-0">
                                                 <div class="pr-0 col-sm-12 mb-2  c-bol font-weight-bold ">التاريخ:</div>
                                                 <div class="pl-0 col-sm-12 pr-0 "> 
-                                                    <input required type="date" name="date" class="form-control" id="datepicker">
+                                                    <input required type="datetime-local" name="date" class="form-control" id="datepicker">
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="form-group col-md-6 ">
-                                            <div class="row w-100 m-0 p-0">
-                                                <div class="pr-0 col-sm-12 mb-2  c-bol font-weight-bold ">الوقت:</div>
-                                                <div class="pl-0 col-sm-12 pr-0 "> 
-                                                    <input required type="time" name="time" class="form-control" id="datepicker">
-                                                </div>
-                                            </div>
+                                        <div class="form-group text-right col-md-6">
+                                            <label class="font-weight-bold" for="section_input">اليوم: </label>
+                                            <select name="day" id="day" class="form-control" required>
+                                                <option value="السبت">السبت</option> 
+                                                <option value="الاحد">الاحد</option> 
+                                                <option value="الاثنين">الاثنين</option> 
+                                                <option value="الثلاثاء">الثلاثاء</option> 
+                                                <option value="الاربعاء">الاربعاء</option> 
+                                                <option value="الخميس">الخميس</option> 
+                                                <option value="الجمعة">الجمعة</option>
+                                            </select>
                                         </div>
-                                        {{-- <div class="form-group col-md-6 ">
-                                            <div class="row w-100 m-0 p-0">
-                                            <div class="pr-0 col-sm-12 mb-2  c-bol font-weight-bold ">الوقت:</div>
-                                            <div class="pl-0 col-sm-12 pr-0 "> <input type="time" class="form-control"></div>
-                                            </div>
-                                        </div> --}}
 
                                         <div class="col-12">
                                             {{ csrf_field() }}

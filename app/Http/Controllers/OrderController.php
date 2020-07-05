@@ -55,6 +55,7 @@ class OrderController extends Controller
             'cat_id' => ['required', 'exists:categories,id'],
             'city_id' => ['required', 'exists:cities,id'],
             'address' => ['required'],
+            'day' => ['required'],
             'date' => ['required'],
             'is_special' => ['required'],
             'is_right_print' => ['required'],
@@ -62,19 +63,15 @@ class OrderController extends Controller
         ], [], [
             'cat_id' => 'القسم',
             'address' => 'العنوان',
+            'day' => 'اليوم',
             'date' => 'التاريخ والوقت',
             'is_special' => 'هل المناسبة خاصة',
             'is_right_print' => 'هل نضع حقوقنا علي التصميم',
             'is_on_our_page' => 'وضع الصور علي صفحاتنا',
         ]);
 
-        // we'll have to merge date & time ourselves
-        // since there's no built-in datetime type html input 
-        $date = Carbon::parse($request->date . $request->time);
-
-        $data = $request->except('time');
+        $data = $request->all();
         $data['customer_id'] = auth()->user()->customer->id;
-        $data['date'] = $date;
         Order::create($data);
 
         return redirect()->route('account.orders')->withMsg('تم تلقي طلبك بنجاح');
