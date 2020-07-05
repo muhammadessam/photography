@@ -19,7 +19,7 @@
                             <a class="nav-link c-bol" data-toggle="tab" href="#comments">التعليقات</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link c-bol" href="#">الفواتير</a>
+                            <a class="nav-link c-bol"  data-toggle="tab" href="#bills">الفواتير</a>
                         </li>
                     </ul>
                     <hr>
@@ -68,6 +68,37 @@
 
                         <button type="button" id="post-comment" class="btn-outline-success btn">ارسال</button>
                     </form>
+                </div>
+                <div class="tab-pane" id="bills">
+                    <table class="table table-striped table-bordered table-responsive-lg" id="bills">
+                        <thead>
+                            <tr>
+                                <th>رقم الفاتورة</th>
+                                <th>القسم</th>
+                                <th>المبلغ</th>
+                                <th>الحالة</th>
+                                <th>القيمة المتبقة</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($order->bills as $bill)
+                                <tr>
+                                    <td>{{$bill->id}}</td>
+                                    <td>{{$bill->category->name}}</td>
+                                    <td>{{$bill->price}}</td>
+                                    <td>{{$bill->status}}</td>
+                                    <td>{{$bill->remains}}</td>
+                                </tr>
+                            @endforeach
+                            @if($order->bills->count() == 0)
+                                <tr>
+                                    <td colspan="6">
+                                        <h4 class="col-12 text-center">لا توجد فواتير </h4>
+                                    </td>
+                                </tr>
+                            @endif
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
