@@ -1,6 +1,12 @@
 @extends('site.layouts.base', ['isAccount' => true])
 
 @section('content')
+    <style>
+        iframe{
+            width: 100%;
+            border-radius: 10px;
+        }
+    </style>
 <section class="my-5">
     <div class="container">
         <div class="my-shadow py-4">
@@ -36,7 +42,65 @@
                                     <td  class="border-bottom font-weight-bold  ">{{ $order->category->name }}</td>
                                     <td  class="border-bottom font-weight-bold  ">{{ $order->city->name }}</td>
                                     <td  class="border-bottom font-weight-bold  ">{{ $order->get_status()}}</td>
-                                    <td  class="border-bottom font-weight-bold  "><a href="" class="c-bol" >  <i class="fas fa-eye"></i> مشاعدة</a></td>
+                                    <td  class="border-bottom font-weight-bold  ">
+                                        <a href="" class="c-bol" >  <i class="fas fa-eye"></i> مشاعدة</a>
+                                        <!-- Button trigger modal -->
+                                        <a  class="m-2 c-bol" href="#" data-toggle="modal" data-target="#images-{{$order->id}}">
+                                            <i class="fa fa-image"></i>
+                                        </a>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="images-{{$order->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                            <div class="modal-dialog " style="min-width: 70%;" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="row">
+                                                            @foreach($order->images as $image)
+                                                                <div class="col-4">
+                                                                    <img class="img-thumbnail" width="100%" src="{{asset($image->image)}}">
+                                                                </div>
+                                                            @endforeach
+                                                        </div>
+                                                        @if($order->images->count() == 0)
+                                                            <h3 class="col-12 mt-4 text-center">لا يوجد</h3>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Button trigger modal -->
+                                        <a  class="m-2 c-bol" href="#" data-toggle="modal" data-target="#vidoes-{{$order->id}}">
+                                            <i class="fa fa-camera"></i>
+                                        </a>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="vidoes-{{$order->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                            <div class="modal-dialog " style="min-width: 70%;" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="row">
+                                                            @foreach($order->videos as $video)
+                                                                <div class="col-4">
+                                                                    {!! $video->video !!}
+                                                                </div>
+                                                            @endforeach
+                                                        </div>
+                                                        @if($order->videos->count() == 0)
+                                                            <h3 class="col-12 mt-4 text-center">لا يوجد</h3>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -48,5 +112,5 @@
         </div>
     </div>
 </section>
-    
+
 @endsection

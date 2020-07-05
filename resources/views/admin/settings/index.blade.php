@@ -81,22 +81,22 @@
                         @endif
                         <label class="custom-control-label" for="can_register">تشغيل التسجيل</label>
                     </div>
-                    <div class="custom-control custom-checkbox col-3">
-                        @if($sets->verify_email)
-                            <input type="checkbox" name="verify_email" value="1" checked class="custom-control-input" id="verify_email">
-                        @else
-                            <input type="checkbox" name="verify_email" value="1" class="custom-control-input" id="verify_email">
-                        @endif
-                        <label class="custom-control-label" for="verify_email">التفعيل بالبريد</label>
-                    </div>
-                    <div class="custom-control custom-checkbox col-3">
-                        @if($sets->sms)
-                            <input type="checkbox" name="sms" value="1" checked class="custom-control-input" id="sms">
-                        @else
-                            <input type="checkbox" name="sms" value="1" class="custom-control-input" id="sms">
-                        @endif
-                        <label class="custom-control-label" for="sms">تفعيل بالجوال</label>
-                    </div>
+{{--                    <div class="custom-control custom-checkbox col-3">--}}
+{{--                        @if($sets->verify_email)--}}
+{{--                            <input type="checkbox" name="verify_email" value="1" checked class="custom-control-input" id="verify_email">--}}
+{{--                        @else--}}
+{{--                            <input type="checkbox" name="verify_email" value="1" class="custom-control-input" id="verify_email">--}}
+{{--                        @endif--}}
+{{--                        <label class="custom-control-label" for="verify_email">التفعيل بالبريد</label>--}}
+{{--                    </div>--}}
+{{--                    <div class="custom-control custom-checkbox col-3">--}}
+{{--                        @if($sets->sms)--}}
+{{--                            <input type="checkbox" name="sms" value="1" checked class="custom-control-input" id="sms">--}}
+{{--                        @else--}}
+{{--                            <input type="checkbox" name="sms" value="1" class="custom-control-input" id="sms">--}}
+{{--                        @endif--}}
+{{--                        <label class="custom-control-label" for="sms">تفعيل بالجوال</label>--}}
+{{--                    </div>--}}
                     <button type="submit" class="btn btn-success btn-block mt-3">حفظ الاعدادات</button>
                 </div>
 

@@ -41,4 +41,4 @@ Route::resource('opinions','Admin\OpinionController')->only('store');
 
 Route::get('/myBills','HomeController@bills')
     ->name('my_bills')->middleware('auth');
-
+Route::view('/terms','site.account.terms')->name('terms');
