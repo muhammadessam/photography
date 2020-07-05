@@ -21,6 +21,20 @@ class OrderController extends Controller
         ]);
     }
 
+    public function show(Request $req, $id)
+    {
+        $order = auth()->user()->orders()->find($id);
+        
+        // return 404 if order is not found
+        if (! $order) {
+            abort(404);
+        }
+        
+        return view('site.account.orders.show', [
+            'order' => $order,
+        ]);
+    }
+
     public function showOrderCreationForm(Request $req)
     {
         $categories = Category::all();
