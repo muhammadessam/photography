@@ -27,7 +27,7 @@
 
                 </li>
                 <li class="nav-item mx-1">
-                    <a class="nav-link" href=" ">طلب خدمة</a>
+                    <a class="nav-link" href="{{ route('account.orders.create') }}">طلب خدمة</a>
                     <span class="d-block nav-bol nav-hid"><i class="fas fa-ellipsis-h"></i></span>
 
                 </li>

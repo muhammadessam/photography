@@ -1,4 +1,4 @@
-@extends('site.layouts.base', ['isAccount' => true])
+@extends('site.layouts.base')
 
 @section('content')
 <section class="my-5 register">
@@ -27,7 +27,7 @@
                 </div>
                 <div class="col-6">
 
-                <a href="{{ route('terms') }}" class="position-relative saad border pt-3 pb-1 px-1  ">
+                <a href="{{ route('account.orders.create') }}" class="position-relative saad border pt-3 pb-1 px-1  ">
                     <div class="">
                     <div class="text-center">
                         <i class="far fa-plus-square icon-f"></i>

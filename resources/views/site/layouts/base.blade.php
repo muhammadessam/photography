@@ -12,11 +12,7 @@
         <title> توثيق</title>
     </head>
     <body>        
-        @if (isset($isAccount) && $isAccount)
-        @include('site.partials.account-header')
-        @else
-            @include('site.partials.main-header')
-        @endif
+        @include('site.partials.header')
         @yield('content')
         @include('site.partials.footer')
 
