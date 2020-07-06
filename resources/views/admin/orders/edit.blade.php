@@ -112,7 +112,7 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="date">موعد المناسبة التاريخ والوقت :</label>
-                                            <input class="form-control" type="datetime-local" name="date" id="date" value="{{\Carbon\Carbon::create($order['date'])->format('Y-m-d\TH:i')}}">
+                                            <input class="form-control" type="datetime-local" name="date" id="date" value="{{\Carbon\Carbon::parse($order['date'])->format('Y-m-d\TH:i')}}">
                                             <x-error name="date"></x-error>
                                         </div>
                                     </div>
