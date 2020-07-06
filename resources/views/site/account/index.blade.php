@@ -5,7 +5,7 @@
     <div class="container">
         <div class="my-shadow py-4">
         <div class="dif">
-            <h4 class="text-center font-weight-bold">الملف الشخصى</h4>
+            <h4 class="text-center font-weight-bold">مرحبا بك يا {{ auth()->user()->name }}</h4>
             <span class="d-block text-center"> <img src="./images/flower.svg" alt=""></span>
         </div>
 
