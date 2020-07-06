@@ -356,17 +356,17 @@
                                 </div>
                                 <div class="det-d">
                                     <span class="d-block"> البريد الإلكتروني</span>
-                                    <span class="d-block" dir="ltr"> name@mail.com</span>
+                                    <span class="d-block" dir="ltr"> {{ $setting->app_email }}</span>
                                 </div>
                             </div>
                         </div>
                         <div class="">
                             <ul class="navbar-nav p-0 social-links ">
                                 <li class="nav-item">
-                                    <a class="nav-link d-inline-block " href="#"><i class="fab fa-facebook-f"></i></a>
-                                    <a class="nav-link d-inline-block " href="#"><i class="fab fa-twitter"></i></a>
-                                    <a class="nav-link d-inline-block " href="#"><i class="fab fa-whatsapp"></i></a>
-                                    <a class="nav-link d-inline-block " href="#"><i class="fab fa-instagram"></i></a>
+                                    {!! $setting->facebook ? '<a class="nav-link d-inline-block " href="'. $setting->facebook .'"><i class="fab fa-facebook-f"></i></a>' : null !!}
+                                    {!! $setting->twitter ? '<a class="nav-link d-inline-block " href="'. $setting->twitter .'"><i class="fab fa-twitter"></i></a>' : null !!}
+                                    {!! $setting->instagram ? '<a class="nav-link d-inline-block " href="'. $setting->instagram .'"><i class="fab fa-instagram"></i></a>' : null !!}
+
                                 </li>
                             </ul>
                         </div>

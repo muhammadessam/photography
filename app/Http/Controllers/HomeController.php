@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Setting;
+
 class HomeController extends Controller
 {
 
@@ -12,7 +14,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('site.home.index');
+        $settiing = Setting::first();
+
+        return view('site.home.index', [
+            'setting' => $settiing
+        ]);
     }
 
 }
