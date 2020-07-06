@@ -50,3 +50,5 @@ Route::get('/myBills','HomeController@bills')
 Route::view('/terms','site.account.terms')->name('terms');
 Route::resource('nots','NotificationController');
 
+Route::post('/contact/store', 'ContactController@store')->name('contact.store');
+

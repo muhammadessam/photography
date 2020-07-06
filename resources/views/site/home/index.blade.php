@@ -371,23 +371,31 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <form action="">
+                    <div class="col-md-6" id="contact-form">
+                        @if(session()->has('msg'))
+                            <div class="row mt-4">
+                                <div class="col-12">
+                                    <div class="alert alert-success">{{ session()->get('msg') }}</div>
+                                </div>
+                            </div>
+                        @endif
+                        <form action="{{ route('contact.store') }}" method="POST"
                             <div class="row">
                                 <div class="col-md-6 mb-2 pl-1 med-1">
-                                    <input placeholder="الإسم" type="text" class="form-control ">
+                                    <input placeholder="الإسم" type="text" name="name" class="form-control ">
                                 </div>
                                 <div class="col-md-6 mb-2 pr-1 med-2">
-                                    <input placeholder="البريد الإلكترونى" type="text" class="form-control ">
+                                    <input placeholder="البريد الإلكترونى" type="text" name="email" class="form-control ">
                                 </div>
                                 <div class="col-md-12 mb-2">
-                                    <input placeholder="الموضوع" type="text" class="form-control ">
+                                    <input placeholder="الهاتف" type="text" name="phone" class="form-control ">
                                 </div>
                                 <div class="col-12">
-                                    <textarea placeholder="الرسالة" class="form-control " name="" id="" cols="30" rows="7"></textarea>
+                                    <textarea placeholder="الرسالة" class="form-control " name="msg" id="" cols="30" rows="7"></textarea>
                                 </div>
                                 <div class="text-left col-12 my-2">
-                                    <button class="contact-btn">إرسال</button>
+                                    {{ csrf_field() }}
+                                    <button class="contact-btn" type="submit">إرسال</button>
                                 </div>
                             </div>
 
