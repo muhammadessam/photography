@@ -19,7 +19,7 @@
                                 <div class="card-body p-0">
                                     <iframe id="ytplayer" type="text/html" width="640" height="360"
                                         @php
-                                            parse_str( parse_url($video->video, PHP_URL_QUERY), $output )['v'];
+                                            parse_str( parse_url($video->video, PHP_URL_QUERY), $output );
                                         @endphp
                                         src="https://www.youtube.com/embed/{{  $output['v'] }}"
                                         frameborder="0"></iframe>
