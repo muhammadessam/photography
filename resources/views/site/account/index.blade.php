@@ -13,7 +13,7 @@
             <div class=" control-actions">
             <div class=" dde  row ">
                 <div class="col-6 col-md-4">
-                    <a href="" class="position-relative saad border pt-3 pb-1 px-1  ">
+                    <a href="{{ route('account.edit') }}" class="position-relative saad border pt-3 pb-1 px-1  ">
                         <div class="">
                             <div class="text-center">
                                 <i class="fas fa-user icon-f"></i>
