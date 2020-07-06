@@ -26,7 +26,7 @@
                                 <form action="{{route('admin.videos.store')}}" method="post">
                                     @csrf
                                     <div class="form-group">
-                                        <label for="video">كود اليوتيوب</label>
+                                        <label for="video">رابط الفيديو Youtube</label>
                                         <textarea name="video" class="form-control" id="video" cols="30" rows="10"></textarea>
                                     </div>
                                     <button type="submit" class="btn btn-success btn-block">اضافة</button>
