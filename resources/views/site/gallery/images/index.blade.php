@@ -11,10 +11,10 @@
                         <div class="col-4 p-1">
                             <div class="card bg-primary-gradient">
                                 <div class="card-body p-0">
-                                    <a href="{{ route('images.show', ['id' => $image->id ]) }}"><img class="img-thumbnail" width="100%" src="{{asset($image->image)}}"></a>
+                                    <a href="{{ route('images.show', ['id' => $image->id ]) }}"><img class="img-thumbnail" width="100%" height="150px" src="{{asset($image->image)}}"></a>
                                 </div>
                                 <div class="card-footer">
-                                    <p><strong>المشاهدات: </strong> {{ $image->getViews() }} | <strong>الحجم: </strong> {{ formatSizeUnits(filesize($image->image)) }}</p>
+                                    <p><strong>المشاهدات: </strong> {{ $image->getViews() }}</p>
                                 </div>
                             </div>
                         </div>

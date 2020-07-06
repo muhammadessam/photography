@@ -1,4 +1,4 @@
-<footer>
+<footer class="mt-3">
     <div class="bg-light-color">
         <div class=" last-footer container ">
             <div class="copy-rights d-flex align-items-center">

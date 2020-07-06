@@ -3,7 +3,7 @@
 @section('content')
 
 <section class="my-5 register">
-    <div class="container">
+    <div class="container p-4">
         <div class="my-shadow py-4">
             <div class="dif">
                 <h4 class="text-center font-weight-bold">طلب مناسبة</h4>
@@ -46,6 +46,7 @@
                                             @endif
                                         </div>
                                     </div>
+                                <div>
                                     <form action="{{ route('account.orders.store') }}" method="POST">
                                         <div class="row m-0 p-0">
                                         <div class="form-group col-md-6 ">
@@ -60,7 +61,7 @@
                                                 <div class="form-group text-right">
                                                 <label class="font-weight-bold" for="section_input">القسم: </label>
                                                 <select name="cat_id" class="form-control py-0 " id="section_input">
-                                                    @foreach ($categories as $cat)                                        
+                                                    @foreach ($categories as $cat)
                                                         <option value="{{ $cat->id }}" {{ old('cat_id') == $cat->id ? 'selected' : null }}>{{ $cat->name}}</option>
                                                     @endforeach
                                                 </select>
@@ -74,7 +75,21 @@
                                                 <div class="form-group text-right">
                                                 <label class="font-weight-bold" for="section_input">المدينة: </label>
                                                 <select name="city_id" class="form-control py-0 " id="section_input">
-                                                    @foreach ($cities as $city)                                        
+                                                    @foreach (@App\Country::all() as $city)
+                                                        <option value="{{ $city->id }}" {{ old('city_id') == $city->id ? 'selected' : null }}>{{ $city->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <div class="row w-100 m-0 p-0">
+                                            <div class="col-12 p-0">
+                                                <div class="form-group text-right">
+                                                <label class="font-weight-bold" for="section_input">الحي: </label>
+                                                <select name="city_id" class="form-control py-0 " id="section_input">
+                                                    @foreach ($cities as $city)
                                                         <option value="{{ $city->id }}" {{ old('city_id') == $city->id ? 'selected' : null }}>{{ $city->name}}</option>
                                                     @endforeach
                                                 </select>
@@ -135,7 +150,7 @@
                                         <div class="form-group col-md-6 ">
                                             <div class="row w-100 m-0 p-0">
                                                 <div class="pr-0 col-sm-12 mb-2  c-bol font-weight-bold ">التاريخ:</div>
-                                                <div class="pl-0 col-sm-12 pr-0 "> 
+                                                <div class="pl-0 col-sm-12 pr-0 ">
                                                     <input required type="datetime-local" name="date" class="form-control" id="datepicker">
                                                 </div>
                                             </div>
@@ -143,19 +158,19 @@
                                         <div class="form-group text-right col-md-6">
                                             <label class="font-weight-bold" for="section_input">اليوم: </label>
                                             <select name="day" id="day" class="form-control" required>
-                                                <option value="السبت">السبت</option> 
-                                                <option value="الاحد">الاحد</option> 
-                                                <option value="الاثنين">الاثنين</option> 
-                                                <option value="الثلاثاء">الثلاثاء</option> 
-                                                <option value="الاربعاء">الاربعاء</option> 
-                                                <option value="الخميس">الخميس</option> 
+                                                <option value="السبت">السبت</option>
+                                                <option value="الاحد">الاحد</option>
+                                                <option value="الاثنين">الاثنين</option>
+                                                <option value="الثلاثاء">الثلاثاء</option>
+                                                <option value="الاربعاء">الاربعاء</option>
+                                                <option value="الخميس">الخميس</option>
                                                 <option value="الجمعة">الجمعة</option>
                                             </select>
                                         </div>
 
                                         <div class="col-12">
                                             {{ csrf_field() }}
-                                            <button type="submit" class="btn btn-block font-weight-bold  text-white bg-nav-c save-invoice py-2">ارسال</button>
+                                            <button type="submit" class="btn btn-block font-weight-bold  mb-3 text-white bg-nav-c save-invoice py-2">ارسال</button>
                                         </div>
                                     </form>
                                 </div>
@@ -167,5 +182,5 @@
         </div>
     </div>
 </section>
-    
+
 @endsection

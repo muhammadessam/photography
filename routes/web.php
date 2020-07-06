@@ -51,4 +51,38 @@ Route::view('/terms','site.account.terms')->name('terms');
 Route::resource('nots','NotificationController');
 
 Route::post('/contact/store', 'ContactController@store')->name('contact.store');
+Route::get('/account/logout',function (){
+   auth()->logout();
+   return redirect()->route('home');
+})->name('account_logout');
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Route::get('/{title}',function ($title){
+    $page = \App\Page::all()->where('title',$title)->first();
+    return view('site.page',compact('page'));
+})->name('page');

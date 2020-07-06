@@ -99,7 +99,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <a href="{{ route('account.orders.show', ['id' => $order->id]) }}" class="c-bol" >  <i class="fas fa-eye"></i> مشاعدة</a>
+                                        <a href="{{ route('account.orders.show', ['id' => $order->id]) }}" class="c-bol" >  <i class="fas fa-eye"></i> مشاهدة</a>
                                     </td>
                                 </tr>
                             @endforeach

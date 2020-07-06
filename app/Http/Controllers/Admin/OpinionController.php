@@ -39,17 +39,11 @@ class OpinionController extends Controller
         $request->validate([
            'body'   =>  'required'
         ]);
-        if (auth()->guard('admin')->check()){
-            Opinion::query()->create([
-                'body'          =>  $request->get('body'),
-                'customer_id'   =>  $request->get('customer_id')
-            ]);
-        }else{
-            Opinion::query()->create([
-                'body'          =>  $request->get('body'),
-                'customer_id'   =>  auth()->user()->customer->id
-            ]);
-        }
+        Opinion::query()->create([
+            'body'          =>  $request->get('body'),
+            'customer_id'   =>  auth()->user()->customer->id
+        ]);
+
         alert('','تم الارسال','success');
         return redirect()->back();
     }

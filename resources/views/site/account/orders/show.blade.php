@@ -57,7 +57,7 @@
                     <hr>
                 </div>
             </div>
-            <div class="tab-content px-5">
+            <div class="tab-content mb-3 px-5">
                 <div class="tab-pane {{ session()->has('tab')  ? '' : 'active' }}" id="details">
                     <div class="row">
                         <div class="col-md-6 col-sm-12">
@@ -80,11 +80,11 @@
                             <h4 class="mb-3 mt-3">عرض المناسبة علي صفحاتنا  </h4>
                             <span>{{ $order->is_on_our_page ? 'نعم' : 'لا' }}</span>
                         </div>
-                    </div>                    
+                    </div>
                 </div>
-                <div class="tab-pane {{ session()->has('tab') && session()->get('tab') == 'comments' ? 'active' : '' }}" id="comments">
+                <div class="tab-pane {{ session()->has('tab') && session()->get('tab') == 'comments' ? 'active' : '' }} mb-4 h-100" id="comments">
                     <div id="comments-list">
-                        @foreach ($order->comments as $comment)                            
+                        @foreach ($order->comments as $comment)
                             <div class="py-1">
                                 <strong class="d-block">{{ $comment->is_admin ? 'الإدارة' : auth()->user()->name }}</strong>
                                 <span style="font-size:11px;">{{ $comment->created_at }}</span>
@@ -100,7 +100,7 @@
                         <input type="hidden" name="order_id" value="{{ $order->id }}">
                         <input type="hidden" name="is_admin" value="0">
                         {{ csrf_field() }}
-                        <button type="submit" id="post-comment" class="btn-outline-success btn">ارسال</button>
+                        <button type="submit" id="post-comment" class="btn-outline-success btn mb-3">ارسال</button>
                     </form>
                 </div>
                 <div class="tab-pane {{ session()->has('tab') && session()->get('tab') == 'bills' ? 'active' : '' }}" id="bills">
@@ -138,5 +138,5 @@
         </div>
     </div>
 </section>
-    
+
 @endsection

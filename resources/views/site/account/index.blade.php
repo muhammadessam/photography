@@ -25,16 +25,17 @@
                     </a>
                 </div>
                 <div class="col-4">
-                <a href="{{ route('account.orders') }}" class="position-relative saad border pt-3 pb-1 px-1  ">
+                <a href="{{ route('account.orders') }}" class="row position-relative saad border pt-3 pb-1 px-1  ">
 
                     <div class="">
-                    <div class="text-center">
-                        <i class="fas fa-birthday-cake icon-f"></i>
+                        <div class="text-center">
+                            <i class="fas fa-birthday-cake icon-f"></i>
+                        </div>
+                        <div class="">
+                            <h5 class="text-center  manage  c-bol "><small class="font-weight-bold" >مناسباتى</small></h5>
+                        </div>
                     </div>
-                    <div>
-                        <h5 class="text-center  manage  c-bol "><small class="font-weight-bold" >مناسباتى</small></h5>
-                    </div>
-                    </div>
+                    <span class="btn btn-sm" style="background-color: #c77b58;color: white;">{{auth()->user()->customer->orders->count()}}</span>
                 </a>
                 </div>
                 <div class="col-4">
@@ -53,17 +54,19 @@
                 <div class="col-4">
                 <a href="{{route('account.bills')}}" class="position-relative saad border pt-3 pb-1 px-1  ">
                     <div class="">
-                    <div class="text-center">
-                        <i class="fas fa-file-invoice-dollar  icon-f"></i>
+                        <div class="text-center">
+                            <i class="fas fa-file-invoice-dollar  icon-f"></i>
+                        </div>
+                        <div>
+                            <h5 class="text-center  manage  c-bol "><small class="font-weight-bold" >الفواتير </small></h5>
+                        </div>
                     </div>
-                    <div>
-                        <h5 class="text-center  manage  c-bol "><small class="font-weight-bold" >الفواتير </small></h5>
-                    </div>
-                    </div>
+                    <span class="btn btn-sm" style="background-color: #c77b58;color: white;">{{auth()->user()->customer->bills->count()}}</span>
                 </a>
                 </div>
                 <div class="col-4 col-md-4">
-                <a href="" class="position-relative saad border pt-3 pb-1 px-1  ">
+                <a href="#" data-toggle="modal" data-target="#exampleModalCenter"
+                   class="position-relative saad border pt-3 pb-1 px-1  ">
                     <div class="">
                     <div class="text-center">
                         <i class="fas fa-question-circle  icon-f"></i>
@@ -73,9 +76,37 @@
                     </div>
                     </div>
                 </a>
+                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                @auth
+                                    @if(auth()->user()->customer != null)
+                                        <section class="card" id="add_opinion">
+                                            <h3 class="col-12 text-center pt-3 pb-3">اضف رأي</h3>
+                                            <form class="container" action="{{route('opinions.store')}}" method="post">
+                                                @csrf
+                                                <div class="form-group">
+                                                    <label for="body">الرأي</label>
+                                                    <textarea class="form-control" name="body" id="body" cols="30" rows="5"></textarea>
+                                                </div>
+                                                <button class="btn btn-success" type="submit">ارسال</button>
+                                            </form>
+                                        </section>
+                                    @endif
+                                @endauth
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 </div>
                 <div class="col-4 col-md-4">
-                    <a href="" class="position-relative saad border pt-3 pb-1 px-1 logout">
+                    <a href="{{route('account_logout')}}"  class="position-relative saad border pt-3 pb-1 px-1">
                         <div class="">
                             <div class="text-center">
                                 <i class="fas fa-sign-out-alt  icon-f"></i>
