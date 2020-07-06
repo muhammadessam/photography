@@ -15,6 +15,7 @@ class OrderController extends Controller
         $orders = auth()->user()
                         ->orders()
                         ->with('category', 'city')
+                        ->orderBy('created_at', 'desc')
                         ->get();
 
         return view('site.account.orders.index', [
