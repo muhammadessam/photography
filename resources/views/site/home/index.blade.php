@@ -119,7 +119,7 @@
                             <div class="services-icons text-center"><i class="icofont-jewlery "></i></div>
                             <h2 class=" font-weight-bold">
               <span class="counter" data-counter-time="2000" data-counter-delay="10">
-                850
+                {{ 0 }}
               </span>
                             </h2>
                             <h5 class="mt-3">الخدمات المقدمة</h5>
@@ -130,7 +130,7 @@
                             <div class="services-icons text-center"><i class="icofont-ui-camera "></i></div>
                             <h2 class=" font-weight-bold">
               <span class="counter" data-counter-time="2000" data-counter-delay="10">
-                2560
+                {{ $clientCount }}
               </span>
                             </h2>
                             <h5 class="mt-3">
@@ -142,7 +142,7 @@
                         <div class="text-center  p-3">
                             <div class="services-icons text-center"><i class="icofont-birthday-cake "></i></div>
                             <h2 class=" font-weight-bold"><span class="counter" data-counter-time="2000" data-counter-delay="10">
-                3380
+                             {{ $orders->count() }}
               </span></h2>
                             <h5 class="mt-3">كل الطلبات</h5>
                         </div>
@@ -151,7 +151,7 @@
                         <div class="text-center  p-3">
                             <div class="services-icons text-center"><i class="icofont-birthday-cake "></i></div>
                             <h2 class=" font-weight-bold"><span class="counter" data-counter-time="2000" data-counter-delay="10">
-                3380
+                            {{ $orders->where('status', 'final')->count() }}
               </span></h2>
                             <h5 class="mt-3">خدمات منجزة</h5>
                         </div>

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Customer;
+use App\Order;
 use App\Setting;
 
 class HomeController extends Controller
@@ -14,10 +16,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $settiing = Setting::first();
+        $setting = Setting::first();
+        $orders = Order::all();
+        $clientCount = Customer::count();
 
         return view('site.home.index', [
-            'setting' => $settiing
+            'setting' => $setting,
+            'orders' => $orders,
+            'clientCount' => $clientCount,
         ]);
     }
 
