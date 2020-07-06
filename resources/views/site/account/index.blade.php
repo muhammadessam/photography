@@ -75,7 +75,7 @@
                 </a>
                 </div>
                 <div class="col-4 col-md-4">
-                    <a href="" class="position-relative saad border pt-3 pb-1 px-1  ">
+                    <a href="" class="position-relative saad border pt-3 pb-1 px-1 logout">
                         <div class="">
                             <div class="text-center">
                                 <i class="fas fa-sign-out-alt  icon-f"></i>
@@ -95,4 +95,20 @@
     </div>
     </section>
 
+@endsection
+
+@section('js')
+    <script>
+        $('.logout').on('click', function (e) {
+            e.preventDefault()
+            console.log('logging out...');
+            $.post("/logout", {
+                _token: "{{ csrf_token() }}",
+            }).done(function () {
+                location.reload();
+            }).fail(function () {
+                location.reload();
+            });
+        });
+    </script>
 @endsection
