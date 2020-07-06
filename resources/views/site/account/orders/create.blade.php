@@ -74,7 +74,7 @@
                                             <div class="col-12 p-0">
                                                 <div class="form-group text-right">
                                                 <label class="font-weight-bold" for="section_input">المدينة: </label>
-                                                <select name="city_id" class="form-control py-0 " id="section_input">
+                                                <select name="country_id" class="form-control py-0 " id="section_input">
                                                     @foreach (@App\Country::all() as $city)
                                                         <option value="{{ $city->id }}" {{ old('city_id') == $city->id ? 'selected' : null }}>{{ $city->name}}</option>
                                                     @endforeach
