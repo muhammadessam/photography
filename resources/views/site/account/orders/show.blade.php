@@ -26,7 +26,7 @@
                 </div>
             </div>
             <div class="tab-content px-5">
-                <div class="tab-pane active" id="details">
+                <div class="tab-pane {{ session()->has('tab')  ? '' : 'active' }}" id="details">
                     <div class="row">
                         <div class="col-md-6 col-sm-12">
                             <h4 class="mb-3 mt-3">العنوان </h4>
@@ -50,7 +50,7 @@
                         </div>
                     </div>                    
                 </div>
-                <div class="tab-pane" id="comments">
+                <div class="tab-pane {{ session()->has('tab') && session()->get('tab') == 'comments' ? 'active' : '' }}" id="comments">
                     <div id="comments-list">
                         @foreach ($order->comments as $comment)                            
                             <div class="py-1">
@@ -65,11 +65,13 @@
                             <label for="body">محتوي التعليق</label>
                             <textarea name="body" id="body" cols="30" class="form-control" rows="5"></textarea>
                         </div>
-
-                        <button type="button" id="post-comment" class="btn-outline-success btn">ارسال</button>
+                        <input type="hidden" name="order_id" value="{{ $order->id }}">
+                        <input type="hidden" name="is_admin" value="0">
+                        {{ csrf_field() }}
+                        <button type="submit" id="post-comment" class="btn-outline-success btn">ارسال</button>
                     </form>
                 </div>
-                <div class="tab-pane" id="bills">
+                <div class="tab-pane {{ session()->has('tab') && session()->get('tab') == 'bills' ? 'active' : '' }}" id="bills">
                     <table class="table table-striped table-bordered table-responsive-lg" id="bills">
                         <thead>
                             <tr>
@@ -105,57 +107,4 @@
     </div>
 </section>
     
-@endsection
-
-@section('js')
-    <script>
-        $('#post-comment').on('click', function () {
-
-            var commentBody = $('textarea[name="body"]').val();
-            $this = this;
-            $($this).html('جاري إرسال <i class="fa fa-spinner fa-spin"></i>')
-            $($this).prop('disabled', true)
-            $('textarea[name="body"]').prop('disabled', true)
-
-            $.ajax({
-                url: "/account/comments/store",
-                type: "POST",
-                data: {
-                    _token: "{{ csrf_token() }}",
-                    order_id: {{ $order->id }},
-                    is_admin: 0,
-                    body: commentBody
-                },
-                dataType: "JSON",
-                success: function (data) {
-
-                    console.log(data)
-                    if (data.status == 200) {
-                        // clear comment box
-                        $('textarea[name="body"]').val('');
-                        // add this comment to comments list
-                        $('#comments-list').append(`
-                        <div class="py-1">
-                            <strong class="d-block">{{ auth()->user()->name }}</strong>
-                            <span style="font-size:11px;">منذ قليل</span>
-                            <p>`+commentBody+`</p>
-                        </div>
-                        `)
-                        // reset
-                        $($this).html('أرسل')
-                        $($this).prop('disabled', false)
-                        $('textarea[name="body"]').prop('disabled', false)
-                    }
-                },
-                error: function (error) {
-                    console.log(error);
-                    // reset
-                    $($this).html('أرسل')
-                    $($this).prop('disabled', false)
-                    $('textarea[name="body"]').prop('disabled', false)
-                }
-            });
-
-        });
-    </script>
 @endsection

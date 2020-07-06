@@ -21,13 +21,11 @@ class CommentController extends Controller
         $user = Order::query()->find($request->get('order_id'))->user;
         Notification::query()->create([
             'body'      =>  'هناك تعليق جديد علي مناسبة لك',
-            'user_id'   =>  $user->id,
+            'user_id'   =>  auth()->id(),
         ]);
-        if(Comment::create($request->except('_token'))){
-            return response()->json(['status' => 200]);
-        }
+        Comment::create($request->except('_token'));
 
-        return response()->json(['status' => 500]);
+        return redirect()->back()->withTab('comments');
     }
 
 }
