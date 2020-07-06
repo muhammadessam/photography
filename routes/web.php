@@ -40,7 +40,7 @@ Route::middleware(['auth'])->group( function ()
 Route::prefix('gallery')->group(function (){
     Route::get('images','ImageController@index')->name('images');
     Route::get('images/{id}','ImageController@show')->name('images.show');
-    Route::view('videos','site.galary.videos')->name('videos');
+    Route::view('videos','site.gallery.videos')->name('videos');
 });
 Route::resource('opinions','Admin\OpinionController')->only('store');
 Route::get('/myBills','HomeController@bills')
