@@ -73,8 +73,8 @@ class OrderController extends Controller
 
         $data = $request->all();
         $data['customer_id'] = auth()->user()->customer->id;
-        Order::create($data);
+        $order = Order::create($data);
 
-        return redirect()->route('account.orders')->withMsg('تم تلقي طلبك بنجاح');
+        return redirect()->route('account.orders.show', ['id' => $order->id])->withMsg('تم تلقي طلبك بنجاح');
     }
 }

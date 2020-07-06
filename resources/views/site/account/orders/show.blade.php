@@ -9,6 +9,38 @@
                 <h4 class="text-center font-weight-bold"> تفاصيل الطلب</h4>
                 <span class="d-block text-center"> <img src="{{ asset('images/flower.svg') }}" alt=""></span>
             </div>
+            @if(session()->has('msg'))
+                <div class="row mt-4 px-5">
+                    <div class="col-12">
+                        <div class="alert alert-success">{{ session()->get('msg') }}</div>
+                    </div>
+                </div>
+            @endif
+            <div class="row mt-5">
+                <div class="col-6 col-sm-12">
+                    @if ($order->status  != 'rejected')
+                        <div class="order-status px-5">
+                            <div class="timeline d-flex justify-content-between">
+                                <div class="step"></div>
+                                <div class="step {{ $order->status == 'waiting' || $order->status == 'billed' ? 'active' : '' }}"></div>
+                                <div class="step {{ $order->status == 'accepted' ? 'active' : '' }}"></div>
+                                <div class="step {{ $order->status == 'final' ? 'active' : '' }}"></div>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span>طلب جديد</span>
+                                <span>تحت المراجعة</span>
+                                <span>تم قبول الطلب</span>
+                                <span>تم انجاز</span>
+                            </div>
+                        </div>
+                    @else
+                        <div class="alert alert-danger px-5" role="alert">
+                            <h4 class="alert-heading">مرفوض</h4>
+                            <p>تم رفض هذا الطلب منل قبل الإدارة</p>
+                        </div>
+                    @endif
+                </div>
+            </div>
             <div class="row px-5 mt-4">
                 <div class="col-12 mb-4">
                     <ul class="nav">

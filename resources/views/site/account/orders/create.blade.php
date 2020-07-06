@@ -9,7 +9,24 @@
                 <h4 class="text-center font-weight-bold">طلب مناسبة</h4>
                 <span class="d-block text-center"> <img src="{{ asset('images/flower.svg') }}" alt=""></span>
             </div>
-
+            <div class="row mt-5">
+                <div class="col-6 col-sm-12">
+                    <div class="order-status px-5">
+                        <div class="timeline d-flex justify-content-between">
+                            <div class="step active"></div>
+                            <div class="step"></div>
+                            <div class="step"></div>
+                            <div class="step"></div>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <span>طلب جديد</span>
+                            <span>تحت المراجعة</span>
+                            <span>تم قبول الطلب</span>
+                            <span>تم انجاز</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="  main-login">
                 <div class="  login-cont">
                     <div class=" login-div login-div2">

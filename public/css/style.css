@@ -23,6 +23,8 @@ body {
   text-align: right;
   direction: rtl;
   font-family: "AJannatLT";
+  position: relative;
+  min-height: 100vh;
 }
 .aja-font {
   font-family: "AJannatLT";
@@ -46,6 +48,9 @@ a:hover {
   outline: 0;
 }
 /* Header ---------------------------- */
+header {
+  position: relative;
+}
 header .fixed-top {
   position: absolute;
   top: 0;
@@ -394,6 +399,12 @@ header::after {
 /* Footer */
 footer {
   background-color: #0b0737;
+  position: absolute;
+  background-color: #0b0737;
+  height: 53px;
+  width: 100%;
+  bottom: 0px;
+  margin-top: 53px;
 }
 .footer-link {
   width: 20px;
@@ -418,6 +429,16 @@ footer {
   }
   .last-footer div {
     margin-bottom: 10px;
+  }
+  footer {
+    position: absolute;
+    background-color: #0b0737;
+    height: 100px;
+    width: 100%;
+    display: flex;
+    bottom: -100px;
+    align-items: center;
+    justify-content: center;
   }
 }
 
@@ -608,6 +629,33 @@ footer {
   font-size: 50px;
   color: rgb(199, 123, 88);
 }
+
+.order-status {
+  margin-bottom: 45px;
+}
+
+.order-status .timeline {
+  height: 5px;
+  background-color: #ddd;
+  position: relative;
+  margin-bottom: 25px;
+}
+
+.order-status .timeline .step {
+  width: 18px;
+  height: 18px;
+  background: #ffffff;
+  border: 4px solid #dddddd;
+  border-radius: 50%;
+  position: relative;
+  top: -7px;
+}
+
+.order-status .timeline .step.active {
+  background: rgba(21, 206, 101, 0.808);
+  border-color: #15CE64;
+}
+
 /* // Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) { 
   table {
@@ -622,3 +670,6 @@ footer {
   background-color: #782fd3;
   color: #FFF;
  }
+
+
+ /********** fix **********/
