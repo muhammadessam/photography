@@ -36,8 +36,10 @@ Route::middleware(['auth'])->group( function ()
     Route::get('/account/bills','BillController@index')->name('account.bills');
     Route::post('/account/comments/store','CommentController@store')->name('account.comments.store');
 });
-Route::prefix('galary')->group(function (){
-    Route::view('images','site.galary.images')->name('images');
+
+Route::prefix('gallery')->group(function (){
+    Route::get('images','ImageController@index')->name('images');
+    Route::get('images/{id}','ImageController@show')->name('images.show');
     Route::view('videos','site.galary.videos')->name('videos');
 });
 Route::resource('opinions','Admin\OpinionController')->only('store');

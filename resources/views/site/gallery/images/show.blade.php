@@ -7,15 +7,16 @@
             </div>
             <div class="card-body my-m-img">
                 <div class="row">
-                    @foreach(@App\AdminImage::all() as $image)
-                        <div class="col-4 p-1">
+                        <div class="col-12">
                             <div class="card bg-primary-gradient">
                                 <div class="card-body p-0">
-                                    <img class="img-thumbnail" width="100%" src="{{asset($image->image)}}">
+                                    <img class="img-thumbnail" width="100%" src="{{asset($image->image)}}"></<img>
+                                </div>
+                                <div class="card-footer">
+                                    <p><strong>المشاهدات: </strong> {{ $image->getViews() }} | <strong>الحجم: </strong> {{ formatSizeUnits(filesize($image->image)) }}</p>
                                 </div>
                             </div>
                         </div>
-                    @endforeach
                 </div>
             </div>
         </div>
