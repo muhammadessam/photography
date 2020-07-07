@@ -91,48 +91,16 @@
         <section class="my-5 py-5 numbers">
             <div class="container">
                 <div class="row mt-4 text-white">
-                    <div class="col-lg-3 col-md-6 mb-3">
-                        <div class="text-center  p-3">
-                            <div class="services-icons text-center"><i class="icofont-jewlery "></i></div>
-                            <h2 class=" font-weight-bold">
-              <span class="counter" data-counter-time="2000" data-counter-delay="10">
-                {{ 0 }}
-              </span>
-                            </h2>
-                            <h5 class="mt-3">الخدمات المقدمة</h5>
+                    @foreach ($achievements as $achievement)                        
+                        <div class="col-lg-3 col-md-6 mb-3">
+                            <div class="text-center  p-3">
+                                <div class="services-icons text-center"><i class="fa fa-{{ $achievement->icon }}"></i></div>
+                                <h2 class=" font-weight-bold"><span class="counter" data-counter-time="2000" data-counter-delay="10">{{ $achievement->number }}</span>
+                                </h2>
+                                <h5 class="mt-3">{{ $achievement->title }}</h5>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 mb-3">
-                        <div class="text-center  p-3">
-                            <div class="services-icons text-center"><i class="icofont-ui-camera "></i></div>
-                            <h2 class=" font-weight-bold">
-              <span class="counter" data-counter-time="2000" data-counter-delay="10">
-                {{ $clientCount }}
-              </span>
-                            </h2>
-                            <h5 class="mt-3">
-                                العملاء
-                            </h5>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 mb-3">
-                        <div class="text-center  p-3">
-                            <div class="services-icons text-center"><i class="icofont-birthday-cake "></i></div>
-                            <h2 class=" font-weight-bold"><span class="counter" data-counter-time="2000" data-counter-delay="10">
-                             {{ $orders->count() }}
-              </span></h2>
-                            <h5 class="mt-3">كل الطلبات</h5>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 mb-3">
-                        <div class="text-center  p-3">
-                            <div class="services-icons text-center"><i class="icofont-birthday-cake "></i></div>
-                            <h2 class=" font-weight-bold"><span class="counter" data-counter-time="2000" data-counter-delay="10">
-                            {{ $orders->where('status', 'final')->count() }}
-              </span></h2>
-                            <h5 class="mt-3">خدمات منجزة</h5>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </section>
