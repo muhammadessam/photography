@@ -59,6 +59,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{route('admin.achievements.index')}}" class="nav-link {{request()->routeIs('admin.achievements.*') ? 'active':''}}">
+                        <i class="nav-icon fas fa-star"></i>
+                        <p>
+                            الانجازات
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{route('admin.employees.index')}}" class="nav-link {{request()->routeIs('admin.employees.*') ? 'active':''}}">
                         <i class="nav-icon fas fa-users"></i>
                         <p>

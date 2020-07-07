@@ -16,6 +16,7 @@ Route::prefix('admin')->group(function () {
         });
         Route::resource('settings', 'SettingController')->middleware('permission:settings');
         Route::resource('services', 'ServiceController')->middleware('permission:services');
+        Route::resource('achievements', 'AchievementController');
         Route::resource('admins', 'AdminController')->middleware('permission:admins');
         Route::get('/permission/{admin}', 'AdminController@permissions')->name('permissions');
         Route::post('/permission/update/{admin}', 'AdminController@updatePerms')->name('update_perms');
