@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section class="my-5 register">
+<section class="my-5 register mb-5">
     <div class="container">
         <div class="my-shadow py-4">
             <div class="dif">
@@ -53,12 +53,15 @@
                         <li class="nav-item">
                             <a class="nav-link c-bol"  data-toggle="tab" href="#bills">الفواتير</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link c-bol"  data-toggle="tab" href="#images">الصور</a>
+                        </li>
                     </ul>
                     <hr>
                 </div>
             </div>
             <div class="tab-content mb-3 px-5">
-                <div class="tab-pane {{ session()->has('tab')  ? '' : 'active' }}" id="details">
+                <div class="tab-pane {{ request()->has('tab') || session()->has('tab')  ? '' : 'active' }}" id="details">
                     <div class="row">
                         <div class="col-md-6 col-sm-12">
                             <h4 class="mb-3 mt-3">العنوان </h4>
@@ -134,9 +137,32 @@
                         </tbody>
                     </table>
                 </div>
+                <div class="tab-pane {{ request()->has('tab') && request()->get('tab') == 'images' ? 'active' : '' }}" id="images">
+                    <div class="row justify-content-center">
+                        @if ($order->image)                            
+                            @foreach ($order->image as $img)
+                                <div class="col-md-3">
+                                    <a href="{{$img->image}}" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+                                        <img src="{{$img->image}}" class="img-fluid">
+                                    </a>
+                                </div>                            
+                            @endforeach
+                        @else
+                            <p class="text-center">لا صور</p>
+                        @endif
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
+@endsection
+@section('js')
+    <script>
+    $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+                event.preventDefault();
+                $(this).ekkoLightbox();
+            });    
+    </script>
 @endsection

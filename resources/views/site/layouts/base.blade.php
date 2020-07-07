@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="{{asset('webProject/icofont/css/icofont.min.css')}}">
         <link rel="stylesheet" href="{{asset('css/owl.carousel.min.css')}}">
         <link rel="stylesheet" href="{{asset('css/owl.theme.default.min.css')}}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
         <link rel="stylesheet" href="{{asset('css/style.css')}}">
         <title> توثيق</title>
     </head>
@@ -22,6 +23,7 @@
         <script src="{{asset('js/owl.carousel.min.js')}}"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.js"></script>
         <script src="{{asset('js/jquery.countup.min.js')}}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
         <script src="{{asset('js/main.js')}}"></script>
         @yield('js')
     </body>

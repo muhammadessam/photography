@@ -89,7 +89,7 @@
                                         <td class="text-center">{{$item['address']}}</td>
                                         <td class="text-center">{{$item['date']}}</td>
                                         <td class="text-center">{{$item->get_status()}}</td>
-                                        <td class="text-center">{{$item->country->name}}</td>
+                                        <td class="text-center">{{$item->country ? $item->country->name : null}}</td>
                                         <td class="text-center">{{$item->city->name}}</td>
                                         <td class="text-center">{{$item['is_special'] ? 'خاصة':'عامة'}}</td>
                                         <td class="text-center">{{$item['is_right_print']? 'نعم':'لا'}}</td>

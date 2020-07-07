@@ -15,6 +15,7 @@ class OrderController extends Controller
         $orders = auth()->user()
                         ->orders()
                         ->with('category', 'city')
+                        ->withCount('images', 'videos')
                         ->orderBy('created_at', 'desc')
                         ->get();
 
