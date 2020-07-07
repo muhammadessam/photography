@@ -1,7 +1,7 @@
 @extends('admin.layout.layout')
 @section('content')
     <div class="container p-4">
-        <h3 class="col-12 text-right">إضافة خدمة جديدة</h3>
+        <h3 class="col-12 text-right">تعديل خدمة </h3>
     </div>
     <div class="card col-8" style="margin: 0 auto;">
         <div class="card-body">
