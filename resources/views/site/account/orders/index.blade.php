@@ -23,7 +23,7 @@
             @endif
             <div class="bg-white border par-tb mt-5">
                 @if($orders->count() > 0)
-                    <table class="table mb-2 border-top-0">
+                    <table class="table mb-5 py-5 border-top-0">
                         <thead>
                             <tr>
                                 <th> تاريخ الطلب</th>
