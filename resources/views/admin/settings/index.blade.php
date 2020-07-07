@@ -36,6 +36,10 @@
                     <label for="phone">رقم الهاتف</label>
                     <input type="text" id="phone" name="phone" value="{{$sets->phone}}" class="form-control">
                 </div>
+                <div class="form-group">
+                    <label for="address">العنوان والبلد</label>
+                    <input type="text" id="address" name="address" value="{{$sets->address}}" class="form-control">
+                </div>
                 <div class="col-12 row ">
                     <div class="col-6">
                         <div class="form-group">
