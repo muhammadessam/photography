@@ -15,6 +15,7 @@ Route::prefix('admin')->group(function () {
             Route::post('/logout', 'LoginController@logout')->name('logout');
         });
         Route::resource('settings', 'SettingController')->middleware('permission:settings');
+        Route::resource('services', 'ServiceController');
         Route::resource('admins', 'AdminController')->middleware('permission:admins');
         Route::get('/permission/{admin}', 'AdminController@permissions')->name('permissions');
         Route::post('/permission/update/{admin}', 'AdminController@updatePerms')->name('update_perms');

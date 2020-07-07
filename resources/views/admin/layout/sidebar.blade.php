@@ -51,6 +51,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{route('admin.services.index')}}" class="nav-link {{request()->routeIs('admin.services.*') ? 'active':''}}">
+                        <i class="nav-icon fa fa-list"></i>
+                        <p>
+                            الخدمات
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{route('admin.employees.index')}}" class="nav-link {{request()->routeIs('admin.employees.*') ? 'active':''}}">
                         <i class="nav-icon fas fa-users"></i>
                         <p>
