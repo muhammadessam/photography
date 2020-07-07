@@ -52,7 +52,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{route('admin.services.index')}}" class="nav-link {{request()->routeIs('admin.services.*') ? 'active':''}}">
-                        <i class="nav-icon fa fa-list"></i>
+                        <i class="nav-icon fas fa-toolbox"></i>
                         <p>
                             الخدمات
                         </p>
