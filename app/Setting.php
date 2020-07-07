@@ -22,5 +22,6 @@ class Setting extends Model
         'linked',
         'logo',
         'icon',
+        'phone',
     ];
 }

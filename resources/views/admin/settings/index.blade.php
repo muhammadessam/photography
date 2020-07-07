@@ -32,6 +32,10 @@
                     <label for="linked">رابط linked in</label>
                     <input type="text" id="linked" name="linked" value="{{$sets->linked}}" class="form-control">
                 </div>
+                <div class="form-group">
+                    <label for="phone">رقم الهاتف</label>
+                    <input type="text" id="phone" name="phone" value="{{$sets->phone}}" class="form-control">
+                </div>
                 <div class="col-12 row ">
                     <div class="col-6">
                         <div class="form-group">
