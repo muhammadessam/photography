@@ -71,45 +71,18 @@
                     <span class="d-block text-center"> <img src="./images/flower.svg" alt=""></span>
                 </div>
                 <div class="row mt-4">
-                    <div class="col-md-4 mb-3">
-                        <div class="text-center my-shadow p-3 position-relative ready">
-                            <div class="overlay ov-kufi py-2 ">
-                                <P class="py-2">
-                                    هنالك العديد من الأنواع المتوفرة لنصوص لوريم إيبسوم، ولكن الغالبية تم تعديلها بشكل ما عبر إدخال بعض
-                                    النوادر أو الكلمات العشوائية
-                                </P>
+                    @foreach ($services as $service)                        
+                        <div class="col-md-4 mb-3">
+                            <div class="text-center my-shadow p-3 position-relative ready">
+                                <div class="overlay ov-kufi py-2 ">
+                                    <P class="py-2">{{ $service->description }}</P>
+                                </div>
+                                <div class="services-icons text-center"><i class="fa fa-{{ $service->icon }} icon-color"></i></div>
+                                <h5 class="icon-color font-weight-bold">{{ $service->title }}</h5>
+                                <p class="mt-3">{{ $service->description }}</p>
                             </div>
-                            <div class="services-icons text-center"><i class="icofont-jewlery icon-color"></i></div>
-                            <h5 class="icon-color font-weight-bold">تصوير حفلات الزواج</h5>
-                            <p class="mt-3">هنالك العديد من الأنواع المتوفرة لنصوص لوريم إيبسوم، ولكن الغالبية</p>
                         </div>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <div class="text-center my-shadow p-3 position-relative ready">
-                            <div class="overlay ov-kufi py-2 ">
-                                <P class="py-2">
-                                    هنالك العديد من الأنواع المتوفرة لنصوص لوريم إيبسوم، ولكن الغالبية تم تعديلها بشكل ما عبر إدخال بعض
-                                    النوادر أو الكلمات العشوائية
-                                </P>
-                            </div>
-                            <div class="services-icons text-center"><i class="icofont-ui-camera icon-color"></i></div>
-                            <h5 class="icon-color font-weight-bold">تصوير المناسبات</h5>
-                            <p class="mt-3">هنالك العديد من الأنواع المتوفرة لنصوص لوريم إيبسوم، ولكن الغالبية</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <div class="text-center my-shadow p-3 position-relative ready">
-                            <div class="overlay ov-kufi py-2 ">
-                                <P class="py-2">
-                                    هنالك العديد من الأنواع المتوفرة لنصوص لوريم إيبسوم، ولكن الغالبية تم تعديلها بشكل ما عبر إدخال بعض
-                                    النوادر أو الكلمات العشوائية
-                                </P>
-                            </div>
-                            <div class="services-icons text-center"><i class="icofont-birthday-cake icon-color"></i></div>
-                            <h5 class="icon-color font-weight-bold">فوتوسيشن</h5>
-                            <p class="mt-3">هنالك العديد من الأنواع المتوفرة لنصوص لوريم إيبسوم، ولكن الغالبية</p>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </section>
