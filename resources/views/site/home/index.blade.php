@@ -283,31 +283,35 @@
                 <div class="row">
 
                     <div class="col-md-6">
-                        <div class="info-data">
-                            <div class="d-flex align-items-center">
-                                <div>
-                <span class="contact-icon">
-                  <i class="fas fa-mobile-alt"></i>
-                </span>
-                                </div>
-                                <div class="det-d">
-                                    <span class="d-block"> رقم الجوال</span>
-                                    <span class="d-block" dir="ltr"> +97100000000</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="info-data">
-                            <div class="d-flex align-items-center">
-                                <div>
-                <span class="contact-icon">
-                  <i class="fas fa-map-marker-alt"></i>
-                </span>
-                                </div>
-                                <div class="det-d">
-                                    <span class="d-block"> الموقع</span>
-                                    <span class="d-block" dir="ltr">المملكة العربية السعودية | الرياض</span>
+                        @if($setting->phone)
+                            <div class="info-data">
+                                <div class="d-flex align-items-center">
+                                    <div>
+                                        <span class="contact-icon">
+                                        <i class="fas fa-mobile-alt"></i>
+                                        </span>
+                                    </div>
+                                    <div class="det-d">
+                                        <span class="d-block"> رقم الجوال</span>
+                                        <span class="d-block" dir="ltr"> {{ $setting->phone }}</span>
+                                    </div>
                                 </div>
                             </div>
+                        @endif
+                        <div class="info-data">
+                            @if($setting->address)
+                                <div class="d-flex align-items-center">
+                                    <div>
+                                        <span class="contact-icon">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        </span>
+                                    </div>
+                                    <div class="det-d">
+                                        <span class="d-block"> الموقع</span>
+                                        <span class="d-block" dir="ltr">{{ $setting->address }}</span>
+                                    </div>
+                                </div>
+                            @endif
                         </div>
                         <div class="info-data">
                             <div class="d-flex align-items-center">
