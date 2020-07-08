@@ -65,6 +65,18 @@
             </div>
             <div class="tab-content mb-3 px-5">
                 <div class="tab-pane {{ request()->has('tab') ? '' : 'active' }}" id="details">
+                    @if ($order->employees->count() > 0)
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="alert alert-light" role="alert">
+                                    <h4 class="alert-heading mb-4">المسؤولون عن التغطية</h4>
+                                    @foreach ($order->employees as $employee)                                    
+                                        <p><i class="fa fa-user"></i> {{ $employee->name }} | <i class="fa fa-phone"></i> {{ $employee->phone }}</p>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                    @endif
                     <div class="row kory">
                         <div class="col-md-6 col-sm-12">
                             <h4 class="mb-3 mt-3"><i class="pl-2 fas fa-map-marked-alt"></i>العنوان </h4>

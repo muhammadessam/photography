@@ -27,14 +27,14 @@ class OrderController extends Controller
     public function show(Request $req, $id)
     {
         $order = auth()->user()->orders()
-                               ->with('city', 'category', 'comments', 'bills')
+                               ->with('city', 'category', 'comments', 'bills', 'employees')
                                ->find($id);
         
         // return 404 if order is not found
         if (! $order) {
             abort(404);
         }
-        
+
         return view('site.account.orders.show', [
             'order' => $order,
         ]);
