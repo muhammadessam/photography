@@ -145,16 +145,18 @@
                             </div>
                         </div>
                         <div class="completed galary-status d-none">
-                            @foreach ($videos as $video)
-                            <div class="col-md-6">
-                                <iframe id="ytplayer" type="text/html" width="100%" height="250"
-                                    @php
-                                        parse_str( parse_url($video->video, PHP_URL_QUERY), $output );
-                                    @endphp
-                                    src="https://www.youtube.com/embed/{{  $output['v'] }}"
-                                    frameborder="0"></iframe>
-                            </div>                            
-                            @endforeach
+                            <div class="row">
+                                @foreach ($videos as $video)
+                                    <div class="col-md-6">
+                                        <iframe id="ytplayer" type="text/html" width="100%" height="250"
+                                            @php
+                                                parse_str( parse_url($video->video, PHP_URL_QUERY), $output );
+                                            @endphp
+                                            src="https://www.youtube.com/embed/{{  $output['v'] }}"
+                                            frameborder="0"></iframe>
+                                    </div>                            
+                                @endforeach
+                            </div>
                         </div>
                         <div class="withdraw galary-status d-none  ">
                             <div class="row">
@@ -171,7 +173,7 @@
                             @endif
 
                             @if($images->count() > 0)
-                                <div class="col-md-6"><img src="{{ request()->root() . '/' .$images->random()->image }}" alt=""></div>      
+                                <div class="col-md-6"><img class="img-fluid" src="{{ request()->root() . '/' .$images->random()->image }}" alt=""></div>      
                             @endif
                             </div>
                         </div>
