@@ -56,6 +56,9 @@
                         <li class="nav-item">
                             <a class="nav-link c-bol"  data-toggle="tab" href="#images"><i class="far fa-images"></i> الصور </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link c-bol"  data-toggle="tab" href="#videos"><i class="fa fa-camera"></i> الفيديوهات </a>
+                        </li>
                     </ul>
                     <hr>
                 </div>
@@ -149,6 +152,24 @@
                             @endforeach
                         @else
                             <p class="text-center">ال يتوفر أي أي صور </p>
+                        @endif
+                    </div>
+                </div>
+                <div class="tab-pane {{ request()->has('tab') && request()->get('tab') == 'videos' ? 'active' : '' }}" id="videos">
+                    <div class="row">
+                        @if ($order->videos->count() > 0)                            
+                            @foreach ($order->videos as $video)
+                                <div class="col-md-6">
+                                    <iframe id="ytplayer" type="text/html" width="100%" height="250"
+                                        @php
+                                            parse_str( parse_url($video->video, PHP_URL_QUERY), $output );
+                                        @endphp
+                                        src="https://www.youtube.com/embed/{{  $output['v'] }}"
+                                        frameborder="0"></iframe>
+                                </div>                            
+                            @endforeach
+                        @else
+                            <p class="text-center">لا توجد فيديوهات </p>
                         @endif
                     </div>
                 </div>
