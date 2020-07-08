@@ -45,26 +45,26 @@
                 <div class="col-12 mb-4">
                     <ul class="nav p-0 nav-md">
                         <li class="nav-item">
-                            <a class="nav-link c-bol active" data-toggle="tab" href="#details"><i class="fas fa-info-circle"></i>  تفاصيل </a>
+                            <a class="nav-link c-bol {{ request()->has('tab') && request()->get('tab') == 'details' || !request()->has('tab') ? 'active' : '' }}" data-toggle="tab" href="#details"><i class="fas fa-info-circle"></i>  تفاصيل </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link c-bol" data-toggle="tab" href="#comments"><i class="fas fa-comments"></i> التعليقات </a>
+                            <a class="nav-link c-bol {{ request()->has('tab') && request()->get('tab') == 'comments' ? 'active' : '' }}" data-toggle="tab" href="#comments"><i class="fas fa-comments"></i> التعليقات </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link c-bol"  data-toggle="tab" href="#bills"><i class="fas fa-file-invoice-dollar"></i>   الفواتير </a>
+                            <a class="nav-link c-bol {{ request()->has('tab') && request()->get('tab') == 'bills' ? 'active' : '' }}"  data-toggle="tab" href="#bills"><i class="fas fa-file-invoice-dollar"></i>   الفواتير </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link c-bol"  data-toggle="tab" href="#images"><i class="far fa-images"></i> الصور </a>
+                            <a class="nav-link c-bol {{ request()->has('tab') && request()->get('tab') == 'images' ? 'active' : '' }}"  data-toggle="tab" href="#images"><i class="far fa-images"></i> الصور </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link c-bol"  data-toggle="tab" href="#videos"><i class="fa fa-camera"></i> الفيديوهات </a>
+                            <a class="nav-link c-bol {{ request()->has('tab') && request()->get('tab') == 'videos' ? 'active' : '' }}"  data-toggle="tab" href="#videos"><i class="fa fa-camera"></i> الفيديوهات </a>
                         </li>
                     </ul>
                     <hr>
                 </div>
             </div>
             <div class="tab-content mb-3 px-5">
-                <div class="tab-pane {{ request()->has('tab') || session()->has('tab')  ? '' : 'active' }}" id="details">
+                <div class="tab-pane {{ request()->has('tab') ? '' : 'active' }}" id="details">
                     <div class="row kory">
                         <div class="col-md-6 col-sm-12">
                             <h4 class="mb-3 mt-3"><i class="pl-2 fas fa-map-marked-alt"></i>العنوان </h4>
@@ -88,7 +88,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane {{ session()->has('tab') && session()->get('tab') == 'comments' ? 'active' : '' }} mb-4 h-100" id="comments">
+                <div class="tab-pane {{ request()->has('tab') && request()->get('tab') == 'comments' ? 'active' : '' }} mb-4 h-100" id="comments">
                     <div id="comments-list">
                         @foreach ($order->comments as $comment)
                             <div class="p-2 c-bol {{ $comment->is_admin ? 'admin-color' : 'normal-color' }}">
@@ -109,7 +109,7 @@
                         <button type="submit" id="post-comment" class="btn-primary btn mb-3"> <i class="fab fa-telegram-plane"></i>  ارسال </button>
                     </form>
                 </div>
-                <div class="tab-pane cad-p {{ session()->has('tab') && session()->get('tab') == 'bills' ? 'active' : '' }}" id="bills">
+                <div class="tab-pane cad-p {{ request()->has('tab') && request()->get('tab') == 'bills' ? 'active' : '' }}" id="bills">
                     <table class="table table-striped table-bordered table-responsive-lg" id="bills">
                         <thead>
                             <tr>

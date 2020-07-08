@@ -25,7 +25,7 @@ class CommentController extends Controller
         ]);
         Comment::create($request->except('_token'));
 
-        return redirect()->back()->withTab('comments');
+        return redirect()->route('account.orders.show', ['id' => $request->order_id, 'tab' => 'comments']);
     }
 
 }
