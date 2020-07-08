@@ -71,6 +71,8 @@
                             <span>{{ $order->address }}</span>
                             <h4 class="mb-3 mt-3"><i class="pl-2 fas fa-th-large"></i> الوقت </h4>
                             <span>{{ $order->date->toDateTimeString() }}</span>
+                            <h4 class="mb-3 mt-3"><i class="pl-2 fas fa-th-large"></i> اليوم </h4>
+                            <span>{{ $order->day }}</span>
                             <h4 class="mb-3 mt-3"><i class="pl-2 fas fa-building"></i> الحالة </h4>
                             <span>{{ $order->get_status() }}</span>
                             <h4 class="mb-3 mt-3"><i class="pl-2 fas fa-copyright"></i>  اضافة حقوقنا علي التصميم </h4>
