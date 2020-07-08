@@ -123,90 +123,57 @@
                         <div class="current galary-status">
                             <div>
                                 <div id="nd-car" class="owl-carousel owl-galary owl-theme" dir="ltr">
-                                    <div class="o-img">
-
-                                        <div class="position-relative ready  d-inline-block">
-                                            <img src="./images/img_1.png" alt="">
-                                            <div class="overlay ov-kufi  r-img  ">
-                                                <div
-                                                    class="py-2 main-img d-flex justify-content-center align-items-center flex-column text-white">
-                                                    <h5 class="text-center">
-                                                        تنظيم معرض الصور
-                                                    </h5>
-                                                    <span class="d-inline-block my-2 touch-sm"></span>
-                                                    <h6 class="text-center">تجهيزنا معرض لإحد العملاء</h6>
-                                                    <i class="far fa-image sms-im"></i>
+                                    @foreach ($images as $image)
+                                        <div class="o-img">
+                                            <div class="position-relative ready  d-inline-block">
+                                                <img src="{{ request()->root() . '/' .$image->image }}" alt="">
+                                                <div class="overlay ov-kufi  r-img  ">
+                                                    <div
+                                                        class="py-2 main-img d-flex justify-content-center align-items-center flex-column text-white">
+                                                        <h5 class="text-center">
+                                                            تنظيم معرض الصور
+                                                        </h5>
+                                                        <span class="d-inline-block my-2 touch-sm"></span>
+                                                        <h6 class="text-center">تجهيزنا معرض لإحد العملاء</h6>
+                                                        <i class="far fa-image sms-im"></i>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="o-img">
-                                        <div class="position-relative ready  d-inline-block">
-                                            <img src="./images/img_2.png" alt="">
-                                            <div class="overlay ov-kufi  r-img  ">
-                                                <div
-                                                    class="py-2 main-img d-flex justify-content-center align-items-center flex-column text-white">
-                                                    <h5 class="text-center">
-                                                        تنظيم معرض الصور
-                                                    </h5>
-                                                    <span class="d-inline-block my-2 touch-sm"></span>
-                                                    <h6 class="text-center">تجهيزنا معرض لإحد العملاء</h6>
-                                                    <i class="far fa-image sms-im"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="o-img">
-                                        <div class="position-relative ready  d-inline-block">
-                                            <img src="./images/img_3.png" alt="">
-                                            <div class="overlay ov-kufi  r-img  ">
-                                                <div
-                                                    class="py-2 main-img d-flex justify-content-center align-items-center flex-column text-white">
-                                                    <h5 class="text-center">
-                                                        تنظيم معرض الصور
-                                                    </h5>
-                                                    <span class="d-inline-block my-2 touch-sm"></span>
-                                                    <h6 class="text-center">تجهيزنا معرض لإحد العملاء</h6>
-                                                    <i class="far fa-image sms-im"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
                         <div class="completed galary-status d-none">
-
-                            <div class="position-relative ready  d-inline-block">
-                                <img src="./images/img_2.png" alt="">
-                                <div class="overlay ov-kufi  r-img  ">
-                                    <div class="py-2 main-img d-flex justify-content-center align-items-center flex-column text-white">
-                                        <h5 class="text-center">
-                                            تنظيم معرض الصور
-                                        </h5>
-                                        <span class="d-inline-block my-2 touch-sm"></span>
-                                        <h6 class="text-center">تجهيزنا معرض لإحد العملاء</h6>
-                                        <i class="far fa-image sms-im"></i>
-                                    </div>
-                                </div>
-                            </div>
+                            @foreach ($videos as $video)
+                            <div class="col-md-6">
+                                <iframe id="ytplayer" type="text/html" width="100%" height="250"
+                                    @php
+                                        parse_str( parse_url($video->video, PHP_URL_QUERY), $output );
+                                    @endphp
+                                    src="https://www.youtube.com/embed/{{  $output['v'] }}"
+                                    frameborder="0"></iframe>
+                            </div>                            
+                            @endforeach
                         </div>
-                        <div class="withdraw galary-status d-none">
+                        <div class="withdraw galary-status d-none  ">
+                            <div class="row">
+                                
+                            @if($videos->count() > 0)
+                                <div class="col-md-6">
+                                    <iframe id="ytplayer" type="text/html" width="100%" height="250"
+                                        @php
+                                            parse_str( parse_url($videos->random()->video, PHP_URL_QUERY), $output );
+                                        @endphp
+                                        src="https://www.youtube.com/embed/{{  $output['v'] }}"
+                                        frameborder="0"></iframe>
+                                </div>      
+                            @endif
 
-                            <div class="position-relative ready  d-inline-block">
-                                <img src="./images/img_3.png" alt="">
-                                <div class="overlay ov-kufi  r-img  ">
-                                    <div class="py-2 main-img d-flex justify-content-center align-items-center flex-column text-white">
-                                        <h5 class="text-center">
-                                            تنظيم معرض الصور
-                                        </h5>
-                                        <span class="d-inline-block my-2 touch-sm"></span>
-                                        <h6 class="text-center">تجهيزنا معرض لإحد العملاء</h6>
-                                        <i class="far fa-image sms-im"></i>
-                                    </div>
-                                </div>
+                            @if($images->count() > 0)
+                                <div class="col-md-6"><img src="{{ request()->root() . '/' .$images->random()->image }}" alt=""></div>      
+                            @endif
                             </div>
-
                         </div>
                     </div>
                 </div>
