@@ -2,7 +2,7 @@
 
 @section('content')
 <section class="my-5">
-    <div class="container">
+    <div class="container main-edit">
       <div class="my-shadow py-4">
         <div class="dif">
           <h4 class="text-center font-weight-bold">تعدبل بياناتي</h4>
@@ -64,10 +64,10 @@
                 </div>
                 <div class="form-group col-md-6">
                     <div class="row w-100 m-0 p-0">
-                    <div class="">
+                    <div class="w-100">
                         <div class="form-group text-right">
                         <label class="font-weight-bold" for="city_id">المدينة: </label>
-                        <select name="city_id" class="form-control py-0 " id="city_id">
+                        <select name="city_id" class="form-control py-0 w-100 " id="city_id">
                             @foreach ($cities as $city)                                        
                                 <option value="{{ $city->id }}" {{ auth()->user()->customer->city == $city->id ? 'selected' : null }}>{{ $city->name}}</option>
                             @endforeach
@@ -79,7 +79,7 @@
                 </div>
                 <div class="col-12 mb-5">
                     {{ csrf_field() }}
-                <button type="submit" class="btn btn-block font-weight-bold  text-white bg-nav-c save-invoice py-2">تسجيل</button>
+                <button type="submit" class="btn btn-block font-weight-bold  text-white bg-nav-c save-invoice py-2">حفظ</button>
                 </div>
             </form>
         </div>

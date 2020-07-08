@@ -1,9 +1,9 @@
 @extends('site.layouts.base')
 
 @section('content')
-<section class="my-5 register">
+<section class="my-2 mt-4 register">
     <div class="container">
-        <div class="my-shadow py-4">
+        <div class="my-shadow py-4 mb-5">
         <div class="dif">
             <h4 class="text-center font-weight-bold">مرحبا بك يا <span class="c-bol">{{ explode(' ', auth()->user()->name)[0] }}</span></h4>
             <span class="d-block text-center"> <img src="./images/flower.svg" alt=""></span>
@@ -16,7 +16,7 @@
                     <a href="{{ route('account.edit') }}" class="position-relative saad border pt-3 pb-1 px-1  ">
                         <div class="">
                             <div class="text-center">
-                                <i class="fas fa-user icon-f"></i>
+                                <i class="fas fa-user icon-f blue-icon"></i>
                             </div>
                             <div>
                                 <h5 class="text-center  manage  c-bol "><small class="font-weight-bold" >تعديل بياناتى</small></h5>
@@ -24,52 +24,52 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-4">
+                <div class="col-6 col-md-4">
                 <a href="{{ route('account.orders') }}" class="row position-relative saad border pt-3 pb-1 px-1  ">
 
                     <div class="">
                         <div class="text-center">
-                            <i class="fas fa-birthday-cake icon-f"></i>
+                            <i class="fas fa-birthday-cake icon-f blue-icon"></i>
                         </div>
                         <div class="">
-                            <h5 class="text-center  manage  c-bol "><small class="font-weight-bold" >مناسباتى</small></h5>
+                            <h5 class="text-center  manage  c-bol  "><small class="font-weight-bold" >طلباتى</small></h5>
                         </div>
                     </div>
-                    <span class="btn btn-sm" style="background-color: #c77b58;color: white;">{{auth()->user()->customer->orders->count()}}</span>
+                    <span class="btn btn-sm" style="background-color: #dc3545;color: white;">{{auth()->user()->customer->orders->count()}}</span>
                 </a>
                 </div>
-                <div class="col-4">
+                <div class="col-6 col-md-4">
 
                 <a href="{{ route('account.orders.create') }}" class="position-relative saad border pt-3 pb-1 px-1  ">
                     <div class="">
                     <div class="text-center">
-                        <i class="far fa-plus-square icon-f"></i>
+                        <i class="far fa-plus-square icon-f  green-icon"></i>
                     </div>
                     <div>
-                        <h5 class="text-center  manage  c-bol "><small class="font-weight-bold" >طلب مناسبة جديدة</small></h5>
+                        <h5 class="text-center  manage  c-bol "><small class="font-weight-bold" >طلب تغطية جديدة</small></h5>
                     </div>
                     </div>
                 </a>
                 </div>
-                <div class="col-4">
+                <div class="col-6 col-md-4">
                 <a href="{{route('account.bills')}}" class="position-relative saad border pt-3 pb-1 px-1  ">
                     <div class="">
                         <div class="text-center">
-                            <i class="fas fa-file-invoice-dollar  icon-f"></i>
+                            <i class="fas fa-file-invoice-dollar  icon-f blue-icon"></i>
                         </div>
                         <div>
                             <h5 class="text-center  manage  c-bol "><small class="font-weight-bold" >الفواتير </small></h5>
                         </div>
                     </div>
-                    <span class="btn btn-sm" style="background-color: #c77b58;color: white;">{{auth()->user()->customer->bills->count()}}</span>
+                    <span class="btn btn-sm " style="background-color: #dc3545;color: white;">{{auth()->user()->customer->bills->count()}}</span>
                 </a>
                 </div>
-                <div class="col-4 col-md-4">
+                <div class="col-6 col-md-4">
                 <a href="#" data-toggle="modal" data-target="#exampleModalCenter"
                    class="position-relative saad border pt-3 pb-1 px-1  ">
                     <div class="">
                     <div class="text-center">
-                        <i class="fas fa-question-circle  icon-f"></i>
+                        <i class="fas fa-question-circle  icon-f blue-icon"></i>
                     </div>
                     <div>
                         <h5 class="text-center  manage  c-bol "><small class="font-weight-bold" >أضف رأيك</small></h5>
@@ -105,11 +105,11 @@
                     </div>
                 </div>
                 </div>
-                <div class="col-4 col-md-4">
+                <div class="col-6 col-md-4">
                     <a href="{{route('account_logout')}}"  class="position-relative saad border pt-3 pb-1 px-1">
                         <div class="">
                             <div class="text-center">
-                                <i class="fas fa-sign-out-alt  icon-f"></i>
+                                <i class="fas fa-sign-out-alt  icon-f text-danger"></i>
                             </div>
                             <div>
                                 <h5 class="text-center  manage  c-bol "><small class="font-weight-bold" >تسجيل الخروج</small></h5>

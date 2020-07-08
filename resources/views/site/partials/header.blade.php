@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg  py-4  bg-nav-c  ">
+<nav class="navbar navbar-expand-lg  py-2  bg-nav-c  ">
     <div class="container">
         <a class="navbar-brand buk-29" href="#"> <img src="{{asset('images/logo.svg')}}" alt=""></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -7,7 +7,7 @@
         </button>
 
         <div class="collapse navbar-collapse bar-sm" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto cairo ml-2">
+            <ul class="navbar-nav mr-auto cairo ml-2 kml-e">
                 <li class="nav-item ml-1">
                     <a class="nav-link" href="{{ route('home') }}">الرئيسية</a>
                     <span class="d-block nav-bol"><i class="fas fa-ellipsis-h"></i></span>
@@ -44,11 +44,10 @@
                 @auth
                     @if(auth()->user()->customer != null)
                         <li class="nav-item mx-1">
-                            <a class="nav-link" href="{{route('nots.index')}}">
-                                الاشعارات
-                                <span class="btn btn-danger btn-sm">{{auth()->user()->nots->where('read',0)->count()}}</span>
+                            <a class="nav-link position-relative d-inline-block" href="{{route('nots.index')}}">
+                                 <i class="fas fa-bell my-nfx"></i>
+                                <span class="btn btn-danger btn-sm not-num">{{auth()->user()->nots->where('read',0)->count()}}</span>
                             </a>
-                            <span class="d-block nav-bol nav-hid"><i class="fas fa-ellipsis-h"></i></span>
                         </li>
                         <li class="nav-item mx-1">
                             <a class="nav-link" href="{{route('account')}}">

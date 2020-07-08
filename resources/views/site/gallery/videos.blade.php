@@ -6,7 +6,7 @@
             border-radius: 12px;
         }
     </style>
-    <div class="container">
+    <div class="container mt-5">
         <div class="card">
             <div class="card-header">
                 <h4>معرض الفيديوهات</h4>
@@ -14,10 +14,10 @@
             <div class="card-body my-m-img">
                 <div class="row">
                     @foreach(@App\AdminVideo::all() as $video)
-                        <div class="col-4 p-1">
+                        <div class="col-lg-4 p-1">
                             <div class="card bg-primary-gradient">
                                 <div class="card-body p-0">
-                                    <iframe id="ytplayer" type="text/html" width="640" height="360"
+                                    <iframe id="ytplayer" type="text/html" width="100%" height="250"
                                         @php
                                             parse_str( parse_url($video->video, PHP_URL_QUERY), $output );
                                         @endphp

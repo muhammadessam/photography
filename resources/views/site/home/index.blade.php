@@ -246,7 +246,7 @@
                 </div>
         </section>
         <section class="contact py-5 text-white">
-            <div class="container">
+            <div class="container pb-5">
                 <h3 class="font-weight-bold mb-5 text-center ">تواصل معنا</h3>
                 <div class="row">
 
