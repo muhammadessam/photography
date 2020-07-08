@@ -54,7 +54,7 @@
                             <a class="nav-link c-bol"  data-toggle="tab" href="#bills"><i class="fas fa-file-invoice-dollar"></i>   الفواتير </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link c-bol"  data-toggle="tab" href="#images"><i class="far fa-images"></i>الصور </a>
+                            <a class="nav-link c-bol"  data-toggle="tab" href="#images"><i class="far fa-images"></i> الصور </a>
                         </li>
                     </ul>
                     <hr>
@@ -139,11 +139,11 @@
                 </div>
                 <div class="tab-pane {{ request()->has('tab') && request()->get('tab') == 'images' ? 'active' : '' }}" id="images">
                     <div class="row justify-content-center">
-                        @if ($order->image)                            
-                            @foreach ($order->image as $img)
+                        @if ($order->images->count() > 0)                            
+                            @foreach ($order->images as $img)
                                 <div class="col-md-3">
-                                    <a href="{{$img->image}}" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
-                                        <img src="{{$img->image}}" class="img-fluid">
+                                    <a href="{{ request()->root() . '/' .$img->image }}" data-toggle="lightbox" data-gallery="example-gallery">
+                                        <img src="{{ request()->root() . '/' .$img->image }}" class="img-fluid">
                                     </a>
                                 </div>                            
                             @endforeach
