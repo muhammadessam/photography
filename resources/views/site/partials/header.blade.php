@@ -1,6 +1,9 @@
 <nav class="navbar navbar-expand-lg  py-2  bg-nav-c  ">
     <div class="container">
-        <a class="navbar-brand buk-29" href="#"> <img src="{{asset('images/logo.svg')}}" alt=""></a>
+        @php
+            $setting = App\Setting::first();
+        @endphp
+        <a class="navbar-brand buk-29" href="/"> <img src="{{ $setting ->logo ? request()->root().'/'. $setting ->logo : asset('images/logo.svg') }}" alt=""></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <i class="custom-bars-icon"></i>
