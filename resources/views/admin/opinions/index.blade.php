@@ -11,6 +11,10 @@
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                        @if($op->statue == "pending")
+                        <a class="btn btn-success" href="{{route('admin.opinion_accept',$op)}}"><i class="fa fa-check"></i></a>
+                        <a class="btn btn-warning" href="{{route('admin.opinion_refuse',$op)}}"><i class="fa fa-times"></i></a>
+                        @endif
                     </form>
                 </div>
                 <div class="card-body">
