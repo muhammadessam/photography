@@ -26,6 +26,11 @@
                                   </ul>
                               </div>
                           @endif
+                          @if (App\Setting::first()->is_closed)
+                              <div class="alert alert-danger">
+                                  <p>تم إقاف الموقع</p>
+                              </div>
+                          @endif
                         </div>
                     </div>
                     <form method="POST" action="{{ route('register') }}">
@@ -72,7 +77,7 @@
                       </div>
                       <div class="col-12">
                           {{ csrf_field() }}
-                        <button type="submit" class="btn btn-block font-weight-bold  text-white bg-nav-c save-invoice py-2">تسجيل</button>
+                        <button type="submit"  {{ App\Setting::first()->is_closed ? 'disabled' : '' }} class="btn btn-block font-weight-bold  text-white bg-nav-c save-invoice py-2">تسجيل</button>
                       </div>
                     </form>
                   </div>
