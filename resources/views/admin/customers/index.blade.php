@@ -11,10 +11,11 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">العملاء</h3>
-                        <div class="card-tools">
+                        <div class="card-tools row">
                             <a href="{{route('admin.customers.create')}}" class="btn btn-success">
                                 <i class="fa fa-plus-circle"></i>
                             </a>
+                            <a class="btn btn-warning" href="{{ route('admin.export') }}"><i class="fa fa-file-excel-o"></i></a>
                         </div>
                     </div>
                     <div class="card-body">

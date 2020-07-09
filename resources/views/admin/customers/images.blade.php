@@ -32,7 +32,7 @@
                                         <input type="hidden" name="order_id" value="{{$order->id}}">
                                         <div class="form-group">
                                             <label for="image">الصورة</label>
-                                            <input type="file" class="form-control" name="image" id="image">
+                                            <input type="file" class="form-control" multiple name="images[]" id="image">
                                         </div>
                                         <button type="submit" class="btn btn-success btn-block">اضافة</button>
                                     </form>

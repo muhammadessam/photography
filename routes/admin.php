@@ -54,5 +54,6 @@ Route::prefix('admin')->group(function () {
         Route::resource('opinions','OpinionController')->only('index','destroy');
         Route::get('opinion/{opinion}/accept','OpinionController@accept')->name('opinion_accept');
         Route::get('opinion/{opinion}/refuse','OpinionController@refuse')->name('opinion_refuse');
+        Route::get('CustomersExport', 'CustomerController@export')->name('export');
     });
 });

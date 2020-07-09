@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Customer;
+use App\Exports\CustomersExport;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CustomerController extends Controller
 {
@@ -117,5 +119,9 @@ class CustomerController extends Controller
     }
     public function bills(Customer $customer){
         return view('admin.customers.bills',compact('customer'));
+    }
+    public function export()
+    {
+        return Excel::download(new CustomersExport(), 'العملاء.xlsx');
     }
 }

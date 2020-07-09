@@ -66,10 +66,10 @@
                     <div class="row w-100 m-0 p-0">
                     <div class="w-100">
                         <div class="form-group text-right">
-                        <label class="font-weight-bold" for="city_id">المدينة: </label>
-                        <select name="city_id" class="form-control py-0 w-100 " id="city_id">
-                            @foreach ($cities as $city)                                        
-                                <option value="{{ $city->id }}" {{ auth()->user()->customer->city == $city->id ? 'selected' : null }}>{{ $city->name}}</option>
+                        <label class="font-weight-bold" for="city">المدينة: </label>
+                        <select name="city" class="form-control py-0 w-100 " id="city">
+                            @foreach ($cities as $city)
+                                <option value="{{ $city->name }}" {{ auth()->user()->customer->city == $city->name ? 'selected' : null }}>{{ $city->name}}</option>
                             @endforeach
                         </select>
                         </div>

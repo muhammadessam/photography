@@ -38,12 +38,14 @@ class ImageController extends Controller
      */
     public function store(Request $request)
     {
-        if ($request->hasFile('image')){
-            $img = Storage::disk('public')->putFile('images',$request->file('image'));
-            Image::create([
-                'image'     =>$img,
-                'order_id'  =>$request->get('order_id'),
-            ]);
+        if ($request->hasFile('images')){
+            foreach ($request->file('images') as $image){
+                $img = Storage::disk('public')->putFile('images',$image);
+                Image::create([
+                    'image'     =>$img,
+                    'order_id'  =>$request->get('order_id'),
+                ]);
+            }
             alert('','تم الاضافة بنجاح','success');
             return Redirect::back();
         }else{

@@ -10,7 +10,7 @@
         "lengthChange": true,
         "searching": true,
         "ordering": true,
-        "autoWidth": true
+        "autoWidth": true,
     });
 </script>
 <style>

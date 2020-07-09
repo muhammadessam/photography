@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\City;
+use App\Country;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -16,7 +17,7 @@ class AccountController extends Controller
 
     public function edit(Request $req)
     {
-        $cities = City::all();
+        $cities = Country::all();
 
         return view('site.account.edit', [
             'cities' => $cities,
@@ -30,8 +31,8 @@ class AccountController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255'],
             'password' => ['nullable', 'confirmed', 'string', 'min:8'],
-            'city_id' => ['required'],
-            'phone' => ['required'],
+            'city' => ['required'],
+            'phone' => ['required','max:10'],
         ]);
 
         $user = User::find($id);
@@ -40,14 +41,14 @@ class AccountController extends Controller
         if (! $user) {
             abort(404);
         }
-        
+
         $user->name = $request->name;
         $user->email = $request->email;
-        
+
         $user->customer->city = $request->city_id;
         $user->customer->phone = $request->phone;
         $user->customer->save();
-        
+
         if ($request->filled('password')) {
             $user->password = Hash::make($request->password);
         }
