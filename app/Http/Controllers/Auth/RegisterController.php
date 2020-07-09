@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\City;
+use App\Country;
 use App\Customer;
 use App\User;
 use Illuminate\Http\Response;
@@ -53,7 +54,7 @@ class RegisterController extends Controller
      */
     public function showRegistrationForm()
     {
-        $cities = City::all();
+        $cities = Country::all();
 
         return view('site.auth.register', [
             'cities' => $cities,
@@ -74,7 +75,7 @@ class RegisterController extends Controller
         $user = $this->create($request->all());
         $customer = new Customer();
         $customer->phone = $request->phone;
-        $customer->city = $request->city_id;
+        $customer->city = $request->city;
         $user->customer()->save($customer);
 
         if($request->activate_now){
@@ -90,7 +91,7 @@ class RegisterController extends Controller
         if ($response = $this->registered($request, $user)) {
             return $response;
         }
-        
+
         return redirect($this->redirectPath());
     }
 

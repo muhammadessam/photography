@@ -52,5 +52,7 @@ Route::prefix('admin')->group(function () {
         Route::get('contact-reply/{contact}', 'ContactController@showReply')->name('showReplyForm');
         Route::post('contact-reply/{contact}', 'ContactController@sendReply')->name('sendReply');
         Route::resource('opinions','OpinionController')->only('index','destroy');
+        Route::get('opinion/{opinion}/accept','OpinionController@accept')->name('opinion_accept');
+        Route::get('opinion/{opinion}/refuse','OpinionController@refuse')->name('opinion_refuse');
     });
 });

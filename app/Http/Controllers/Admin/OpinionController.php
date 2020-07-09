@@ -94,4 +94,16 @@ class OpinionController extends Controller
         alert('','تم الحذف','success');
         return redirect()->back();
     }
+    public function accept(Opinion $opinion){
+        $opinion->statue = "accepted";
+        $opinion->save();
+        alert('','تم','success');
+        return redirect()->back();
+    }
+    public function refuse(Opinion $opinion){
+        $opinion->statue = "refused";
+        $opinion->save();
+        alert('','تم','success');
+        return redirect()->back();
+    }
 }

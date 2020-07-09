@@ -71,7 +71,7 @@
                     <span class="d-block text-center"> <img src="./images/flower.svg" alt=""></span>
                 </div>
                 <div class="row mt-4">
-                    @foreach ($services as $service)                        
+                    @foreach ($services as $service)
                         <div class="col-md-4 mb-3">
                             <div class="text-center my-shadow p-3 position-relative ready">
                                 <div class="overlay ov-kufi py-2 ">
@@ -91,7 +91,7 @@
         <section class="my-5 py-5 numbers">
             <div class="container">
                 <div class="row mt-4 text-white">
-                    @foreach ($achievements as $achievement)                        
+                    @foreach ($achievements as $achievement)
                         <div class="col-lg-3 col-md-6 mb-3">
                             <div class="text-center  p-3">
                                 <div class="services-icons text-center"><i class="fa fa-{{ $achievement->icon }}"></i></div>
@@ -154,13 +154,13 @@
                                             @endphp
                                             src="https://www.youtube.com/embed/{{  $output['v'] }}"
                                             frameborder="0"></iframe>
-                                    </div>                            
+                                    </div>
                                 @endforeach
                             </div>
                         </div>
                         <div class="withdraw galary-status d-none  ">
                             <div class="row">
-                                
+
                             @if($videos->count() > 0)
                                 <div class="col-md-6">
                                     <iframe id="ytplayer" type="text/html" width="100%" height="250"
@@ -169,11 +169,11 @@
                                         @endphp
                                         src="https://www.youtube.com/embed/{{  $output['v'] }}"
                                         frameborder="0"></iframe>
-                                </div>      
+                                </div>
                             @endif
 
                             @if($images->count() > 0)
-                                <div class="col-md-6"><img class="img-fluid" src="{{ request()->root() . '/' .$images->random()->image }}" alt=""></div>      
+                                <div class="col-md-6"><img class="img-fluid" src="{{ request()->root() . '/' .$images->random()->image }}" alt=""></div>
                             @endif
                             </div>
                         </div>
@@ -190,7 +190,7 @@
             <div class="about-us text-white py-5">
                 <div class="container text-center">
                     <div id="td-car" class="owl-carousel owl-theme" dir="ltr">
-                        @foreach(@App\Opinion::all() as $op)
+                        @foreach(@App\Opinion::all()->where('statue','accepted') as $op)
                         <div class=" " dir="rtl">
                             <h3 class="font-weight-bold mb-3">قالوا عنا</h3>
                             <div class="clientopp">

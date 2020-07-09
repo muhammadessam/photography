@@ -65,9 +65,9 @@
                             <div class="">
                               <div class="form-group text-right">
                                 <label class="font-weight-bold" for="city_id">المدينة: </label>
-                                <select name="city_id" class="form-control py-0 " id="city_id">
-                                    @foreach ($cities as $city)                                        
-                                        <option value="{{ $city->id }}" {{ old('city_id') == $city->id ? 'selected' : null }}>{{ $city->name}}</option>
+                                <select name="city" class="form-control py-0 " id="city">
+                                    @foreach ($cities as $city)
+                                        <option value="{{ $city->name }}" {{ old('city') == $city->name ? 'selected' : null }}>{{ $city->name}}</option>
                                     @endforeach
                                 </select>
                               </div>
