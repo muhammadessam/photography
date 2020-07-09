@@ -70,24 +70,6 @@
                           </div>
                         </div>
                       </div>
-
-
-
-                      <div class="col-md-6">
-                        <div class="form-group text-right">
-                          <label class="font-weight-bold" for="activation">التفعيل:</label>
-                          <div class="d-block d-flex">
-                            <div>
-                              <div class="ml-4"><input name="activate_now" type="radio" class="ml-2" id="activate_now"><label
-                                  for="activate_now"> مباشرة</label></div>
-                            </div>
-                            <div>
-                              <div><input name="email_activation" type="radio" class="ml-2" id="email_activation"><label
-                                  for="email_activation">عبر البريد الإلكترونى</label></div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
                       <div class="col-12">
                           {{ csrf_field() }}
                         <button type="submit" class="btn btn-block font-weight-bold  text-white bg-nav-c save-invoice py-2">تسجيل</button>
