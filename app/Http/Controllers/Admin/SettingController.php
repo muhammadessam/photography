@@ -77,7 +77,10 @@ class SettingController extends Controller
      */
     public function update(Request $request, Setting $setting)
     {
-        $setting->update($request->except('_token','_method'));
+        $data = $request->except('_token','_method');
+        $data['is_closed'] = $request->has('is_closed') ? 1 : 0;
+
+        $setting->update($data);
         if($request->hasFile('logo1')){
             $logo = Storage::disk('public')->putFile('logos',$request->file('logo1'));
             $setting->logo = $logo;
