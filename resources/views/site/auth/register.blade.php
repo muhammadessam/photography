@@ -28,7 +28,7 @@
                           @endif
                           @if (App\Setting::first()->is_closed)
                               <div class="alert alert-danger">
-                                  <p>تم إقاف الموقع</p>
+                              <p>{{ App\Setting::first()->close_msg ? App\Setting::first()->close_msg : 'الموقع متوقف' }}</p>
                               </div>
                           @endif
                         </div>
