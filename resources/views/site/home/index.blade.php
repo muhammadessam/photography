@@ -3,8 +3,9 @@
     <div class="">
         <header>
             <div id="fr-car" class="owl-carousel owl-theme" dir="ltr">
+                @foreach(@App\Slider::all() as $slider)
                 <div class="car-img">
-                    <img src="./images/header_1.png" alt="">
+                    <img src="{{asset($slider->image)}}" alt="">
                     <div class="container">
                         <div class="header-content text-white">
                             <h3 class="text-center mb-1">مرحباً بكم في</h3>
@@ -17,35 +18,7 @@
                             @endguest                        </div>
                     </div>
                 </div>
-                <div class="car-img">
-                    <img src="./images/header_2.png" alt="">
-                    <div class="container">
-                        <div class="header-content text-white">
-                            <h3 class="text-center mb-1"> اهلا وسهلا بكم في</h3>
-                            <h1 class="text-center">توثيق لخدمات التصوير</h1>
-                            <div class="mt-3 mb-4 text-center tnb">
-                                <span class="d-inline-block line"></span>
-                            </div>
-                            @guest
-                                <div class="text-center"><a href="{{ route('register') }}" class="text-white ml-2">التسجيل</a> | <a href="{{ route('login') }}" class="text-white mr-2">الدخول</a></div>
-                            @endguest                        </div>
-                    </div>
-                </div>
-                <div class="car-img">
-                    <img src="./images/header_3.png" alt="">
-                    <div class="container">
-                        <div class="header-content text-white">
-                            <h3 class="text-center mb-1">مرحباً بكم في</h3>
-                            <h1 class="text-center">توثيق لخدمات التصوير</h1>
-                            <div class="mt-3 mb-4 text-center tnb">
-                                <span class="d-inline-block line"></span>
-                            </div>
-                            @guest
-                                <div class="text-center"><a href="{{ route('register') }}" class="text-white ml-2">التسجيل</a> | <a href="{{ route('login') }}" class="text-white mr-2">الدخول</a></div>
-                            @endguest
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </header>
 

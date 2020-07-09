@@ -155,6 +155,14 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{route('admin.sliders.index')}}" class="nav-link {{request()->routeIs('admin.opinions.*') ? 'active':''}}">
+                        <i class="nav-icon fa fa-file"></i>
+                        <p>
+                            السلايدر
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
