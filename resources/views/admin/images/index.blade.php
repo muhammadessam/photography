@@ -29,6 +29,15 @@
                                         <label for="image">الصورة</label>
                                         <input type="file" class="form-control" name="image" id="image">
                                     </div>
+                                    <div class="form-group">
+                                        <label for="customer_id">اختر القسم :</label>
+                                        <select class="form-control" name="category_id" id="category_id">
+                                            @foreach(\App\category::all() as $item )
+                                                <option {{old('category_id')==$item['id'] ? 'selected':''}} value="{{$item['id']}}">{{$item['name']}}</option>
+                                            @endforeach
+                                        </select>
+                                        <x-error name="category_id"></x-error>
+                                    </div>
                                     <button type="submit" class="btn btn-success btn-block">اضافة</button>
                                 </form>
                             </div>

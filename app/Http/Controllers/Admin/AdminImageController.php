@@ -50,6 +50,7 @@ class AdminImageController extends Controller
             $image->save(public_path($new_name));
             AdminImage::create([
                 'image'     =>  $new_name,
+                'category_id'  =>$request->get('category_id'),
             ]);
             alert('','تم الاضافة بنجاح','success');
             return Redirect::back();
