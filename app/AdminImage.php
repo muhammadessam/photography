@@ -9,7 +9,7 @@ class AdminImage extends Model
 {
     use HasViews;
     
-    protected $fillable = ['image', 'category_id'];
+    protected $fillable = ['image', 'category_id', 'title'];
 
     public function category()
     {

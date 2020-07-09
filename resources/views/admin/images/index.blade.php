@@ -30,6 +30,10 @@
                                         <input type="file" class="form-control" name="image" id="image">
                                     </div>
                                     <div class="form-group">
+                                        <label for="title">العنوان</label>
+                                        <input type="text" class="form-control" name="title" id="title">
+                                    </div>
+                                    <div class="form-group">
                                         <label for="customer_id">اختر القسم :</label>
                                         <select class="form-control" name="category_id" id="category_id">
                                             @foreach(\App\category::all() as $item )

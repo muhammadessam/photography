@@ -51,6 +51,7 @@ class AdminImageController extends Controller
             AdminImage::create([
                 'image'     =>  $new_name,
                 'category_id'  =>$request->get('category_id'),
+                'title'  =>$request->get('title'),
             ]);
             alert('','تم الاضافة بنجاح','success');
             return Redirect::back();
