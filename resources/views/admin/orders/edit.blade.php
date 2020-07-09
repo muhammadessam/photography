@@ -68,7 +68,9 @@
                                         <div class="form-group">
                                             <label for="country_id">المدينة :</label>
                                             <select required class="form-control" @change="changeCountry($event)" name="country_id" id="country_id">
-                                                <option value="{{$order->country->id}}">{{$order->country->name}}</option>
+                                                @if ($order->country)                                                    
+                                                    <option value="{{$order->country->id}}">{{$order->country->name}}</option>
+                                                @endif
                                                 <option v-for="country in countries" :value="country.id"  >@{{ country.name }}</option>
                                             </select>
                                         </div>

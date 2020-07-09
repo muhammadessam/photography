@@ -40,7 +40,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="address">المدينة :</label>
-                                        <div class="form-control">{{$order->country->name}}</div>
+                                        <div class="form-control">{{$order->country ? $order->country->name : 'لم يتم تحديد'}}</div>
                                     </div>
                                     <div class="form-group">
                                         <label for="is_special">الحي :</label>
@@ -220,7 +220,7 @@
                                 @foreach($order->bills as $item)
                                     <tr>
                                         <td>{{$item['id']}}</td>
-                                        <td>{{$item->customer->user->name}}</td>
+                                        <td>{{$item->customer ? $item->customer->user->name : 'غير موجود'}}</td>
                                         <td>{{$item->order->id}}</td>
                                         <td>{{$item->category->name}}</td>
                                         <td>{{$item->price}}</td>
