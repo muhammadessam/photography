@@ -131,10 +131,10 @@
                                                     <div
                                                         class="py-2 main-img d-flex justify-content-center align-items-center flex-column text-white">
                                                         <h5 class="text-center">
-                                                            تنظيم معرض الصور
+                                                            {{$image->category ? $image->category->name : ''}}
                                                         </h5>
                                                         <span class="d-inline-block my-2 touch-sm"></span>
-                                                        <h6 class="text-center">تجهيزنا معرض لإحد العملاء</h6>
+                                                        <h6 class="text-center">{{$image->title ? $image->title : ''}}</h6>
                                                         <i class="far fa-image sms-im"></i>
                                                     </div>
                                                 </div>

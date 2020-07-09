@@ -22,7 +22,7 @@ class HomeController extends Controller
         $setting = Setting::first();
         $services = Service::all();
         $achievements = Achievement::all();
-        $images = AdminImage::all();
+        $images = AdminImage::with('category')->get();
         $videos = AdminVideo::all();
 
         return view('site.home.index', [

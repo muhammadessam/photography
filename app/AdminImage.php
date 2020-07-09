@@ -9,5 +9,10 @@ class AdminImage extends Model
 {
     use HasViews;
     
-    protected $fillable = ['image'];
+    protected $fillable = ['image', 'category_id', 'title'];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }
