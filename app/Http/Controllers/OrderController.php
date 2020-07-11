@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Admin;
 use App\City;
 use App\Order;
 use App\Category;
+use App\Notifications\Admin\NewOrder;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -75,6 +77,8 @@ class OrderController extends Controller
         $data = $request->all();
         $data['customer_id'] = auth()->user()->customer->id;
         $order = Order::create($data);
+
+        Admin::first()->notify(new NewOrder($order));;
 
         return redirect()->route('account.orders.show', ['id' => $order->id])->withMsg('تم تلقي طلبك بنجاح');
     }
