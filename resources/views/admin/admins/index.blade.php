@@ -21,7 +21,7 @@
                         <form action="{{route('admin.admins.destroy',$admin)}}" method="post">
                             @csrf
                             @method('DELETE')
-                            <a class="btn btn-primary" href="#">
+                            <a class="btn btn-primary" href="{{route('admin.admins.edit',$admin)}}">
                                 <i class="fa fa-edit"></i>
                             </a>
                             <a class="btn btn-warning" href="{{route('admin.permissions',$admin )}}">

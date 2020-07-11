@@ -67,13 +67,38 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{route('admin.employees.index')}}" class="nav-link {{request()->routeIs('admin.employees.*') ? 'active':''}}">
+
+                </li>
+                <li class="nav-item has-treeview">
+                    <a  class="nav-link dropdown-item">
                         <i class="nav-icon fas fa-users"></i>
                         <p>
                             الموظفين
                         </p>
-                        <span class="btn btn-sm btn-outline-success">{{@App\Employee::all()->count()}}</span>
                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('admin.employees.index')}}" class="nav-link">
+                                <i class="fa fa-circle-o nav-icon"></i>
+                                <p>الكل</p>
+                                <span class="btn btn-sm btn-outline-success">{{@App\Employee::all()->count()}}</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.Employee_Activate')}}" class="nav-link">
+                                <i class="fa fa-circle-o nav-icon"></i>
+                                <p>الفعالين</p>
+                                <span class="btn btn-sm btn-outline-success">{{@App\Employee::all()->where('Statue','Activate')->count()}}</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.Employee_Activate')}}" class="nav-link">
+                                <i class="fa fa-circle-o nav-icon"></i>
+                                <p>الغير فعالين</p>
+                                <span class="btn btn-sm btn-outline-success">{{@App\Employee::all()->where('Statue','Deactivate')->count()}}</span>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a href="{{route('admin.customers.index')}}" class="nav-link {{request()->routeIs('admin.customers.*') ? 'active':''}}">
@@ -152,6 +177,9 @@
                         <i class="nav-icon fa fa-file"></i>
                         <p>
                             ارإ العملاء
+                            <i class="right badge badge-danger">
+                                {{@App\Opinion::all()->where('statue','pending')->count()}}
+                            </i>
                         </p>
                     </a>
                 </li>

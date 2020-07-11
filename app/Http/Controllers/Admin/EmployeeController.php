@@ -21,6 +21,14 @@ class EmployeeController extends Controller
         $employees = Employee::all();
         return view('admin.employees.index', compact('employees'));
     }
+    public function Activate(){
+        $employees = Employee::all()->where('Statue','Activate');
+        return view('admin.employees.index', compact('employees'));
+    }
+    public function Deactivate(){
+        $employees = Employee::all()->where('Statue','Deactivate');
+        return view('admin.employees.index', compact('employees'));
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -118,4 +126,5 @@ class EmployeeController extends Controller
         $orders = $employee->orders;
         return view('admin.employees.orders',compact('orders'));
     }
+
 }

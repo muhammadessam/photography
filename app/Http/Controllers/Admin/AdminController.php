@@ -6,6 +6,7 @@ use App\Admin;
 use App\Http\Controllers\Controller;
 use App\Permission;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 
 class AdminController extends Controller
@@ -60,7 +61,7 @@ class AdminController extends Controller
      */
     public function edit(Admin $admin)
     {
-        //
+        return view('admin.admins.edit',compact('admin'));
     }
 
     /**
@@ -72,7 +73,15 @@ class AdminController extends Controller
      */
     public function update(Request $request, Admin $admin)
     {
-        //
+        $admin->update($request->only('name','email'));
+        if ($request->get('password') != "same"){
+            $admin->update([
+                'password'  =>  Hash::make($request->get('password'))
+            ]);
+        }
+        alert('','تم التعديل','success');
+        return redirect()->route('admin.admins.index');
+
     }
 
     /**
