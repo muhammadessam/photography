@@ -31,6 +31,14 @@
                 <div class="dropdown-divider"></div>
 
                 <div class="dropdown-divider"></div>
+                <a href="{{ route('admin.notifications') }}" class="dropdown-item">
+                        <i class="fas fa-bell my-nfx"></i>
+                    اشعارات
+                    @if (auth()->guard('admin')->user()->notifications->count())                        
+                     <span class="badge badge-danger">{{ auth()->guard('admin')->user()->notifications->count() }}</span>
+                    @endif
+                </a>
+                <div class="dropdown-divider"></div>
                 <form action="{{route('admin.logout')}}" method="post">
                     @csrf
                     <button type="submit" class="dropdown-item dropdown-footer">تسجيل الخروج</button>

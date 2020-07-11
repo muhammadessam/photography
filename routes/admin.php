@@ -56,5 +56,6 @@ Route::prefix('admin')->group(function () {
         Route::get('opinion/{opinion}/refuse','OpinionController@refuse')->name('opinion_refuse');
         Route::get('CustomersExport', 'CustomerController@export')->name('export');
         Route::resource('sliders','SliderController');
+        Route::get('/notifications', 'NotificationController@index')->name('notifications');
     });
 });

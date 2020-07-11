@@ -49,7 +49,7 @@
                         <li class="nav-item mx-1">
                             <a class="nav-link position-relative d-inline-block" href="{{route('nots.index')}}">
                                  <i class="fas fa-bell my-nfx"></i>
-                                <span class="btn btn-danger btn-sm not-num">{{auth()->user()->nots->where('read',0)->count()}}</span>
+                                {{-- <span class="btn btn-danger btn-sm not-num">{{auth()->user()->nots->where('read',0)->count()}}</span> --}}
                             </a>
                         </li>
                         <li class="nav-item mx-1">
