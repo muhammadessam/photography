@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -55,8 +56,9 @@ Route::get('/account/logout',function (){
    auth()->logout();
    return redirect()->route('home');
 })->name('account_logout');
-
-
+Route::post('DownloadFile',function (Request $request){
+    return \Illuminate\Support\Facades\Storage::disk('public')->download($request['file']);
+})->name('DownloadFile');
 
 
 

@@ -2,6 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
+        <link rel="icon" href="{{asset(@App\Setting::first()->icon)}}">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
@@ -12,7 +13,7 @@
         <link rel="stylesheet" href="{{asset('css/style.css')}}">
         <title> توثيق</title>
     </head>
-    <body>        
+    <body>
         @include('site.partials.header')
         @yield('content')
         @include('site.partials.footer')
@@ -27,6 +28,6 @@
         <script src="{{asset('js/main.js')}}"></script>
         @yield('js')
     </body>
-    
+
 </html>
-    
+
