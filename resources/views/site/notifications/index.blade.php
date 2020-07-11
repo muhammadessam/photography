@@ -7,14 +7,14 @@
             </div>
             <div class="card-body">
                 <div class="list-group">
-                    @foreach($nots as $not)
+                    @foreach(auth()->user()->notifications as $not)
                         <div class="list-group-item list-group-item-action flex-column align-items-start">
                             <div class="d-flex w-100 justify-content-end">
-                                <small >{{\Carbon\Carbon::parse($not->created_at)->diffForHumans()}}</small>
+                                <small >{{$not->created_at->diffForHumans()}}</small>
                             </div>
-                            <p class="mb-1">
-                                {{$not->body}}
-                            </p>
+                            <a href="{{ route('account.orders.show', ['id' => $not->data['order']['id'], 'tab' => 'comments'] ).'#comment'.$not->data['comment']['id'] }}" class="mb-1">
+                                {{$not->data['body']}}
+                            </a>
                         </div>
                     @endforeach
                 </div>

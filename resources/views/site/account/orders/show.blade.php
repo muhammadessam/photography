@@ -105,7 +105,7 @@
                 <div class="tab-pane {{ request()->has('tab') && request()->get('tab') == 'comments' ? 'active' : '' }} mb-4 h-100" id="comments">
                     <div id="comments-list">
                         @foreach ($order->comments as $comment)
-                            <div class="p-2 c-bol {{ $comment->is_admin ? 'admin-color' : 'normal-color' }}">
+                            <div id="comment{{$comment->id}}" class="p-2 c-bol {{ $comment->is_admin ? 'admin-color' : 'normal-color' }}">
                                 <strong class="d-block ">{{ $comment->is_admin ? 'الإدارة' : auth()->user()->name }}</strong>
                                 <span style="font-size:11px;">{{ $comment->created_at }}</span>
                                 <p>{{ $comment->body }}</p>

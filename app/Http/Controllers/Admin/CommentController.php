@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Comment;
 use App\Http\Controllers\Controller;
 use App\Notification;
+use App\Notifications\User\NewComment;
 use App\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -39,13 +40,10 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        Comment::create($request->except('_token'));
+        $comment = Comment::create($request->except('_token'));
         $order = Order::find($request->get('order_id'));
         $user = $order->customer->user;
-        Notification::query()->create([
-            'body'      =>  'هناك تعليق جديد علي مناسبة لك',
-            'user_id'   =>  $user->id,
-        ]);
+        $user->notify(new NewComment($order, $comment));
         alert('','تم الارسال','success');
         return Redirect::back();
     }
