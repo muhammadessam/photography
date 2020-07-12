@@ -59,5 +59,6 @@ Route::prefix('admin')->group(function () {
         Route::get('/notifications', 'NotificationController@index')->name('notifications');
         Route::get('Employees/Activate','EmployeeController@Activate')->name('Employee_Activate');
         Route::get('Employees/Deactivate','EmployeeController@Deactivate')->name('Employee_Deactivate');
+        Route::get('SendWhatsApp/{customer}','WhatsappController@index')->name('send_whatsapp');
     });
 });

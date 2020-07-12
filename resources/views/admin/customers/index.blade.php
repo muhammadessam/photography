@@ -54,6 +54,9 @@
                                             <a href="{{route('admin.customer_videos',$customer)}}" class="btn btn-sm btn-success">
                                                 الفيديو
                                             </a>
+                                            <a href="{{route('admin.send_whatsapp',$customer)}}" class="btn btn-outline-success">
+                                                <i class="fa fa-whatsapp"></i>
+                                            </a>
                                             <button class="btn btn-danger" type="submit">
                                                 <i class="fa fa-trash"></i>
                                             </button>
