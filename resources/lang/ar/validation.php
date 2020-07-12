@@ -52,7 +52,7 @@ return [
     'gte' => [
         'numeric' => 'يجب أن تكون قيمة :attribute مساوية أو أكبر من :value.',
         'file'    => 'يجب أن يكون حجم الملف :attribute على الأقل :value كيلوبايت.',
-        'string'  => 'يجب أن يكون طول النص :attribute على الأقل :value حروفٍ/حرفًا.',
+        'string'  => 'ييجب على كلمة المرور1أن لاتقل عن 8 :attribute على الأقل :value حروفٍ/أرقام.',
         'array'   => 'يجب أن يحتوي :attribute على الأقل على :value عُنصرًا/عناصر.',
     ],
     'image'    => 'يجب أن يكون :attribute صورةً.',
@@ -66,7 +66,7 @@ return [
     'lt'       => [
         'numeric' => 'يجب أن تكون قيمة :attribute أصغر من :value.',
         'file'    => 'يجب أن يكون حجم الملف :attribute أصغر من :value كيلوبايت.',
-        'string'  => 'يجب أن يكون طول النّص :attribute أقل من :value حروفٍ/حرفًا.',
+        'string'  => 'يجب أنلاتقل كلمة المرور عن 8 :attribute أقل من :value حروفٍ/أرقام.',
         'array'   => 'يجب أن يحتوي :attribute على أقل من :value عناصر/عنصر.',
     ],
     'lte' => [

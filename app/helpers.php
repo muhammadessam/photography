@@ -31,3 +31,15 @@ if(! function_exists('formatSizeUnits')){
         return $bytes;
     }
 }
+
+if(! function_exists('markNotificationAsRead')){
+    function markNotificationAsRead($id, $forAdmin = false){
+        $user = $forAdmin ? auth()->guard('admin')->user() : auth()->guard('web')->user();
+
+        $notification = $user->notifications()->find($id);
+
+        if($notification) {
+            $notification->markAsRead();
+        }        
+    }
+}

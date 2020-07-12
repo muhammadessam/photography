@@ -7,15 +7,8 @@
             </div>
             <div class="card-body">
                 <div class="list-group">
-                    @foreach(auth()->user()->notifications as $not)
-                        <div class="list-group-item list-group-item-action flex-column align-items-start">
-                            <div class="d-flex w-100 justify-content-end">
-                                <small >{{$not->created_at->diffForHumans()}}</small>
-                            </div>
-                            <a href="{{ route('account.orders.show', ['id' => $not->data['order']['id'], 'tab' => 'comments'] ).'#comment'.$not->data['comment']['id'] }}" class="mb-1">
-                                {{$not->data['body']}}
-                            </a>
-                        </div>
+                    @foreach(auth()->user()->notifications as $notification)
+                        @include('site.notifications.types.'.snake_case(class_basename($notification->type)), $notification)   
                     @endforeach
                 </div>
             </div>

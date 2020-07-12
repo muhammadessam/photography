@@ -37,6 +37,10 @@ class OrderController extends Controller
             abort(404);
         }
 
+        if($req->has('notif_id')){
+            markNotificationAsRead($req->get('notif_id'));
+        }
+
         return view('site.account.orders.show', [
             'order' => $order,
         ]);
