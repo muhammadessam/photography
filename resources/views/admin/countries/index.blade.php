@@ -40,20 +40,22 @@
                                     <th>اجراء</th>
                                 </tr>
                                 </thead>
-                                @foreach(\App\Country::all() as $item)
-                                    <tr>
-                                        <td>{{$item['name']}}</td>
-                                        <td class="d-flex">
-                                            <a class="btn btn-primary ml-2" href="{{route('admin.country.show', $item)}}"><i class="fa fa-eye"></i></a>
-                                            <a class="btn btn-primary ml-2" href="{{route('admin.country.edit', $item)}}"><i class="fa fa-edit"></i></a>
-                                            <form action="{{route('admin.country.destroy', $item)}}" method="post" onsubmit="return confirm('هل انت متاكد ؟')">
-                                                @method('DELETE')
-                                                @csrf
-                                                <button class="btn btn-danger" type="submit"><i class="fa fa-trash"></i></button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @endforeach
+                                <tbody>
+                                    @foreach(\App\Country::all() as $item)
+                                        <tr>
+                                            <td>{{$item['name']}}</td>
+                                            <td class="d-flex">
+                                                <a class="btn btn-primary ml-2" href="{{route('admin.country.show', $item)}}"><i class="fa fa-eye"></i></a>
+                                                <a class="btn btn-primary ml-2" href="{{route('admin.country.edit', $item)}}"><i class="fa fa-edit"></i></a>
+                                                <form action="{{route('admin.country.destroy', $item)}}" method="post" onsubmit="return confirm('هل انت متاكد ؟')">
+                                                    @method('DELETE')
+                                                    @csrf
+                                                    <button class="btn btn-danger" type="submit"><i class="fa fa-trash"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
                             </table>
                         </div>
                     </div>

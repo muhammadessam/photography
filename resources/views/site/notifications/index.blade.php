@@ -7,15 +7,8 @@
             </div>
             <div class="card-body">
                 <div class="list-group">
-                    @foreach($nots as $not)
-                        <div class="list-group-item list-group-item-action flex-column align-items-start">
-                            <div class="d-flex w-100 justify-content-end">
-                                <small >{{\Carbon\Carbon::parse($not->created_at)->diffForHumans()}}</small>
-                            </div>
-                            <p class="mb-1">
-                                {{$not->body}}
-                            </p>
-                        </div>
+                    @foreach(auth()->user()->notifications as $notification)
+                        @include('site.notifications.types.'.snake_case(class_basename($notification->type)), $notification)   
                     @endforeach
                 </div>
             </div>

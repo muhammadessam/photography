@@ -70,7 +70,7 @@
                             <div class="col-12">
                                 <div class="alert alert-light" role="alert">
                                     <h4 class="alert-heading mb-4">المسؤولون عن التغطية</h4>
-                                    @foreach ($order->employees as $employee)                                    
+                                    @foreach ($order->employees as $employee)
                                         <p><i class="fa fa-user"></i> {{ $employee->name }} | <i class="fa fa-phone"></i> {{ $employee->phone }}</p>
                                     @endforeach
                                 </div>
@@ -101,11 +101,44 @@
                             <span>{{ $order->is_on_our_page ? 'نعم' : 'لا' }}</span>
                         </div>
                     </div>
+                    @if($order->status == "final")
+                    <div class="card m-3">
+                        <div class="card-header">
+                            الموظفين المسؤولون
+                        </div>
+                        <div class="card-body">
+                            <table id="employees" class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>اسم الموظف</th>
+                                    <th>التقييم</th>
+                                    <th>اجراء</th>
+                                </tr>
+                                </thead>
+                                @foreach($order->employees as $item)
+                                    <tr>
+                                        <td>{{$item['name']}}</td>
+                                        <td>{{$item->orders()->find($order)->pivot->stars}}</td>
+                                        <td class="d-flex">
+                                            <form action="{{route('admin.order-employee-star', [$order, $item])}}" class="form-inline" method="post">
+                                                @csrf
+                                                <div class="form-group">
+                                                    <input type="text" name="star" id="" class="form-control @error('star') is-invalid @enderror" placeholder="اضف تقيم من 1 الي 5 ">
+                                                </div>
+                                                <button type="submit" class="mr-1 btn btn-primary"><i class="fa fa-plus-circle"></i></button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </table>
+                        </div>
+                    </div>
+                    @endif
                 </div>
                 <div class="tab-pane {{ request()->has('tab') && request()->get('tab') == 'comments' ? 'active' : '' }} mb-4 h-100" id="comments">
                     <div id="comments-list">
                         @foreach ($order->comments as $comment)
-                            <div class="p-2 c-bol {{ $comment->is_admin ? 'admin-color' : 'normal-color' }}">
+                            <div id="comment{{$comment->id}}" class="p-2 c-bol {{ $comment->is_admin ? 'admin-color' : 'normal-color' }}">
                                 <strong class="d-block ">{{ $comment->is_admin ? 'الإدارة' : auth()->user()->name }}</strong>
                                 <span style="font-size:11px;">{{ $comment->created_at }}</span>
                                 <p>{{ $comment->body }}</p>
@@ -156,13 +189,18 @@
                 </div>
                 <div class="tab-pane {{ request()->has('tab') && request()->get('tab') == 'images' ? 'active' : '' }}" id="images">
                     <div class="row justify-content-center">
-                        @if ($order->images->count() > 0)                            
+                        @if ($order->images->count() > 0)
                             @foreach ($order->images as $img)
-                                <div class="col-md-3">
+                                <div class="col-md-3 position-relative">
                                     <a href="{{ request()->root() . '/' .$img->image }}" data-toggle="lightbox" data-gallery="example-gallery">
                                         <img src="{{ request()->root() . '/' .$img->image }}" class="img-fluid">
                                     </a>
-                                </div>                            
+                                    <form class="position-absolute" style="bottom: 0;right: 5%;" method="post" action="{{route('DownloadFile')}}">
+                                        @csrf
+                                        <input type="hidden" name="file" value="{{$img->image}}">
+                                        <button type="submit" class="btn btn-success btn-sm">تحميل</button>
+                                    </form>
+                                </div>
                             @endforeach
                         @else
                             <p class="text-center">ال يتوفر أي أي صور </p>
@@ -171,16 +209,16 @@
                 </div>
                 <div class="tab-pane {{ request()->has('tab') && request()->get('tab') == 'videos' ? 'active' : '' }}" id="videos">
                     <div class="row">
-                        @if ($order->videos->count() > 0)                            
+                        @if ($order->videos->count() > 0)
                             @foreach ($order->videos as $video)
                                 <div class="col-md-6">
-                                    <iframe id="ytplayer" type="text/html" width="100%" height="250"
-                                        @php
-                                            parse_str( parse_url($video->video, PHP_URL_QUERY), $output );
-                                        @endphp
-                                        src="https://www.youtube.com/embed/{{  $output['v'] }}"
-                                        frameborder="0"></iframe>
-                                </div>                            
+{{--                                    <iframe id="ytplayer" type="text/html" width="100%" height="250"--}}
+{{--                                        @php--}}
+{{--                                            parse_str( parse_url($video->video, PHP_URL_QUERY), $output );--}}
+{{--                                        @endphp--}}
+{{--                                        src="https://www.youtube.com/embed/{{  $output['v'] }}"--}}
+{{--                                        frameborder="0"></iframe>--}}
+                                </div>
                             @endforeach
                         @else
                             <p class="text-center">لا توجد فيديوهات </p>
@@ -198,6 +236,6 @@
     $(document).on('click', '[data-toggle="lightbox"]', function(event) {
                 event.preventDefault();
                 $(this).ekkoLightbox();
-            });    
+            });
     </script>
 @endsection

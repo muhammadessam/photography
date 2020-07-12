@@ -68,7 +68,7 @@
                                     <div class="form-group">
                                         <label for="name">التقييم</label>
                                         <div class="form-control">
-                                            {{ $employee->orders->pluck('pivot')->flatten()->pluck('stars')->sum() / $employee->orders->count()}}
+                                            {{ $employee->orders->pluck('pivot')->flatten()->pluck('stars')->sum() / $employee->orders->count() ?? 1}}
                                         </div>
                                     </div>
 

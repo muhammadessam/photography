@@ -1,4 +1,4 @@
-@extends('admin.layouts.layout')
+@extends('admin.layout.layout')
 @section('content')
 
     <div class="container">
@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="card-header">
                         <a class="btn btn-primary" href="{{route('admin.showReplyForm', $contact)}}"> <i class="fa fa-send"></i></a>
-                        <a class="btn btn-primary" href="{{route('contact.index')}}"> <i class="fa fa-list-ul"></i></a>
+                        <a class="btn btn-primary" href="{{route('admin.contact.index')}}"> <i class="fa fa-list-ul"></i></a>
                     </div>
                 </div>
             </div>

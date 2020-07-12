@@ -46,14 +46,14 @@
                             <label for="logo">شعار الموقع</label>
                             <input type="file" id="logo" onchange="PreviewImage()" name="logo1" class="form-control">
                         </div>
-                        <img src="{{asset('public/'.$sets->logo)}}" height="120px" id="logo_img" alt="">
+                        <img src="{{asset($sets->logo)}}" height="120px" id="logo_img" alt="">
                     </div>
                     <div class="col-6">
                         <div class="form-group">
                             <label for="icon">ايقونة الموقع</label>
                             <input type="file" id="icon" accept=".ico" onchange="PreviewImage1()" name="icon1" class="form-control">
                         </div>
-                        <img src="{{asset('public/'.$sets->icon)}}" height="120px" id="icon_img" alt="">
+                        <img src="{{asset($sets->icon)}}" height="120px" id="icon_img" alt="">
                     </div>
                 </div>
                 <div class="form-group">
@@ -66,12 +66,12 @@
                         {{$sets->close_msg}}
                     </textarea>
                 </div>
-                <div class="form-group">
-                    <label for="contact">رسالة تواصل معنا</label>
-                    <textarea name="contact" id="contact" class="form-control" cols="30" rows="10">
-                        {{$sets->contact}}
-                    </textarea>
-                </div>
+{{--                <div class="form-group">--}}
+{{--                    <label for="contact">رسالة تواصل معنا</label>--}}
+{{--                    <textarea name="contact" id="contact" class="form-control" cols="30" rows="10">--}}
+{{--                        {{$sets->contact}}--}}
+{{--                    </textarea>--}}
+{{--                </div>--}}
                 <div class="row m-3">
                     <div class="custom-control custom-checkbox col-3">
                         @if($sets->is_closed)
@@ -89,14 +89,14 @@
                         @endif
                         <label class="custom-control-label" for="can_register">تشغيل التسجيل</label>
                     </div>
-{{--                    <div class="custom-control custom-checkbox col-3">--}}
-{{--                        @if($sets->verify_email)--}}
-{{--                            <input type="checkbox" name="verify_email" value="1" checked class="custom-control-input" id="verify_email">--}}
-{{--                        @else--}}
-{{--                            <input type="checkbox" name="verify_email" value="1" class="custom-control-input" id="verify_email">--}}
-{{--                        @endif--}}
-{{--                        <label class="custom-control-label" for="verify_email">التفعيل بالبريد</label>--}}
-{{--                    </div>--}}
+                    <div class="custom-control custom-checkbox col-3">
+                        @if($sets->verify_email)
+                            <input type="checkbox" name="verify_email" value="1" checked class="custom-control-input" id="verify_email">
+                        @else
+                            <input type="checkbox" name="verify_email" value="1" class="custom-control-input" id="verify_email">
+                        @endif
+                        <label class="custom-control-label" for="verify_email">التفعيل بالبريد</label>
+                    </div>
 {{--                    <div class="custom-control custom-checkbox col-3">--}}
 {{--                        @if($sets->sms)--}}
 {{--                            <input type="checkbox" name="sms" value="1" checked class="custom-control-input" id="sms">--}}

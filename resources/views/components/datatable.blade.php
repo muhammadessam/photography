@@ -5,11 +5,13 @@
         "language": {
             "url": "{{asset('admin/plugins/datatables/extensions/i18n/Arabic.json')}}"
         },
-        "info": false,
+        "info": true,
+        "pagingType": "full_numbers",
         "paging": true,
+        "lengthMenu": [10, 25, 50, 75, 100],
         "lengthChange": true,
         "searching": true,
-        "ordering": true,
+        "ordering": false,
         "autoWidth": true,
     });
 </script>

@@ -6,6 +6,7 @@ use App\Employee;
 use App\Order;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Notifications\User\OrderStatusUpdated;
 use Illuminate\Validation\Rule;
 
 class OrderController extends Controller
@@ -73,6 +74,10 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
+        if(request()->has('notif_id')){
+            markNotificationAsRead(request()->get('notif_id'), true);
+        }
+
         return view('admin.orders.show', compact('order'));
     }
 
@@ -116,6 +121,9 @@ class OrderController extends Controller
             'is_on_our_page' => 'وضع الصور علي صفحاتنا',
         ]);
         $order->update($request->all());
+
+        $order->customer->user->notify(new OrderStatusUpdated($order));
+
         toast('تم', 'success')->position('bottom-start');
         return redirect()->route('admin.orders.index');
     }
@@ -157,6 +165,11 @@ class OrderController extends Controller
     }
 
     public function comments(Order $order){
+
+        if(request()->has('notif_id')){
+            markNotificationAsRead(request()->get('notif_id'), true);
+        }
+
         return view('admin.orders.comments',compact('order'));
     }
 
