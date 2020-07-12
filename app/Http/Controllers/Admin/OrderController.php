@@ -6,6 +6,7 @@ use App\Employee;
 use App\Order;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Notifications\User\OrderStatusUpdated;
 use Illuminate\Validation\Rule;
 
 class OrderController extends Controller
@@ -116,6 +117,9 @@ class OrderController extends Controller
             'is_on_our_page' => 'وضع الصور علي صفحاتنا',
         ]);
         $order->update($request->all());
+
+        $order->customer->user->notify(new OrderStatusUpdated($order));
+
         toast('تم', 'success')->position('bottom-start');
         return redirect()->route('admin.orders.index');
     }
