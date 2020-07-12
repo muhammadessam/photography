@@ -74,6 +74,10 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
+        if(request()->has('notif_id')){
+            markNotificationAsRead(request()->get('notif_id'), true);
+        }
+
         return view('admin.orders.show', compact('order'));
     }
 
@@ -161,6 +165,11 @@ class OrderController extends Controller
     }
 
     public function comments(Order $order){
+
+        if(request()->has('notif_id')){
+            markNotificationAsRead(request()->get('notif_id'), true);
+        }
+
         return view('admin.orders.comments',compact('order'));
     }
 
