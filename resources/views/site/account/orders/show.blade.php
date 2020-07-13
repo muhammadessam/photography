@@ -237,7 +237,7 @@
                         </div>
                     </div>
                     <div class="pb-2 pt-3 px-3">
-                        <p class="c-bol ">{{$order->comments->where('is_admin',0)->first()->body}}</p>
+                        <p class="c-bol ">{{$order->comments->where('is_admin',0)->first()->body ?? "الرجاء اضافة تفاصيل المشروع من خلال تعليق"}}</p>
                     </div>
                 </div>
                 @foreach ($order->comments as $comment)
