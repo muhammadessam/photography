@@ -15,7 +15,8 @@ class CountryController extends Controller
      */
     public function index()
     {
-        return view('admin.countries.index');
+        $countries = Country::paginate(10);
+        return view('admin.countries.index',compact('countries'));
     }
 
     /**

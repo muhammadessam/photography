@@ -20,8 +20,27 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $customers = Customer::all();
-        return view('admin.customers.index',$customers);
+        $customers = Customer::paginate(10);
+        return view('admin.customers.index',compact('customers'));
+    }
+    public function Activate(){
+        $customers = Customer::where('statue','Activate')->paginate(10);
+        return view('admin.customers.index',compact('customers'));
+    }
+    public function Deactivate(){
+        $customers = Customer::where('statue','Deactivate')->paginate(10);
+        return view('admin.customers.index',compact('customers'));
+    }
+    public function ChangeStatue(Customer $customer){
+        if ($customer->statue == "Activate"){
+            $customer->statue = "Deactivate";
+            $customer->save();
+        }else{
+            $customer->statue = "Activate";
+            $customer->save();
+        }
+        alert('','تم تغيير الحالة','success');
+        return redirect()->back();
     }
 
     /**

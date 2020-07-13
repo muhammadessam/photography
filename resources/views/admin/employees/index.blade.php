@@ -50,7 +50,8 @@
                     <td>البريد</td>
                     <td>الخبرة</td>
                     <td>القسم</td>
-                    <td>الحالة</td>
+                    <td>حالة العمل</td>
+                    <td>الحالة العامة</td>
                     <td>الجنسية</td>
                     <td>تحكم</td>
                     </thead>
@@ -62,6 +63,7 @@
                             <td>{{$employee->exp}}</td>
                             <td>{{$employee->category->name}}</td>
                             <td>{{$employee->is_available ? 'متاح':'مشغول'}}</td>
+                            <td class="{{$employee->Statue == "Activate"? 'bg-success':'bg-danger'}}">{{$employee->Statue == "Activate"? 'مفعل':'غير مفعل'}}</td>
                             <td>{{$employee->nationality}}</td>
                             <td class="d-flex">
                                 <a title="مشاهدة" href="{{route('admin.employees.show', $employee)}}" class="btn btn-success ml-1"><i class="fa fa-eye"></i></a>
@@ -69,6 +71,9 @@
                                 <a title="الطلبات" class="btn btn-warning ml-1" href="{{route('admin.emp_orders',$employee)}}">
                                     <i class="fa fa-first-order"></i>
                                     <span class="badge-danger badge">{{$employee->orders->count()}}</span>
+                                </a>
+                                <a href="{{route('admin.Employee_ChangeStatue',$employee)}}" class="btn btn-sm btn-dark">
+                                    تغيير الحالة
                                 </a>
                                 <button title="حذف" type="button" class="btn btn-danger" data-toggle="modal" data-target="#example{{$employee->id}}">
                                     <i class="fa fa-trash"></i>

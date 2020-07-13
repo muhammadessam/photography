@@ -6,6 +6,35 @@
     </div>
 
     <div class="container mt-5">
+        <div class="row justify-content-between">
+            <div class="card col-3 p-2 bg-success">
+                <a href="{{route('admin.Customer_Activate')}}">
+                    <h3 class="col-12 text-center">
+                        العملاء الفعالين
+                        <br>
+                        {{@App\Customer::all()->where('statue','Activate')->count()}}
+                    </h3>
+                </a>
+            </div>
+            <div class="card col-3 p-2 bg-danger">
+                <a href="{{route('admin.Customer_Deactivate')}}">
+                    <h3 class="col-12 text-center">
+                        العملاء الغير فعالين
+                        <br>
+                        {{@App\Customer::all()->where('statue','Deactivate')->count()}}
+                    </h3>
+                </a>
+            </div>
+            <div class="card col-3 p-2 bg-warning">
+                <a href="{{route('admin.customers.index')}}">
+                    <h3 class="col-12 text-center">
+                        العملاء
+                        <br>
+                        {{@App\Customer::all()->count()}}
+                    </h3>
+                </a>
+            </div>
+        </div>
         <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -25,15 +54,19 @@
                             <td>الهاتف</td>
                             <td>البريد</td>
                             <td>المدينة</td>
-                            <td>تحكم</td>
+                            <td>الحالة</td>
                             </thead>
-                            @foreach(@App\Customer::all() as $customer)
+                            @foreach($customers as $customer)
                                 <tr>
                                     <td>{{$customer->user->name}}</td>
                                     <td>{{$customer->phone}}</td>
                                     <td>{{$customer->user->email}}</td>
                                     <td>{{$customer->city}}</td>
-                                    <td>
+                                    <td class="{{$customer->statue == "Activate"?'bg-success':"bg-danger"}}">
+                                        {{$customer->statue == "Activate"?'مفعل':"غير مفعل"}}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5">
                                         <a class="btn btn-primary" href="{{route('admin.customers.edit',$customer)}}">
                                             <i class="fa fa-edit"></i>
                                         </a>
@@ -50,6 +83,9 @@
                                         </a>
                                         <a href="{{route('admin.customer_videos',$customer)}}" class="btn btn-sm btn-success">
                                             الفيديو
+                                        </a>
+                                        <a href="{{route('admin.Customer_ChangeStatue',$customer)}}" class="btn btn-sm btn-dark">
+                                            تغيير الحالة
                                         </a>
                                         <a href="{{route('admin.send_whatsapp',$customer)}}" class="btn btn-outline-success">
                                             <i class="fa fa-whatsapp"></i>
@@ -91,12 +127,11 @@
                                 </tr>
                             @endif
                         </table>
+                        {{$customers->links()}}
                     </div>
                 </div>
             </div>
         </div>
     </div>
 @endsection
-@section('javascript')
-    <x-datatable id="customers"></x-datatable>
-@endsection
+

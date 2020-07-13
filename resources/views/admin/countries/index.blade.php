@@ -41,7 +41,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach(\App\Country::all() as $item)
+                                    @foreach($countries as $item)
                                         <tr>
                                             <td>{{$item['name']}}</td>
                                             <td class="d-flex">
@@ -57,6 +57,9 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            <div class="col-12 text-center">
+                                {{$countries->links()}}
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -60,5 +60,9 @@ Route::prefix('admin')->group(function () {
         Route::get('Employees/Activate','EmployeeController@Activate')->name('Employee_Activate');
         Route::get('Employees/Deactivate','EmployeeController@Deactivate')->name('Employee_Deactivate');
         Route::get('SendWhatsApp/{customer}','WhatsappController@index')->name('send_whatsapp');
+        Route::get('Customers/Activate','CustomerController@Activate')->name('Customer_Activate');
+        Route::get('Customers/Deactivate','CustomerController@Deactivate')->name('Customer_Deactivate');
+        Route::get('Customer/{customer}/ChangeStatue','CustomerController@ChangeStatue')->name('Customer_ChangeStatue');
+        Route::get('Employee/{employee}/ChangeStatue','EmployeeController@ChangeStatue')->name('Employee_ChangeStatue');
     });
 });

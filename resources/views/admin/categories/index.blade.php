@@ -40,7 +40,7 @@
                                     <th>اجراء</th>
                                 </tr>
                                 </thead>
-                                @foreach(\App\Category::all() as $item)
+                                @foreach($categories as $item)
                                     <tr>
                                         <td>{{$item['name']}}</td>
                                         <td class="d-flex">
@@ -55,6 +55,7 @@
                                 @endforeach
                             </table>
                         </div>
+                        {{$categories->links()}}
                     </div>
                 </div>
             </div>

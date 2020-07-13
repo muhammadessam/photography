@@ -29,6 +29,17 @@ class EmployeeController extends Controller
         $employees = Employee::all()->where('Statue','Deactivate');
         return view('admin.employees.index', compact('employees'));
     }
+    public function ChangeStatue(Employee $employee){
+        if ($employee->Statue == "Activate"){
+            $employee->Statue = "Deactivate";
+            $employee->save();
+        }else{
+            $employee->Statue = "Activate";
+            $employee->save();
+        }
+        alert('','تم تغيير الحالة','success');
+        return redirect()->back();
+    }
 
     /**
      * Show the form for creating a new resource.

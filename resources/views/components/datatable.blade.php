@@ -7,7 +7,7 @@
         },
         "info": false,
         "pagingType": "full_numbers",
-        "paging": true,
+        "paging": false,
         "lengthMenu": [10, 25, 50, 75, 100],
         "lengthChange": true,
         "searching": true,

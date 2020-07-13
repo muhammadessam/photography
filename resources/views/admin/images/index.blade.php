@@ -36,7 +36,7 @@
                                     <div class="form-group">
                                         <label for="customer_id">اختر القسم :</label>
                                         <select class="form-control" name="category_id" id="category_id">
-                                            @foreach(\App\category::all() as $item )
+                                            @foreach(\App\Category::all() as $item )
                                                 <option {{old('category_id')==$item['id'] ? 'selected':''}} value="{{$item['id']}}">{{$item['name']}}</option>
                                             @endforeach
                                         </select>
