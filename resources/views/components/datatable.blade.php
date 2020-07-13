@@ -5,7 +5,7 @@
         "language": {
             "url": "{{asset('admin/plugins/datatables/extensions/i18n/Arabic.json')}}"
         },
-        "info": true,
+        "info": false,
         "pagingType": "full_numbers",
         "paging": true,
         "lengthMenu": [10, 25, 50, 75, 100],

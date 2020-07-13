@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="{{asset('css/owl.theme.default.min.css')}}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
         <link rel="stylesheet" href="{{asset('css/style.css')}}">
-        <title> توثيق</title>
+        <title>{{@App\Setting::first()->app_name}}</title>
     </head>
     <body>
         @include('site.partials.header')

@@ -26,13 +26,13 @@
                             <td>{{$item->email}}</td>
                             <td>{{$item->msg}}</td>
                             <td class="row d-flex justify-content-around">
-                                <div class=""><a class="btn btn-info" href="{{route('admin.contact.show', $item)}}"><i class="fa fa-eye"></i></a></div>
-                                <div class=""><a class="btn btn-primary" href="{{route('admin.showReplyForm', $item)}}"><i class="fa fa-send"></i></a></div>
+                                <div class=""><a title="مشاهدة" class="btn btn-info" href="{{route('admin.contact.show', $item)}}"><i class="fa fa-eye"></i></a></div>
+                                <div class=""><a title="رد" class="btn btn-primary" href="{{route('admin.showReplyForm', $item)}}"><i class="fa fa-send"></i></a></div>
                                 <div class="">
                                     <form action="{{route('admin.contact.destroy', $item)}}" method="post" onsubmit="return confirm('هل انت متاكد ؟')">
                                         @csrf
                                         @method('DELETE')
-                                        <button class="btn btn-danger" type="submit"><i class="fa fa-trash"></i></button>
+                                        <button class="btn btn-danger"  title="حذف" type="submit"><i class="fa fa-trash"></i></button>
                                     </form>
                                 </div>
                             </td>

@@ -40,13 +40,13 @@
                                     <td>{{$page->is_active? "فعالة":"غير فعالة"}}</td>
                                     <td>{{$page->place=="header"? "الهيدر":"الفوتر"}}</td>
                                     <td class="d-flex">
-                                        <a href="{{route('admin.page.edit', $page)}}" class="btn btn-warning ml-2"><i class="fa fa-edit"></i></a>
+                                        <a href="{{route('admin.page.edit', $page)}}" title="تعديل" class="btn btn-warning ml-2"><i class="fa fa-edit"></i></a>
 {{--                                        <a target="_blank" blank href="{{route('loadPage', $page->slug)}}" class="btn btn-primary ml-2"><i--}}
 {{--                                                class="fa fa-eye"></i></a>--}}
                                         <form action="{{route('admin.page.destroy', $page)}}" method="post">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i>
+                                            <button type="submit" title="حذف" class="btn btn-danger"><i class="fa fa-trash"></i>
                                             </button>
                                         </form>
                                     </td>

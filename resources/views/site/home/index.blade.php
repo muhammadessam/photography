@@ -269,6 +269,7 @@
                                 <div class="col-12">
                                     <textarea placeholder="الرسالة" class="form-control " name="msg" id="" cols="30" rows="7"></textarea>
                                 </div>
+                                {!! NoCaptcha::display() !!}
                                 <div class="text-left col-12 my-2">
                                     {{ csrf_field() }}
                                     <button class="contact-btn" type="submit">إرسال</button>
@@ -281,4 +282,5 @@
             </div>
         </section>
     </div>
+    {!! NoCaptcha::renderJs() !!}
 @endsection

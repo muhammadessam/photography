@@ -64,19 +64,38 @@
                             <td>{{$employee->is_available ? 'متاح':'مشغول'}}</td>
                             <td>{{$employee->nationality}}</td>
                             <td class="d-flex">
-                                <a href="{{route('admin.employees.show', $employee)}}" class="btn btn-success ml-1"><i class="fa fa-eye"></i></a>
-                                <a class="btn btn-primary ml-1" href="{{route('admin.employees.edit',$employee)}}"><i class="fa fa-edit"></i></a>
-                                <a class="btn btn-warning ml-1" href="{{route('admin.emp_orders',$employee)}}">
+                                <a title="مشاهدة" href="{{route('admin.employees.show', $employee)}}" class="btn btn-success ml-1"><i class="fa fa-eye"></i></a>
+                                <a title="تعديل" class="btn btn-primary ml-1" href="{{route('admin.employees.edit',$employee)}}"><i class="fa fa-edit"></i></a>
+                                <a title="الطلبات" class="btn btn-warning ml-1" href="{{route('admin.emp_orders',$employee)}}">
                                     <i class="fa fa-first-order"></i>
                                     <span class="badge-danger badge">{{$employee->orders->count()}}</span>
                                 </a>
-                                <form action="{{route('admin.employees.destroy',$employee)}}" method="post">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="btn btn-danger" type="submit">
-                                        <i class="fa fa-trash"></i>
-                                    </button>
-                                </form>
+                                <button title="حذف" type="button" class="btn btn-danger" data-toggle="modal" data-target="#example{{$employee->id}}">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                                <div class="modal fade" id="example{{$employee->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                هل انت متأكد من الحذف ؟
+                                            </div>
+                                            <div class="modal-footer">
+                                                <form action="{{route('admin.employees.destroy',$employee)}}" method="post">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button class="btn btn-danger" type="submit">
+                                                        <i class="fa fa-trash"></i>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                     @endforeach

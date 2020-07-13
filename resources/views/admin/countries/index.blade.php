@@ -33,7 +33,7 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <table id="cats" class="table table-striped">
+                            <table id="countries" class="table table-striped">
                                 <thead>
                                 <tr>
                                     <th>الاسم</th>
@@ -45,12 +45,12 @@
                                         <tr>
                                             <td>{{$item['name']}}</td>
                                             <td class="d-flex">
-                                                <a class="btn btn-primary ml-2" href="{{route('admin.country.show', $item)}}"><i class="fa fa-eye"></i></a>
-                                                <a class="btn btn-primary ml-2" href="{{route('admin.country.edit', $item)}}"><i class="fa fa-edit"></i></a>
+                                                <a class="btn btn-primary ml-2" title="مشاهدة" href="{{route('admin.country.show', $item)}}"><i class="fa fa-eye"></i></a>
+                                                <a class="btn btn-primary ml-2" title="تعديل"  href="{{route('admin.country.edit', $item)}}"><i class="fa fa-edit"></i></a>
                                                 <form action="{{route('admin.country.destroy', $item)}}" method="post" onsubmit="return confirm('هل انت متاكد ؟')">
                                                     @method('DELETE')
                                                     @csrf
-                                                    <button class="btn btn-danger" type="submit"><i class="fa fa-trash"></i></button>
+                                                    <button title="حذف" class="btn btn-danger" type="submit"><i class="fa fa-trash"></i></button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -65,5 +65,5 @@
     </div>
 @endsection
 @section('javascript')
-    <x-datatable id="cats"></x-datatable>
+    <x-datatable id="countries"></x-datatable>
 @endsection

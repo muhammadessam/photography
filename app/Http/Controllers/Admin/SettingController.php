@@ -79,6 +79,8 @@ class SettingController extends Controller
     {
         $data = $request->except('_token','_method');
         $data['is_closed'] = $request->has('is_closed') ? 1 : 0;
+        $data['can_register'] = $request->has('can_register') ? 1 : 0;
+//        $data['is_closed'] = $request->has('is_closed') ? 1 : 0;
 
         $setting->update($data);
         if($request->hasFile('logo1')){

@@ -34,33 +34,52 @@
                                     <td>{{$customer->user->email}}</td>
                                     <td>{{$customer->city}}</td>
                                     <td>
-                                        <form action="{{route('admin.customers.destroy',$customer->user)}}" method="post">
-                                            @csrf
-                                            @method('DELETE')
-                                            <a class="btn btn-primary" href="{{route('admin.customers.edit',$customer)}}">
-                                                <i class="fa fa-edit"></i>
-                                            </a>
-                                            <a href="{{route('admin.customer_orders',$customer)}}" class="btn btn-sm btn-success">
-                                                الطلبات
-                                                <span class="btn btn-sm btn-danger">{{$customer->orders->count()}}</span>
-                                            </a>
-                                            <a href="{{route('admin.customer_bills',$customer)}}" class="btn btn-sm btn-success">
-                                                الفواتير
-                                                <span class="btn btn-sm btn-danger">{{$customer->bills->count()}}</span>
-                                            </a>
-                                            <a href="{{route('admin.customer_images',$customer)}}" class="btn btn-sm btn-success">
-                                                الصور
-                                            </a>
-                                            <a href="{{route('admin.customer_videos',$customer)}}" class="btn btn-sm btn-success">
-                                                الفيديو
-                                            </a>
-                                            <a href="{{route('admin.send_whatsapp',$customer)}}" class="btn btn-outline-success">
-                                                <i class="fa fa-whatsapp"></i>
-                                            </a>
-                                            <button class="btn btn-danger" type="submit">
-                                                <i class="fa fa-trash"></i>
-                                            </button>
-                                        </form>
+                                        <a class="btn btn-primary" href="{{route('admin.customers.edit',$customer)}}">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                        <a href="{{route('admin.customer_orders',$customer)}}" class="btn btn-sm btn-success">
+                                            الطلبات
+                                            <span class="btn btn-sm btn-danger">{{$customer->orders->count()}}</span>
+                                        </a>
+                                        <a href="{{route('admin.customer_bills',$customer)}}" class="btn btn-sm btn-success">
+                                            الفواتير
+                                            <span class="btn btn-sm btn-danger">{{$customer->bills->count()}}</span>
+                                        </a>
+                                        <a href="{{route('admin.customer_images',$customer)}}" class="btn btn-sm btn-success">
+                                            الصور
+                                        </a>
+                                        <a href="{{route('admin.customer_videos',$customer)}}" class="btn btn-sm btn-success">
+                                            الفيديو
+                                        </a>
+                                        <a href="{{route('admin.send_whatsapp',$customer)}}" class="btn btn-outline-success">
+                                            <i class="fa fa-whatsapp"></i>
+                                        </a>
+                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#example{{$customer->id}}">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                        <div class="modal fade" id="example{{$customer->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        هل انت متأكد من الحذف ؟
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <form action="{{route('admin.customers.destroy',$customer->user)}}" method="post">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button class="btn btn-danger" type="submit">
+                                                                حذف
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
                             @endforeach

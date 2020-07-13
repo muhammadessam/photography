@@ -39,11 +39,11 @@
                                         <td>{{$service->description}}</td>
                                         <td><i class="fa fa-{{$service->icon}}"></i></td>
                                         <td class="d-flex">
-                                            <a class="btn btn-primary ml-2" href="{{route('admin.services.edit', $service)}}"><i class="fa fa-edit"></i></a>
+                                            <a class="btn btn-primary ml-2" title="تعديل" href="{{route('admin.services.edit', $service)}}"><i class="fa fa-edit"></i></a>
                                             <form action="{{route('admin.services.destroy', $service)}}" method="post" onsubmit="return confirm('هل انت متاكد ؟')">
                                                 @method('DELETE')
                                                 @csrf
-                                                <button class="btn btn-danger" type="submit"><i class="fa fa-trash"></i></button>
+                                                <button title="حذف" class="btn btn-danger" type="submit"><i class="fa fa-trash"></i></button>
                                             </form>
                                         </td>
                                     </tr>

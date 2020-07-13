@@ -62,7 +62,7 @@
                 </div>
                 <div class="form-group">
                     <label for="close_msg">رسالة الاغلاق</label>
-                    <textarea name="close_msg" id="close_msg" class="form-control" cols="30" rows="10">
+                    <textarea name="close_msg" id="mymce" class="form-control" cols="30" rows="10">
                         {{$sets->close_msg}}
                     </textarea>
                 </div>
@@ -130,5 +130,19 @@
             };
         };
 
+    </script>
+    <script src="{{asset('tinymce/tinymce.min.js')}}"></script>
+    <script>
+        tinymce.init({
+            selector: "#mymce",
+            height: 400,
+            language: 'ar',
+            directionality: 'rtl',
+            plugins: [
+                "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
+                "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+                "save table contextmenu directionality emoticons template paste textcolor"
+            ],
+        });
     </script>
 @endsection

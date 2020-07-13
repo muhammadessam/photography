@@ -74,10 +74,11 @@
                             </div>
                           </div>
                         </div>
+                          {!! NoCaptcha::display() !!}
                       </div>
                       <div class="col-12">
                           {{ csrf_field() }}
-                        <button type="submit"  {{ App\Setting::first()->is_closed ? 'disabled' : '' }} class="btn btn-block font-weight-bold  text-white bg-nav-c save-invoice py-2">تسجيل</button>
+                        <button type="submit"  {{ ! App\Setting::first()->can_register ? 'disabled' : '' }} class="btn btn-block font-weight-bold  text-white bg-nav-c save-invoice py-2">تسجيل</button>
                       </div>
                     </form>
                   </div>
@@ -89,4 +90,5 @@
       </div>
     </div>
   </section>
+{!! NoCaptcha::renderJs() !!}
 @endsection

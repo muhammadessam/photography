@@ -80,12 +80,12 @@
                                 <td>{{$item->status}}</td>
                                 <td>{{$item->remains}}</td>
                                 <td class="d-flex">
-                                    <a class="btn btn-info ml-1" href="{{route('admin.bills.show', $item)}}"><i class="fa fa-eye"></i></a>
-                                    <a class="btn btn-warning ml-1" href="{{route('admin.bills.edit', $item)}}"><i class="fa fa-edit"></i></a>
+                                    <a class="btn btn-info ml-1" title="مشاهدة" href="{{route('admin.bills.show', $item)}}"><i class="fa fa-eye"></i></a>
+                                    <a class="btn btn-warning ml-1" title="تعديل" href="{{route('admin.bills.edit', $item)}}"><i class="fa fa-edit"></i></a>
                                     <form action="{{route('admin.bills.destroy', $item)}}" method="post" onsubmit="return confirm('هل انت متاكد ؟')">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                        <button type="submit" title="حذف" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                                     </form>
                                 </td>
                             </tr>
