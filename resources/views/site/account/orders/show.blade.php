@@ -83,14 +83,14 @@
                                             @if ($order->videos->count() > 0)
                                                 @foreach ($order->videos as $video)
                                                     <div class="col-md-6">
-{{--                                                        <iframe id="ytplayer" type="text/html" width="100%" height="250"--}}
-{{--                                                                @php--}}
-{{--                                                                    parse_str( parse_url($video->video, PHP_URL_QUERY), $output );--}}
-{{--                                                                @endphp--}}
-{{--                                                                src="https://www.youtube.com/embed/{{  $output['v'] }}"--}}
-{{--                                                                frameborder="0">--}}
+                                                        <iframe id="ytplayer" type="text/html" width="100%" height="250"
+                                                                @php
+                                                                    parse_str( parse_url($video->video, PHP_URL_QUERY), $output );
+                                                                @endphp
+                                                                src="https://www.youtube.com/embed/{{  $output['v'] }}"
+                                                                frameborder="0">
 
-{{--                                                        </iframe>--}}
+                                                        </iframe>
                                                     </div>
                                                 @endforeach
                                             @else
