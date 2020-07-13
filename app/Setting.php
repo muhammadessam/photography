@@ -24,5 +24,6 @@ class Setting extends Model
         'icon',
         'phone',
         'address',
+        'instruction',
     ];
 }

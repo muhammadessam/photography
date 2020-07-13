@@ -66,6 +66,12 @@
                         {{$sets->close_msg}}
                     </textarea>
                 </div>
+                <div class="form-group">
+                    <label for="close_msg">تعليمات العميل</label>
+                    <textarea name="instruction" id="mymce1" class="form-control" cols="30" rows="10">
+                        {{$sets->instruction}}
+                    </textarea>
+                </div>
 {{--                <div class="form-group">--}}
 {{--                    <label for="contact">رسالة تواصل معنا</label>--}}
 {{--                    <textarea name="contact" id="contact" class="form-control" cols="30" rows="10">--}}
@@ -135,6 +141,19 @@
     <script>
         tinymce.init({
             selector: "#mymce",
+            height: 400,
+            language: 'ar',
+            directionality: 'rtl',
+            plugins: [
+                "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
+                "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+                "save table contextmenu directionality emoticons template paste textcolor"
+            ],
+        });
+    </script>
+    <script>
+        tinymce.init({
+            selector: "#mymce1",
             height: 400,
             language: 'ar',
             directionality: 'rtl',

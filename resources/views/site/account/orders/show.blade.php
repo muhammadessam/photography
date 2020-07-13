@@ -152,9 +152,26 @@
                             <div class="gry-emptext-center">{{$item->phone}}</div>
                         </div>
                     @endforeach
-                    <div class="acp-guid text-center">
-                        <i class="fas fa-question-circle"></i>
-                        <h5>تعليمات</h5>
+                    <a href="#" data-toggle="modal" data-target="#exampleModalCenter23">
+                        <div class="acp-guid text-center" >
+                            <i class="fas fa-question-circle"></i>
+                            <h5>تعليمات</h5>
+                        </div>
+                    </a>
+                    <div class="modal fade" id="exampleModalCenter23" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <h5 class="modal-title" id="exampleModalLongTitle">التعليمات</h5>
+                                </div>
+                                <div class="modal-body">
+                                    {!! @App\Setting::first()->instruction !!}
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
