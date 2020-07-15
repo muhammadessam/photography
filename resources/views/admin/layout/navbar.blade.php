@@ -10,6 +10,13 @@
     <!-- Right navbar links -->
     <ul class="navbar-nav mr-auto">
         <!-- Messages Dropdown Menu -->
+        <li><a href="{{ route('admin.notifications') }}" class="dropdown-item">
+                <i class="fas fa-bell my-nfx"></i>
+                اشعارات
+                @if (auth()->guard('admin')->user()->unreadNotifications()->count())
+                    <span class="badge badge-danger">{{ auth()->guard('admin')->user()->unreadNotifications()->count() }}</span>
+                @endif
+            </a></li>
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
                 <i class="fa fa-user-circle-o"></i>
@@ -18,7 +25,8 @@
                 <a href="#" class="dropdown-item">
                     <!-- Message Start -->
                     <div class="media">
-                        <img src="{{asset('admin/dist/img/logo.jpeg')}}" alt="User Avatar" class="img-size-50 ml-3 img-circle">
+                        <img src="{{asset('admin/dist/img/logo.jpeg')}}" alt="User Avatar"
+                             class="img-size-50 ml-3 img-circle">
                         <div class="media-body">
                             <h3 class="dropdown-item-title">
                                 {{auth()->user()->name}}
@@ -31,17 +39,12 @@
                 <div class="dropdown-divider"></div>
 
                 <div class="dropdown-divider"></div>
-                <a href="{{ route('admin.notifications') }}" class="dropdown-item">
-                        <i class="fas fa-bell my-nfx"></i>
-                    اشعارات
-{{--                    @if (auth()->guard('admin')->user()->unreadNotifications()->count())                        --}}
-{{--                     <span class="badge badge-danger">{{ auth()->guard('admin')->user()->unreadNotifications()->count() }}</span>--}}
-{{--                    @endif--}}
-                </a>
                 <div class="dropdown-divider"></div>
-                <form action="{{route('admin.logout')}}" method="post">
+                <form action="{{route('admin.logout')}}" method="post" class="text-center">
                     @csrf
-                    <button type="submit" class="dropdown-itunreadNotifications()em dropdown-footer">تسجيل الخروج</button>
+                    <button type="submit" class="dropdown-itunreadNotifications()em dropdown-footer btn btn-default">
+                        تسجيل الخروج
+                    </button>
                 </form>
             </div>
         </li>
