@@ -7,8 +7,19 @@
             </div>
             <div class="card-body">
                 <div class="list-group">
-                    @foreach(auth()->user()->notifications as $notification)
-                        @include('site.notifications.types.'.snake_case(class_basename($notification->type)), $notification)   
+                    @foreach(auth()->user()->nots as $not)
+                        <div class="card p-2">
+                            <div class="card-body">
+                                {{$not->body}}
+                                @php
+                                    $not->read = 1;
+                                    $not->save();
+                                @endphp
+                            </div>
+                            <div class="card-footer text-left">
+                                {{\Carbon\Carbon::parse($not->created_at)->diffForHumans()}}
+                            </div>
+                        </div>
                     @endforeach
                 </div>
             </div>

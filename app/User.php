@@ -53,4 +53,7 @@ class User extends Authenticatable implements CanResetPassword
     {
         return $this->hasManyThrough("App\Order", "App\Customer");
     }
+    public function nots(){
+        return $this->hasMany(Not::class,'user_id','id');
+    }
 }

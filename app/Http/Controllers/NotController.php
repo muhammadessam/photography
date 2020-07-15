@@ -1,17 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
-use App\Comment;
-use App\Http\Controllers\Controller;
 use App\Not;
-use App\Notification;
-use App\Notifications\User\NewComment;
-use App\Order;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
 
-class CommentController extends Controller
+class NotController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -37,28 +31,20 @@ class CommentController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $comment = Comment::create($request->except('_token'));
-        $order = Order::find($request->get('order_id'));
-        $user = $order->customer->user;
-        $not = new Not();
-        $not->body = "هناك تعليق جديد علي مناسبة لك";
-        $not->user_id   = $user->id;
-        $not->save();
-        alert('','تم الارسال','success');
-        return Redirect::back();
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Comment  $comment
+     * @param  \App\Not  $not
      * @return \Illuminate\Http\Response
      */
-    public function show(Comment $comment)
+    public function show(Not $not)
     {
         //
     }
@@ -66,10 +52,10 @@ class CommentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Comment  $comment
+     * @param  \App\Not  $not
      * @return \Illuminate\Http\Response
      */
-    public function edit(Comment $comment)
+    public function edit(Not $not)
     {
         //
     }
@@ -78,10 +64,10 @@ class CommentController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Comment  $comment
+     * @param  \App\Not  $not
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Comment $comment)
+    public function update(Request $request, Not $not)
     {
         //
     }
@@ -89,10 +75,10 @@ class CommentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Comment  $comment
+     * @param  \App\Not  $not
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Comment $comment)
+    public function destroy(Not $not)
     {
         //
     }
