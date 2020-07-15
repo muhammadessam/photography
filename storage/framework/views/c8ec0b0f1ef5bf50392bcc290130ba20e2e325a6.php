@@ -10,6 +10,13 @@
     <!-- Right navbar links -->
     <ul class="navbar-nav mr-auto">
         <!-- Messages Dropdown Menu -->
+
+
+
+
+
+
+
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
                 <i class="fa fa-user-circle-o"></i>
@@ -18,7 +25,8 @@
                 <a href="#" class="dropdown-item">
                     <!-- Message Start -->
                     <div class="media">
-                        <img src="<?php echo e(asset('admin/dist/img/logo.jpeg')); ?>" alt="User Avatar" class="img-size-50 ml-3 img-circle">
+                        <img src="<?php echo e(asset('admin/dist/img/logo.jpeg')); ?>" alt="User Avatar"
+                             class="img-size-50 ml-3 img-circle">
                         <div class="media-body">
                             <h3 class="dropdown-item-title">
                                 <?php echo e(auth()->user()->name); ?>
@@ -32,17 +40,12 @@
                 <div class="dropdown-divider"></div>
 
                 <div class="dropdown-divider"></div>
-                <a href="<?php echo e(route('admin.notifications')); ?>" class="dropdown-item">
-                        <i class="fas fa-bell my-nfx"></i>
-                    اشعارات
-
-
-
-                </a>
                 <div class="dropdown-divider"></div>
-                <form action="<?php echo e(route('admin.logout')); ?>" method="post">
+                <form action="<?php echo e(route('admin.logout')); ?>" method="post" class="text-center">
                     <?php echo csrf_field(); ?>
-                    <button type="submit" class="dropdown-itunreadNotifications()em dropdown-footer">تسجيل الخروج</button>
+                    <button type="submit" class="dropdown-itunreadNotifications()em dropdown-footer btn btn-default">
+                        تسجيل الخروج
+                    </button>
                 </form>
             </div>
         </li>

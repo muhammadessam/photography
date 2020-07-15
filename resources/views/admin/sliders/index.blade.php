@@ -46,6 +46,39 @@
                                     @method('DELETE')
                                     <button class="btn btn-danger">حذف</button>
                                 </form>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#example{{$slider->id}}">
+                                    تعديل
+                                </button>
+                                <div class="modal fade" id="example{{$slider->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form action="{{route('admin.sliders.update',$slider)}}" method="post" enctype="multipart/form-data">
+                                                    @csrf
+                                                    @method('PATCH')
+                                                    <div class="form-group">
+                                                        <label for="">النص الاول</label>
+                                                        <input type="text" class="form-control " value="{{$slider->primary_text}}" name="primary_text">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="">النص الثانوي</label>
+                                                        <input type="text" class="form-control "value="{{$slider->secondary_text}}"  name="secondary_text">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="">الصورة</label>
+                                                        <input type="file" name="image" class="form-control">
+                                                    </div>
+                                                    <button type="submit" class="btn btn-success">تعديل</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                     @endforeach

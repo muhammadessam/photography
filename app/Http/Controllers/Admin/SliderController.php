@@ -82,7 +82,13 @@ class SliderController extends Controller
      */
     public function update(Request $request, Slider $slider)
     {
-        //
+        $slider->update($request->only('primary_text','secondary_text'));
+        if ($request->hasFile('image')){
+            $slider->image = Storage::disk('public')->put('images',$request->file('image'));
+            $slider->save();
+        }
+        alert('','تم','success');
+        return redirect()->back();
     }
 
     /**

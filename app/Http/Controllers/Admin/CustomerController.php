@@ -9,6 +9,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
 
 class CustomerController extends Controller
@@ -73,6 +74,9 @@ class CustomerController extends Controller
         $customer = new Customer();
         $customer->phone = $data['phone'];
         $customer->city = $data['city'];
+        if ($request->hasFile('image')){
+            $customer->image = Storage::disk('public')->put('images',$request->file('image'));
+        }
         $user->customer()->save($customer);
         alert('','تم الانشاء','success');
         return Redirect::route('admin.customers.index');
@@ -111,6 +115,10 @@ class CustomerController extends Controller
     {
         $customer->user->update($request->only('name','email'));
         $customer->update($request->only('city','phone'));
+        if ($request->hasFile('image')){
+            $customer->image = Storage::disk('public')->put('images',$request->file('image'));
+            $customer->save();
+        }
         alert('','تم التعدبل','success');
         return Redirect::route('admin.customers.index');
     }

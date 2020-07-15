@@ -45,6 +45,39 @@
                                     <?php echo method_field('DELETE'); ?>
                                     <button class="btn btn-danger">حذف</button>
                                 </form>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#example<?php echo e($slider->id); ?>">
+                                    تعديل
+                                </button>
+                                <div class="modal fade" id="example<?php echo e($slider->id); ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form action="<?php echo e(route('admin.sliders.update',$slider)); ?>" method="post" enctype="multipart/form-data">
+                                                    <?php echo csrf_field(); ?>
+                                                    <?php echo method_field('PATCH'); ?>
+                                                    <div class="form-group">
+                                                        <label for="">النص الاول</label>
+                                                        <input type="text" class="form-control " value="<?php echo e($slider->primary_text); ?>" name="primary_text">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="">النص الثانوي</label>
+                                                        <input type="text" class="form-control "value="<?php echo e($slider->secondary_text); ?>"  name="secondary_text">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="">الصورة</label>
+                                                        <input type="file" name="image" class="form-control">
+                                                    </div>
+                                                    <button type="submit" class="btn btn-success">تعديل</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

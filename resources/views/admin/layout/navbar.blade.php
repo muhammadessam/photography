@@ -10,13 +10,13 @@
     <!-- Right navbar links -->
     <ul class="navbar-nav mr-auto">
         <!-- Messages Dropdown Menu -->
-        <li><a href="{{ route('admin.notifications') }}" class="dropdown-item">
-                <i class="fas fa-bell my-nfx"></i>
-                اشعارات
-                @if (auth()->guard('admin')->user()->unreadNotifications()->count())
-                    <span class="badge badge-danger">{{ auth()->guard('admin')->user()->unreadNotifications()->count() }}</span>
-                @endif
-            </a></li>
+{{--        <li><a href="{{ route('admin.notifications') }}" class="dropdown-item">--}}
+{{--                <i class="fas fa-bell my-nfx"></i>--}}
+{{--                اشعارات--}}
+{{--                @if (auth()->guard('admin')->user()->unreadNotifications()->count())--}}
+{{--                    <span class="badge badge-danger">{{ auth()->guard('admin')->user()->unreadNotifications()->count() }}</span>--}}
+{{--                @endif--}}
+{{--            </a></li>--}}
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
                 <i class="fa fa-user-circle-o"></i>

@@ -31,6 +31,11 @@
     <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/droid-arabic-kufi" type="text/css"/>
     <!-- bootstrap rtl -->
     <link rel="stylesheet" href="<?php echo e(asset('admin/dist/css/bootstrap-rtl.min.css')); ?>">
+    
+
+    <link rel="stylesheet" href="<?php echo e(asset('admin/dist/css/lightgallery.css')); ?>">
+
+
     <!-- template rtl version -->
     <link rel="stylesheet" href="<?php echo e(asset('admin/dist/css/custom-style.css')); ?>">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js" integrity="sha256-T/f7Sju1ZfNNfBh7skWn0idlCBcI3RwdLSS4/I7NQKQ=" crossorigin="anonymous"></script>

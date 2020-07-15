@@ -41,7 +41,7 @@ class OpinionController extends Controller
         ]);
         Opinion::query()->create([
             'body'          =>  $request->get('body'),
-            'customer_id'   =>  auth()->user()->customer->id
+            'customer_id'   =>  auth()->user()->customer->id ?? $request->get('customer_id')
         ]);
 
         alert('','تم الارسال','success');

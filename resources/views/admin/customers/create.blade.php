@@ -6,7 +6,7 @@
                 <h4 class="col-12 text-center"> انشاء عميل </h4>
             </div>
             <div class="card-body">
-                <form action="{{route('admin.customers.store')}}" method="post">
+                <form action="{{route('admin.customers.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label for="name">الاسم</label>
@@ -27,6 +27,10 @@
                     <div class="form-group">
                         <label for="phone">الهاتف</label>
                         <input type="text" class="form-control" name="phone" id="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="">الصورة الشخصية</label>
+                        <input type="file" name="image" class="form-control">
                     </div>
                     <div class="form-group">
                         <input type="submit" class="btn btn-outline-success btn-block" value="حفظ" name="" id="">

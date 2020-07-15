@@ -136,7 +136,7 @@
                         <i class="nav-icon fas fa-truck-loading"></i>
                         <p>
                             الطلبات
-                            <i class="right badge badge-danger">{{\App\Order::all()->count()}}</i>
+                            <i class="right badge badge-danger">{{\App\Order::all()->where('status','waiting')->count()}}</i>
                         </p>
                     </a>
                 </li>
