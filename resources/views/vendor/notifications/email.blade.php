@@ -1,13 +1,13 @@
 @component('mail::message')
 {{-- Greeting --}}
 @if (! empty($greeting))
-# {{ $greeting }}
-@else
-@if ($level === 'error')
-# @lang('Whoops!')
-@else
-# @lang('اهلا!')
-@endif
+        # {{ $greeting }}
+    @else
+        @if ($level === 'error')
+            # @lang('Whoops!')
+        @else
+            # @lang('اهلا!')
+        @endif
 @endif
 
 {{-- Intro Lines --}}
@@ -43,7 +43,6 @@
 @if (! empty($salutation))
 {{ $salutation }}
 @else
-@lang('بالتوفيف'),<br>
-{{ config('app.name') }}
+{{ \App\Setting::first()->app_name }}
 @endif
 @endcomponent

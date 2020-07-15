@@ -1,4 +1,3 @@
-
 <?php $__env->startSection('content'); ?>
 
     <div class="content-header">
@@ -40,13 +39,13 @@
                                     <td><?php echo e($page->is_active? "فعالة":"غير فعالة"); ?></td>
                                     <td><?php echo e($page->place=="header"? "الهيدر":"الفوتر"); ?></td>
                                     <td class="d-flex">
-                                        <a href="<?php echo e(route('admin.page.edit', $page)); ?>" class="btn btn-warning ml-2"><i class="fa fa-edit"></i></a>
+                                        <a href="<?php echo e(route('admin.page.edit', $page)); ?>" title="تعديل" class="btn btn-warning ml-2"><i class="fa fa-edit"></i></a>
 
 
                                         <form action="<?php echo e(route('admin.page.destroy', $page)); ?>" method="post">
                                             <?php echo csrf_field(); ?>
                                             <?php echo method_field('DELETE'); ?>
-                                            <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i>
+                                            <button type="submit" title="حذف" class="btn btn-danger"><i class="fa fa-trash"></i>
                                             </button>
                                         </form>
                                     </td>

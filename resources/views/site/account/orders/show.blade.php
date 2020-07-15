@@ -39,6 +39,7 @@
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
+                                        <a href="{{route('downloadAllImages',$order)}}" class="btn btn-primary">تحميل كل الصور</a>
                                     </div>
                                     <div class="modal-body">
                                         <div class="row justify-content-center">
@@ -206,10 +207,12 @@
                 <div class="my-shadow mt-3">
                     <div class="d-flex justify-content-between align-items-center pt-3 pb-2 px-3 border-bottom">
                         <h5>تفاصيل المشروع</h5>
+                        @if(! auth()->guard('employee')->check())
                         <button type="button" class="text-dark acp-widget inv-acp d-inline-block" data-toggle="modal" data-target="#exampleModalCenter2">
                             <i class="far fa-images"></i> <span> فاتورة الطلب </span>
                             <span class="btn btn-sm rd-bdg " style="background-color: #dc3545;color: white;">2</span>
                         </button>
+                        @endif
                         <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                             <div style="min-width: 70%;margin: 0 auto;" class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
@@ -271,6 +274,7 @@
                 @endforeach
                 <div class="my-shadow mt-3">
                     <div class="p-3">
+                        @if(! auth()->guard('employee')->check())
                         <form action="{{ route('account.comments.store') }}" method="post" class="mt-3">
                             @csrf
 
@@ -280,7 +284,7 @@
                             <textarea class="form-control bg-white text-dark border" name="body" id="" cols="30" rows="7"></textarea>
                             <button class="btn btn-success my-2 "><i class="fab fa-telegram-plane"></i> اضف ردك</button>
                         </form>
-
+                        @endif
 
                         <div class="p-3 my-2 text-danger acp-note">
                             <p class="mb-2">نرجو التقييد بالإتفاقية هنا واضاة اة ملاحظات كى يتم مراجعتها</p>

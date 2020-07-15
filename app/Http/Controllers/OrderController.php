@@ -9,17 +9,29 @@ use App\Category;
 use App\Notifications\Admin\NewOrder;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use ZipArchive;
 
 class OrderController extends Controller
 {
     public function index(Request $req)
     {
-        $orders = auth()->user()
-                        ->orders()
-                        ->with('category', 'city')
-                        ->withCount('images', 'videos')
-                        ->orderBy('created_at', 'desc')
-                        ->get();
+        if(auth()->guard('employee')->check()){
+            $orders = auth()->guard('employee')->user()
+                ->orders()
+                ->with('category', 'city')
+                ->withCount('images', 'videos')
+                ->orderBy('created_at', 'desc')
+                ->get();
+
+        }else{
+
+            $orders = auth()->user()
+                ->orders()
+                ->with('category', 'city')
+                ->withCount('images', 'videos')
+                ->orderBy('created_at', 'desc')
+                ->get();
+        }
 
         return view('site.account.orders.index', [
             'orders' => $orders,
@@ -28,10 +40,18 @@ class OrderController extends Controller
 
     public function show(Request $req, $id)
     {
-        $order = auth()->user()->orders()
-                               ->with('city', 'category', 'comments', 'bills', 'employees')
-                               ->find($id);
-        
+        if(auth()->guard('employee')->check()){
+            $order = auth()->guard('employee')->user()->orders()
+                ->with('city', 'category', 'comments', 'bills', 'employees')
+                ->find($id);
+
+        }else{
+
+            $order = auth()->user()->orders()
+                ->with('city', 'category', 'comments', 'bills', 'employees')
+                ->find($id);
+        }
+
         // return 404 if order is not found
         if (! $order) {
             abort(404);
@@ -50,7 +70,7 @@ class OrderController extends Controller
     {
         $categories = Category::all();
         $cities = City::all();
-        
+
         return view('site.account.orders.create', [
             'categories' => $categories,
             'cities' => $cities,
@@ -85,5 +105,25 @@ class OrderController extends Controller
         Admin::first()->notify(new NewOrder($order));;
 
         return redirect()->route('account.orders.show', ['id' => $order->id])->withMsg('تم تلقي طلبك بنجاح');
+    }
+    public function makeFinal(Order $order){
+        $order->status = "final";
+        $order->save();
+        alert('','تم','success');
+        return redirect()->back();
+    }
+    public function downloadAllImages(Order $order){
+        $files = $order->images()->get();
+        $zipname = 'كل الصور.zip';
+        $zip = new ZipArchive;
+        $zip->open($zipname, ZipArchive::CREATE);
+        foreach ($files as $file) {
+            $zip->addFile($file->image);
+        }
+        $zip->close();
+        header('Content-Type: application/zip');
+        header('Content-disposition: attachment; filename='.$zipname);
+        header('Content-Length: ' . filesize($zipname));
+        readfile($zipname);
     }
 }

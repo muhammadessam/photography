@@ -11,7 +11,7 @@
 
     <div class="content-wrapper">
         <section class="content ">
-            <div class="container-fluid">
+            <div class="container-fluid" dir="rtl">
                 <?php echo $__env->yieldContent('content'); ?>
             </div>
         </section>

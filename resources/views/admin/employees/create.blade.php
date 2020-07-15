@@ -17,6 +17,10 @@
                         <input type="email" class="form-control" name="email" id="email">
                     </div>
                     <div class="form-group">
+                        <label for="password">كلمة السر</label>
+                        <input type="password" class="form-control" name="password" id="password">
+                    </div>
+                    <div class="form-group">
                         <label for="phone">الهاتف</label>
                         <input type="text" class="form-control" name="phone" id="phone">
                     </div>

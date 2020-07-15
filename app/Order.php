@@ -51,7 +51,7 @@ class Order extends Model
         if ($this->status == 'billed')
             return 'تم اصدار فاتورة غير مسددة';
         if ($this->status == 'final')
-            return 'تم القبول نهائيا';
+            return 'تم الانجاز';
         if ($this->status == 'rejected')
             return 'تم الرفض';
     }

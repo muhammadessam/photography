@@ -37,6 +37,7 @@
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
+                                        <a href="<?php echo e(route('downloadAllImages',$order)); ?>" class="btn btn-primary">تحميل كل الصور</a>
                                     </div>
                                     <div class="modal-body">
                                         <div class="row justify-content-center">
@@ -130,7 +131,7 @@
                         <h5 class="text-center font-weight-bold mt-2">العميل</h5>
                         <div class="d-flex">
                             <div class="acp-user-img">
-                                <img class="w-100" src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png" alt=" ">
+                                <img class="w-100" src="<?php echo e($order->customer->image == null?'https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png':asset($order->customer->image)); ?>" alt=" ">
                             </div>
                             <div class="acp-cln-u">
                                 <div class="acp-user text-center"><?php echo e($order->customer->user->name); ?></div>
@@ -205,10 +206,12 @@
                 <div class="my-shadow mt-3">
                     <div class="d-flex justify-content-between align-items-center pt-3 pb-2 px-3 border-bottom">
                         <h5>تفاصيل المشروع</h5>
+                        <?php if(! auth()->guard('employee')->check()): ?>
                         <button type="button" class="text-dark acp-widget inv-acp d-inline-block" data-toggle="modal" data-target="#exampleModalCenter2">
                             <i class="far fa-images"></i> <span> فاتورة الطلب </span>
                             <span class="btn btn-sm rd-bdg " style="background-color: #dc3545;color: white;">2</span>
                         </button>
+                        <?php endif; ?>
                         <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                             <div style="min-width: 70%;margin: 0 auto;" class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
@@ -270,6 +273,7 @@
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 <div class="my-shadow mt-3">
                     <div class="p-3">
+                        <?php if(! auth()->guard('employee')->check()): ?>
                         <form action="<?php echo e(route('account.comments.store')); ?>" method="post" class="mt-3">
                             <?php echo csrf_field(); ?>
 
@@ -279,7 +283,7 @@
                             <textarea class="form-control bg-white text-dark border" name="body" id="" cols="30" rows="7"></textarea>
                             <button class="btn btn-success my-2 "><i class="fab fa-telegram-plane"></i> اضف ردك</button>
                         </form>
-
+                        <?php endif; ?>
 
                         <div class="p-3 my-2 text-danger acp-note">
                             <p class="mb-2">نرجو التقييد بالإتفاقية هنا واضاة اة ملاحظات كى يتم مراجعتها</p>

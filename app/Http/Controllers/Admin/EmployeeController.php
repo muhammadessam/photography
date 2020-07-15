@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Order;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 
 class EmployeeController extends Controller
@@ -65,8 +67,11 @@ class EmployeeController extends Controller
             'exp' => 'required',
             'phone' => 'required',
             'cat_id' => 'required',
+            'password'  =>  'required',
         ]);
-        Employee::create($request->all());
+        $emp = Employee::create($request->except('password'));
+        $emp->password = Hash::make($request->get('password'));
+        $emp->save();
         alert('', 'تم الانشاء', 'success');
         return Redirect::route('admin.employees.index');
     }
@@ -109,9 +114,17 @@ class EmployeeController extends Controller
             'phone' => 'required',
             'cat_id' => 'required',
         ]);
-        $employee->update($request->all());
+        $employee->update($request->except('password'));
+        if ($request->get('password') != "same"){
+            $employee->password = Hash::make($request->get('password'));
+            $employee->save();
+        }
         alert('', 'تم التعديل', 'success');
-        return Redirect::route('admin.employees.index');
+        if(auth()->guard('employee')->check()){
+            return  Redirect::route('employee.account');
+        }else{
+            return Redirect::route('admin.employees.index');
+        }
     }
 
     /**
@@ -136,6 +149,18 @@ class EmployeeController extends Controller
     public function orders(Employee $employee){
         $orders = $employee->orders;
         return view('admin.employees.orders',compact('orders'));
+    }
+    public function login(Request $request){
+        $this->validate($request, [
+            'email'   => 'required|email',
+            'password' => 'required|min:6'
+        ]);
+
+        if (Auth::guard('employee')->attempt($request->only('email', 'password'), $request->filled('remember'))) {
+
+            return redirect()->route('employee.account');
+        }
+        return back()->withInput($request->only('email'));
     }
 
 }

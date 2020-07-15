@@ -17,6 +17,11 @@
                         <label for="email">البريد</label>
                         <input type="email" class="form-control" value="{{$employee->email}}" name="email" id="email">
                     </div>
+
+                    <div class="form-group">
+                        <label for="password">كلمة السر</label>
+                        <input type="password" class="form-control" value="same" name="password" id="password">
+                    </div>
                     <div class="form-group">
                         <label for="exp">الخبرة</label>
                         <select name="exp" class="form-control" id="exp">

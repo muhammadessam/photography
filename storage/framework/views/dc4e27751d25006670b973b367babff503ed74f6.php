@@ -1,7 +1,6 @@
-
 <?php $__env->startSection('content'); ?>
     <style>
-        iframe{
+        iframe {
             width: 100%;
             border-radius: 12px;
         }
@@ -10,10 +9,12 @@
         <div class="card">
             <div class="card-header row w-100 m-0">
                 <h4 class="col-11 text-right">معرض الصور</h4>
-                <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#exampleModalCenter">
+                <button type="button" class="btn btn-outline-success" data-toggle="modal"
+                        data-target="#exampleModalCenter">
                     <i class="fa fa-plus"></i>
                 </button>
-                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -23,7 +24,8 @@
                                 <h5 class="modal-title" id="exampleModalLongTitle">صورة جديد</h5>
                             </div>
                             <div class="modal-body">
-                                <form action="<?php echo e(route('admin.images.store')); ?>" method="post" enctype="multipart/form-data">
+                                <form action="<?php echo e(route('admin.images.store')); ?>" method="post"
+                                      enctype="multipart/form-data">
                                     <?php echo csrf_field(); ?>
                                     <div class="form-group">
                                         <label for="image">الصورة</label>
@@ -36,7 +38,7 @@
                                     <div class="form-group">
                                         <label for="customer_id">اختر القسم :</label>
                                         <select class="form-control" name="category_id" id="category_id">
-                                            <?php $__currentLoopData = \App\category::all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <?php $__currentLoopData = \App\Category::all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                 <option <?php echo e(old('category_id')==$item['id'] ? 'selected':''); ?> value="<?php echo e($item['id']); ?>"><?php echo e($item['name']); ?></option>
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         </select>
@@ -60,29 +62,56 @@
                 </div>
             </div>
             <div class="card-body my-m-img">
-                <div class="row">
-                    <?php $__currentLoopData = @App\AdminImage::all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $image): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <div class="col-4 p-1">
-                            <div class="card bg-primary-gradient">
-                                <div class="card-header row w-100 m-0">
-                                    <form action="<?php echo e(route('admin.images.destroy',$image)); ?>" method="post">
-                                        <?php echo csrf_field(); ?>
-                                        <?php echo method_field('DELETE'); ?>
-                                        <button type="submit" class="btn btn-sm btn-danger delete-t">
-                                            <i class="fa fa-trash"></i>
-                                        </button>
-                                    </form>
-                                </div>
-                                <div class="card-body p-0">
-                                    <img class="img-thumbnail" width="100%" src="<?php echo e(asset($image->image)); ?>">
+                <form action="<?php echo e(route('admin.images.index')); ?>" method="get">
+                    <?php echo csrf_field(); ?>
+                    <div class="form-group row justify-content-start" dir="rtl">
+                        <label for="" class="m-2">اختر قسم</label>
+                        <select name="cat_id" class="form-control col-6">
+                            <?php $__currentLoopData = @App\Category::all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <option value="<?php echo e($cat->id); ?>"><?php echo e($cat->name); ?></option>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        </select>
+                        <button type="submit" class="btn btn-success mr-2">بحث</button>
+                        <a href="<?php echo e(route('admin.images.index')); ?>"  class="btn btn-primary mr-2">كل الاقسام</a>
+                    </div>
+                </form>
+                <div id="lightgallery">
+
+                    <div class="row">
+                        <?php $__currentLoopData = $images; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $image): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <div class="col-md-3 col-6 p-1">
+                                <div class="card bg-primary-gradient">
+                                    <div class="card-header row w-100 m-0 justify-content-center">
+                                        <h6 class="text-dark m-1"><?php echo e($image->title); ?></h6>
+
+                                        <form action="<?php echo e(route('admin.images.destroy',$image)); ?>" method="post">
+                                            <?php echo csrf_field(); ?>
+                                            <?php echo method_field('DELETE'); ?>
+                                            <button type="submit" class="btn btn-sm btn-danger delete-t">
+                                                <i class="fa fa-trash"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                    <div class="card-body p-0">
+                                        <a href="<?php echo e(asset($image->image)); ?>" class="item">
+                                            <img class="img-thumbnail" width="100%" src="<?php echo e(asset($image->image)); ?>"
+                                                 data-src="<?php echo e(asset($image->image)); ?>"
+                                                 style="height: 180px;object-fit: cover;">
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    </div>
 
                 </div>
             </div>
         </div>
+
+        <nav aria-label="..." class="text-center d-flex align-items-center justify-content-center" dir="rtl">
+            <?php echo e($images->links()); ?>
+
+        </nav>
     </div>
 <?php $__env->stopSection(); ?>
 

@@ -17,13 +17,13 @@
                     <td><?php echo e($admin->name); ?></td>
                     <td><?php echo e($admin->email); ?></td>
                     <td>
-                        <a class="btn btn-primary" href="<?php echo e(route('admin.admins.edit',$admin)); ?>">
+                        <a class="btn btn-primary" title="تعديل" href="<?php echo e(route('admin.admins.edit',$admin)); ?>">
                             <i class="fa fa-edit"></i>
                         </a>
-                        <a class="btn btn-warning" href="<?php echo e(route('admin.permissions',$admin )); ?>">
+                        <a class="btn btn-warning" title="الصلاحيات" href="<?php echo e(route('admin.permissions',$admin )); ?>">
                             <i class="fa fa-sticky-note"></i>
                         </a>
-                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#example<?php echo e($admin->id); ?>">
+                        <button type="button" title="حذف" class="btn btn-danger" data-toggle="modal" data-target="#example<?php echo e($admin->id); ?>">
                             <i class="fa fa-trash"></i>
                         </button>
                         <div class="modal fade" id="example<?php echo e($admin->id); ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -41,7 +41,7 @@
                                         <form action="<?php echo e(route('admin.admins.destroy',$admin)); ?>" method="post">
                                             <?php echo csrf_field(); ?>
                                             <?php echo method_field('DELETE'); ?>
-                                            <button class="btn btn-danger" type="submit">
+                                            <button title="حذف" class="btn btn-danger" type="submit">
                                                 <i class="fa fa-trash"></i>
                                             </button>
                                         </form>

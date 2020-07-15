@@ -20,7 +20,12 @@ class AdminImageController extends Controller
      */
     public function index()
     {
-        return view('admin.images.index');
+        if (isset($_GET['cat_id'])){
+            $images = AdminImage::where('category_id',$_GET['cat_id'])->paginate(10);
+        }else{
+            $images = AdminImage::paginate(10);
+        }
+        return view('admin.images.index',compact('images'));
     }
 
     /**

@@ -18,9 +18,11 @@ class AccountController extends Controller
     public function edit(Request $req)
     {
         $cities = Country::all();
+        $employee = auth()->guard('employee')->user() ?? '';
 
         return view('site.account.edit', [
             'cities' => $cities,
+            'employee'=>    $employee,
         ]);
     }
 

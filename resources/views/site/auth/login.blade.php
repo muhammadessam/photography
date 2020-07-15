@@ -55,6 +55,8 @@
                       </div>
                       <div class="col-12 mt-2">
                         <a href="{{ route('password.request') }}" class="c-bol "> هل نسيت كلمة السر</a>
+                          <br>
+                        <a href="{{ route('EmployeeLoginForm') }}" class="c-bol "> تسجيل دخول الموظف</a>
                       </div>
                     </form>
                   </div>

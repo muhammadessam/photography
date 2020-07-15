@@ -43,11 +43,18 @@
                                     <td  class="border-bottom font-weight-bold  ">{{ $order->city->name }}</td>
                                     <td  class="border-bottom font-weight-bold  ">{{ $order->get_status()}}</td>
                                     <td>
+                                        @if(auth()->guard('employee')->check())
+                                            <a href="{{ route('employee.account.orders.show', ['id' => $order->id]) }}" class="c-bol" >  <i class="fas fa-eye"></i> مشاهدة</a>
+                                            @if($order->status != "final")
+                                                <a href="{{ route('makeFinal', $order) }}" class="c-bol" >  <i class="fas fa-check"></i>اَنجز</a>
+                                            @endif
+                                        @else
                                         <!-- Button trigger modal -->
                                         <a  class="m-2 c-bol" href="{{ route('account.orders.show', ['id' => $order->id, 'tab' => 'images']) }}"><i class="fa fa-image"></i> {{ $order->images_count }}</a>
                                         <!-- Button trigger modal -->
                                         <a  class="m-2 c-bol" href="{{ route('account.orders.show', ['id' => $order->id, 'tab' => 'videos']) }}"><i class="fa fa-camera"></i> {{ $order->videos_count }}</a>
                                         <a href="{{ route('account.orders.show', ['id' => $order->id]) }}" class="c-bol" >  <i class="fas fa-eye"></i> مشاهدة</a>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach

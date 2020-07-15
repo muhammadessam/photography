@@ -40,6 +40,12 @@ Route::middleware('is_open')->group(function (){
         Route::get('/account/bills','BillController@index')->name('account.bills');
         Route::post('/account/comments/store','CommentController@store')->name('account.comments.store');
     });
+    Route::prefix('employee')->group(function (){
+        Route::get('/account', 'AccountController@index')->name('employee.account');
+        Route::get('/account/edit', 'AccountController@edit')->name('employee.account.edit');
+        Route::get('/account/orders', 'OrderController@index')->name('employee.account.orders');
+        Route::get('/account/orders/{id}', 'OrderController@show')->name('employee.account.orders.show');
+    });
 
     Route::prefix('gallery')->group(function (){
         Route::get('images','ImageController@index')->name('images');
@@ -55,11 +61,16 @@ Route::middleware('is_open')->group(function (){
     Route::post('/contact/store', 'ContactController@store')->name('contact.store');
     Route::get('/account/logout',function (){
         auth()->logout();
+        auth()->guard('employee')->logout();
         return redirect()->route('home');
     })->name('account_logout');
     Route::post('DownloadFile',function (Request $request){
         return \Illuminate\Support\Facades\Storage::disk('public')->download($request['file']);
     })->name('DownloadFile');
+    Route::post('EmployeeLogin','Admin\EmployeeController@login')->name('EmployeeLogin');
+    Route::view('EmployeeLoginForm','site.employee.login.index')->name('EmployeeLoginForm');
+    Route::get('Order/{order}/makeFinal','OrderController@makeFinal')->name('makeFinal');
+    Route::get('Order/{order}/downloadAllImages','OrderController@downloadAllImages')->name('downloadAllImages');
 });
 
 

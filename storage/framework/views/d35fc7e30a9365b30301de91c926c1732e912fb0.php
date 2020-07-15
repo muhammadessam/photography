@@ -61,6 +61,15 @@
                             <span class="d-block nav-bol nav-hid"><i class="fas fa-ellipsis-h"></i></span>
                         </li>
                 <?php endif; ?>
+                <?php if(auth()->guard('employee')->check()): ?>
+                    <li class="nav-item mx-1">
+                        <a class="nav-link" href="<?php echo e(route('employee.account')); ?>">
+                            <?php echo e(auth()->guard('employee')->user()->name); ?>
+
+                        </a>
+                        <span class="d-block nav-bol nav-hid"><i class="fas fa-ellipsis-h"></i></span>
+                    </li>
+                <?php endif; ?>
             </ul>
         </div>
     </div>

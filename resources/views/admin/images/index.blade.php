@@ -53,13 +53,28 @@
                 </div>
             </div>
             <div class="card-body my-m-img">
+                <form action="{{route('admin.images.index')}}" method="get">
+                    @csrf
+                    <div class="form-group row justify-content-start" dir="rtl">
+                        <label for="" class="m-2">اختر قسم</label>
+                        <select name="cat_id" class="form-control col-6">
+                            @foreach(@App\Category::all() as $cat)
+                                <option value="{{$cat->id}}">{{$cat->name}}</option>
+                            @endforeach
+                        </select>
+                        <button type="submit" class="btn btn-success mr-2">بحث</button>
+                        <a href="{{route('admin.images.index')}}"  class="btn btn-primary mr-2">كل الاقسام</a>
+                    </div>
+                </form>
                 <div id="lightgallery">
 
                     <div class="row">
-                        @foreach(@App\AdminImage::all() as $image)
+                        @foreach($images as $image)
                             <div class="col-md-3 col-6 p-1">
                                 <div class="card bg-primary-gradient">
-                                    <div class="card-header row w-100 m-0">
+                                    <div class="card-header row w-100 m-0 justify-content-center">
+                                        <h6 class="text-dark m-1">{{$image->title}}</h6>
+
                                         <form action="{{route('admin.images.destroy',$image)}}" method="post">
                                             @csrf
                                             @method('DELETE')
@@ -79,24 +94,13 @@
                             </div>
                         @endforeach
                     </div>
+
                 </div>
             </div>
         </div>
 
         <nav aria-label="..." class="text-center d-flex align-items-center justify-content-center" dir="rtl">
-            <ul class="pagination p-0 text-center">
-                <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">السابق</a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item active" aria-current="page">
-                    <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#">التالى</a>
-                </li>
-            </ul>
+            {{$images->links()}}
         </nav>
     </div>
 @endsection

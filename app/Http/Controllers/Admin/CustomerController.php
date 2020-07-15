@@ -115,10 +115,13 @@ class CustomerController extends Controller
     {
         $customer->user->update($request->only('name','email'));
         $customer->update($request->only('city','phone'));
+        if ($request->get('password') != "same"){
+            $customer->user->password = Hash::make($request->get('password'));
+        }
         if ($request->hasFile('image')){
             $customer->image = Storage::disk('public')->put('images',$request->file('image'));
-            $customer->save();
         }
+        $customer->save();
         alert('','تم التعدبل','success');
         return Redirect::route('admin.customers.index');
     }
