@@ -1,7 +1,7 @@
 @extends('admin.layout.layout')
 @section('content')
     <style>
-        iframe{
+        iframe {
             width: 100%;
             border-radius: 12px;
         }
@@ -10,10 +10,12 @@
         <div class="card">
             <div class="card-header row w-100 m-0">
                 <h4 class="col-11 text-right">معرض الصور</h4>
-                <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#exampleModalCenter">
+                <button type="button" class="btn btn-outline-success" data-toggle="modal"
+                        data-target="#exampleModalCenter">
                     <i class="fa fa-plus"></i>
                 </button>
-                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -23,7 +25,8 @@
                                 <h5 class="modal-title" id="exampleModalLongTitle">صورة جديد</h5>
                             </div>
                             <div class="modal-body">
-                                <form action="{{route('admin.images.store')}}" method="post" enctype="multipart/form-data">
+                                <form action="{{route('admin.images.store')}}" method="post"
+                                      enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group">
                                         <label for="image">الصورة</label>
@@ -50,28 +53,50 @@
                 </div>
             </div>
             <div class="card-body my-m-img">
-                <div class="row">
-                    @foreach(@App\AdminImage::all() as $image)
-                        <div class="col-4 p-1">
-                            <div class="card bg-primary-gradient">
-                                <div class="card-header row w-100 m-0">
-                                    <form action="{{route('admin.images.destroy',$image)}}" method="post">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-danger delete-t">
-                                            <i class="fa fa-trash"></i>
-                                        </button>
-                                    </form>
-                                </div>
-                                <div class="card-body p-0">
-                                    <img class="img-thumbnail" width="100%" src="{{asset($image->image)}}">
+                <div id="lightgallery">
+
+                    <div class="row">
+                        @foreach(@App\AdminImage::all() as $image)
+                            <div class="col-md-3 col-6 p-1">
+                                <div class="card bg-primary-gradient">
+                                    <div class="card-header row w-100 m-0">
+                                        <form action="{{route('admin.images.destroy',$image)}}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-danger delete-t">
+                                                <i class="fa fa-trash"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                    <div class="card-body p-0">
+                                        <a href="{{asset($image->image)}}" class="item">
+                                            <img class="img-thumbnail" width="100%" src="{{asset($image->image)}}"
+                                                 data-src="{{asset($image->image)}}"
+                                                 style="height: 180px;object-fit: cover;">
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
-
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </div>
+
+        <nav aria-label="..." class="text-center d-flex align-items-center justify-content-center" dir="rtl">
+            <ul class="pagination p-0 text-center">
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">السابق</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item active" aria-current="page">
+                    <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">التالى</a>
+                </li>
+            </ul>
+        </nav>
     </div>
 @endsection

@@ -35,6 +35,30 @@
 <script src="{{asset('admin/plugins/fastclick/fastclick.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('admin/dist/js/adminlte.js')}}"></script>
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.7.2/dist/js/lightgallery.min.js"></script>
+
+
+ <!-- Pop up images library -->
+<!-- A jQuery plugin that adds cross-browser mouse wheel support. (Optional) -->
+<script src="{{asset('admin/dist/js/custom.js')}}"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#lightgallery').lightGallery();
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/picturefill/2.3.1/picturefill.min.js"></script>
+<script src="{{asset('admin/dist/js/lightgallery-all.min.js')}}"></script>
+<script src="{{asset('admin/dist/js/jquery.mousewheel.min.js')}}"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#lightgallery').lightGallery();
+    });
+</script>
+
+
+{{--<script src="{{asset('admin/dist/js/custom.js')}}"></script>--}}
+
+
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 {{--<script src="dist/js/pages/dashboard.js"></script>--}}
 <!-- AdminLTE for demo purposes -->

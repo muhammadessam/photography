@@ -8,8 +8,8 @@
                     <img src="{{asset($slider->image)}}" alt="">
                     <div class="container">
                         <div class="header-content text-white">
-                            <h3 class="text-center mb-1">مرحباً بكم في</h3>
-                            <h1 class="text-center">توثيق لخدمات التصوير</h1>
+                            <h3 class="text-center mb-1">{{$slider->primary_text}}</h3>
+                            <h1 class="text-center">{{$slider->secondary_text}}</h1>
                             <div class="mt-3 mb-4 text-center tnb">
                                 <span class="d-inline-block line"></span>
                             </div>

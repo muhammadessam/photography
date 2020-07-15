@@ -132,7 +132,7 @@
                         <h5 class="text-center font-weight-bold mt-2">العميل</h5>
                         <div class="d-flex">
                             <div class="acp-user-img">
-                                <img class="w-100" src="{{asset(\App\Setting::first()->logo)}}" alt=" ">
+                                <img class="w-100" src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png" alt=" ">
                             </div>
                             <div class="acp-cln-u">
                                 <div class="acp-user text-center">{{$order->customer->user->name}}</div>
@@ -152,9 +152,26 @@
                             <div class="gry-emptext-center">{{$item->phone}}</div>
                         </div>
                     @endforeach
-                    <div class="acp-guid text-center">
-                        <i class="fas fa-question-circle"></i>
-                        <h5>تعليمات</h5>
+                    <a href="#" data-toggle="modal" data-target="#exampleModalCenter23">
+                        <div class="acp-guid text-center" >
+                            <i class="fas fa-question-circle"></i>
+                            <h5>تعليمات</h5>
+                        </div>
+                    </a>
+                    <div class="modal fade" id="exampleModalCenter23" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <h5 class="modal-title" id="exampleModalLongTitle">التعليمات</h5>
+                                </div>
+                                <div class="modal-body">
+                                    {!! @App\Setting::first()->instruction !!}
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

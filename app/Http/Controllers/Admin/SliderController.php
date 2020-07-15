@@ -39,7 +39,11 @@ class SliderController extends Controller
     {
         if ($request->hasFile("image")){
             $img = Storage::disk('public')->put('images',$request->file('image'));
-            Slider::query()->create(['image' => $img]);
+            Slider::query()->create([
+                'image' => $img,
+                'primary_text'  =>  $request->get('primary_text'),
+                'secondary_text'  =>  $request->get('secondary_text'),
+            ]);
             alert('','تم','success');
             return redirect()->back();
         }

@@ -5,10 +5,10 @@
             <div class="row mb-2 mt-5 justify-content-center">
                 <div class="col-lg-3 col-6">
                     <!-- small box -->
-                    <div class="small-box bg-info-gradient">
+                    <div class="small-box bg-info-gradient h-100 d-flex align-items-center">
                         <div class="inner">
-                            <h6>اجمالي الفواتير المسددة</h6>
-                            <p>{{\App\Bill::all()->where('status', 'مسدد')->pluck('price')->sum()}}</p>
+                            <h5>اجمالي الفواتير المسددة</h5>
+                            <h6 class="mt-4">{{\App\Bill::all()->where('status', 'مسدد')->pluck('price')->sum()}}</h6>
                         </div>
                         <div class="icon">
                             <i class="fa fa-money"></i>
@@ -18,10 +18,10 @@
 
                 <div class="col-lg-3 col-6">
                     <!-- small box -->
-                    <div class="small-box bg-success-gradient">
+                    <div class="small-box bg-success-gradient  h-100  d-flex align-items-center" >
                         <div class="inner">
-                            <h6>اجمالي الفواتير الغير مسددة</h6>
-                            <p>{{\App\Bill::all()->where('status', 'غير مسدد')->pluck('price')->sum()}}</p>
+                            <h5>اجمالي الفواتير الغير مسددة</h5>
+                            <h6 class="mt-4">{{\App\Bill::all()->where('status', 'غير مسدد')->pluck('price')->sum()}}</h6>
                         </div>
                         <div class="icon">
                             <i class="fa fa-dollar"></i>
@@ -31,13 +31,13 @@
 
                 <div class="col-lg-3 col-6">
                     <!-- small box -->
-                    <div class="small-box bg-danger-gradient">
+                    <div class="small-box bg-danger-gradient  h-100   d-flex align-items-center">
                         <div class="inner">
-                            <h6>اجمالي الباقي في الفواتير</h6>
-                            <p>{{\App\Bill::all()->where('status', 'متبقي')->pluck('remains')->sum()}}</p>
+                            <h5>اجمالي الباقي في الفواتير</h5>
+                            <h6 class="mt-4">{{\App\Bill::all()->where('status', 'متبقي')->pluck('remains')->sum()}}</h6>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-"></i>
+                            <i class="fas fa-folder-open"></i>
                         </div>
                     </div>
                 </div>
