@@ -28,7 +28,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.admins.create');
     }
 
     /**
@@ -39,7 +39,18 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+        'name'      =>  'required',
+        'email'     =>  'required|unique:admins',
+        'password'  =>  'required|min:6'
+        ]);
+        Admin::query()->create([
+            'name'      =>  $request->get('name'),
+            'email'     =>  $request->get('email'),
+            'password'  =>  Hash::make($request->get('password')),
+        ]);
+        alert('','تم','success');
+        return redirect()->route('admin.admins.index');
     }
 
     /**
@@ -99,6 +110,8 @@ class AdminController extends Controller
     public function permissions(Admin $admin){
         if($admin->permissions == null){
             $admin->permissions()->save(new Permission());
+            $permissions = $admin->permissions;
+            return view('admin.permissions.index',compact('permissions','admin'));
         }
         $permissions = $admin->permissions;
         return view('admin.permissions.index',compact('permissions','admin'));

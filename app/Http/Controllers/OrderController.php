@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Admin;
 use App\City;
+use App\Not;
 use App\Order;
 use App\Category;
 use App\Notifications\Admin\NewOrder;
@@ -101,9 +102,12 @@ class OrderController extends Controller
         $data = $request->all();
         $data['customer_id'] = auth()->user()->customer->id;
         $order = Order::create($data);
-
-        Admin::first()->notify(new NewOrder($order));;
-
+        foreach (Admin::all() as $admin) {
+            Not::query()->create([
+                'body' => 'لقد تم اضافة طلب مناسبة جديدة من عميل',
+                'admin_id' => $admin->id,
+            ]);
+        }
         return redirect()->route('account.orders.show', ['id' => $order->id])->withMsg('تم تلقي طلبك بنجاح');
     }
     public function makeFinal(Order $order){

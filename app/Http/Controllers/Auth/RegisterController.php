@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Admin;
 use App\City;
 use App\Country;
 use App\Customer;
+use App\Not;
 use App\User;
 use Illuminate\Http\Response;
 use Illuminate\Http\Request;
@@ -91,7 +93,12 @@ class RegisterController extends Controller
         if ($response = $this->registered($request, $user)) {
             return $response;
         }
-
+        foreach (Admin::all() as $admin) {
+            Not::query()->create([
+                'body' => 'لقد تم تسجيل عميل جديد',
+                'admin_id' => $admin->id,
+            ]);
+        }
         return redirect($this->redirectPath());
     }
 

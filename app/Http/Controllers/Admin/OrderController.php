@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Employee;
+use App\Not;
 use App\Order;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -120,10 +121,18 @@ class OrderController extends Controller
             'is_right_print' => 'هل نضع حقوقنا علي التصميم',
             'is_on_our_page' => 'وضع الصور علي صفحاتنا',
         ]);
+        $old_statue = $order->status;
         $order->update($request->all());
 
-        $order->customer->user->notify(new OrderStatusUpdated($order));
-
+//        $order->customer->user->notify(new OrderStatusUpdated($order));
+//
+        if ($old_statue != $order->status){
+            $user = $order->customer->user;
+            Not::query()->create([
+                'body'      =>  'لقد تم تغيير حالة مناسبة لك',
+                'user_id'   =>  $user->id,
+            ]);
+        }
         toast('تم', 'success')->position('bottom-start');
         return redirect()->route('admin.orders.index');
     }
@@ -152,6 +161,10 @@ class OrderController extends Controller
             return redirect()->back();
         }else{
             $order->employees()->syncWithoutDetaching($request['employee_id']);
+            Not::query()->create([
+                'body' => 'لقد تم تسجيل مناسبة جديدة لك',
+                'emp_id' => $request['employee_id'],
+            ]);
             toast('تم', 'success')->position('bottom-start');
             return redirect()->back();
         }

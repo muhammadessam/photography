@@ -8,8 +8,19 @@
                 </div>
             </div>
             <div class="card-body">
-                @foreach (auth()->guard('admin')->user()->notifications as $notification)
-                    @include('admin.notifications.types.'.snake_case(class_basename($notification->type)), $notification)                               
+                @foreach(auth()->guard('admin')->user()->nots as $not)
+                    <div class="card p-2">
+                        <div class="card-body">
+                            {{$not->body}}
+                            @php
+                                $not->read = 1;
+                                $not->save();
+                            @endphp
+                        </div>
+                        <div class="card-footer text-left">
+                            {{\Carbon\Carbon::parse($not->created_at)->diffForHumans()}}
+                        </div>
+                    </div>
                 @endforeach
             </div>
         </div>

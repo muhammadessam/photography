@@ -214,6 +214,17 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <form action="<?php echo e(route('admin.logout')); ?>" method="post">
+                        <?php echo csrf_field(); ?>
+                        <button type="submit" class="btn btn-danger btn-block row">
+                            <i class="nav-icon fa fa-power-off"></i>
+                            <p>
+                                تسجيل الخروج
+                            </p>
+                        </button>
+                    </form>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

@@ -26,7 +26,7 @@
                         <input type="text" class="form-control" value="{{$customer->phone}}" name="phone" id="phone">
                     </div>
                     <div class="form-group">
-                        <label for="password">الهاتف</label>
+                        <label for="password">كلمة السر</label>
                         <input type="password" class="form-control" value="same" name="password" id="password">
                     </div>
                     <div class="form-group">

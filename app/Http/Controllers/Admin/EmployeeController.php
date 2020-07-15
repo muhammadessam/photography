@@ -4,12 +4,14 @@ namespace App\Http\Controllers\Admin;
 
 use App\Employee;
 use App\Http\Controllers\Controller;
+use App\Not;
 use App\Order;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 
 class EmployeeController extends Controller
 {
@@ -119,6 +121,10 @@ class EmployeeController extends Controller
             $employee->password = Hash::make($request->get('password'));
             $employee->save();
         }
+        if ($request->hasFile('image')){
+            $employee->image = Storage::disk('public')->put('images',$request->file('image'));
+            $employee->save();
+        }
         alert('', 'تم التعديل', 'success');
         if(auth()->guard('employee')->check()){
             return  Redirect::route('employee.account');
@@ -143,6 +149,10 @@ class EmployeeController extends Controller
     public function removeOrder(Request $request, Employee $employee, Order $order)
     {
         $employee->orders()->detach($order);
+        Not::query()->create([
+            'body' => 'لقد تم تسجيل مناسبة جديدة لك',
+            'emp_id' => $employee->id,
+        ]);
         $this->actionDoneSuccessfully();
         return \redirect()->back();
     }

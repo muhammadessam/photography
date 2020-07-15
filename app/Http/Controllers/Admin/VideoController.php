@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Not;
+use App\Order;
 use App\Video;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -38,6 +40,12 @@ class VideoController extends Controller
     public function store(Request $request)
     {
         Video::create($request->only('order_id','video'));
+        $order = Order::find($request->get('order_id'));
+        $user = $order->customer->user;
+        Not::query()->create([
+            'body'      =>  'لقد تم اضافة فيديو جديد لمناسبة لك',
+            'user_id'   =>  $user->id,
+        ]);
         alert('','تم الاضافة بنجاح','success');
         return Redirect::back();
     }

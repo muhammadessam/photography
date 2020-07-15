@@ -28,7 +28,7 @@
                       <?php endif; ?>
                   </div>
               </div>
-              <form action="<?php echo e(route('admin.employees.update',$employee)); ?>" method="post">
+              <form action="<?php echo e(route('employees.update',$employee)); ?>" method="post" enctype="multipart/form-data">
                   <?php echo csrf_field(); ?>
                   <?php echo method_field('PUT'); ?>
                   <div class="form-group">
@@ -68,6 +68,11 @@
                       <input type="text" class="form-control" value="<?php echo e($employee->phone); ?>" name="phone" id="phone">
                   </div>
                   <div class="form-group">
+                      <label for="image">الصورة الشخصية</label>
+                      <input type="file" class="form-control" name="image" id="image">
+                  </div>
+
+                  <div class="form-group">
                       <input type="submit" class="btn btn-outline-success btn-block" value="حفظ" name="" id="">
                   </div>
               </form>
@@ -88,7 +93,8 @@
                           <?php endif; ?>
                       </div>
                   </div>
-                  <form method="POST" action="<?php echo e(route('account.update', ['id' => auth()->id()])); ?>">
+                  <form method="POST" action="<?php echo e(route('customers.update',auth()->user()->customer)); ?>" enctype="multipart/form-data">
+                      <?php echo method_field('PATCH'); ?>
                       <div class="row m-0 p-0">
                           <div class="form-group col-md-6 ">
                               <div class="row w-100 m-0 p-0">
@@ -106,7 +112,7 @@
                           <div class="form-group col-md-6 ">
                               <div class="row w-100 m-0 p-0">
                                   <div class="pr-0 col-sm-12 mb-2 invoice-label c-bol font-weight-bold ">كلمة مرور جديدة:</div>
-                                  <div class="pl-0 col-sm-12 pr-0 "> <input type="password" name="password" class="form-control"></div>
+                                  <div class="pl-0 col-sm-12 pr-0 "> <input type="password" value="same" name="password" class="form-control"></div>
                               </div>
                           </div>
                           <div class="form-group col-md-6 ">
@@ -118,7 +124,7 @@
                           <div class="form-group col-md-6 ">
                               <div class="row w-100 m-0 p-0">
                                   <div class="pr-0 col-sm-12 mb-2 invoice-label c-bol font-weight-bold ">أعد ادخال كلمة مرور:</div>
-                                  <div class="pl-0 col-sm-12 pr-0 "> <input type="password" name="password_confirmation" class="form-control" ></div>
+                                  <div class="pl-0 col-sm-12 pr-0 "> <input type="password" value="same" name="password_confirmation" class="form-control" ></div>
                               </div>
                           </div>
                           <div class="form-group col-md-6">
@@ -133,6 +139,12 @@
                                           </select>
                                       </div>
                                   </div>
+                              </div>
+                          </div>
+                          <div class="form-group col-md-6 ">
+                              <div class="row w-100 m-0 p-0">
+                                  <div class="pr-0 col-sm-12 mb-2 invoice-label c-bol font-weight-bold ">الصورة الشخصية:</div>
+                                  <div class="pl-0 col-sm-12 pr-0 "> <input type="file" name="image" class="form-control" ></div>
                               </div>
                           </div>
                       </div>

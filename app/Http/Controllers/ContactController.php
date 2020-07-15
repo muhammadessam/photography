@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Admin;
 use App\Contact;
+use App\Not;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
@@ -24,7 +26,12 @@ class ContactController extends Controller
         );
 
         Contact::create($req->all());
-
+        foreach (Admin::all() as $admin){
+            Not::query()->create([
+                'body'      =>  'لقد تم ارسال رسالة تواصل معنا ',
+                'user_id'   =>  $admin->id,
+            ]);
+        }
         return redirect(route('home').'#contact-form')->withMsg('سوف تقوم الادارة بالتواصل معكم', 'تم الارسال');;
     }
 }

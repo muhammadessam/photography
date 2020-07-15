@@ -21,4 +21,7 @@ class Admin extends Authenticatable
     public function permissions(){
         return $this->hasOne(Permission::class,'admin_id','id');
     }
+    public function nots(){
+        return $this->hasMany(Not::class,'admin_id','id');
+    }
 }

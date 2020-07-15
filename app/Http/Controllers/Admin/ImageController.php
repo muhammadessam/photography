@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Image;
+use App\Not;
+use App\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
@@ -46,6 +48,12 @@ class ImageController extends Controller
                     'order_id'  =>$request->get('order_id'),
                 ]);
             }
+            $order = Order::find($request->get('order_id'));
+            $user = $order->customer->user;
+            Not::query()->create([
+                'body'      =>  'لقد تم اضافة صورة جديدة لمناسبة لك',
+                'user_id'   =>  $user->id,
+            ]);
             alert('','تم الاضافة بنجاح','success');
             return Redirect::back();
         }else{

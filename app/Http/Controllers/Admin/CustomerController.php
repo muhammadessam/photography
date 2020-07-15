@@ -117,12 +117,16 @@ class CustomerController extends Controller
         $customer->update($request->only('city','phone'));
         if ($request->get('password') != "same"){
             $customer->user->password = Hash::make($request->get('password'));
+            $customer->user->save();
         }
         if ($request->hasFile('image')){
-            $customer->image = Storage::disk('public')->put('images',$request->file('image'));
+            $customer->user->image = Storage::disk('public')->put('images',$request->file('image'));
+            $customer->user->save();
         }
-        $customer->save();
         alert('','تم التعدبل','success');
+        if (auth()->check()){
+            return \redirect()->route('account');
+        }
         return Redirect::route('admin.customers.index');
     }
 

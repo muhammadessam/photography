@@ -7,20 +7,37 @@
             </div>
             <div class="card-body">
                 <div class="list-group">
-                    @foreach(auth()->user()->nots as $not)
-                        <div class="card p-2">
-                            <div class="card-body">
-                                {{$not->body}}
-                                @php
-                                    $not->read = 1;
-                                    $not->save();
-                                @endphp
+                    @if(auth()->guard('employee')->check())
+                        @foreach(auth()->guard('employee')->user()->nots as $not)
+                            <div class="card p-2">
+                                <div class="card-body">
+                                    {{$not->body}}
+                                    @php
+                                        $not->read = 1;
+                                        $not->save();
+                                    @endphp
+                                </div>
+                                <div class="card-footer text-left">
+                                    {{\Carbon\Carbon::parse($not->created_at)->diffForHumans()}}
+                                </div>
                             </div>
-                            <div class="card-footer text-left">
-                                {{\Carbon\Carbon::parse($not->created_at)->diffForHumans()}}
+                        @endforeach
+                    @else
+                        @foreach(auth()->user()->nots as $not)
+                            <div class="card p-2">
+                                <div class="card-body">
+                                    {{$not->body}}
+                                    @php
+                                        $not->read = 1;
+                                        $not->save();
+                                    @endphp
+                                </div>
+                                <div class="card-footer text-left">
+                                    {{\Carbon\Carbon::parse($not->created_at)->diffForHumans()}}
+                                </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    @endif
                 </div>
             </div>
         </div>

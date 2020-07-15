@@ -25,6 +25,10 @@
                         <input type="text" class="form-control" value="<?php echo e($customer->phone); ?>" name="phone" id="phone">
                     </div>
                     <div class="form-group">
+                        <label for="password">كلمة السر</label>
+                        <input type="password" class="form-control" value="same" name="password" id="password">
+                    </div>
+                    <div class="form-group">
                         <label for="">الصورة الشخصية</label>
                         <input type="file" name="image" class="form-control">
                     </div>

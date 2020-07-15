@@ -71,6 +71,8 @@ Route::middleware('is_open')->group(function (){
     Route::view('EmployeeLoginForm','site.employee.login.index')->name('EmployeeLoginForm');
     Route::get('Order/{order}/makeFinal','OrderController@makeFinal')->name('makeFinal');
     Route::get('Order/{order}/downloadAllImages','OrderController@downloadAllImages')->name('downloadAllImages');
+    Route::resource('customers', 'Admin\CustomerController');
+    Route::resource('employees', 'Admin\EmployeeController');
 });
 
 

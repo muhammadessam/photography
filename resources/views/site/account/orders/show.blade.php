@@ -133,7 +133,7 @@
                         <h5 class="text-center font-weight-bold mt-2">العميل</h5>
                         <div class="d-flex">
                             <div class="acp-user-img">
-                                <img class="w-100" src="{{$order->customer->image == null?'https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png':asset($order->customer->image)}}" alt=" ">
+                                <img class="w-100" src="{{$order->customer->user->image == null?'https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png':asset($order->customer->user->image)}}" alt=" ">
                             </div>
                             <div class="acp-cln-u">
                                 <div class="acp-user text-center">{{$order->customer->user->name}}</div>

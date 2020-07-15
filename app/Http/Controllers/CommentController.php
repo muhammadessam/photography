@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Admin;
 use App\Comment;
+use App\Not;
 use App\Notification;
 use App\Notifications\Admin\NewComment;
 use App\Order;
@@ -25,7 +26,12 @@ class CommentController extends Controller
         $comment = Comment::create($request->except('_token'));
 
         // notify admin
-        Admin::first()->notify(new NewComment($order, $comment, auth()->guard('web')->user()));
+        foreach (Admin::all() as $admin) {
+            Not::query()->create([
+                'body' => 'لقد تم اضافة تعليق جديد من قبل العميل',
+                'admin_id' => $admin->id,
+            ]);
+        }
 
 
         return redirect()->route('account.orders.show', ['id' => $request->order_id, 'tab' => 'comments']);

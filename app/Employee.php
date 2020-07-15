@@ -19,5 +19,8 @@ class Employee extends  Authenticatable
     {
         return $this->belongsToMany(Order::class, 'employee_order', 'employee_id', 'order_id')->withPivot('stars');
     }
+    public function nots(){
+        return $this->hasMany(Not::class,'emp_id','id');
+    }
 
 }

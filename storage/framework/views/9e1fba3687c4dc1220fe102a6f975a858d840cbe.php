@@ -6,22 +6,41 @@
             </div>
             <div class="card-body">
                 <div class="list-group">
-                    <?php $__currentLoopData = auth()->user()->nots; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $not): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <div class="card p-2">
-                            <div class="card-body">
-                                <?php echo e($not->body); ?>
+                    <?php if(auth()->guard('employee')->check()): ?>
+                        <?php $__currentLoopData = auth()->guard('employee')->user()->nots; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $not): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <div class="card p-2">
+                                <div class="card-body">
+                                    <?php echo e($not->body); ?>
 
-                                <?php
-                                    $not->read = 1;
-                                    $not->save();
-                                ?>
-                            </div>
-                            <div class="card-footer text-left">
-                                <?php echo e(\Carbon\Carbon::parse($not->created_at)->diffForHumans()); ?>
+                                    <?php
+                                        $not->read = 1;
+                                        $not->save();
+                                    ?>
+                                </div>
+                                <div class="card-footer text-left">
+                                    <?php echo e(\Carbon\Carbon::parse($not->created_at)->diffForHumans()); ?>
 
+                                </div>
                             </div>
-                        </div>
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    <?php else: ?>
+                        <?php $__currentLoopData = auth()->user()->nots; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $not): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <div class="card p-2">
+                                <div class="card-body">
+                                    <?php echo e($not->body); ?>
+
+                                    <?php
+                                        $not->read = 1;
+                                        $not->save();
+                                    ?>
+                                </div>
+                                <div class="card-footer text-left">
+                                    <?php echo e(\Carbon\Carbon::parse($not->created_at)->diffForHumans()); ?>
+
+                                </div>
+                            </div>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

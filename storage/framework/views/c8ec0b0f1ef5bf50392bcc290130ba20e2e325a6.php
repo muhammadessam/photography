@@ -10,13 +10,13 @@
     <!-- Right navbar links -->
     <ul class="navbar-nav mr-auto">
         <!-- Messages Dropdown Menu -->
-
-
-
-
-
-
-
+        <?php if(auth()->guard('admin')->user()->nots->count() > 0): ?>
+            <li><a href="<?php echo e(route('admin.notifications')); ?>" class="dropdown-item">
+                    <i class="fas fa-bell my-nfx"></i>
+                    اشعارات
+                        <span class="badge badge-danger"><?php echo e(auth()->guard('admin')->user()->nots->count()); ?></span>
+                </a></li>
+        <?php endif; ?>
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
                 <i class="fa fa-user-circle-o"></i>

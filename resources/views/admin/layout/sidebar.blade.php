@@ -213,6 +213,17 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <form action="{{route('admin.logout')}}" method="post">
+                        @csrf
+                        <button type="submit" class="btn btn-danger btn-block row">
+                            <i class="nav-icon fa fa-power-off"></i>
+                            <p>
+                                تسجيل الخروج
+                            </p>
+                        </button>
+                    </form>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
