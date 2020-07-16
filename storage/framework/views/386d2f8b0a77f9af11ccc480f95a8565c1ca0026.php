@@ -10,13 +10,13 @@
     <!-- Right navbar links -->
     <ul class="navbar-nav mr-auto">
         <!-- Messages Dropdown Menu -->
-        <li><a href="<?php echo e(route('admin.notifications')); ?>" class="dropdown-item">
-                <i class="fas fa-bell my-nfx"></i>
-                اشعارات
-                <?php if(auth()->guard('admin')->user()->unreadNotifications()->count()): ?>
-                    <span class="badge badge-danger"><?php echo e(auth()->guard('admin')->user()->unreadNotifications()->count()); ?></span>
-                <?php endif; ?>
-            </a></li>
+        <?php if(auth()->guard('admin')->user()->nots->count() > 0): ?>
+            <li><a href="<?php echo e(route('admin.notifications')); ?>" class="dropdown-item">
+                    <i class="fas fa-bell my-nfx"></i>
+                    اشعارات
+                        <span class="badge badge-danger"><?php echo e(auth()->guard('admin')->user()->nots->count()); ?></span>
+                </a></li>
+        <?php endif; ?>
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
                 <i class="fa fa-user-circle-o"></i>
@@ -40,7 +40,6 @@
                 <div class="dropdown-divider"></div>
 
                 <div class="dropdown-divider"></div>
-
                 <div class="dropdown-divider"></div>
                 <form action="<?php echo e(route('admin.logout')); ?>" method="post" class="text-center">
                     <?php echo csrf_field(); ?>
@@ -53,4 +52,5 @@
 
     </ul>
 </nav>
-<!-- /.navbar --><?php /**PATH /home/abcconsttech/public_html/photography/resources/views/admin/layout/navbar.blade.php ENDPATH**/ ?>
+<!-- /.navbar -->
+<?php /**PATH /home/abcconsttech/public_html/photography/resources/views/admin/layout/navbar.blade.php ENDPATH**/ ?>

@@ -41,11 +41,18 @@
                                     <td  class="border-bottom font-weight-bold  "><?php echo e($order->city->name); ?></td>
                                     <td  class="border-bottom font-weight-bold  "><?php echo e($order->get_status()); ?></td>
                                     <td>
+                                        <?php if(auth()->guard('employee')->check()): ?>
+                                            <a href="<?php echo e(route('employee.account.orders.show', ['id' => $order->id])); ?>" class="c-bol" >  <i class="fas fa-eye"></i> مشاهدة</a>
+                                            <?php if($order->status != "final"): ?>
+                                                <a href="<?php echo e(route('makeFinal', $order)); ?>" class="c-bol" >  <i class="fas fa-check"></i>اَنجز</a>
+                                            <?php endif; ?>
+                                        <?php else: ?>
                                         <!-- Button trigger modal -->
                                         <a  class="m-2 c-bol" href="<?php echo e(route('account.orders.show', ['id' => $order->id, 'tab' => 'images'])); ?>"><i class="fa fa-image"></i> <?php echo e($order->images_count); ?></a>
                                         <!-- Button trigger modal -->
                                         <a  class="m-2 c-bol" href="<?php echo e(route('account.orders.show', ['id' => $order->id, 'tab' => 'videos'])); ?>"><i class="fa fa-camera"></i> <?php echo e($order->videos_count); ?></a>
                                         <a href="<?php echo e(route('account.orders.show', ['id' => $order->id])); ?>" class="c-bol" >  <i class="fas fa-eye"></i> مشاهدة</a>
+                                        <?php endif; ?>
                                     </td>
                                 </tr>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

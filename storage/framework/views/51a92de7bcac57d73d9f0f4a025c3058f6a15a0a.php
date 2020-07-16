@@ -62,13 +62,28 @@
                 </div>
             </div>
             <div class="card-body my-m-img">
+                <form action="<?php echo e(route('admin.images.index')); ?>" method="get">
+                    <?php echo csrf_field(); ?>
+                    <div class="form-group row justify-content-start" dir="rtl">
+                        <label for="" class="m-2">اختر قسم</label>
+                        <select name="cat_id" class="form-control col-6">
+                            <?php $__currentLoopData = @App\Category::all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <option value="<?php echo e($cat->id); ?>"><?php echo e($cat->name); ?></option>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        </select>
+                        <button type="submit" class="btn btn-success mr-2">بحث</button>
+                        <a href="<?php echo e(route('admin.images.index')); ?>"  class="btn btn-primary mr-2">كل الاقسام</a>
+                    </div>
+                </form>
                 <div id="lightgallery">
 
                     <div class="row">
-                        <?php $__currentLoopData = @App\AdminImage::all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $image): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <?php $__currentLoopData = $images; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $image): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <div class="col-md-3 col-6 p-1">
                                 <div class="card bg-primary-gradient">
-                                    <div class="card-header row w-100 m-0">
+                                    <div class="card-header row w-100 m-0 justify-content-center">
+                                        <h6 class="text-dark m-1"><?php echo e($image->title); ?></h6>
+
                                         <form action="<?php echo e(route('admin.images.destroy',$image)); ?>" method="post">
                                             <?php echo csrf_field(); ?>
                                             <?php echo method_field('DELETE'); ?>
@@ -88,24 +103,14 @@
                             </div>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
+
                 </div>
             </div>
         </div>
 
         <nav aria-label="..." class="text-center d-flex align-items-center justify-content-center" dir="rtl">
-            <ul class="pagination p-0 text-center">
-                <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">السابق</a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item active" aria-current="page">
-                    <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#">التالى</a>
-                </li>
-            </ul>
+            <?php echo e($images->links()); ?>
+
         </nav>
     </div>
 <?php $__env->stopSection(); ?>
