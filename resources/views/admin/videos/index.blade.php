@@ -26,6 +26,18 @@
                                 <form action="{{route('admin.videos.store')}}" method="post">
                                     @csrf
                                     <div class="form-group">
+                                        <label for="">العنوان</label>
+                                        <input name="title" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">القسم</label>
+                                        <select name="cat_id" class="form-control" id="">
+                                            @foreach(@App\Category::all() as $cat)
+                                            <option value="{{$cat->id}}">{{$cat->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
                                         <label for="video">رابط الفيديو Youtube</label>
                                         <textarea name="video" class="form-control" id="video" cols="30" rows="10"></textarea>
                                     </div>
@@ -37,16 +49,30 @@
                 </div>
             </div>
             <div class="card-body my-m-img">
+                <form action="{{route('admin.videos.index')}}" method="get">
+                    @csrf
+                    <div class="form-group row justify-content-start" dir="rtl">
+                        <label for="" class="m-2">اختر قسم</label>
+                        <select name="cat_id" class="form-control col-6">
+                            @foreach(@App\Category::all() as $cat)
+                                <option value="{{$cat->id}}">{{$cat->name}}</option>
+                            @endforeach
+                        </select>
+                        <button type="submit" class="btn btn-success mr-2">بحث</button>
+                        <a href="{{route('admin.videos.index')}}"  class="btn btn-primary mr-2">كل الاقسام</a>
+                    </div>
+                </form>
                 <form action="{{route('admin.DeleteAll','admin_videos')}}" method="post">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-outline-danger">حذف المحدد</button>
                     <div class="row">
-                        @foreach(@App\AdminVideo::all() as $i => $video)
+                        @foreach($videos as $i => $video)
                             <div class="col-4 p-1">
                                 <div class="card bg-primary-gradient">
-                                    <div class="card-header row w-100 m-0">
-                                        <input type="checkbox" id="item" class="custom-checkbox m-1" name="images[{{$i}}]" value="{{$video->id}}">
+                                    <div class="card-header row w-100 m-0 justify-content-center">
+                                        <input type="checkbox" id="item" class="custom-checkbox m-2" name="images[{{$i}}]" value="{{$video->id}}">
+                                        <h5 class="text-dark">{{$video->title}}</h5>
 {{--                                        <form action="{{route('admin.videos.destroy',$video)}}" method="post">--}}
 {{--                                            @csrf--}}
 {{--                                            @method('DELETE')--}}
@@ -67,6 +93,7 @@
                             </div>
                         @endforeach
                     </div>
+                    {{$videos->links()}}
                 </form>
             </div>
         </div>

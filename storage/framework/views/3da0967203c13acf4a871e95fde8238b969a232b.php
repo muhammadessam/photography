@@ -25,6 +25,18 @@
                                 <form action="<?php echo e(route('admin.videos.store')); ?>" method="post">
                                     <?php echo csrf_field(); ?>
                                     <div class="form-group">
+                                        <label for="">العنوان</label>
+                                        <input name="title" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">القسم</label>
+                                        <select name="cat_id" class="form-control" id="">
+                                            <?php $__currentLoopData = @App\Category::all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <option value="<?php echo e($cat->id); ?>"><?php echo e($cat->name); ?></option>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
                                         <label for="video">رابط الفيديو Youtube</label>
                                         <textarea name="video" class="form-control" id="video" cols="30" rows="10"></textarea>
                                     </div>
@@ -36,16 +48,30 @@
                 </div>
             </div>
             <div class="card-body my-m-img">
+                <form action="<?php echo e(route('admin.videos.index')); ?>" method="get">
+                    <?php echo csrf_field(); ?>
+                    <div class="form-group row justify-content-start" dir="rtl">
+                        <label for="" class="m-2">اختر قسم</label>
+                        <select name="cat_id" class="form-control col-6">
+                            <?php $__currentLoopData = @App\Category::all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <option value="<?php echo e($cat->id); ?>"><?php echo e($cat->name); ?></option>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        </select>
+                        <button type="submit" class="btn btn-success mr-2">بحث</button>
+                        <a href="<?php echo e(route('admin.videos.index')); ?>"  class="btn btn-primary mr-2">كل الاقسام</a>
+                    </div>
+                </form>
                 <form action="<?php echo e(route('admin.DeleteAll','admin_videos')); ?>" method="post">
                     <?php echo csrf_field(); ?>
                     <?php echo method_field('DELETE'); ?>
                     <button type="submit" class="btn btn-outline-danger">حذف المحدد</button>
                     <div class="row">
-                        <?php $__currentLoopData = @App\AdminVideo::all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $i => $video): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <?php $__currentLoopData = $videos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $i => $video): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <div class="col-4 p-1">
                                 <div class="card bg-primary-gradient">
-                                    <div class="card-header row w-100 m-0">
-                                        <input type="checkbox" id="item" class="custom-checkbox m-1" name="images[<?php echo e($i); ?>]" value="<?php echo e($video->id); ?>">
+                                    <div class="card-header row w-100 m-0 justify-content-center">
+                                        <input type="checkbox" id="item" class="custom-checkbox m-2" name="images[<?php echo e($i); ?>]" value="<?php echo e($video->id); ?>">
+                                        <h5 class="text-dark"><?php echo e($video->title); ?></h5>
 
 
 
@@ -66,6 +92,8 @@
                             </div>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
+                    <?php echo e($videos->links()); ?>
+
                 </form>
             </div>
         </div>

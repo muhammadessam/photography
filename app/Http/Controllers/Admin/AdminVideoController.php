@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+
 use App\AdminVideo;
 use App\Http\Controllers\Controller;
-use App\Video;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
@@ -17,7 +18,12 @@ class AdminVideoController extends Controller
      */
     public function index()
     {
-        return view('admin.videos.index');
+        if (isset($_GET['cat_id'])){
+            $videos = AdminVideo::where('cat_id',$_GET['cat_id'])->paginate(10);
+        }else{
+            $videos = AdminVideo::paginate(10);
+        }
+        return view('admin.videos.index',compact('videos'));
     }
 
     /**
@@ -39,7 +45,7 @@ class AdminVideoController extends Controller
     public function store(Request $request)
     {
 
-        AdminVideo::create($request->only('video'));
+        AdminVideo::create($request->only('video','title','cat_id'));
         alert('','تم الاضافة بنجاح','success');
         return Redirect::back();
     }
