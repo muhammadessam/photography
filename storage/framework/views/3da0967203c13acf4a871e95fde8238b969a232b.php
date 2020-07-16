@@ -1,4 +1,3 @@
-
 <?php $__env->startSection('content'); ?>
     <style>
         iframe{
@@ -37,31 +36,37 @@
                 </div>
             </div>
             <div class="card-body my-m-img">
-                <div class="row">
-                    <?php $__currentLoopData = @App\AdminVideo::all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $video): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <div class="col-4 p-1">
-                            <div class="card bg-primary-gradient">
-                                <div class="card-header row w-100 m-0">
-                                    <form action="<?php echo e(route('admin.videos.destroy',$video)); ?>" method="post">
-                                        <?php echo csrf_field(); ?>
-                                        <?php echo method_field('DELETE'); ?>
-                                        <button type="submit" class="btn btn-sm btn-outline-danger">
-                                            <i class="fa fa-trash"></i>
-                                        </button>
-                                    </form>
-                                </div>
-                                <div class="card-body text-dark">
-                                        <iframe id="ytplayer" type="text/html" width="100%" height="250"
-                                        <?php
-                                            parse_str( parse_url($video->video, PHP_URL_QUERY), $output );
-                                        ?>
-                                        src="https://www.youtube.com/embed/<?php echo e($output['v']); ?>"
-                                        frameborder="0"></iframe>
+                <form action="<?php echo e(route('admin.DeleteAll','admin_videos')); ?>" method="post">
+                    <?php echo csrf_field(); ?>
+                    <?php echo method_field('DELETE'); ?>
+                    <button type="submit" class="btn btn-outline-danger">حذف المحدد</button>
+                    <div class="row">
+                        <?php $__currentLoopData = @App\AdminVideo::all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $i => $video): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <div class="col-4 p-1">
+                                <div class="card bg-primary-gradient">
+                                    <div class="card-header row w-100 m-0">
+                                        <input type="checkbox" id="item" class="custom-checkbox m-1" name="images[<?php echo e($i); ?>]" value="<?php echo e($video->id); ?>">
+
+
+
+
+
+
+
+                                    </div>
+                                    <div class="card-body text-dark">
+                                            <iframe id="ytplayer" type="text/html" width="100%" height="250"
+                                            <?php
+                                                parse_str( parse_url($video->video, PHP_URL_QUERY), $output );
+                                            ?>
+                                            src="https://www.youtube.com/embed/<?php echo e($output['v']); ?>"
+                                            frameborder="0"></iframe>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                </div>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

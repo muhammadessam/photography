@@ -37,31 +37,37 @@
                 </div>
             </div>
             <div class="card-body my-m-img">
-                <div class="row">
-                    @foreach(@App\AdminVideo::all() as $video)
-                        <div class="col-4 p-1">
-                            <div class="card bg-primary-gradient">
-                                <div class="card-header row w-100 m-0">
-                                    <form action="{{route('admin.videos.destroy',$video)}}" method="post">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-outline-danger">
-                                            <i class="fa fa-trash"></i>
-                                        </button>
-                                    </form>
-                                </div>
-                                <div class="card-body text-dark">
-                                        <iframe id="ytplayer" type="text/html" width="100%" height="250"
-                                        @php
-                                            parse_str( parse_url($video->video, PHP_URL_QUERY), $output );
-                                        @endphp
-                                        src="https://www.youtube.com/embed/{{  $output['v'] }}"
-                                        frameborder="0"></iframe>
+                <form action="{{route('admin.DeleteAll','admin_videos')}}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-outline-danger">حذف المحدد</button>
+                    <div class="row">
+                        @foreach(@App\AdminVideo::all() as $i => $video)
+                            <div class="col-4 p-1">
+                                <div class="card bg-primary-gradient">
+                                    <div class="card-header row w-100 m-0">
+                                        <input type="checkbox" id="item" class="custom-checkbox m-1" name="images[{{$i}}]" value="{{$video->id}}">
+{{--                                        <form action="{{route('admin.videos.destroy',$video)}}" method="post">--}}
+{{--                                            @csrf--}}
+{{--                                            @method('DELETE')--}}
+{{--                                            <button type="submit" class="btn btn-sm btn-outline-danger">--}}
+{{--                                                <i class="fa fa-trash"></i>--}}
+{{--                                            </button>--}}
+{{--                                        </form>--}}
+                                    </div>
+                                    <div class="card-body text-dark">
+                                            <iframe id="ytplayer" type="text/html" width="100%" height="250"
+                                            @php
+                                                parse_str( parse_url($video->video, PHP_URL_QUERY), $output );
+                                            @endphp
+                                            src="https://www.youtube.com/embed/{{  $output['v'] }}"
+                                            frameborder="0"></iframe>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
-                </div>
+                        @endforeach
+                    </div>
+                </form>
             </div>
         </div>
     </div>

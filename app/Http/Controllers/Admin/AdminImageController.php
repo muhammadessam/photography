@@ -7,10 +7,13 @@ use App\AdminImage;
 use App\Http\Controllers\Controller;
 use App\Setting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
+use phpDocumentor\Reflection\Types\This;
+
 class AdminImageController extends Controller
 {
     /**
@@ -112,5 +115,17 @@ class AdminImageController extends Controller
         $ai->delete();
         alert('','تم الحذف بنجاح','success');
         return Redirect::back();
+    }
+    public function deleteAll(Request $request,$table){
+        $items = $request['images'];
+        if (! empty($items)){
+            foreach ($items as $i){
+                DB::table("$table")->delete("$i");
+            }
+            alert('','تم الحذف','success');
+        }else{
+            alert('','يجب تحديد','error');
+        }
+        return \redirect()->back();
     }
 }

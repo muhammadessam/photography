@@ -42,18 +42,30 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <div class="row">
-                        <?php $__currentLoopData = $order->videos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $video): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <div class="col-4">
-                            <iframe id="ytplayer" type="text/html" width="100%" height="250"
-                                    <?php
-                                        parse_str( parse_url($video->video, PHP_URL_QUERY), $output );
-                                    ?>
-                                    src="https://www.youtube.com/embed/<?php echo e($output['v']); ?>"
-                                    frameborder="0"></iframe>
+                    <form action="<?php echo e(route('admin.DeleteAll','videos')); ?>" method="post">
+                        <?php echo csrf_field(); ?>
+                        <?php echo method_field('DELETE'); ?>
+                        <button type="submit" class="btn btn-outline-danger">حذف المحدد</button>
+                        <div class="row">
+                            <?php $__currentLoopData = $order->videos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $i => $video): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <div class="col-4">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <input type="checkbox" id="item" class="custom-checkbox m-1" name="images[<?php echo e($i); ?>]" value="<?php echo e($video->id); ?>">
+                                    </div>
+                                    <div class="card-body">
+                                        <iframe id="ytplayer" type="text/html" width="100%" height="250"
+                                                <?php
+                                                    parse_str( parse_url($video->video, PHP_URL_QUERY), $output );
+                                                ?>
+                                                src="https://www.youtube.com/embed/<?php echo e($output['v']); ?>"
+                                                frameborder="0"></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </div>
-                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                    </div>
+                    </form>
                 </div>
             </div>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

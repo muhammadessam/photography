@@ -64,5 +64,6 @@ Route::prefix('admin')->group(function () {
         Route::get('Customers/Deactivate','CustomerController@Deactivate')->name('Customer_Deactivate');
         Route::get('Customer/{customer}/ChangeStatue','CustomerController@ChangeStatue')->name('Customer_ChangeStatue');
         Route::get('Employee/{employee}/ChangeStatue','EmployeeController@ChangeStatue')->name('Employee_ChangeStatue');
+        Route::delete('DeleteAll/{table}','AdminImageController@deleteAll')->name('DeleteAll');
     });
 });

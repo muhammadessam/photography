@@ -61,7 +61,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card-body my-m-img">
+            <div class="card-body my-m-img" id="images">
                 <form action="<?php echo e(route('admin.images.index')); ?>" method="get">
                     <?php echo csrf_field(); ?>
                     <div class="form-group row justify-content-start" dir="rtl">
@@ -76,33 +76,40 @@
                     </div>
                 </form>
                 <div id="lightgallery">
+                    <form action="<?php echo e(route('admin.DeleteAll','admin_images')); ?>" method="post">
+                        <?php echo csrf_field(); ?>
+                        <?php echo method_field('DELETE'); ?>
+                        <button type="submit" class="btn btn-outline-danger">حذف المحدد</button>
+                        <div class="row">
+                            <?php $__currentLoopData = $images; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $i => $image): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <div class="col-md-3 col-6 p-1">
+                                    <div class="card bg-primary-gradient">
+                                        <div class="card-header row w-100 m-0 justify-content-center">
+                                            <h6 class="text-dark m-1">
+                                                <input type="checkbox" id="item" class="custom-checkbox m-1" name="images[<?php echo e($i); ?>]" value="<?php echo e($image->id); ?>">
+                                                <?php echo e($image->title); ?>
 
-                    <div class="row">
-                        <?php $__currentLoopData = $images; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $image): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <div class="col-md-3 col-6 p-1">
-                                <div class="card bg-primary-gradient">
-                                    <div class="card-header row w-100 m-0 justify-content-center">
-                                        <h6 class="text-dark m-1"><?php echo e($image->title); ?></h6>
+                                            </h6>
 
-                                        <form action="<?php echo e(route('admin.images.destroy',$image)); ?>" method="post">
-                                            <?php echo csrf_field(); ?>
-                                            <?php echo method_field('DELETE'); ?>
-                                            <button type="submit" class="btn btn-sm btn-danger delete-t">
-                                                <i class="fa fa-trash"></i>
-                                            </button>
-                                        </form>
-                                    </div>
-                                    <div class="card-body p-0">
-                                        <a href="<?php echo e(asset($image->image)); ?>" class="item">
-                                            <img class="img-thumbnail" width="100%" src="<?php echo e(asset($image->image)); ?>"
-                                                 data-src="<?php echo e(asset($image->image)); ?>"
-                                                 style="height: 180px;object-fit: cover;">
-                                        </a>
+
+
+
+
+
+
+                                        </div>
+                                        <div class="card-body p-0">
+                                            <a href="<?php echo e(asset($image->image)); ?>" class="item">
+                                                <img class="img-thumbnail" width="100%" src="<?php echo e(asset($image->image)); ?>"
+                                                     data-src="<?php echo e(asset($image->image)); ?>"
+                                                     style="height: 180px;object-fit: cover;">
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                    </div>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        </div>
+                    </form>
 
                 </div>
             </div>

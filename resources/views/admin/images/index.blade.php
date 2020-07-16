@@ -52,7 +52,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card-body my-m-img">
+            <div class="card-body my-m-img" id="images">
                 <form action="{{route('admin.images.index')}}" method="get">
                     @csrf
                     <div class="form-group row justify-content-start" dir="rtl">
@@ -67,33 +67,39 @@
                     </div>
                 </form>
                 <div id="lightgallery">
-
-                    <div class="row">
-                        @foreach($images as $image)
-                            <div class="col-md-3 col-6 p-1">
-                                <div class="card bg-primary-gradient">
-                                    <div class="card-header row w-100 m-0 justify-content-center">
-                                        <h6 class="text-dark m-1">{{$image->title}}</h6>
-
-                                        <form action="{{route('admin.images.destroy',$image)}}" method="post">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-sm btn-danger delete-t">
-                                                <i class="fa fa-trash"></i>
-                                            </button>
-                                        </form>
-                                    </div>
-                                    <div class="card-body p-0">
-                                        <a href="{{asset($image->image)}}" class="item">
-                                            <img class="img-thumbnail" width="100%" src="{{asset($image->image)}}"
-                                                 data-src="{{asset($image->image)}}"
-                                                 style="height: 180px;object-fit: cover;">
-                                        </a>
+                    <form action="{{route('admin.DeleteAll','admin_images')}}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-outline-danger">حذف المحدد</button>
+                        <div class="row">
+                            @foreach($images as $i => $image)
+                                <div class="col-md-3 col-6 p-1">
+                                    <div class="card bg-primary-gradient">
+                                        <div class="card-header row w-100 m-0 justify-content-center">
+                                            <h6 class="text-dark m-1">
+                                                <input type="checkbox" id="item" class="custom-checkbox m-1" name="images[{{$i}}]" value="{{$image->id}}">
+                                                {{$image->title}}
+                                            </h6>
+{{--                                            <form action="{{route('admin.images.destroy',$image)}}" method="post">--}}
+{{--                                                @csrf--}}
+{{--                                                @method('DELETE')--}}
+{{--                                                <button type="submit" class="btn btn-sm btn-danger delete-t">--}}
+{{--                                                    <i class="fa fa-trash"></i>--}}
+{{--                                                </button>--}}
+{{--                                            </form>--}}
+                                        </div>
+                                        <div class="card-body p-0">
+                                            <a href="{{asset($image->image)}}" class="item">
+                                                <img class="img-thumbnail" width="100%" src="{{asset($image->image)}}"
+                                                     data-src="{{asset($image->image)}}"
+                                                     style="height: 180px;object-fit: cover;">
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        @endforeach
-                    </div>
+                            @endforeach
+                        </div>
+                    </form>
 
                 </div>
             </div>

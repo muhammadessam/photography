@@ -42,18 +42,30 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <div class="row">
-                        @foreach($order->videos as $video)
-                        <div class="col-4">
-                            <iframe id="ytplayer" type="text/html" width="100%" height="250"
-                                    @php
-                                        parse_str( parse_url($video->video, PHP_URL_QUERY), $output );
-                                    @endphp
-                                    src="https://www.youtube.com/embed/{{  $output['v'] }}"
-                                    frameborder="0"></iframe>
+                    <form action="{{route('admin.DeleteAll','videos')}}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-outline-danger">حذف المحدد</button>
+                        <div class="row">
+                            @foreach($order->videos as $i => $video)
+                            <div class="col-4">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <input type="checkbox" id="item" class="custom-checkbox m-1" name="images[{{$i}}]" value="{{$video->id}}">
+                                    </div>
+                                    <div class="card-body">
+                                        <iframe id="ytplayer" type="text/html" width="100%" height="250"
+                                                @php
+                                                    parse_str( parse_url($video->video, PHP_URL_QUERY), $output );
+                                                @endphp
+                                                src="https://www.youtube.com/embed/{{  $output['v'] }}"
+                                                frameborder="0"></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
                         </div>
-                        @endforeach
-                    </div>
+                    </form>
                 </div>
             </div>
         @endforeach

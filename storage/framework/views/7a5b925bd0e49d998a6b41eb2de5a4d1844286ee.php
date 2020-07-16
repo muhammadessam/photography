@@ -42,13 +42,25 @@
                     </div>
                 </div>
                 <div class="card-body">
+                <form action="<?php echo e(route('admin.DeleteAll','images')); ?>" method="post">
+                    <?php echo csrf_field(); ?>
+                    <?php echo method_field('DELETE'); ?>
+                    <button type="submit" class="btn btn-outline-danger">حذف المحدد</button>
                     <div class="row">
-                        <?php $__currentLoopData = $order->images; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $image): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <?php $__currentLoopData = $order->images; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $i => $image): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <div class="col-4">
-                                <img class="img-thumbnail" width="100%" src="<?php echo e(asset($image->image)); ?>">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <input type="checkbox" id="item" class="custom-checkbox m-1" name="images[<?php echo e($i); ?>]" value="<?php echo e($image->id); ?>">
+                                    </div>
+                                    <div class="card-body">
+                                        <img class="img-thumbnail" width="100%" src="<?php echo e(asset($image->image)); ?>">
+                                    </div>
+                                </div>
                             </div>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
+                </form>
                 </div>
             </div>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

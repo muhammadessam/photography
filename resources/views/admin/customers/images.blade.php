@@ -42,13 +42,25 @@
                     </div>
                 </div>
                 <div class="card-body">
+                <form action="{{route('admin.DeleteAll','images')}}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-outline-danger">حذف المحدد</button>
                     <div class="row">
-                        @foreach($order->images as $image)
+                        @foreach($order->images as $i => $image)
                             <div class="col-4">
-                                <img class="img-thumbnail" width="100%" src="{{asset($image->image)}}">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <input type="checkbox" id="item" class="custom-checkbox m-1" name="images[{{$i}}]" value="{{$image->id}}">
+                                    </div>
+                                    <div class="card-body">
+                                        <img class="img-thumbnail" width="100%" src="{{asset($image->image)}}">
+                                    </div>
+                                </div>
                             </div>
                         @endforeach
                     </div>
+                </form>
                 </div>
             </div>
         @endforeach
