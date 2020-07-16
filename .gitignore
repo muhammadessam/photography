@@ -15,3 +15,5 @@ public.zip
 .git.zip
 *.zip
 /public/images
+/public/videos
+/public/*.zip

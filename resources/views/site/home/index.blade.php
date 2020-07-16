@@ -121,12 +121,16 @@
                             <div class="row">
                                 @foreach ($videos as $video)
                                     <div class="col-md-6">
-                                        <iframe id="ytplayer" type="text/html" width="100%" height="250"
-                                            @php
-                                                parse_str( parse_url($video->video, PHP_URL_QUERY), $output );
-                                            @endphp
-                                            src="https://www.youtube.com/embed/{{  $output['v'] }}"
-                                            frameborder="0"></iframe>
+                                        @if($video->local == null)
+                                            <iframe id="ytplayer" type="text/html" width="100%" height="250"
+                                                    @php
+                                                        parse_str( parse_url($video->video, PHP_URL_QUERY), $output );
+                                                    @endphp
+                                                    src="https://www.youtube.com/embed/{{  $output['v'] }}"
+                                                    frameborder="0"></iframe>
+                                        @else
+                                            <video width="100%" height="250"  controls src="{{asset($video->local)}}#t=3.0"></video>
+                                        @endif
                                     </div>
                                 @endforeach
                             </div>
