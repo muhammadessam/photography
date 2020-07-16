@@ -1,4 +1,3 @@
-
 <?php $__env->startSection('content'); ?>
     <div class="content-header pb-0">
         <div class="container-fluid">
@@ -163,7 +162,8 @@
                         <div class="info-box-content">
                             <h4 class="info-box-text"> اراء العملاء</h4>
                             <h4 class="info-box-number">
-                                20
+                                <?php echo e(@App\Opinion::all()->count()); ?>
+
                             </h4>
                         </div>
                         <span class="info-box-icon">
@@ -181,7 +181,8 @@
                             <h4 class="info-box-text">المدن
                             </h4>
                             <h4 class="info-box-number">
-                                100
+                                <?php echo e(@App\Country::all()->count()); ?>
+
                             </h4>
                         </div>
                         <span class="info-box-icon">

@@ -27,12 +27,16 @@
                                     <h5 class="modal-title" id="exampleModalLongTitle">فيديو جديد</h5>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="<?php echo e(route('admin.customerVideo.store')); ?>" method="post">
+                                    <form action="<?php echo e(route('admin.customerVideo.store')); ?>" method="post" enctype="multipart/form-data">
                                         <?php echo csrf_field(); ?>
                                         <input type="hidden" name="order_id" value="<?php echo e($order->id); ?>">
                                         <div class="form-group">
                                             <label for="video">كود اليوتيوب</label>
                                             <textarea name="video" class="form-control" id="video" cols="30" rows="10"></textarea>
+                                        </div>
+                                        <div>
+                                            <label for="">رفع فيديو</label>
+                                            <input type="file" name="local" class="form-control">
                                         </div>
                                         <button type="submit" class="btn btn-success btn-block">اضافة</button>
                                     </form>
@@ -54,12 +58,16 @@
                                         <input type="checkbox" id="item" class="custom-checkbox m-1" name="images[<?php echo e($i); ?>]" value="<?php echo e($video->id); ?>">
                                     </div>
                                     <div class="card-body">
+                                        <?php if($video->local == null): ?>
                                         <iframe id="ytplayer" type="text/html" width="100%" height="250"
                                                 <?php
                                                     parse_str( parse_url($video->video, PHP_URL_QUERY), $output );
                                                 ?>
                                                 src="https://www.youtube.com/embed/<?php echo e($output['v']); ?>"
-                                                frameborder="0"></iframe>
+                                            frameborder="0"></iframe>
+                                        <?php else: ?>
+                                            <video width="100%" height="250" autoplay controls src="<?php echo e(asset($video->local)); ?>#t=3.0"></video>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
                             </div>

@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class AdminVideo extends Model
 {
-    protected $fillable = ['video','title','cat_id'];
+    protected $fillable = ['video','title','cat_id','local'];
     public function category(){
-        $this->belongsTo(Category::class,'cat_id','id');
+        return $this->belongsTo(Category::class,'cat_id','id');
     }
 }

@@ -80,6 +80,7 @@
                                                 <input type="checkbox" id="item" class="custom-checkbox m-1" name="images[{{$i}}]" value="{{$image->id}}">
                                                 {{$image->title}}
                                             </h6>
+                                            <a href="{{route('admin.images.edit',$image)}}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
 {{--                                            <form action="{{route('admin.images.destroy',$image)}}" method="post">--}}
 {{--                                                @csrf--}}
 {{--                                                @method('DELETE')--}}

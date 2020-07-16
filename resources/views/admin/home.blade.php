@@ -158,7 +158,7 @@
                         <div class="info-box-content">
                             <h4 class="info-box-text"> اراء العملاء</h4>
                             <h4 class="info-box-number">
-                                20
+                                {{@App\Opinion::all()->count()}}
                             </h4>
                         </div>
                         <span class="info-box-icon">
@@ -176,7 +176,7 @@
                             <h4 class="info-box-text">المدن
                             </h4>
                             <h4 class="info-box-number">
-                                100
+                                {{@App\Country::all()->count()}}
                             </h4>
                         </div>
                         <span class="info-box-icon">

@@ -8,6 +8,7 @@ use App\Order;
 use App\Video;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 
 class VideoController extends Controller
 {
@@ -39,7 +40,11 @@ class VideoController extends Controller
      */
     public function store(Request $request)
     {
-        Video::create($request->only('order_id','video'));
+        $data = $request->only('order_id','video');
+        if ($request->hasFile('local')){
+            $data['local']  =   Storage::disk('public')->put('videos',$request->file('local'));
+        }
+        Video::create($data);
         $order = Order::find($request->get('order_id'));
         $user = $order->customer->user;
         Not::query()->create([

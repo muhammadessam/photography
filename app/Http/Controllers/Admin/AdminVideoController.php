@@ -6,8 +6,10 @@ namespace App\Http\Controllers\Admin;
 use App\AdminVideo;
 use App\Http\Controllers\Controller;
 
+use App\Video;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 
 class AdminVideoController extends Controller
 {
@@ -44,8 +46,11 @@ class AdminVideoController extends Controller
      */
     public function store(Request $request)
     {
-
-        AdminVideo::create($request->only('video','title','cat_id'));
+        $data = $request->only('video','title','cat_id');
+        if ($request->hasFile('local')){
+            $data['local']  =   Storage::disk('public')->put('videos',$request->file('local'));
+        }
+        AdminVideo::create($data);
         alert('','تم الاضافة بنجاح','success');
         return Redirect::back();
     }
@@ -67,9 +72,10 @@ class AdminVideoController extends Controller
      * @param  \App\AdminVideo  $adminVideo
      * @return \Illuminate\Http\Response
      */
-    public function edit(AdminVideo $adminVideo)
+    public function edit($adminVideo)
     {
-        //
+        $video = AdminVideo::find($adminVideo);
+        return view('admin.videos.edit',compact('video'));
     }
 
     /**
@@ -79,9 +85,16 @@ class AdminVideoController extends Controller
      * @param  \App\AdminVideo  $adminVideo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, AdminVideo $adminVideo)
+    public function update(Request $request, $adminVideo)
     {
-        //
+        $video = AdminVideo::find($adminVideo);
+        $data = $request->only('video','title','cat_id');
+        if ($request->hasFile('local')){
+            $data['local']  =   Storage::disk('public')->put('videos',$request->file('local'));
+        }
+        $video->update($data);
+        alert('','تم','success');
+        return \redirect()->route('admin.videos.index');
     }
 
     /**

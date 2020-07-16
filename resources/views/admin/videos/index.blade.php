@@ -23,7 +23,7 @@
                                 <h5 class="modal-title" id="exampleModalLongTitle">فيديو جديد</h5>
                             </div>
                             <div class="modal-body">
-                                <form action="{{route('admin.videos.store')}}" method="post">
+                                <form action="{{route('admin.videos.store')}}" method="post" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group">
                                         <label for="">العنوان</label>
@@ -40,6 +40,10 @@
                                     <div class="form-group">
                                         <label for="video">رابط الفيديو Youtube</label>
                                         <textarea name="video" class="form-control" id="video" cols="30" rows="10"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">رفع فيديو</label>
+                                        <input type="file" name="local" class="form-control">
                                     </div>
                                     <button type="submit" class="btn btn-success btn-block">اضافة</button>
                                 </form>
@@ -72,7 +76,10 @@
                                 <div class="card bg-primary-gradient">
                                     <div class="card-header row w-100 m-0 justify-content-center">
                                         <input type="checkbox" id="item" class="custom-checkbox m-2" name="images[{{$i}}]" value="{{$video->id}}">
-                                        <h5 class="text-dark">{{$video->title}}</h5>
+                                        <h5 class="text-dark p-1">{{$video->title}}</h5>
+                                        <a href="{{route('admin.videos.edit',$video)}}" class="btn btn-outline-primary btn-sm" >
+                                            <i class="fa fa-edit"></i>
+                                        </a>
 {{--                                        <form action="{{route('admin.videos.destroy',$video)}}" method="post">--}}
 {{--                                            @csrf--}}
 {{--                                            @method('DELETE')--}}
@@ -82,12 +89,16 @@
 {{--                                        </form>--}}
                                     </div>
                                     <div class="card-body text-dark">
+                                        @if($video->local == null)
                                             <iframe id="ytplayer" type="text/html" width="100%" height="250"
                                             @php
                                                 parse_str( parse_url($video->video, PHP_URL_QUERY), $output );
                                             @endphp
                                             src="https://www.youtube.com/embed/{{  $output['v'] }}"
                                             frameborder="0"></iframe>
+                                        @else
+                                            <video width="100%" height="250"  controls src="{{asset($video->local)}}#t=3.0"></video>
+                                        @endif
                                     </div>
                                 </div>
                             </div>

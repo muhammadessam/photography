@@ -27,12 +27,16 @@
                                     <h5 class="modal-title" id="exampleModalLongTitle">فيديو جديد</h5>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="{{route('admin.customerVideo.store')}}" method="post">
+                                    <form action="{{route('admin.customerVideo.store')}}" method="post" enctype="multipart/form-data">
                                         @csrf
                                         <input type="hidden" name="order_id" value="{{$order->id}}">
                                         <div class="form-group">
                                             <label for="video">كود اليوتيوب</label>
                                             <textarea name="video" class="form-control" id="video" cols="30" rows="10"></textarea>
+                                        </div>
+                                        <div>
+                                            <label for="">رفع فيديو</label>
+                                            <input type="file" name="local" class="form-control">
                                         </div>
                                         <button type="submit" class="btn btn-success btn-block">اضافة</button>
                                     </form>
@@ -54,12 +58,16 @@
                                         <input type="checkbox" id="item" class="custom-checkbox m-1" name="images[{{$i}}]" value="{{$video->id}}">
                                     </div>
                                     <div class="card-body">
+                                        @if($video->local == null)
                                         <iframe id="ytplayer" type="text/html" width="100%" height="250"
                                                 @php
                                                     parse_str( parse_url($video->video, PHP_URL_QUERY), $output );
                                                 @endphp
                                                 src="https://www.youtube.com/embed/{{  $output['v'] }}"
-                                                frameborder="0"></iframe>
+                                            frameborder="0"></iframe>
+                                        @else
+                                            <video width="100%" height="250"  controls src="{{asset($video->local)}}#t=3.0"></video>
+                                        @endif
                                     </div>
                                 </div>
                             </div>

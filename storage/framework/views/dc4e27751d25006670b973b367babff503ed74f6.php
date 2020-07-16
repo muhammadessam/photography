@@ -90,6 +90,7 @@
                                                 <?php echo e($image->title); ?>
 
                                             </h6>
+                                            <a href="<?php echo e(route('admin.images.edit',$image)); ?>" class="btn btn-primary"><i class="fa fa-edit"></i></a>
 
 
 

@@ -86,9 +86,10 @@ class AdminImageController extends Controller
      * @param  \App\AdminImage  $adminImage
      * @return \Illuminate\Http\Response
      */
-    public function edit(AdminImage $adminImage)
+    public function edit($adminImage)
     {
-        //
+        $image = AdminImage::find($adminImage);
+        return view('admin.images.edit',compact('image'));
     }
 
     /**
@@ -98,9 +99,22 @@ class AdminImageController extends Controller
      * @param  \App\AdminImage  $adminImage
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, AdminImage $adminImage)
+    public function update(Request $request,$adminImage)
     {
-        //
+        $Aimage = AdminImage::find($adminImage);
+        if ($request->hasFile('image')){
+            $image = Image::make($request->file('image'));
+            $logo = Image::make(public_path(Setting::first()->logo))->opacity(50)->resize(100,100);
+            $logo->save(public_path('logos/watermark.png'));
+            $image->insert(public_path('logos/watermark.png'), 'bottom-right', 10, 10);
+            $new_name = 'images/'.time().'.'.$request->file('image')->extension();
+            $image->save(public_path($new_name));
+            $Aimage->image = $new_name;
+            $Aimage->save();
+        }
+        $Aimage->update($request->only('title','cat_id'));
+        alert('','تم التعديل بنجاح','success');
+        return Redirect::route('admin.images.index');
     }
 
     /**
