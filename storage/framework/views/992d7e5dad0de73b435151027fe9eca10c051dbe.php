@@ -54,6 +54,8 @@
                       </div>
                       <div class="col-12 mt-2">
                         <a href="<?php echo e(route('password.request')); ?>" class="c-bol "> هل نسيت كلمة السر</a>
+                          <br>
+                        <a href="<?php echo e(route('EmployeeLoginForm')); ?>" class="c-bol "> تسجيل دخول الموظف</a>
                       </div>
                     </form>
                   </div>

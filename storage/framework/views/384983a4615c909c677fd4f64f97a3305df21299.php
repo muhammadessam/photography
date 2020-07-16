@@ -2,7 +2,7 @@
     <div class="container">
         <h3 class="col-12 text-center">المشرفين</h3>
         <div class="col-12 justify-content-start m-3">
-            <a href="#" class="btn btn-success">
+            <a href="<?php echo e(route('admin.admins.create')); ?>" class="btn btn-success">
                 <i class="fa fa-plus-circle"></i>
             </a>
         </div>

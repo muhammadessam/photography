@@ -886,3 +886,6 @@ footer {
 .acp-note {
   background-color: antiquewhite;
 }
+.lg-outer.lg-visible {
+  direction: ltr;
+}

@@ -45,12 +45,11 @@
                     <span class="d-block nav-bol nav-hid"><i class="fas fa-ellipsis-h"></i></span>
                 </li>
                 <?php if(auth()->guard()->check()): ?>
-                    <?php if(auth()->user()->customer != null): ?>
-                        <?php if(auth()->user()->unreadNotifications()->count()): ?>
+                        <?php if(auth()->user()->nots->where('read',0)->count() > 0): ?>
                             <li class="nav-item mx-1">
                                 <a class="nav-link position-relative d-inline-block" href="<?php echo e(route('nots.index')); ?>">
                                     <i class="fas fa-bell my-nfx"></i>
-                                    <span class="btn btn-danger btn-sm not-num"><?php echo e(auth()->user()->unreadNotifications()->count()); ?></span>
+                                    <span class="btn btn-danger btn-sm not-num"><?php echo e(auth()->user()->nots->where('read',0)->count()); ?></span>
                                 </a>
                             </li>
                         <?php endif; ?>
@@ -61,7 +60,23 @@
                             </a>
                             <span class="d-block nav-bol nav-hid"><i class="fas fa-ellipsis-h"></i></span>
                         </li>
+                <?php endif; ?>
+                <?php if(auth()->guard('employee')->check()): ?>
+                    <?php if(auth()->guard('employee')->user()->nots->where('read',0)->count() > 0): ?>
+                        <li class="nav-item mx-1">
+                            <a class="nav-link position-relative d-inline-block" href="<?php echo e(route('nots.index')); ?>">
+                                <i class="fas fa-bell my-nfx"></i>
+                                <span class="btn btn-danger btn-sm not-num"><?php echo e(auth()->guard('employee')->user()->nots->where('read',0)->count()); ?></span>
+                            </a>
+                        </li>
                     <?php endif; ?>
+                    <li class="nav-item mx-1">
+                        <a class="nav-link" href="<?php echo e(route('employee.account')); ?>">
+                            <?php echo e(auth()->guard('employee')->user()->name); ?>
+
+                        </a>
+                        <span class="d-block nav-bol nav-hid"><i class="fas fa-ellipsis-h"></i></span>
+                    </li>
                 <?php endif; ?>
             </ul>
         </div>

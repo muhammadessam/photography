@@ -1,6 +1,42 @@
 <?php $__env->startSection('content'); ?>
     <div class="container pt-3">
         <h3 class="col-12 text-center">رأي العملاء</h3>
+        <a href="#" data-toggle="modal" data-target="#exampleModalCenter"
+           class="btn btn-success">
+            <i class="fa fa-plus"></i>
+        </a>
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <section class="card" id="add_opinion">
+                            <h3 class="col-12 text-center pt-3 pb-3">اضف رأي</h3>
+                            <form class="container" action="<?php echo e(route('opinions.store')); ?>" method="post">
+                                <?php echo csrf_field(); ?>
+                                <div class="form-group">
+                                    <label for="">العميل</label>
+                                    <select name="customer_id" class="form-control">
+                                        <?php $__currentLoopData = @App\Customer::all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $customer): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <option value="<?php echo e($customer->id); ?>"><?php echo e($customer->user->name); ?></option>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="body">الرأي</label>
+                                    <textarea class="form-control" name="body" id="body" cols="30" rows="5"></textarea>
+                                </div>
+                                <button class="btn btn-success" type="submit">ارسال</button>
+                            </form>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
         <table class="table table-bordered text-center">
             <tr>
                 <td>من</td>

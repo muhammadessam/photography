@@ -10,8 +10,14 @@
         <link rel="stylesheet" href="{{asset('css/owl.carousel.min.css')}}">
         <link rel="stylesheet" href="{{asset('css/owl.theme.default.min.css')}}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
+        {{-- light box image --}}
+
+        <link rel="stylesheet" href="{{asset('css/lightgallery.min.css')}}">
         <link rel="stylesheet" href="{{asset('css/style.css')}}">
         <title>{{@App\Setting::first()->app_name}}</title>
+
+
+
     </head>
     <body>
         @include('site.partials.header')
@@ -25,6 +31,15 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.js"></script>
         <script src="{{asset('js/jquery.countup.min.js')}}"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
+        <script src="{{asset('js/custom.js')}}"></script>
+        <script src="https://cdn.jsdelivr.net/picturefill/2.3.1/picturefill.min.js"></script>
+        <script src="{{asset('js/lightgallery-all.min.js')}}"></script>
+        <script src="{{asset('js/jquery.mousewheel.min.js')}}"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('#lightgallery').lightGallery();
+            });
+        </script>
         <script src="{{asset('js/main.js')}}"></script>
         @yield('js')
     </body>
