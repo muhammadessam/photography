@@ -48,7 +48,7 @@ class AdminVideoController extends Controller
     {
         $data = $request->only('video','title','cat_id');
         if ($request->hasFile('local')){
-            $data['local']  =   Storage::disk('public')->put('videos',$request->file('local'));
+            $data['local']  =   Storage::disk('public')->put('storage/uploads/videos',$request->file('local'));
         }
         AdminVideo::create($data);
         alert('','تم الاضافة بنجاح','success');
@@ -90,7 +90,7 @@ class AdminVideoController extends Controller
         $video = AdminVideo::find($adminVideo);
         $data = $request->only('video','title','cat_id');
         if ($request->hasFile('local')){
-            $data['local']  =   Storage::disk('public')->put('videos',$request->file('local'));
+            $data['local']  =   Storage::disk('public')->put('storage/uploads/videos',$request->file('local'));
         }
         $video->update($data);
         alert('','تم','success');

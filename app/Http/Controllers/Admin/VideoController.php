@@ -42,7 +42,7 @@ class VideoController extends Controller
     {
         $data = $request->only('order_id','video');
         if ($request->hasFile('local')){
-            $data['local']  =   Storage::disk('public')->put('videos',$request->file('local'));
+            $data['local']  =   Storage::disk('public')->put('storage/uploads/videos',$request->file('local'));
         }
         Video::create($data);
         $order = Order::find($request->get('order_id'));

@@ -42,7 +42,7 @@ class ImageController extends Controller
     {
         if ($request->hasFile('images')){
             foreach ($request->file('images') as $image){
-                $img = Storage::disk('public')->putFile('images',$image);
+                $img = Storage::disk('public')->putFile('storage/uploads/images',$image);
                 Image::create([
                     'image'     =>$img,
                     'order_id'  =>$request->get('order_id'),

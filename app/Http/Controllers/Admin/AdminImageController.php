@@ -54,7 +54,7 @@ class AdminImageController extends Controller
             $logo = Image::make(public_path(Setting::first()->logo))->opacity(50)->resize(100,100);
             $logo->save(public_path('logos/watermark.png'));
             $image->insert(public_path('logos/watermark.png'), 'bottom-right', 10, 10);
-            $new_name = 'images/'.time().'.'.$request->file('image')->extension();
+            $new_name = 'storage/uploads/images/'.time().'.'.$request->file('image')->extension();
             $image->save(public_path($new_name));
             AdminImage::create([
                 'image'     =>  $new_name,
@@ -107,7 +107,7 @@ class AdminImageController extends Controller
             $logo = Image::make(public_path(Setting::first()->logo))->opacity(50)->resize(100,100);
             $logo->save(public_path('logos/watermark.png'));
             $image->insert(public_path('logos/watermark.png'), 'bottom-right', 10, 10);
-            $new_name = 'images/'.time().'.'.$request->file('image')->extension();
+            $new_name = 'storage/uploads/images/'.time().'.'.$request->file('image')->extension();
             $image->save(public_path($new_name));
             $Aimage->image = $new_name;
             $Aimage->save();
