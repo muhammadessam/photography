@@ -2,7 +2,7 @@
     <?php if(config('sweetalert.animation.enable')): ?>
         <link rel="stylesheet" href="<?php echo e(config('sweetalert.animatecss')); ?>">
     <?php endif; ?>
-    <script src="<?php echo e($cdn?? asset('vendor/sweetalert/sweetalert.all.js')); ?>"></script>
+    <script src="<?php echo e($cdn?? asset('public/'.'vendor/sweetalert/sweetalert.all.js')); ?>"></script>
     <script>
         Swal.fire(<?php echo Session::pull('alert.config'); ?>);
     </script>

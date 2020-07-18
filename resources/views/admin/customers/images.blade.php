@@ -54,7 +54,7 @@
                                         <input type="checkbox" id="item" class="custom-checkbox m-1" name="images[{{$i}}]" value="{{$image->id}}">
                                     </div>
                                     <div class="card-body">
-                                        <img class="img-thumbnail" width="100%" src="{{asset($image->image)}}">
+                                        <img class="img-thumbnail" width="100%" src="{{asset('public/'.$image->image)}}">
                                     </div>
                                 </div>
                             </div>

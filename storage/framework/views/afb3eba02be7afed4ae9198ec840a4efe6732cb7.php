@@ -4,7 +4,7 @@
         <div class="my-shadow py-4 mb-5">
         <div class="dif">
             <h4 class="text-center font-weight-bold">مرحبا بك يا <span class="c-bol"><?php echo e(auth()->guard('employee')->user()->name ?? explode(' ', auth()->user()->name)[0]); ?></span></h4>
-            <span class="d-block text-center"> <img src="<?php echo e(asset('images/flower.svg')); ?>" alt=""></span>
+            <span class="d-block text-center"> <img src="<?php echo e(asset('public/'.'images/flower.svg')); ?>" alt=""></span>
         </div>
         <?php if(auth()->guard('employee')->check()): ?>
                 <div class="my-4 kufi">

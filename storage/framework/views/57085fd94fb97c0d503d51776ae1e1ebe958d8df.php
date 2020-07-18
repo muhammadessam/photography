@@ -10,7 +10,7 @@
                         <div class="col-4 p-1">
                             <div class="card bg-primary-gradient">
                                 <div class="card-body p-0">
-                                    <a href="<?php echo e(route('images.show', ['id' => $image->id ])); ?>"><img class="img-thumbnail" width="100%" height="150px" src="<?php echo e(asset($image->image)); ?>"></a>
+                                    <a href="<?php echo e(route('images.show', ['id' => $image->id ])); ?>"><img class="img-thumbnail" width="100%" height="150px" src="<?php echo e(asset('public/'.$image->image)); ?>"></a>
                                 </div>
                                 <div class="card-footer">
                                     <p><strong>المشاهدات: </strong> <?php echo e($image->getViews()); ?></p>

@@ -4,7 +4,7 @@
             <div id="fr-car" class="owl-carousel owl-theme" dir="ltr">
                 <?php $__currentLoopData = @App\Slider::all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <div class="car-img">
-                    <img src="<?php echo e(asset($slider->image)); ?>" alt="">
+                    <img src="<?php echo e(asset('public/'.$slider->image)); ?>" alt="">
                     <div class="container">
                         <div class="header-content text-white">
                             <h3 class="text-center mb-1"><?php echo e($slider->primary_text); ?></h3>
@@ -121,12 +121,16 @@
                             <div class="row">
                                 <?php $__currentLoopData = $videos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $video): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <div class="col-md-6">
-                                        <iframe id="ytplayer" type="text/html" width="100%" height="250"
-                                            <?php
-                                                parse_str( parse_url($video->video, PHP_URL_QUERY), $output );
-                                            ?>
-                                            src="https://www.youtube.com/embed/<?php echo e($output['v']); ?>"
-                                            frameborder="0"></iframe>
+                                        <?php if($video->local == null): ?>
+                                            <iframe id="ytplayer" type="text/html" width="100%" height="250"
+                                                    <?php
+                                                        parse_str( parse_url($video->video, PHP_URL_QUERY), $output );
+                                                    ?>
+                                                    src="https://www.youtube.com/embed/<?php echo e($output['v']); ?>"
+                                                    frameborder="0"></iframe>
+                                        <?php else: ?>
+                                            <video width="100%" height="250"  controls src="<?php echo e(asset('public/'.$video->local)); ?>#t=3.0"></video>
+                                        <?php endif; ?>
                                     </div>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </div>

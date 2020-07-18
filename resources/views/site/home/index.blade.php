@@ -5,7 +5,7 @@
             <div id="fr-car" class="owl-carousel owl-theme" dir="ltr">
                 @foreach(@App\Slider::all() as $slider)
                 <div class="car-img">
-                    <img src="{{asset($slider->image)}}" alt="">
+                    <img src="{{asset('public/'.$slider->image)}}" alt="">
                     <div class="container">
                         <div class="header-content text-white">
                             <h3 class="text-center mb-1">{{$slider->primary_text}}</h3>
@@ -129,7 +129,7 @@
                                                     src="https://www.youtube.com/embed/{{  $output['v'] }}"
                                                     frameborder="0"></iframe>
                                         @else
-                                            <video width="100%" height="250"  controls src="{{asset($video->local)}}#t=3.0"></video>
+                                            <video width="100%" height="250"  controls src="{{asset('public/'.$video->local)}}#t=3.0"></video>
                                         @endif
                                     </div>
                                 @endforeach

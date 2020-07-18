@@ -3,7 +3,7 @@
         <?php
             $setting = App\Setting::first();
         ?>
-        <a class="navbar-brand buk-29" href="<?php echo e(route('home')); ?>"> <img src="<?php echo e($setting ->logo ? request()->root().'/'. $setting ->logo : asset('images/logo.svg')); ?>" alt=""></a>
+        <a class="navbar-brand buk-29" href="<?php echo e(route('home')); ?>"> <img src="<?php echo e($setting ->logo ? request()->root().'/'. $setting ->logo : asset('public/'.'images/logo.svg')); ?>" alt=""></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <i class="custom-bars-icon"></i>

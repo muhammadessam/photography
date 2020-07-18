@@ -35,7 +35,7 @@
                     <?php $__currentLoopData = @App\Slider::all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <tr>
                             <td>
-                                <img height="220px" width="220px" src="<?php echo e(asset($slider->image)); ?>">
+                                <img height="220px" width="220px" src="<?php echo e(asset('public/'.$slider->image)); ?>">
                             </td>
                             <td><?php echo e($slider->primary_text); ?></td>
                             <td><?php echo e($slider->secondary_text); ?></td>

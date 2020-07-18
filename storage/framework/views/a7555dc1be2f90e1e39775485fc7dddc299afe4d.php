@@ -11,7 +11,7 @@
 <script>
     $('#<?php echo e($id); ?>').DataTable({
         "language": {
-            "url": "<?php echo e(asset('admin/plugins/datatables/extensions/i18n/Arabic.json')); ?>"
+            "url": "<?php echo e(asset('public/'.'admin/plugins/datatables/extensions/i18n/Arabic.json')); ?>"
         },
         "info": false,
         "pagingType": "full_numbers",

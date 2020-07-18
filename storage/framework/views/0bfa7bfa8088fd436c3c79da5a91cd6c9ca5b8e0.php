@@ -45,14 +45,14 @@
                             <label for="logo">شعار الموقع</label>
                             <input type="file" id="logo" onchange="PreviewImage()" name="logo1" class="form-control">
                         </div>
-                        <img src="<?php echo e(asset($sets->logo)); ?>" height="120px" id="logo_img" alt="">
+                        <img src="<?php echo e(asset('public/'.$sets->logo)); ?>" height="120px" id="logo_img" alt="">
                     </div>
                     <div class="col-6">
                         <div class="form-group">
                             <label for="icon">ايقونة الموقع</label>
                             <input type="file" id="icon" accept=".ico" onchange="PreviewImage1()" name="icon1" class="form-control">
                         </div>
-                        <img src="<?php echo e(asset($sets->icon)); ?>" height="120px" id="icon_img" alt="">
+                        <img src="<?php echo e(asset('public/'.$sets->icon)); ?>" height="120px" id="icon_img" alt="">
                     </div>
                 </div>
                 <div class="form-group">
@@ -138,7 +138,7 @@
         };
 
     </script>
-    <script src="<?php echo e(asset('tinymce/tinymce.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('public/'.'tinymce/tinymce.min.js')); ?>"></script>
     <script>
         tinymce.init({
             selector: "#mymce",

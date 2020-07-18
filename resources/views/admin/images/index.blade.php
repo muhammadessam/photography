@@ -90,9 +90,9 @@
 {{--                                            </form>--}}
                                         </div>
                                         <div class="card-body p-0">
-                                            <a href="{{asset($image->image)}}" class="item">
-                                                <img class="img-thumbnail" width="100%" src="{{asset($image->image)}}"
-                                                     data-src="{{asset($image->image)}}"
+                                            <a href="{{asset('public/'.$image->image)}}" class="item">
+                                                <img class="img-thumbnail" width="100%" src="{{asset('public/'.$image->image)}}"
+                                                     data-src="{{asset('public/'.$image->image)}}"
                                                      style="height: 180px;object-fit: cover;">
                                             </a>
                                         </div>

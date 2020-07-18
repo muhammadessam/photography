@@ -7,7 +7,7 @@
             <div class="my-shadow py-4">
                 <div class="dif">
                     <h4 class="text-center font-weight-bold">طلب مناسبة</h4>
-                    <span class="d-block text-center"> <img src="{{ asset('images/flower.svg') }}" alt=""></span>
+                    <span class="d-block text-center"> <img src="{{ asset('public/'.'images/flower.svg') }}" alt=""></span>
                 </div>
                 <div class="row mt-5">
                     <div class=" col-sm-12">

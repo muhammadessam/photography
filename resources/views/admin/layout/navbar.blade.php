@@ -25,7 +25,7 @@
                 <a href="#" class="dropdown-item">
                     <!-- Message Start -->
                     <div class="media">
-                        <img src="{{asset('admin/dist/img/logo.jpeg')}}" alt="User Avatar"
+                        <img src="{{asset('public/'.'admin/dist/img/logo.jpeg')}}" alt="User Avatar"
                              class="img-size-50 ml-3 img-circle">
                         <div class="media-body">
                             <h3 class="dropdown-item-title">

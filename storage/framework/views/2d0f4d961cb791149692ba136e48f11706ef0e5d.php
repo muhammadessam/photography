@@ -10,7 +10,7 @@
                         <div class="col-4 p-1">
                             <div class="card bg-primary-gradient">
                                 <div class="card-body p-0">
-                                    <img class="img-thumbnail" width="100%" src="<?php echo e(asset($image->image)); ?>">
+                                    <img class="img-thumbnail" width="100%" src="<?php echo e(asset('public/'.$image->image)); ?>">
                                 </div>
                             </div>
                         </div>

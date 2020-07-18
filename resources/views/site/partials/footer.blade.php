@@ -13,7 +13,7 @@
                         class="site-nv">توثيق لخدمات التصوير</span> 2020 م </a>
             </div>
                 <div>
-                    <a href="https://www.const-tech.com.sa/" target="_black"><img class="c-logo" src="{{asset('images/company-logo.svg')}}"
+                    <a href="https://www.const-tech.com.sa/" target="_black"><img class="c-logo" src="{{asset('public/'.'images/company-logo.svg')}}"
                                                                                 alt=""></a>
                 </div>
 

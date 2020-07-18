@@ -66,7 +66,7 @@
                                                 src="https://www.youtube.com/embed/<?php echo e($output['v']); ?>"
                                             frameborder="0"></iframe>
                                         <?php else: ?>
-                                            <video width="100%" height="250" autoplay controls src="<?php echo e(asset($video->local)); ?>#t=3.0"></video>
+                                            <video width="100%" height="250" autoplay controls src="<?php echo e(asset('public/'.$video->local)); ?>#t=3.0"></video>
                                         <?php endif; ?>
                                     </div>
                                 </div>

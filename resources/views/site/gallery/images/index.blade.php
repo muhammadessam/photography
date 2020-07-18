@@ -12,9 +12,9 @@
                                 <div class="card bg-primary-gradient">
                                     <div class="card-body  position-relative p-0">
 
-                                        <a href="{{asset($image->image)}}" class="item">
+                                        <a href="{{asset('public/'.$image->image)}}" class="item">
                                             <img class="img-thumbnail img-store" width="100%"
-                                                 src="{{asset($image->image)}}">
+                                                 src="{{asset('public/'.$image->image)}}">
                                             <div class="overlay ov-kufi  r-img  ">
                                                 <div
                                                         class="py-2 main-img d-flex justify-content-center align-items-center flex-column text-white">

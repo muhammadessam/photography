@@ -5,10 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>تسجيل الدخول | لوحة التحكم</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="<?php echo e(asset('admin/plugins/fontawesome-free/css/all.min.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('public/'.'admin/plugins/fontawesome-free/css/all.min.css')); ?>">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <link rel="stylesheet" href="<?php echo e(asset('admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css')); ?>">
-    <link rel="stylesheet" href="<?php echo e(asset('admin/dist/css/adminlte.min.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('public/'.'admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('public/'.'admin/dist/css/adminlte.min.css')); ?>">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 <body class="hold-transition login-page">
@@ -90,8 +90,8 @@ unset($__errorArgs, $__bag); ?>
         </div>
     </div>
 </div>
-<script src="<?php echo e(asset('admin/plugins/jquery/jquery.min.js')); ?>"></script>
-<script src="<?php echo e(asset('admin/plugins/bootstrap/js/bootstrap.bundle.min.js')); ?>"></script>
+<script src="<?php echo e(asset('public/'.'admin/plugins/jquery/jquery.min.js')); ?>"></script>
+<script src="<?php echo e(asset('public/'.'admin/plugins/bootstrap/js/bootstrap.bundle.min.js')); ?>"></script>
 
 </body>
 </html>

@@ -12,7 +12,7 @@
         <div class="my-shadow py-4">
             <div class="dif">
                 <h4 class="text-center font-weight-bold">مناسباتى</h4>
-                <span class="d-block text-center"> <img src="{{ asset('images/flower.svg') }}" alt=""></span>
+                <span class="d-block text-center"> <img src="{{ asset('public/'.'images/flower.svg') }}" alt=""></span>
             </div>
             @if(session()->has('msg'))
                 <div class="row mt-4">

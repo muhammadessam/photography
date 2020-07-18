@@ -66,7 +66,7 @@
                                                 src="https://www.youtube.com/embed/{{  $output['v'] }}"
                                             frameborder="0"></iframe>
                                         @else
-                                            <video width="100%" height="250"  controls src="{{asset($video->local)}}#t=3.0"></video>
+                                            <video width="100%" height="250"  controls src="{{asset('public/'.$video->local)}}#t=3.0"></video>
                                         @endif
                                     </div>
                                 </div>

@@ -36,7 +36,7 @@
                     @foreach(@App\Slider::all() as $slider)
                         <tr>
                             <td>
-                                <img height="220px" width="220px" src="{{asset($slider->image)}}">
+                                <img height="220px" width="220px" src="{{asset('public/'.$slider->image)}}">
                             </td>
                             <td>{{$slider->primary_text}}</td>
                             <td>{{$slider->secondary_text}}</td>

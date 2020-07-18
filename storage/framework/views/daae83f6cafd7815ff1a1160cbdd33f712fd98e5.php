@@ -4,7 +4,7 @@
             <div id="fr-car" class="owl-carousel owl-theme" dir="ltr">
                 <?php $__currentLoopData = @App\Slider::all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <div class="car-img">
-                    <img src="<?php echo e(asset($slider->image)); ?>" alt="">
+                    <img src="<?php echo e(asset('public/'.$slider->image)); ?>" alt="">
                     <div class="container">
                         <div class="header-content text-white">
                             <h3 class="text-center mb-1"><?php echo e($slider->primary_text); ?></h3>

@@ -52,7 +52,7 @@
 <?php unset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4); ?>
 <?php endif; ?>
 <?php echo $__env->renderComponent(); ?>
-<?php endif; ?> 
+<?php endif; ?>
                                     </div>
                                     <button type="submit" class="btn btn-success btn-block">اضافة</button>
                                 </form>
@@ -93,9 +93,9 @@
                                         </form>
                                     </div>
                                     <div class="card-body p-0">
-                                        <a href="<?php echo e(asset($image->image)); ?>" class="item">
-                                            <img class="img-thumbnail" width="100%" src="<?php echo e(asset($image->image)); ?>"
-                                                 data-src="<?php echo e(asset($image->image)); ?>"
+                                        <a href="<?php echo e(asset('public/'.$image->image)); ?>" class="item">
+                                            <img class="img-thumbnail" width="100%" src="<?php echo e(asset('public/'.$image->image)); ?>"
+                                                 data-src="<?php echo e(asset('public/'.$image->image)); ?>"
                                                  style="height: 180px;object-fit: cover;">
                                         </a>
                                     </div>

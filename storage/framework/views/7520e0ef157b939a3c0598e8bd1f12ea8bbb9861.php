@@ -45,7 +45,7 @@
                     <div class="row">
                         <?php $__currentLoopData = $order->images; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $image): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <div class="col-4">
-                                <img class="img-thumbnail" width="100%" src="<?php echo e(asset($image->image)); ?>">
+                                <img class="img-thumbnail" width="100%" src="<?php echo e(asset('public/'.$image->image)); ?>">
                             </div>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>

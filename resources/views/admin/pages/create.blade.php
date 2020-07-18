@@ -63,7 +63,7 @@
         </div>
     </div>
 
-    <script src="{{asset('tinymce/tinymce.min.js')}}"></script>
+    <script src="{{asset('public/'.'tinymce/tinymce.min.js')}}"></script>
     <script>
         tinymce.init({
             selector: "#mymce",

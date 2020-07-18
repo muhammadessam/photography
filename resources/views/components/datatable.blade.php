@@ -3,7 +3,7 @@
 <script>
     $('#{{$id}}').DataTable({
         "language": {
-            "url": "{{asset('admin/plugins/datatables/extensions/i18n/Arabic.json')}}"
+            "url": "{{asset('public/'.'admin/plugins/datatables/extensions/i18n/Arabic.json')}}"
         },
         "info": false,
         "pagingType": "full_numbers",

@@ -95,7 +95,7 @@ unset($__errorArgs, $__bag); ?>
         </div>
     </div>
 
-    <script src="<?php echo e(asset('tinymce/tinymce.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('public/'.'tinymce/tinymce.min.js')); ?>"></script>
     <script>
         tinymce.init({
             selector: "#mymce",

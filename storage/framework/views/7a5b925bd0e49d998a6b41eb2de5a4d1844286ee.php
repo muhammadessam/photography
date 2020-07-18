@@ -54,7 +54,7 @@
                                         <input type="checkbox" id="item" class="custom-checkbox m-1" name="images[<?php echo e($i); ?>]" value="<?php echo e($image->id); ?>">
                                     </div>
                                     <div class="card-body">
-                                        <img class="img-thumbnail" width="100%" src="<?php echo e(asset($image->image)); ?>">
+                                        <img class="img-thumbnail" width="100%" src="<?php echo e(asset('public/'.$image->image)); ?>">
                                     </div>
                                 </div>
                             </div>
